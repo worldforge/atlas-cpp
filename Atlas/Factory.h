@@ -41,7 +41,7 @@ class Factory
 
 	StuffFactory* m_pFactory;
     Factory(StuffFactory* pFact, const std::string& classname, const std::string& name)
-     : name(name), m_pFactory(pFact)
+     : m_pFactory(pFact), name(name)
     {
 		FactoriesCheckAdd(classname, this);
     }
@@ -68,7 +68,7 @@ class Factory
 		return name;
     }
        
-    static std::list<Factory*>& Factories(std::string classname)
+    static std::list<Factory*> Factories(const std::string & classname)
     {	
 		std::list<sClassInfo>::iterator i;
 	    for (i = aClassFactories.begin(); i != aClassFactories.end(); ++i)

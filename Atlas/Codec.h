@@ -8,7 +8,7 @@
 #include "Bridge.h"
 #include "Task.h"
 #include "Factory.h"
-#include "../StuffFactory.h"
+#include "StuffFactory.h"
 namespace Atlas {
 
 /** Atlas stream codec
