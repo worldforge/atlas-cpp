@@ -63,8 +63,6 @@ class StreamConnect : public Atlas::Negotiate<std::iostream>
 	CLIENT_GREETING,
 	CLIENT_CODECS,
 	SERVER_CODECS,
-	CLIENT_FILTERS,
-	SERVER_FILTERS,
 	DONE
     };
 
@@ -108,8 +106,6 @@ class StreamAccept : public Atlas::Negotiate<std::iostream>
 	CLIENT_GREETING,
 	CLIENT_CODECS,
 	SERVER_CODECS,
-	CLIENT_FILTERS,
-	SERVER_FILTERS,
 	DONE
     };
 

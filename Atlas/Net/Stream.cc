@@ -134,32 +134,6 @@ void Atlas::Net::StreamConnect::Poll(bool can_read = true)
 	}
     }
     
-    if (state == CLIENT_FILTERS)
-    {
-        out += '\n';
-        socket << out << flush;
-        state++;
-    }
-    
-    if (state == SERVER_FILTERS)
-    {
-      // FIXME: this is crude
-      string s, h;
-      while(!buf.empty())
-        {
-          // check for end condition
-          if(buf.find('\n') == 0)
-            {
-              buf.erase(0, 1);
-              break;
-            }
-          
-          if(get_line(buf, '\n', s) == "")
-            break;
-          
-          get_line(s, ' ', h);
-        }
-    }
     } while ((state != DONE) && (socket.rdbuf()->in_avail()));
 }
 
@@ -269,34 +243,7 @@ void Atlas::Net::StreamAccept::Poll(bool can_read = true)
 	state++;
     }
     
-    if(state == CLIENT_FILTERS)
-    {
-      // FIXME: this is crude
-      string s, h;
-      while(!buf.empty())
-        {
-          // check for end condition
-          if(buf.find('\n') == 0)
-            {
-              buf.erase(0, 1);
-              break;
-            }
-          
-          if(get_line(buf, '\n', s) == "")
-            break;
-          
-          get_line(s, ' ', h);
-        }
-    }
-    
-    if (state == SERVER_FILTERS)
-    {
-        out += '\n';
-	socket << out << flush;
-	state++;
-    }
-    }
-    while ((state != DONE) && (socket.rdbuf()->in_avail()));
+    } while ((state != DONE) && (socket.rdbuf()->in_avail()));
 }
 
 Atlas::Negotiate<iostream>::State Atlas::Net::StreamAccept::GetState()

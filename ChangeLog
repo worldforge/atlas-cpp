@@ -1,3 +1,7 @@
+2001-01-17  Stefanus Du Toit  <sjdutoit@uwaterloo.ca>
+
+	* src/Net/Stream.cc, src/Net/Stream.h: Removed filter negotiation.
+
 2001-01-16  Stefanus Du Toit  <sjdutoit@uwaterloo.ca>
 
 	* src/Message/DecoderBase.*: Changed int to long in List/MapItem
