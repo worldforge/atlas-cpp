@@ -1,3 +1,12 @@
+2001-01-23  Stefanus Du Toit  <sjdutoit@uwaterloo.ca>
+
+	* tests/: Removed old tests.
+
+	* Makefile.am (SUBDIRS): Removed tests/ from top-level
+	Makefile.am.
+
+	* TODO: Updated TODO list.
+
 2001-01-21  Stefanus Du Toit  <sjdutoit@uwaterloo.ca>
 
 	* src/Codecs/Makefile.am (libAtlasCodecs_la_SOURCES): Added header

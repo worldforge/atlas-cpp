@@ -4,20 +4,7 @@ Items are in no particular order.
 
 For 0.4.0:
 
- - finish tutorial/:
+ - fix tutorial/:
     * should we use libsocket++ or not? If we build our own, it needs
       to be standards compliant (sdt can help you with this)
- - write tests/:
-    * definitely the biggest task
- - make all tests succeed:
-    * goes together with the previous
  - update README
- - try to cut down compile time without affecting the API. Try to
-   minimise #includes and use forward declarations in headers
-   whereever possible (that actually reduces the _need_ to compile)
-   (not sure how compile time itself could be reduced any further)
-
-For 0.5.x:
-
- - rewrite the whole negotiation/Factory system. It's currently an
-   awful mess.
