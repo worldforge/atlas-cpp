@@ -8,7 +8,7 @@
 #include <string>
 #include <list>
 #include <algorithm>
-
+#include "../StuffFactory.h"
 namespace Atlas {
 
 /** Class factory
@@ -28,47 +28,94 @@ Both Codec and Filter specialise Factory and use it for class registration.
 @see Negotiate
 */
 
-template <typename T>
 class Factory
 {
     public:
+	struct sClassInfo
+	{
+		std::string classname;
+		std::list<Factory*> aImpFactories;
+	};
 
-    Factory(const std::string& name, const typename T::Metrics& metrics)
-     : name(name), metrics(metrics)
+	static std::list<sClassInfo> aClassFactories;
+
+	StuffFactory* m_pFactory;
+    Factory(StuffFactory* pFact, const std::string& classname, const std::string& name)
+     : name(name), m_pFactory(pFact)
     {
-	Factories().push_back(this);
+		FactoriesCheckAdd(classname, this);
     }
     
     virtual ~Factory()
     {
-	std::list<Factory*>::iterator i;
-	i = std::find(Factories().begin(), Factories().end(), this);
-	Factories().erase(i);
+		/*std::list<Factory*>::iterator i;
+		i = std::find(Factories().begin(), Factories().end(), this);
+		Factories().erase(i);*/
     }
     
-    virtual T* New(const typename T::Parameters&) = 0;
-    virtual void Delete(T*) = 0;
+	void* New(void* pParameters)
+	{
+		return m_pFactory->New(pParameters);
+	}
+
+	void Delete(void* filter)
+	{
+		m_pFactory->Delete(filter);
+	}
 
     std::string GetName()
     {
-	return name;
+		return name;
     }
-    
-    typename T::Metrics GetMetrics()
-    {
-	return metrics;
-    }
-   
-    static std::list<Factory*>& Factories()
-    {
-	static std::list<Factory*> factories;
-	return factories;
+       
+    static std::list<Factory*>& Factories(std::string classname)
+    {	
+		std::list<sClassInfo>::iterator i;
+	    for (i = aClassFactories.begin(); i != aClassFactories.end(); ++i)
+	    {
+			if ((*i).classname == classname)
+				return (*i).aImpFactories;
+		}
+		std::list<Factory*> dummy;
+		return 	dummy;
     }
 
-    protected:
+    void FactoriesCheckAdd(std::string classname, Factory* pNewFact)
+    {	
+		std::list<sClassInfo>::iterator i;
+		
+		std::list<Factory*>* pImps = NULL;
+	    for (i = aClassFactories.begin(); i != aClassFactories.end(); ++i)
+	    {
+			if ((*i).classname == classname)
+			{
+				pImps = &(*i).aImpFactories;
+				break;
+			};
+		}
+		if (!pImps)
+		{
+			sClassInfo ci;
+			ci.classname = classname;
+			ci.aImpFactories.push_back(pNewFact);
+			aClassFactories.push_back(ci);
+			return;
+		}
+		
+		std::list<Factory*>::iterator j;
+
+		for (j = pImps->begin(); j != pImps->end(); ++j)
+	    {
+			if ((*j)->name == pNewFact->name)
+				return;
+		}
+		pImps->push_back(pNewFact);
+		
+		return ;
+    }
+    public:
 
     std::string name;
-    typename T::Metrics metrics;
 };
 
 } // Atlas namespace

@@ -25,6 +25,7 @@ class Layer : public Encoder, public Decoder
 public:
     Layer(Atlas::Bridge* b) : Encoder(b), Decoder() { }
     virtual ~Layer() { }
+
 };
 
 } } // Atlas::Message namespace

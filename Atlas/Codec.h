@@ -8,7 +8,7 @@
 #include "Bridge.h"
 #include "Task.h"
 #include "Factory.h"
-
+#include "../StuffFactory.h"
 namespace Atlas {
 
 /** Atlas stream codec
@@ -51,32 +51,20 @@ class Codec : public Bridge, public Task
     struct Parameters
     {
         Stream& stream;
-	Bridge* bridge;
+		Bridge* bridge;
 
         Parameters(Stream& stream, Bridge* bridge) 
            : stream(stream), bridge(bridge) { }
     };
 
-    template <typename T>
-    class Factory : public Atlas::Factory<Codec>
-    {
-	public:
-
-	Factory(const std::string& name, const Metrics& metrics)
-	    : Atlas::Factory<Codec>(name, metrics)
+	class Factory : public Atlas::Factory
 	{
-	}
+	public:	
 
-	virtual Codec* New(const Parameters& p)
-	{
-	    return new T(p);
-	}
-
-	virtual void Delete(Codec* codec)
-	{
-	    delete codec;
-	}
-    };
+		Factory(StuffFactory* pFact, const std::string& name) : Atlas::Factory(pFact, "codec", name)
+		{	
+		}
+	};
 };
 
 } // Atlas namespace

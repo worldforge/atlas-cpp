@@ -34,7 +34,7 @@ public:
     /// Construct a Root class definition.
     Root();
     /// Construct a Root instance.
-    Root(const string& id);
+    Root(const std::string& id);
     /// Default destructor.
     virtual ~Root();
 

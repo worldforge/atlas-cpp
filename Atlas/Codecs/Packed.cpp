@@ -30,12 +30,16 @@ The complete specification is located in cvs at:
     forge/protocols/atlas/spec/packed_syntax.html
     
 */
+#include "../../StuffFactory.h"
+
+
+
 
 class Packed : public Codec<iostream>
 {
 public:
     
-    Packed(const Codec<iostream>::Parameters&);
+    Packed(Codec<iostream>::Parameters* p);
 
     virtual void Poll(bool can_read = true);
 
@@ -101,16 +105,31 @@ protected:
     }
 };
 
+class PackedFactory : public StuffFactory
+{
+public:
+	void* New(void* pParameters)
+	{
+		return (void*)new Packed((Codec<iostream>::Parameters*)pParameters);
+	}
+	void Delete(void* pObject)
+	{
+		delete (Packed*)pObject;
+	}
+} g_PackedFactory;
+
 namespace
 {
-    Codec<iostream>::Factory<Packed> factory(
-	"Packed",				    // name
-	Codec<iostream>::Metrics(1, 2)		    // metrics
+    //Codec<std::iostream>::Factory<Packed> factory(
+
+	Codec<std::iostream>::Factory factory(
+		&g_PackedFactory,
+		"Packed"				    // name
     );
 }
 
-Packed::Packed(const Codec<iostream>::Parameters& p) :
-    socket(p.stream), bridge(p.bridge)
+Packed::Packed(Codec<iostream>::Parameters* p) :
+    socket(p->stream), bridge(p->bridge)
 {
     state.push(PARSE_STREAM);
 }
@@ -398,7 +417,7 @@ void Packed::ParseName(char next)
     }
 }
 
-void Packed::Poll(bool can_read = true)
+void Packed::Poll(bool can_read)
 {
     if (!can_read) return;
     do

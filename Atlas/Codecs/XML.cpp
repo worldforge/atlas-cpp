@@ -36,7 +36,7 @@ class XML : public Codec<iostream>
 {
     public:
 
-    XML(const Codec<iostream>::Parameters&);
+    XML(Codec<iostream>::Parameters*);
 
     virtual void Poll(bool can_read = true);
 
@@ -99,16 +99,25 @@ class XML : public Codec<iostream>
     inline void ParseEndTag();
 };
 
+class XMLFactory : public StuffFactory
+{
+public:
+	void* New(void* pParameters)
+	{
+		return (void*)new XML((Codec<iostream>::Parameters*)pParameters);
+	}
+	void Delete(void* pObject)
+	{
+		delete (XML*)pObject;
+	}
+} g_XMLFactory;
 namespace
 {
-    Codec<iostream>::Factory<XML> factory(
-	"XML",					    // name
-	Codec<iostream>::Metrics(1, 2)		    // metrics
-    );
+	Codec<iostream>::Factory factory(&g_XMLFactory, "XML");
 }
     
-XML::XML(const Codec<iostream>::Parameters& p)
-    : socket(p.stream), bridge(p.bridge)
+XML::XML(Codec<iostream>::Parameters* p)
+    : socket(p->stream), bridge(p->bridge)
 {
     token = TOKEN_DATA;
     state.push(PARSE_NOTHING);
@@ -422,7 +431,7 @@ void XML::ParseEndTag()
     }
 }
 
-void XML::Poll(bool can_read = true)
+void XML::Poll(bool can_read)
 {
     if (!can_read) return;
     do

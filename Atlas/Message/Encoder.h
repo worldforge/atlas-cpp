@@ -31,7 +31,7 @@ public:
     /// Send a message (must be a map!) in stream state.
     virtual void StreamMessage(const Object& obj);
     /// Send an object as a map item.
-    virtual void MapItem(const string&, const Object&);
+    virtual void MapItem(const std::string&, const Object&);
     /// Send an object as a list item.
     virtual void ListItem(const Object&);
 };

@@ -21,37 +21,37 @@ along with the name of sender and a Socket
 @see Filter
 */
 
-  template <class T>
-  class NegotiateHelper {
+template <class T>
+class NegotiateHelper 
+{
+	typedef std::list<T*> Factories;
+		
+public:
+	
+	NegotiateHelper(std::list<std::string> *names, Factories *out_factories);
+	
+	bool get(std::string &buf, std::string header);
+	void put(std::string &buf, std::string header);
+	
+private:
+	
+	std::list<std::string> *names;
+	Factories *outFactories;
+	
+};
 
-    typedef std::list<T*> Factories;
-
-  public:
-
-    NegotiateHelper(std::list<std::string> *names, Factories *out_factories);
-
-    bool get(std::string &buf, std::string header);
-    void put(std::string &buf, std::string header);
-
-  private:
-
-    std::list<std::string> *names;
-    Factories *outFactories;
-
-  };
-
-class StreamConnect : public Atlas::Negotiate<iostream>
+class StreamConnect : public Atlas::Negotiate<std::iostream>
 {
     public:
 
-    StreamConnect(const std::string& name, iostream&, Atlas::Bridge*);
+	StreamConnect(const std::string& name, std::iostream*, Atlas::Bridge*);
 
     virtual ~StreamConnect() {}
 
     virtual void Poll(bool can_read = true);
 
     virtual State GetState();
-    virtual Atlas::Codec<iostream>* GetCodec();
+    virtual Atlas::Codec<std::iostream>* GetCodec();
 
     private:
 
@@ -70,19 +70,20 @@ class StreamConnect : public Atlas::Negotiate<iostream>
 
     std::string outName;
     std::string inName;
-    iostream& socket;
+	std::iostream& socket;
     Atlas::Bridge* bridge;
     std::list<std::string> inCodecs;
     std::list<std::string> inFilters;
   
-    typedef std::list<Atlas::Factory<Atlas::Codec<iostream> >*> FactoryCodecs;
-    typedef std::list<Atlas::Factory<Atlas::Filter>*> FactoryFilters;
+	typedef std::list<Atlas::Factory*> FactoryCodecs;
+    typedef std::list<Atlas::Factory*> FactoryFilters;
 
     FactoryCodecs outCodecs;
     FactoryFilters outFilters;
-    NegotiateHelper<Atlas::Factory<Atlas::Codec<iostream> > > codecHelper;
-    NegotiateHelper<Atlas::Factory<Atlas::Filter > > filterHelper;
-    std::string buf;
+    NegotiateHelper<Atlas::Factory> codecHelper;
+    NegotiateHelper<Atlas::Factory> filterHelper;
+    
+	std::string buf;
 
     void processServerCodecs();
     void processServerFilters();
@@ -91,18 +92,18 @@ class StreamConnect : public Atlas::Negotiate<iostream>
     void processClientFilters();
 };
  
-class StreamAccept : public Atlas::Negotiate<iostream>
+class StreamAccept : public Atlas::Negotiate<std::iostream>
 {
     public:
 
-    StreamAccept(const std::string& name, iostream&, Atlas::Bridge*);
+	StreamAccept(const std::string& name, std::iostream&, Atlas::Bridge*);
 
     virtual ~StreamAccept() {}
 
     virtual void Poll(bool can_read = true);
 
     virtual State GetState();
-    virtual Atlas::Codec<iostream>* GetCodec();
+    virtual Atlas::Codec<std::iostream>* GetCodec();
 
     private:
 
@@ -121,18 +122,19 @@ class StreamAccept : public Atlas::Negotiate<iostream>
 
     std::string outName;
     std::string inName;
-    iostream& socket;
+	std::iostream& socket;
     Atlas::Bridge* bridge;
     std::list<std::string> inCodecs;
     std::list<std::string> inFilters;
   
-    typedef std::list<Atlas::Factory<Atlas::Codec<iostream> >*> FactoryCodecs;
-    typedef std::list<Atlas::Factory<Atlas::Filter>*> FactoryFilters;
+	typedef std::list<Atlas::Factory*> FactoryCodecs;
+    typedef std::list<Atlas::Factory*> FactoryFilters;
 
     FactoryCodecs outCodecs;
     FactoryFilters outFilters;
-    NegotiateHelper<Atlas::Factory<Atlas::Codec<iostream> > > codecHelper;
-    NegotiateHelper<Atlas::Factory<Atlas::Filter > > filterHelper;
+    NegotiateHelper<Atlas::Factory> codecHelper;
+    NegotiateHelper<Atlas::Factory> filterHelper;
+	
     std::string buf;
 
     void processServerCodecs();

@@ -15,12 +15,12 @@
 #include <cstdio>
 #include <string>
 #include <algorithm>
-
+#include <stdio.h>
 /// Convert an ASCII char to its hexadecimal value
-inline const string charToHex(char c)
+inline const std::string charToHex(char c)
 {
     char hex[3];
-#ifdef __MINGW32__
+#ifdef WIN32
     // Perhaps this should #ifdef _WIN32 instead?    
     _snprintf(hex, 3, "%x", c);
 #else
@@ -30,7 +30,7 @@ inline const string charToHex(char c)
 }
 
 /// Convert a string with a hexadecimal value (2 characters) to an ASCII char
-inline char hexToChar(const string& hex)
+inline char hexToChar(const std::string& hex)
 {
     int c;
     sscanf(hex.c_str(), "%x", &c);
@@ -46,22 +46,22 @@ inline char hexToChar(const string& hex)
  * @param message The message that is to be escaped.
  * @see hexDecode
  */
-inline const string hexEncode(const string& prefix, const string& special,
-        const string& message)
+inline const std::string hexEncode(const std::string& prefix, const std::string& special,
+        const std::string& message)
 {
-    string encoded;
+    std::string encoded;
 
-    for (string::const_iterator i = message.begin(); i != message.end(); ++i)
+    for (std::string::const_iterator i = message.begin(); i != message.end(); ++i)
     {
-	if (find(special.begin(), special.end(), *i) != special.end())
-	{
-	    encoded += prefix;
-	    encoded += charToHex(*i);
-	}
-	else
-	{
-	    encoded += *i;
-	}
+		if (std::find(special.begin(), special.end(), *i) != special.end())
+		{
+			encoded += prefix;
+			encoded += charToHex(*i);
+		}
+		else
+		{
+			encoded += *i;
+		}
     }
 
     return encoded;
@@ -78,21 +78,25 @@ inline const string hexEncode(const string& prefix, const string& special,
  * @param prefix The string that is followed by the escaped characters
  * @param message The escaped message.
  */
-inline const string hexDecode(const string& prefix, const string& message)
+inline const std::string hexDecode(const std::string& prefix, const std::string& message)
 {
-    string newMessage;
-    string curFragment;
+    std::string newMessage;
+    std::string curFragment;
     
     for (size_t i = 0; i < message.size(); i++) {
-        if (equal(prefix.begin(), prefix.begin() + curFragment.length() + 1, 
-                    (curFragment + message[i]).begin())) {
+        if (std::equal(prefix.begin(), prefix.begin() + curFragment.length() + 1, 
+                    (curFragment + message[i]).begin())) 
+		{
             curFragment += message[i];
-        } else {
+        } 
+		else 
+		{
             newMessage += curFragment + message[i];
             curFragment = "";
         }
-        if (curFragment == prefix) {
-            string hex;
+        if (curFragment == prefix) 
+		{
+			std::string hex;
             hex += message[++i];
             hex += message[++i];
             newMessage += hexToChar(hex);

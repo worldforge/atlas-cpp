@@ -64,7 +64,7 @@ XMLish::XMLish(const Codec<iostream>::Parameters& p)
 {
 }
 
-void XMLish::Poll(bool can_read = true)
+void XMLish::Poll(bool can_read)
 {
     if (!can_read) return;
     do

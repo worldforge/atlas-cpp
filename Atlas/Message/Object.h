@@ -38,43 +38,70 @@ public:
         TYPE_LIST
     };
 
+
+	CommonConstruct()
+	{
+		MapType* m_pM = new MapType;
+		ListType* m_pL = new ListType;
+	}
     /// Construct an empty object.
     Object()
-      : t(TYPE_NONE), i(0), f(0.0), s(), m(),  l()
+      : t(TYPE_NONE), i(0), f(0.0), s()
     {
+		CommonConstruct();
     }
 
     /// Copy an existing object.
     Object(const Object& m)
-      : t(m.t), i(m.i), f(m.f), s(m.s), m(m.m), l(m.l)
+      : t(m.t), i(m.i), f(m.f), s(m.s)
     {
+		CommonConstruct();
+		*m_pMap = *m.m_pMap;
+		*m_pList = *m.m_pList;
     }
 
     /// Set type to int, and value to v.
     Object(int v)
-      : t(TYPE_INT), i(v), f(0.0), s(), m(), l()
+      : t(TYPE_INT), i(v), f(0.0), s()
     {
+		CommonConstruct();
     }
     /// Set type to double, and value to v.
     Object(double v)
-      : t(TYPE_FLOAT), i(0), f(v), s(), m(), l()
+      : t(TYPE_FLOAT), i(0), f(v), s()
     {
+		CommonConstruct();
     }
     /// Set type to std::string, and value to v.
     Object(const std::string& v)
-      : t(TYPE_STRING), i(0), f(0.0), s(v), m(), l()
+      : t(TYPE_STRING), i(0), f(0.0), s(v)
     {
+		CommonConstruct();
     }
     /// Set type to MapType, and value to v.
     Object(const MapType& v)
-      : t(TYPE_MAP), i(0), f(0.0), s(), m(v), l()
+      : t(TYPE_MAP), i(0), f(0.0), s()
     {
+		CommonConstruct();
+		*m_pMap = v;
     }
+
     /// Set type to ListType, and value to v.
     Object(const ListType& v)
-      : t(TYPE_LIST), i(0), f(0.0), s(), m(), l(v)
+      : t(TYPE_LIST), i(0), f(0.0), s()
     {
+		CommonConstruct();
+		*m_pList = v;
     }
+
+	~Object()
+	{
+		if (m_pMap)
+			delete m_pMap;
+
+		if (m_pList)
+			delete m_pList;
+	}
 
     /// Check for equality with another Object.
     bool operator==(const Object& o) const
@@ -85,8 +112,8 @@ public:
             case TYPE_INT: return i == o.i;
             case TYPE_FLOAT: return f == o.f;
             case TYPE_STRING: return s == o.s;
-            case TYPE_MAP: return m == o.m;
-            case TYPE_LIST: return l == o.l;
+            case TYPE_MAP: return *m_pMap == *o.m_pMap;
+            case TYPE_LIST: return *m_pList == *o.m_pList;
         }
         return false;
     }
@@ -127,7 +154,7 @@ public:
     /// Check for equality with a MapType.
     bool operator==(const MapType& v) const
     {
-        return (t == TYPE_MAP && m == v);
+        return (t == TYPE_MAP && *m_pMap == v);
     }
 
     /// Check for inequality with a MapType.
@@ -136,7 +163,7 @@ public:
     /// Check for equality with a ListType.
     bool operator==(const ListType& v) const
     {
-        return (t == TYPE_LIST && l == v);
+        return (t == TYPE_LIST && *m_pList == v);
     }
 
     /// Check for inequality with a ListType.
@@ -147,8 +174,8 @@ public:
     {
         t = TYPE_NONE;
         s.erase();
-        m.clear();
-        l.clear();
+        m_pMap->clear();
+        m_pList->clear();
     }
 
     /// Get the current type.
@@ -193,25 +220,25 @@ public:
     /// Retrieve the current value as a const MapType reference.
     const MapType& AsMap() const throw (WrongTypeException)
     {
-        if (t == TYPE_MAP) return m;
+        if (t == TYPE_MAP) return *m_pMap;
         throw WrongTypeException();
     }
     /// Retrieve the current value as a non-const MapType reference.
     MapType& AsMap() throw (WrongTypeException)
     {
-        if (t == TYPE_MAP) return m;
+        if (t == TYPE_MAP) return *m_pMap;
         throw WrongTypeException();
     }
     /// Retrieve the current value as a const ListType reference.
     const ListType& AsList() const throw (WrongTypeException)
     {
-        if (t == TYPE_LIST) return l;
+        if (t == TYPE_LIST) return *m_pList;
         throw WrongTypeException();
     }
     /// Retrieve the current value as a non-const ListType reference.
     ListType& AsList() throw (WrongTypeException)
     {
-        if (t == TYPE_LIST) return l;
+        if (t == TYPE_LIST) return *m_pList;
         throw WrongTypeException();
     }
 
@@ -221,8 +248,8 @@ protected:
     int i;
     double f;
     StringType s;
-    MapType m;
-    ListType l;
+    MapType* m_pMap;
+    ListType* m_pList;
 
 };
 
