@@ -3,27 +3,27 @@
 // Copyright 2000 Stefanus Du Toit.
 // Automatically generated using gen_cc.py.
 
-#include "Imaginary.h"
+#include "Feel.h"
 
 using Atlas::Message::Object;
 
 namespace Atlas { namespace Objects { namespace Operation { 
 
-Imaginary::Imaginary()
-     : Action()
+Feel::Feel()
+     : Perception()
 {
-    SetId(string("imaginary"));
+    SetId(string("feel"));
     Object::ListType parents;
-    parents.push_back(string("action"));
+    parents.push_back(string("perception"));
     SetParents(parents);
 }
 
-Imaginary Imaginary::Instantiate()
+Feel Feel::Instantiate()
 {
-    Imaginary value;
+    Feel value;
 
     Object::ListType parents;
-    parents.push_back(string("imaginary"));
+    parents.push_back(string("feel"));
     value.SetParents(parents);
     value.SetObjtype(string("op"));
     

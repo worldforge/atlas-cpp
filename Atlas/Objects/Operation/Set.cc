@@ -3,27 +3,27 @@
 // Copyright 2000 Stefanus Du Toit.
 // Automatically generated using gen_cc.py.
 
-#include "Imaginary.h"
+#include "Set.h"
 
 using Atlas::Message::Object;
 
 namespace Atlas { namespace Objects { namespace Operation { 
 
-Imaginary::Imaginary()
+Set::Set()
      : Action()
 {
-    SetId(string("imaginary"));
+    SetId(string("set"));
     Object::ListType parents;
     parents.push_back(string("action"));
     SetParents(parents);
 }
 
-Imaginary Imaginary::Instantiate()
+Set Set::Instantiate()
 {
-    Imaginary value;
+    Set value;
 
     Object::ListType parents;
-    parents.push_back(string("imaginary"));
+    parents.push_back(string("set"));
     value.SetParents(parents);
     value.SetObjtype(string("op"));
     

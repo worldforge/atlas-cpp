@@ -3,27 +3,27 @@
 // Copyright 2000 Stefanus Du Toit.
 // Automatically generated using gen_cc.py.
 
-#include "Imaginary.h"
+#include "Listen.h"
 
 using Atlas::Message::Object;
 
 namespace Atlas { namespace Objects { namespace Operation { 
 
-Imaginary::Imaginary()
-     : Action()
+Listen::Listen()
+     : Perceive()
 {
-    SetId(string("imaginary"));
+    SetId(string("listen"));
     Object::ListType parents;
-    parents.push_back(string("action"));
+    parents.push_back(string("perceive"));
     SetParents(parents);
 }
 
-Imaginary Imaginary::Instantiate()
+Listen Listen::Instantiate()
 {
-    Imaginary value;
+    Listen value;
 
     Object::ListType parents;
-    parents.push_back(string("imaginary"));
+    parents.push_back(string("listen"));
     value.SetParents(parents);
     value.SetObjtype(string("op"));
     

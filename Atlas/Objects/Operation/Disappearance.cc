@@ -3,27 +3,27 @@
 // Copyright 2000 Stefanus Du Toit.
 // Automatically generated using gen_cc.py.
 
-#include "Imaginary.h"
+#include "Disappearance.h"
 
 using Atlas::Message::Object;
 
 namespace Atlas { namespace Objects { namespace Operation { 
 
-Imaginary::Imaginary()
-     : Action()
+Disappearance::Disappearance()
+     : Sight()
 {
-    SetId(string("imaginary"));
+    SetId(string("disappearance"));
     Object::ListType parents;
-    parents.push_back(string("action"));
+    parents.push_back(string("sight"));
     SetParents(parents);
 }
 
-Imaginary Imaginary::Instantiate()
+Disappearance Disappearance::Instantiate()
 {
-    Imaginary value;
+    Disappearance value;
 
     Object::ListType parents;
-    parents.push_back(string("imaginary"));
+    parents.push_back(string("disappearance"));
     value.SetParents(parents);
     value.SetObjtype(string("op"));
     

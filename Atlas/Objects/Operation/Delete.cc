@@ -3,27 +3,27 @@
 // Copyright 2000 Stefanus Du Toit.
 // Automatically generated using gen_cc.py.
 
-#include "Imaginary.h"
+#include "Delete.h"
 
 using Atlas::Message::Object;
 
 namespace Atlas { namespace Objects { namespace Operation { 
 
-Imaginary::Imaginary()
+Delete::Delete()
      : Action()
 {
-    SetId(string("imaginary"));
+    SetId(string("delete"));
     Object::ListType parents;
     parents.push_back(string("action"));
     SetParents(parents);
 }
 
-Imaginary Imaginary::Instantiate()
+Delete Delete::Instantiate()
 {
-    Imaginary value;
+    Delete value;
 
     Object::ListType parents;
-    parents.push_back(string("imaginary"));
+    parents.push_back(string("delete"));
     value.SetParents(parents);
     value.SetObjtype(string("op"));
     

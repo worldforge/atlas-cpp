@@ -405,9 +405,10 @@ class GenerateCC:
         self.out.write("\n")
         self.out.write('#include "' + self.classname + '.h"\n')
         self.out.write("\n")
-        self.out.write("using namespace std;\n")
-        self.out.write("using namespace Atlas;\n")
-        self.out.write("using namespace Atlas::Message;\n")
+        #self.out.write("using namespace std;\n")
+        #self.out.write("using namespace Atlas;\n")
+        #self.out.write("using namespace Atlas::Message;\n")
+        self.out.write("using Atlas::Message::Object;\n")
         self.out.write("\n")
         if outdir != ".":
             self.ns_open(['Atlas', 'Objects', outdir])

@@ -3,27 +3,27 @@
 // Copyright 2000 Stefanus Du Toit.
 // Automatically generated using gen_cc.py.
 
-#include "Imaginary.h"
+#include "Divide.h"
 
 using Atlas::Message::Object;
 
 namespace Atlas { namespace Objects { namespace Operation { 
 
-Imaginary::Imaginary()
-     : Action()
+Divide::Divide()
+     : Create()
 {
-    SetId(string("imaginary"));
+    SetId(string("divide"));
     Object::ListType parents;
-    parents.push_back(string("action"));
+    parents.push_back(string("create"));
     SetParents(parents);
 }
 
-Imaginary Imaginary::Instantiate()
+Divide Divide::Instantiate()
 {
-    Imaginary value;
+    Divide value;
 
     Object::ListType parents;
-    parents.push_back(string("imaginary"));
+    parents.push_back(string("divide"));
     value.SetParents(parents);
     value.SetObjtype(string("op"));
     

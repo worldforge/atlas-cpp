@@ -3,27 +3,27 @@
 // Copyright 2000 Stefanus Du Toit.
 // Automatically generated using gen_cc.py.
 
-#include "Imaginary.h"
+#include "Sight.h"
 
 using Atlas::Message::Object;
 
 namespace Atlas { namespace Objects { namespace Operation { 
 
-Imaginary::Imaginary()
-     : Action()
+Sight::Sight()
+     : Perception()
 {
-    SetId(string("imaginary"));
+    SetId(string("sight"));
     Object::ListType parents;
-    parents.push_back(string("action"));
+    parents.push_back(string("perception"));
     SetParents(parents);
 }
 
-Imaginary Imaginary::Instantiate()
+Sight Sight::Instantiate()
 {
-    Imaginary value;
+    Sight value;
 
     Object::ListType parents;
-    parents.push_back(string("imaginary"));
+    parents.push_back(string("sight"));
     value.SetParents(parents);
     value.SetObjtype(string("op"));
     

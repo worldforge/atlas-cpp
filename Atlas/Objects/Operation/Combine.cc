@@ -3,27 +3,27 @@
 // Copyright 2000 Stefanus Du Toit.
 // Automatically generated using gen_cc.py.
 
-#include "Imaginary.h"
+#include "Combine.h"
 
 using Atlas::Message::Object;
 
 namespace Atlas { namespace Objects { namespace Operation { 
 
-Imaginary::Imaginary()
-     : Action()
+Combine::Combine()
+     : Create()
 {
-    SetId(string("imaginary"));
+    SetId(string("combine"));
     Object::ListType parents;
-    parents.push_back(string("action"));
+    parents.push_back(string("create"));
     SetParents(parents);
 }
 
-Imaginary Imaginary::Instantiate()
+Combine Combine::Instantiate()
 {
-    Imaginary value;
+    Combine value;
 
     Object::ListType parents;
-    parents.push_back(string("imaginary"));
+    parents.push_back(string("combine"));
     value.SetParents(parents);
     value.SetObjtype(string("op"));
     

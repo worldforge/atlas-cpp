@@ -1,3 +1,12 @@
+2001-03-09  Al Riddoch  <sjdutoit@uwaterloo.ca>
+
+	* src/Object/gen_cc.py: Modified so that the generated files no
+	  longer contain "using namespace ...;" which speeds up compile
+	  time.
+
+	* src/Object/Operation/* src/Objects/Entity/*: Re-generated using
+	  modified gen_cc.py.
+
 2001-03-08  Al Riddoch  <sjdutoit@uwaterloo.ca>
 
 	* src/Message/Object.h: Added IsNum() to correspond to AsNum()

@@ -3,27 +3,27 @@
 // Copyright 2000 Stefanus Du Toit.
 // Automatically generated using gen_cc.py.
 
-#include "Imaginary.h"
+#include "Look.h"
 
 using Atlas::Message::Object;
 
 namespace Atlas { namespace Objects { namespace Operation { 
 
-Imaginary::Imaginary()
-     : Action()
+Look::Look()
+     : Perceive()
 {
-    SetId(string("imaginary"));
+    SetId(string("look"));
     Object::ListType parents;
-    parents.push_back(string("action"));
+    parents.push_back(string("perceive"));
     SetParents(parents);
 }
 
-Imaginary Imaginary::Instantiate()
+Look Look::Instantiate()
 {
-    Imaginary value;
+    Look value;
 
     Object::ListType parents;
-    parents.push_back(string("imaginary"));
+    parents.push_back(string("look"));
     value.SetParents(parents);
     value.SetObjtype(string("op"));
     

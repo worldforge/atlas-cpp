@@ -3,27 +3,27 @@
 // Copyright 2000 Stefanus Du Toit.
 // Automatically generated using gen_cc.py.
 
-#include "Imaginary.h"
+#include "Login.h"
 
 using Atlas::Message::Object;
 
 namespace Atlas { namespace Objects { namespace Operation { 
 
-Imaginary::Imaginary()
-     : Action()
+Login::Login()
+     : Get()
 {
-    SetId(string("imaginary"));
+    SetId(string("login"));
     Object::ListType parents;
-    parents.push_back(string("action"));
+    parents.push_back(string("get"));
     SetParents(parents);
 }
 
-Imaginary Imaginary::Instantiate()
+Login Login::Instantiate()
 {
-    Imaginary value;
+    Login value;
 
     Object::ListType parents;
-    parents.push_back(string("imaginary"));
+    parents.push_back(string("login"));
     value.SetParents(parents);
     value.SetObjtype(string("op"));
     

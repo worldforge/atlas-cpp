@@ -13,7 +13,6 @@
 #include "../Codecs/Packed.h"
 #include "Stream.h"
 
-using namespace std;
 using namespace Atlas;
 
 static const bool debug_flag = false;

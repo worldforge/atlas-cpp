@@ -3,31 +3,31 @@
 // Copyright 2000 Stefanus Du Toit.
 // Automatically generated using gen_cc.py.
 
-#include "Imaginary.h"
+#include "AdminEntity.h"
 
 using Atlas::Message::Object;
 
-namespace Atlas { namespace Objects { namespace Operation { 
+namespace Atlas { namespace Objects { namespace Entity { 
 
-Imaginary::Imaginary()
-     : Action()
+AdminEntity::AdminEntity()
+     : RootEntity()
 {
-    SetId(string("imaginary"));
+    SetId(string("admin_entity"));
     Object::ListType parents;
-    parents.push_back(string("action"));
+    parents.push_back(string("root_entity"));
     SetParents(parents);
 }
 
-Imaginary Imaginary::Instantiate()
+AdminEntity AdminEntity::Instantiate()
 {
-    Imaginary value;
+    AdminEntity value;
 
     Object::ListType parents;
-    parents.push_back(string("imaginary"));
+    parents.push_back(string("admin_entity"));
     value.SetParents(parents);
-    value.SetObjtype(string("op"));
+    value.SetObjtype(string("object"));
     
     return value;
 }
 
-} } } // namespace Atlas::Objects::Operation
+} } } // namespace Atlas::Objects::Entity

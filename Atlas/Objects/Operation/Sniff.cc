@@ -3,27 +3,27 @@
 // Copyright 2000 Stefanus Du Toit.
 // Automatically generated using gen_cc.py.
 
-#include "Imaginary.h"
+#include "Sniff.h"
 
 using Atlas::Message::Object;
 
 namespace Atlas { namespace Objects { namespace Operation { 
 
-Imaginary::Imaginary()
-     : Action()
+Sniff::Sniff()
+     : Perceive()
 {
-    SetId(string("imaginary"));
+    SetId(string("sniff"));
     Object::ListType parents;
-    parents.push_back(string("action"));
+    parents.push_back(string("perceive"));
     SetParents(parents);
 }
 
-Imaginary Imaginary::Instantiate()
+Sniff Sniff::Instantiate()
 {
-    Imaginary value;
+    Sniff value;
 
     Object::ListType parents;
-    parents.push_back(string("imaginary"));
+    parents.push_back(string("sniff"));
     value.SetParents(parents);
     value.SetObjtype(string("op"));
     

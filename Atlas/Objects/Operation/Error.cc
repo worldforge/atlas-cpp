@@ -3,27 +3,27 @@
 // Copyright 2000 Stefanus Du Toit.
 // Automatically generated using gen_cc.py.
 
-#include "Imaginary.h"
+#include "Error.h"
 
 using Atlas::Message::Object;
 
 namespace Atlas { namespace Objects { namespace Operation { 
 
-Imaginary::Imaginary()
-     : Action()
+Error::Error()
+     : Info()
 {
-    SetId(string("imaginary"));
+    SetId(string("error"));
     Object::ListType parents;
-    parents.push_back(string("action"));
+    parents.push_back(string("info"));
     SetParents(parents);
 }
 
-Imaginary Imaginary::Instantiate()
+Error Error::Instantiate()
 {
-    Imaginary value;
+    Error value;
 
     Object::ListType parents;
-    parents.push_back(string("imaginary"));
+    parents.push_back(string("error"));
     value.SetParents(parents);
     value.SetObjtype(string("op"));
     

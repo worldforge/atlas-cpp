@@ -6,7 +6,6 @@
 #include "Decoder.h"
 
 using namespace Atlas::Message;
-using namespace std;
 
 #define ARR(a, b) if (parent == a) { \
     b obj; \
