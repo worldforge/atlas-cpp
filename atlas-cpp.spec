@@ -2,11 +2,11 @@
 
 Summary: The protocol library for the WorldForge project
 Name: Atlas-C++
-Version: 0.3.10
+Version: 0.3.11
 Release: 1
 Copyright: LGPL
 Group: Amusements/Games
-Source: ftp://ftp.worldforge.org/pub/WorldForge/libs/source/Atlas-C++-0.3.10.tar.gz
+Source: ftp://ftp.worldforge.org/pub/WorldForge/libs/source/Atlas-C++-0.3.11.tar.gz
 BuildRoot: /var/tmp/%{name}-buildroot
 
 %description

@@ -1,6 +1,6 @@
 <package>
     <name>Atlas</name>
-    <version>0.3.9</version>
+    <version>0.3.11</version>
     <desc></desc>
     <generate id="config" name="config.h"/>
     <require id="libtool"/>
@@ -24,7 +24,6 @@
 		<require id="cstring"/>
 		<require id="string"/>
 		<require id="vector"/>
-		<require id="streambuf" generate="config"/>
 	    </require>
 	</require>
     </require>
