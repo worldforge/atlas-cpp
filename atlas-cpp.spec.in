@@ -7,8 +7,9 @@ Release: 1
 Copyright: LGPL
 Group: Amusements/Games
 Source: Atlas-C++-@VERSION@.tar.gz
-Requires: libstdc++ = 2.96
+Requires: libstdc++
 BuildRoot: /var/tmp/%{name}-buildroot
+BuildRequires: gcc-c++ >= 2.95.2
 
 %description
 This library implements the Atlas protocol, for use in client-server
@@ -19,6 +20,7 @@ clients or servers.
 %package devel
 Summary: The Atlas protocol C++ implementation library headers and static libs.
 Group: Amusements/Games
+Requires: Atlas-C++ = @VERSION@
 
 %description devel
 This library implements the Atlas protocol, for use in client-server
