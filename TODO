@@ -7,5 +7,14 @@ For 0.4.0:
  - update README
 
 For 0.4.1:
- - remove libsocket++ dependency from tutorial/
+ - remove libsocket++ dependency from tutorial/ (i.e. write a nice,
+   _standards compliant_ sockbuf and use that
+ - more compiler support without API changes
+ - change from .cc to .cpp
+ - maybe clean up Net/Stream.cc (without API changes)
+ - maybe backport a filter mechanism from 0.5.x if such one should
+   exist and prove itself to be stable
+ - tests
+ - better documentation
+ - finish the tutorial
 

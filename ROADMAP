@@ -2,7 +2,7 @@ Roadmap for Atlas-C++
 
 There will be two branches. Linux version numbering will be applied.
 
-0.3.9: This is the current mess.
+0.3.9: A mess.
 
 0.4.0: This version will be made from 0.3.9 and contains:
  - bugfixes
@@ -14,15 +14,29 @@ There will be two branches. Linux version numbering will be applied.
  - a 99.9% stable API
  - no Filter support - there were various issues, and the API was too
    unstable (note that Filters didn't really ever work anyways!)
+ - peace for the Atlas-C++ developers, at least
+ - no Factory
+0.4.1: 
+ - a finished tutorial not depending on libsocket++
+ - more bugfixes
+ - a cleaner Net/Stream.cc
+ - more platform support
+ - no API changes
+ - .cpp filenames
+ - possibly a filter mechanism, if it has been proven very stable
+ - more documentation
+ - world peace
 
-0.5.0: This is the playground. It shall contain:
+0.5.x: This is the playground, developed from 0.4.0. It shall contain:
  - Aloril's Objects/ changes
- - Changes to the API
- - All fixes made in 0.4.0
- - Filter support
-0.5.0 will be developed from 0.4.0.
+ - changes to the API
+ - all fixes made in 0.4.0
+ - filter support
+ - some kind of "factory" mechanism
+ - universal enlightenment
 
 0.6.0: This will be the next stable version, with a fully stable API,
 developed from 0.5.0.
 
 Stefanus Du Toit, 2001-01-14.
+Last modified by Stefanus Du Toit <sjdutoit@uwaterloo.ca> on 2001-01-23.

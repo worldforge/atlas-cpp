@@ -1,6 +1,6 @@
 Read this carefully before working on Atlas-C++.
 
-On writing templates:
+I   On writing templates:
 
  - put the declaration for the template class X in X.h
  - put the definitions for the template class X in X_impl.h
@@ -11,7 +11,7 @@ This avoids duplicated instantiations and speeds up compile time.
 Note that this doesn't apply for absolutely all classes. If unsure,
 talk to somebody who knows more about templates.
 
-On filenames:
+II  On filenames:
 
 In 0.4.0, C++ implementation filenames will end in .cc.
 In 0.4.x, this may change to .cpp.
@@ -25,5 +25,22 @@ In 0.5.x and up:
  - headers will end in .h
  - files may be lower cased. This is up to debate.
 
-Written by Stefanus Du Toit <sjdutoit@uwaterloo.ca> 2001-01-14.
+III On member names:
 
+In 0.4.x member function names will be CapitalisedNames(). There are no
+restrictions to the naming of member variables.
+In 0.5.x member functions will be lowerThenUpperCased(). Member
+variables will be prefixed with m_, and also be lowerThenUpperCased.
+-------e.g.
+0.4.x: class Budgie { void CleanFeathers(); Feather* dirty_feathers; };
+0.5.x: class Budgie { void cleanFeathers(); Feather* m_dirtyFeathers; };
+-----------
+
+IV  On ChangeLog entries:
+
+Write a change log entry for every change you check in. Make sure you
+use standard ChangeLog format. Look in the current ChangeLog for
+examples of this.
+
+Written by Stefanus Du Toit <sjdutoit@uwaterloo.ca> on 2001-01-14.
+Last updated by Stefanus Du Toit <sjdutoit@uwaterloo.ca> on 2001-01-23.
