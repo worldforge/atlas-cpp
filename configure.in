@@ -287,48 +287,6 @@ SYSTEM_LIBS="$SYSTEM_LIBS -lm"
 ATLAS_CFLAGS=""
 ATLAS_LIBS="-lAtlas -lAtlasCodecs -lAtlasMessage -lAtlasNet -lAtlasObjects -lAtlasObjectsOperation -lAtlasObjectsEntity"
 
-dnl Test for gzip compression library
-
-AC_ARG_WITH(zlib,
-[  --with-zlib=DIR         gzip compression library (optional)],
-[with_zlib="$withval"],
-[with_zlib=""])
-
-ac_save_CFLAGS="$CFLAGS"
-ac_save_LIBS="$LIBS"
-CFLAGS="$CFLAGS -I$with_zlib/include"
-LIBS="$LIBS -L$with_zlib/lib"
-
-AC_CHECK_LIB(z, inflate)
-
-AC_CHECK_HEADERS(zlib.h)
-
-SYSTEM_LIBS="$SYSTEM_LIBS -lz"
-
-CFLAGS="$ac_save_CFLAGS"
-LIBS="$ac_save_LIBS"
-
-dnl Test for bzip2 compression library
-
-AC_ARG_WITH(bzlib,
-[  --with-bzlib=DIR        bzip2 compression library (optional)],
-[with_bzlib="$withval"],
-[with_bzlib=""])
-
-ac_save_CFLAGS="$CFLAGS"
-ac_save_LIBS="$LIBS"
-CFLAGS="$CFLAGS -I$with_bzlib/include"
-LIBS="$LIBS -L$with_bzlib/lib"
-
-AC_CHECK_LIB(bz2, bzCompressInit)
-
-AC_CHECK_HEADERS(bzlib.h)
-
-SYSTEM_LIBS="$SYSTEM_LIBS -lbz2"
-
-CFLAGS="$ac_save_CFLAGS"
-LIBS="$ac_save_LIBS"
-
 AC_SUBST(ATLAS_CFLAGS)
 AC_SUBST(ATLAS_LIBS)
 AC_SUBST(SYSTEM_LIBS)
@@ -337,6 +295,7 @@ dnl Generate files
 
 AC_OUTPUT([
 	Makefile
+	benchmark/Makefile
 	src/Makefile
 	src/Codecs/Makefile
 	src/Funky/Makefile
@@ -348,6 +307,5 @@ AC_OUTPUT([
 	tests/Makefile
 	tests/Objects/Makefile
 	tutorial/Makefile
-	benchmark/Makefile
 	atlas-config
 ], [chmod +x atlas-config])
