@@ -1,5 +1,8 @@
 2001-01-14  Stefanus Du Toit  <sjdutoit@uwaterloo.ca>
 
+	* src/Objects/Decoder.cc (ARR): Added return statement in if
+	branch.
+
 	* src/*: Made code ISO 14882:1998 compliant from what I can
 	tell. Compiles with CVS gcc now.
 
