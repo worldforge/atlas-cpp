@@ -2,7 +2,7 @@ SUBDIRS = Atlas tutorial benchmark
 
 bin_SCRIPTS = atlas-config
 
-EXTRA_DIST = ROADMAP Doxyfile footer.html index.dox Atlas.mak Atlas.dsp atlas.m4 autogen.sh
+EXTRA_DIST = ROADMAP Doxyfile footer.html index.dox Atlas.mak Atlas.dsp atlas.m4 autogen.sh Atlas.pbproj/jmt.pbxuser Atlas.pbproj/project.pbxproj
 
 m4datadir = $(datadir)/aclocal
 m4data_DATA = atlas.m4

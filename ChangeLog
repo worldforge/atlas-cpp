@@ -1,3 +1,7 @@
+2003-04-17  Al Riddoch  <alriddoch@zepler.org>
+
+	* Increment interface revision, fix rpm spec, and release 0.4.6.
+
 2003-04-16 James Turner <james@worldforge.org>
 
 	* Updating the ProjectBuilder files post the great src ->
