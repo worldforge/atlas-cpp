@@ -320,6 +320,7 @@ void Packed::Poll(bool can_read)
 
 void Packed::StreamBegin()
 {
+    bridge->StreamBegin();
 }
 
 void Packed::StreamMessage(const Map&)

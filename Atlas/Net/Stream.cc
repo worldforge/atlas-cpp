@@ -154,8 +154,8 @@ Atlas::Negotiate<std::iostream>::State Atlas::Net::StreamConnect::GetState()
 
 Atlas::Codec<std::iostream>* Atlas::Net::StreamConnect::GetCodec()
 {
-    if (m_canXml) return new Atlas::Codecs::XML(socket, bridge);
     if (m_canPacked) return new Atlas::Codecs::Packed(socket, bridge);
+    if (m_canXml) return new Atlas::Codecs::XML(socket, bridge);
     return NULL;
 }
 
@@ -244,8 +244,8 @@ Atlas::Negotiate<std::iostream>::State Atlas::Net::StreamAccept::GetState()
 
 Atlas::Codec<std::iostream>* Atlas::Net::StreamAccept::GetCodec()
 {
-    if (m_canXml) return new Atlas::Codecs::XML(socket, bridge);
     if (m_canPacked) return new Atlas::Codecs::Packed(socket, bridge);
+    if (m_canXml) return new Atlas::Codecs::XML(socket, bridge);
     return NULL;
 }
 

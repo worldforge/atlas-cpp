@@ -1,3 +1,11 @@
+2001-06-24  Al Riddoch  <alriddoch@zepler.org>
+
+	* src/Codecs/Packed.cc: Fixed problem with Packed codec because
+	  packed does not have a streambegin encoding.
+
+	* src/Net/Stream.cc: Fixed bug so that Packed is used if it
+	  is negotiated.
+
 2001-05-20  Al Riddoch  <alriddoch@zepler.org>
 
 	* src/Objects/Root.cc, src/Objects/Operation/Operation.cc,
