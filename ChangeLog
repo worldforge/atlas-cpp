@@ -1,3 +1,8 @@
+2001-01-21  Stefanus Du Toit  <sjdutoit@uwaterloo.ca>
+
+	* src/Codecs/Makefile.am (libAtlasCodecs_la_SOURCES): Added header
+	files (Packed.h and XML.h) to sources list.
+
 2001-01-19  Stefanus Du Toit  <sjdutoit@uwaterloo.ca>
 
 	* src/Net/Stream.cc (Poll): Added processClientCodecs() after the
