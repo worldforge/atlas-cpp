@@ -1,6 +1,4 @@
-.libs
-Makefile
-simple_client
-simple_server
 Makefile.in
-.deps
+Makefile
+simple-client
+simple-server

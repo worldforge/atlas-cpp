@@ -1,5 +1,8 @@
 2001-01-15  Stefanus Du Toit  <sjdutoit@uwaterloo.ca>
 
+	* .cvsignore, tests/.cvsignore, tests/Objects/.cvsignore,
+	tutorial/.cvsignore: Added various files to be ignored.
+
 	* configure.am, configure.in: Removed checks for libbz2 and libz.
 
 2001-01-14  Al Riddoch  <ajr@ecs.soton.ac.uk>
@@ -26,6 +29,7 @@
 
 2000-11-01  Al Riddoch  <ajr@ecs.soton.ac.uk>
 
-	* Fixed negotiation so it is now possible for packed to get picked.
+	* Net/Stream.cc: Fixed negotiation so it is now possible for
+	packed to get picked.
 	  (Packed decoder appears to segfault though)
 	

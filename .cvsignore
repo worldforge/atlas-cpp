@@ -1,6 +1,5 @@
 Makefile
 Makefile.in
-atlas-config
 config.def.in
 config.h
 config.h.in
@@ -19,3 +18,4 @@ missing
 mkinstalldirs
 stamp-h
 stamp-h.in
+atlas-config
