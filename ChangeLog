@@ -1,3 +1,8 @@
+2001-03-14  Al Riddoch  <alriddoch@zepler.org>
+
+	* src/Codecs/Makefile.am: Install Codec header files, so codecs can
+	  be used directly.
+
 2001-03-13  Al Riddoch  <alriddoch@zepler.org>
 
 	* rename4*.pl: Scripts that rename .cc files as .cpp and visa versa
