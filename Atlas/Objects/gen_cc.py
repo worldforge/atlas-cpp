@@ -592,7 +592,7 @@ if len(sys.argv) < 2:
     print "Syntax:"
     print sys.argv[0] + " root [outdir]"
     sys.exit()
-filelist = ["root","entity","operation","type","interface"]
+filelist = ["root","entity","operation","type","interface","janus"]
 defs = read_all_defs(map(lambda file:"../../../../protocols/atlas/spec/" + file+".def", filelist))
 if len(sys.argv) >= 3:
     outdir = sys.argv[2]

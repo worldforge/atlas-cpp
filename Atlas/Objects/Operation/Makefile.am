@@ -1,5 +1,7 @@
 SUBDIRS = .
 
+INCLUDES = -I$(top_srcdir)
+
 lib_LTLIBRARIES = libAtlasObjectsOperation.la
 
 libAtlasObjectsOperation_la_LDFLAGS = -version-info @ATLAS_INTERFACE_VERSION_INFO@

@@ -1,3 +1,7 @@
+2003-06-23  Al Riddoch  <alriddoch@zepler.org>
+
+	* Changes to Makefile.ams to ensure that distcheck works.
+
 2003-04-17  Al Riddoch  <alriddoch@zepler.org>
 
 	* Increment interface revision, fix rpm spec, and release 0.4.6.

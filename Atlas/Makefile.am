@@ -1,5 +1,7 @@
 SUBDIRS = . Objects Message Codecs Net Funky
 
+INCLUDES = -I$(top_srcdir)
+
 lib_LTLIBRARIES = libAtlas.la
 
 libAtlas_la_LDFLAGS = -version-info @ATLAS_INTERFACE_VERSION_INFO@

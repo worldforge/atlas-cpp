@@ -10,13 +10,8 @@ m4data_DATA = atlas.m4
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = atlascpp-0.4.pc
 
-install-data-local:
-	mkdir -p $(DESTDIR)$(datadir)/doc/Atlas-C++-$(VERSION)
-	$(INSTALL_DATA) README $(DESTDIR)$(datadir)/doc/Atlas-C++-$(VERSION)
-	$(INSTALL_DATA) COPYING $(DESTDIR)$(datadir)/doc/Atlas-C++-$(VERSION)
-	$(INSTALL_DATA) AUTHORS $(DESTDIR)$(datadir)/doc/Atlas-C++-$(VERSION)
-	$(INSTALL_DATA) THANKS $(DESTDIR)$(datadir)/doc/Atlas-C++-$(VERSION)
-	$(INSTALL_DATA) NEWS $(DESTDIR)$(datadir)/doc/Atlas-C++-$(VERSION)
+docdir = $(datadir)/doc/Atlas-C++-$(VERSION)
+doc_DATA = README COPYING AUTHORS THANKS NEWS
 
 docs:
 	@echo "running doxygen..."
