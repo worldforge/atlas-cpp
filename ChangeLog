@@ -1,5 +1,7 @@
 2001-01-23  Stefanus Du Toit  <sjdutoit@uwaterloo.ca>
 
+	* configure.in: Removed tests/ references.
+
 	* tests/: Removed old tests.
 
 	* Makefile.am (SUBDIRS): Removed tests/ from top-level
