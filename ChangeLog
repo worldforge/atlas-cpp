@@ -1,3 +1,7 @@
+2003-04-11  Al Riddoch  <alriddoch@zepler.org>
+
+	* Rename src to Atlas for portability
+
 2003-03-24  Al Riddoch  <alriddoch@zepler.org>
 
 	* src/Objects/gen_cc.py, src/Objects/Entity/Account.h,

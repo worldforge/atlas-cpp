@@ -9,9 +9,9 @@
 
 #include <iostream>
 
-#include "../Codecs/XML.h"
-#include "../Codecs/Packed.h"
-#include "Stream.h"
+#include <Atlas/Codecs/XML.h>
+#include <Atlas/Codecs/Packed.h>
+#include <Atlas/Net/Stream.h>
 
 static const bool debug_flag = false;
 

@@ -6,7 +6,7 @@
 #define ATLAS_MESSAGE_QUEUEDDECODER_H
 
 #include <queue>
-#include "DecoderBase.h"
+#include <Atlas/Message/DecoderBase.h>
 
 namespace Atlas { namespace Message {
 

@@ -6,7 +6,7 @@
 #ifndef ATLAS_OBJECTS_OPERATION_MOVE_H
 #define ATLAS_OBJECTS_OPERATION_MOVE_H
 
-#include "Set.h"
+#include <Atlas/Objects/Operation/Set.h>
 
 
 namespace Atlas { namespace Objects { namespace Operation { 

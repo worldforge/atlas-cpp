@@ -3,7 +3,7 @@
 // Copyright 2000-2001 Stefanus Du Toit and Alistair Riddoch.
 // Automatically generated using gen_cc.py.
 
-#include "RootEntity.h"
+#include <Atlas/Objects/Entity/RootEntity.h>
 
 using Atlas::Message::Object;
 
@@ -125,7 +125,7 @@ Object::MapType RootEntity::AsMap() const
 
 } } } // namespace Atlas::Objects::Entity
 
-#include "AdminEntity.h"
+#include <Atlas/Objects/Entity/AdminEntity.h>
 
 using Atlas::Message::Object;
 
@@ -152,7 +152,7 @@ AdminEntity AdminEntity::Instantiate()
 
 } } } // namespace Atlas::Objects::Entity
 
-#include "Account.h"
+#include <Atlas/Objects/Entity/Account.h>
 
 using Atlas::Message::Object;
 
@@ -224,7 +224,7 @@ Object::MapType Account::AsMap() const
 
 } } } // namespace Atlas::Objects::Entity
 
-#include "Player.h"
+#include <Atlas/Objects/Entity/Player.h>
 
 using Atlas::Message::Object;
 
@@ -296,7 +296,7 @@ Object::MapType Player::AsMap() const
 
 } } } // namespace Atlas::Objects::Entity
 
-#include "Admin.h"
+#include <Atlas/Objects/Entity/Admin.h>
 
 using Atlas::Message::Object;
 
@@ -323,7 +323,7 @@ Admin Admin::Instantiate()
 
 } } } // namespace Atlas::Objects::Entity
 
-#include "Game.h"
+#include <Atlas/Objects/Entity/Game.h>
 
 using Atlas::Message::Object;
 
@@ -350,7 +350,7 @@ Game Game::Instantiate()
 
 } } } // namespace Atlas::Objects::Entity
 
-#include "GameEntity.h"
+#include <Atlas/Objects/Entity/GameEntity.h>
 
 using Atlas::Message::Object;
 

@@ -3,7 +3,7 @@
 // Copyright 2000-2001 Stefanus Du Toit and Alistair Riddoch.
 // Automatically generated using gen_cc.py.
 
-#include "RootOperation.h"
+#include <Atlas/Objects/Operation/RootOperation.h>
 
 using Atlas::Message::Object;
 
@@ -126,7 +126,7 @@ Object::MapType RootOperation::AsMap() const
 
 } } } // namespace Atlas::Objects::Operation
 
-#include "Action.h"
+#include <Atlas/Objects/Operation/Action.h>
 
 using Atlas::Message::Object;
 
@@ -153,7 +153,7 @@ Action Action::Instantiate()
 
 } } } // namespace Atlas::Objects::Operation
 
-#include "Create.h"
+#include <Atlas/Objects/Operation/Create.h>
 
 using Atlas::Message::Object;
 
@@ -180,7 +180,7 @@ Create Create::Instantiate()
 
 } } } // namespace Atlas::Objects::Operation
 
-#include "Combine.h"
+#include <Atlas/Objects/Operation/Combine.h>
 
 using Atlas::Message::Object;
 
@@ -207,7 +207,7 @@ Combine Combine::Instantiate()
 
 } } } // namespace Atlas::Objects::Operation
 
-#include "Divide.h"
+#include <Atlas/Objects/Operation/Divide.h>
 
 using Atlas::Message::Object;
 
@@ -234,7 +234,7 @@ Divide Divide::Instantiate()
 
 } } } // namespace Atlas::Objects::Operation
 
-#include "Communicate.h"
+#include <Atlas/Objects/Operation/Communicate.h>
 
 using Atlas::Message::Object;
 
@@ -261,7 +261,7 @@ Communicate Communicate::Instantiate()
 
 } } } // namespace Atlas::Objects::Operation
 
-#include "Talk.h"
+#include <Atlas/Objects/Operation/Talk.h>
 
 using Atlas::Message::Object;
 
@@ -288,7 +288,7 @@ Talk Talk::Instantiate()
 
 } } } // namespace Atlas::Objects::Operation
 
-#include "Delete.h"
+#include <Atlas/Objects/Operation/Delete.h>
 
 using Atlas::Message::Object;
 
@@ -315,7 +315,7 @@ Delete Delete::Instantiate()
 
 } } } // namespace Atlas::Objects::Operation
 
-#include "Set.h"
+#include <Atlas/Objects/Operation/Set.h>
 
 using Atlas::Message::Object;
 
@@ -342,7 +342,7 @@ Set Set::Instantiate()
 
 } } } // namespace Atlas::Objects::Operation
 
-#include "Move.h"
+#include <Atlas/Objects/Operation/Move.h>
 
 using Atlas::Message::Object;
 
@@ -369,7 +369,7 @@ Move Move::Instantiate()
 
 } } } // namespace Atlas::Objects::Operation
 
-#include "Get.h"
+#include <Atlas/Objects/Operation/Get.h>
 
 using Atlas::Message::Object;
 
@@ -396,7 +396,7 @@ Get Get::Instantiate()
 
 } } } // namespace Atlas::Objects::Operation
 
-#include "Perceive.h"
+#include <Atlas/Objects/Operation/Perceive.h>
 
 using Atlas::Message::Object;
 
@@ -423,7 +423,7 @@ Perceive Perceive::Instantiate()
 
 } } } // namespace Atlas::Objects::Operation
 
-#include "Look.h"
+#include <Atlas/Objects/Operation/Look.h>
 
 using Atlas::Message::Object;
 
@@ -450,7 +450,7 @@ Look Look::Instantiate()
 
 } } } // namespace Atlas::Objects::Operation
 
-#include "Listen.h"
+#include <Atlas/Objects/Operation/Listen.h>
 
 using Atlas::Message::Object;
 
@@ -477,7 +477,7 @@ Listen Listen::Instantiate()
 
 } } } // namespace Atlas::Objects::Operation
 
-#include "Sniff.h"
+#include <Atlas/Objects/Operation/Sniff.h>
 
 using Atlas::Message::Object;
 
@@ -504,7 +504,7 @@ Sniff Sniff::Instantiate()
 
 } } } // namespace Atlas::Objects::Operation
 
-#include "Touch.h"
+#include <Atlas/Objects/Operation/Touch.h>
 
 using Atlas::Message::Object;
 
@@ -531,7 +531,7 @@ Touch Touch::Instantiate()
 
 } } } // namespace Atlas::Objects::Operation
 
-#include "Login.h"
+#include <Atlas/Objects/Operation/Login.h>
 
 using Atlas::Message::Object;
 
@@ -558,7 +558,7 @@ Login Login::Instantiate()
 
 } } } // namespace Atlas::Objects::Operation
 
-#include "Logout.h"
+#include <Atlas/Objects/Operation/Logout.h>
 
 using Atlas::Message::Object;
 
@@ -585,7 +585,7 @@ Logout Logout::Instantiate()
 
 } } } // namespace Atlas::Objects::Operation
 
-#include "Imaginary.h"
+#include <Atlas/Objects/Operation/Imaginary.h>
 
 using Atlas::Message::Object;
 
@@ -612,7 +612,7 @@ Imaginary Imaginary::Instantiate()
 
 } } } // namespace Atlas::Objects::Operation
 
-#include "Info.h"
+#include <Atlas/Objects/Operation/Info.h>
 
 using Atlas::Message::Object;
 
@@ -639,7 +639,7 @@ Info Info::Instantiate()
 
 } } } // namespace Atlas::Objects::Operation
 
-#include "Perception.h"
+#include <Atlas/Objects/Operation/Perception.h>
 
 using Atlas::Message::Object;
 
@@ -666,7 +666,7 @@ Perception Perception::Instantiate()
 
 } } } // namespace Atlas::Objects::Operation
 
-#include "Sight.h"
+#include <Atlas/Objects/Operation/Sight.h>
 
 using Atlas::Message::Object;
 
@@ -693,7 +693,7 @@ Sight Sight::Instantiate()
 
 } } } // namespace Atlas::Objects::Operation
 
-#include "Appearance.h"
+#include <Atlas/Objects/Operation/Appearance.h>
 
 using Atlas::Message::Object;
 
@@ -720,7 +720,7 @@ Appearance Appearance::Instantiate()
 
 } } } // namespace Atlas::Objects::Operation
 
-#include "Disappearance.h"
+#include <Atlas/Objects/Operation/Disappearance.h>
 
 using Atlas::Message::Object;
 
@@ -747,7 +747,7 @@ Disappearance Disappearance::Instantiate()
 
 } } } // namespace Atlas::Objects::Operation
 
-#include "Sound.h"
+#include <Atlas/Objects/Operation/Sound.h>
 
 using Atlas::Message::Object;
 
@@ -774,7 +774,7 @@ Sound Sound::Instantiate()
 
 } } } // namespace Atlas::Objects::Operation
 
-#include "Smell.h"
+#include <Atlas/Objects/Operation/Smell.h>
 
 using Atlas::Message::Object;
 
@@ -801,7 +801,7 @@ Smell Smell::Instantiate()
 
 } } } // namespace Atlas::Objects::Operation
 
-#include "Feel.h"
+#include <Atlas/Objects/Operation/Feel.h>
 
 using Atlas::Message::Object;
 
@@ -828,7 +828,7 @@ Feel Feel::Instantiate()
 
 } } } // namespace Atlas::Objects::Operation
 
-#include "Error.h"
+#include <Atlas/Objects/Operation/Error.h>
 
 using Atlas::Message::Object;
 

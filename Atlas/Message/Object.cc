@@ -2,7 +2,7 @@
 // the GNU Lesser General Public License (See COPYING for details).
 // Copyright (C) 2000-2001 Stefanus Du Toit, Karsten-O. Laux, Alistair Riddoch
 
-#include "Object.h"
+#include <Atlas/Message/Object.h>
 
 namespace Atlas { namespace Message {
 

@@ -416,9 +416,9 @@ class GenerateCC:
         else:
             self.header(['Atlas', 'Objects', self.classname, "H"])
         for parent in obj.attr['parents'].value:
-            self.out.write('#include "')
-            if parent == "root": self.out.write('../')
-            self.out.write(classize(parent) + '.h"\n')
+            self.out.write('#include <Atlas/Objects/')
+            if parent != "root": self.out.write(outdir + '/')
+            self.out.write(classize(parent) + '.h>\n')
         self.out.write("\n\n")
         if outdir != ".":
             self.ns_open(['Atlas', 'Objects', outdir])
@@ -535,7 +535,9 @@ class GenerateCC:
         self.out = self.imp_out
         #self.out.write(copyright)
         #self.out.write("\n")
-        self.out.write('#include "' + self.classname + '.h"\n')
+        self.out.write('#include <Atlas/Objects/')
+        if self.outdir != ".": self.out.write(self.outdir + '/')
+        self.out.write(self.classname + '.h>\n')
         self.out.write("\n")
         #self.out.write("using namespace std;\n")
         #self.out.write("using namespace Atlas;\n")

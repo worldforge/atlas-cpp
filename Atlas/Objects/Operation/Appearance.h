@@ -6,7 +6,7 @@
 #ifndef ATLAS_OBJECTS_OPERATION_APPEARANCE_H
 #define ATLAS_OBJECTS_OPERATION_APPEARANCE_H
 
-#include "Sight.h"
+#include <Atlas/Objects/Operation/Sight.h>
 
 
 namespace Atlas { namespace Objects { namespace Operation { 

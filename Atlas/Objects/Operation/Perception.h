@@ -6,7 +6,7 @@
 #ifndef ATLAS_OBJECTS_OPERATION_PERCEPTION_H
 #define ATLAS_OBJECTS_OPERATION_PERCEPTION_H
 
-#include "Info.h"
+#include <Atlas/Objects/Operation/Info.h>
 
 
 namespace Atlas { namespace Objects { namespace Operation { 

@@ -5,7 +5,7 @@
 #ifndef ATLAS_NEGOTIATE_H
 #define ATLAS_NEGOTIATE_H
 
-#include "Task.h"
+#include <Atlas/Task.h>
 
 #define Debug(prg) { if (debug_flag) { prg } }
 

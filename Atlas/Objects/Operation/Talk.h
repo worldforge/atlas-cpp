@@ -6,7 +6,7 @@
 #ifndef ATLAS_OBJECTS_OPERATION_TALK_H
 #define ATLAS_OBJECTS_OPERATION_TALK_H
 
-#include "Communicate.h"
+#include <Atlas/Objects/Operation/Communicate.h>
 
 
 namespace Atlas { namespace Objects { namespace Operation { 

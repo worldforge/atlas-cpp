@@ -6,7 +6,7 @@
 #ifndef ATLAS_OBJECTS_OPERATION_ROOTOPERATION_H
 #define ATLAS_OBJECTS_OPERATION_ROOTOPERATION_H
 
-#include "../Root.h"
+#include <Atlas/Objects/Root.h>
 
 
 namespace Atlas { namespace Objects { namespace Operation { 

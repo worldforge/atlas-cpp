@@ -323,14 +323,14 @@ dnl Generate files
 AC_OUTPUT([
 	Makefile
 	benchmark/Makefile
-	src/Makefile
-	src/Codecs/Makefile
-	src/Funky/Makefile
-	src/Message/Makefile
-	src/Net/Makefile
-	src/Objects/Makefile
-	src/Objects/Entity/Makefile
-	src/Objects/Operation/Makefile
+	Atlas/Makefile
+	Atlas/Codecs/Makefile
+	Atlas/Funky/Makefile
+	Atlas/Message/Makefile
+	Atlas/Net/Makefile
+	Atlas/Objects/Makefile
+	Atlas/Objects/Entity/Makefile
+	Atlas/Objects/Operation/Makefile
 	tutorial/Makefile
 	atlas-config
 	atlas-cpp.spec

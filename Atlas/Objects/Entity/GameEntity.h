@@ -6,7 +6,7 @@
 #ifndef ATLAS_OBJECTS_ENTITY_GAMEENTITY_H
 #define ATLAS_OBJECTS_ENTITY_GAMEENTITY_H
 
-#include "RootEntity.h"
+#include <Atlas/Objects/Entity/RootEntity.h>
 
 
 namespace Atlas { namespace Objects { namespace Entity { 

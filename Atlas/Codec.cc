@@ -4,8 +4,8 @@
 
 #include <iostream>
 
-#include "Codec.h"
-#include "Codec_impl.h"
+#include <Atlas/Codec.h>
+#include <Atlas/Codec_impl.h>
 
 namespace Atlas {
   

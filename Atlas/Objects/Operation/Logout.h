@@ -6,7 +6,7 @@
 #ifndef ATLAS_OBJECTS_OPERATION_LOGOUT_H
 #define ATLAS_OBJECTS_OPERATION_LOGOUT_H
 
-#include "Login.h"
+#include <Atlas/Objects/Operation/Login.h>
 
 
 namespace Atlas { namespace Objects { namespace Operation { 

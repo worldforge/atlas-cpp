@@ -6,8 +6,8 @@
 #define ATLAS_MESSAGE_DECODERBASE_H
 
 #include <stack>
-#include "../Bridge.h"
-#include "Object.h"
+#include <Atlas/Bridge.h>
+#include <Atlas/Message/Object.h>
 
 namespace Atlas { namespace Message {
 

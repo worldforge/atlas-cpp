@@ -2,8 +2,8 @@
 // the GNU Lesser General Public License (See COPYING for details).
 // Copyright (C) 2000-2001 Stefanus Du Toit and Alistair Riddoch
 
-#include "../Message/Encoder.h"
-#include "Root.h"
+#include <Atlas/Message/Encoder.h>
+#include <Atlas/Objects/Root.h>
 
 using Atlas::Message::Object;
 

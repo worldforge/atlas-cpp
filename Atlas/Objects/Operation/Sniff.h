@@ -6,7 +6,7 @@
 #ifndef ATLAS_OBJECTS_OPERATION_SNIFF_H
 #define ATLAS_OBJECTS_OPERATION_SNIFF_H
 
-#include "Perceive.h"
+#include <Atlas/Objects/Operation/Perceive.h>
 
 
 namespace Atlas { namespace Objects { namespace Operation { 

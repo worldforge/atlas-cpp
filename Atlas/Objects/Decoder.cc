@@ -2,7 +2,7 @@
 // the GNU Lesser General Public License (See COPYING for details).
 // Copyright (C) 2000-2001 Stefanus Du Toit
 
-#include "Decoder.h"
+#include <Atlas/Objects/Decoder.h>
 
 using Atlas::Message::Object;
 

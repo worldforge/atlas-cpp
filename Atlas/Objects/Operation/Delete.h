@@ -6,7 +6,7 @@
 #ifndef ATLAS_OBJECTS_OPERATION_DELETE_H
 #define ATLAS_OBJECTS_OPERATION_DELETE_H
 
-#include "Action.h"
+#include <Atlas/Objects/Operation/Action.h>
 
 
 namespace Atlas { namespace Objects { namespace Operation { 

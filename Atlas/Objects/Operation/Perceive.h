@@ -6,7 +6,7 @@
 #ifndef ATLAS_OBJECTS_OPERATION_PERCEIVE_H
 #define ATLAS_OBJECTS_OPERATION_PERCEIVE_H
 
-#include "Get.h"
+#include <Atlas/Objects/Operation/Get.h>
 
 
 namespace Atlas { namespace Objects { namespace Operation { 

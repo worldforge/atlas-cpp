@@ -8,7 +8,7 @@
 #include <iostream>
 #include <stack>
 
-#include "../Codec.h"
+#include <Atlas/Codec.h>
 
 namespace Atlas { namespace Codecs {
 

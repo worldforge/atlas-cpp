@@ -6,7 +6,7 @@
 #ifndef ATLAS_OBJECTS_OPERATION_DIVIDE_H
 #define ATLAS_OBJECTS_OPERATION_DIVIDE_H
 
-#include "Create.h"
+#include <Atlas/Objects/Operation/Create.h>
 
 
 namespace Atlas { namespace Objects { namespace Operation { 

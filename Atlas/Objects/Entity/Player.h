@@ -6,7 +6,7 @@
 #ifndef ATLAS_OBJECTS_ENTITY_PLAYER_H
 #define ATLAS_OBJECTS_ENTITY_PLAYER_H
 
-#include "Account.h"
+#include <Atlas/Objects/Entity/Account.h>
 
 
 namespace Atlas { namespace Objects { namespace Entity { 

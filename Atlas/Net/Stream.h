@@ -9,7 +9,7 @@
 #include <string>
 #include <list>
 
-#include "../Negotiate.h"
+#include <Atlas/Negotiate.h>
 
 namespace Atlas {
 

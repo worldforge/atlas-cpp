@@ -5,8 +5,8 @@
 #ifndef ATLAS_OBJECTS_ROOT_H
 #define ATLAS_OBJECTS_ROOT_H
 
-#include "../Message/Encoder.h"
-#include "../Message/Object.h"
+#include <Atlas/Message/Encoder.h>
+#include <Atlas/Message/Object.h>
 
 namespace Atlas { namespace Objects {
 
