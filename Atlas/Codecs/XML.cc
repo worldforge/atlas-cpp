@@ -321,7 +321,7 @@ void XML::ParseEndTag()
     }
 }
 
-void XML::Poll(bool can_read = true)
+void XML::Poll(bool can_read)
 {
     if (!can_read) return;
     do

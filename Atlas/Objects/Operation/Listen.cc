@@ -12,7 +12,7 @@ namespace Atlas { namespace Objects { namespace Operation {
 Listen::Listen()
      : Perceive()
 {
-    SetId(string("listen"));
+    SetId(std::string("listen"));
     Object::ListType parents;
     parents.push_back(string("perceive"));
     SetParents(parents);
@@ -23,9 +23,9 @@ Listen Listen::Instantiate()
     Listen value;
 
     Object::ListType parents;
-    parents.push_back(string("listen"));
+    parents.push_back(std::string("listen"));
     value.SetParents(parents);
-    value.SetObjtype(string("op"));
+    value.SetObjtype(std::string("op"));
     
     return value;
 }

@@ -12,18 +12,18 @@ namespace Atlas { namespace Objects { namespace Operation {
 RootOperation::RootOperation()
      : Root()
 {
-    SetId(string("root_operation"));
+    SetId(std::string("root_operation"));
     Object::ListType parents;
     parents.push_back(string("root"));
     SetParents(parents);
-    SetObjtype(string("op_definition"));
+    SetObjtype(std::string("op_definition"));
     SetSerialno(0);
     SetRefno(0);
-    SetFrom(string(""));
-    SetTo(string(""));
+    SetFrom(std::string(""));
+    SetTo(std::string(""));
     SetSeconds(0.0);
     SetFutureSeconds(0.0);
-    SetTimeString(string(""));
+    SetTimeString(std::string(""));
     Object::ListType args;
     SetArgs(args);
 }
@@ -33,14 +33,14 @@ RootOperation RootOperation::Instantiate()
     RootOperation value;
 
     Object::ListType parents;
-    parents.push_back(string("root_operation"));
+    parents.push_back(std::string("root_operation"));
     value.SetParents(parents);
-    value.SetObjtype(string("op"));
+    value.SetObjtype(std::string("op"));
     
     return value;
 }
 
-bool RootOperation::HasAttr(const string& name) const
+bool RootOperation::HasAttr(const std::string& name) const
 {
     if (name == "serialno") return true;
     if (name == "refno") return true;
@@ -53,7 +53,7 @@ bool RootOperation::HasAttr(const string& name) const
     return Root::HasAttr(name);
 }
 
-Object RootOperation::GetAttr(const string& name) const
+Object RootOperation::GetAttr(const std::string& name) const
     throw (NoSuchAttrException)
 {
     if (name == "serialno") return attr_serialno;

@@ -12,7 +12,7 @@ namespace Atlas { namespace Objects { namespace Operation {
 Smell::Smell()
      : Perception()
 {
-    SetId(string("smell"));
+    SetId(std::string("smell"));
     Object::ListType parents;
     parents.push_back(string("perception"));
     SetParents(parents);
@@ -23,9 +23,9 @@ Smell Smell::Instantiate()
     Smell value;
 
     Object::ListType parents;
-    parents.push_back(string("smell"));
+    parents.push_back(std::string("smell"));
     value.SetParents(parents);
-    value.SetObjtype(string("op"));
+    value.SetObjtype(std::string("op"));
     
     return value;
 }

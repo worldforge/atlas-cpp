@@ -295,7 +295,7 @@ void Packed::ParseName(char next)
     }
 }
 
-void Packed::Poll(bool can_read = true)
+void Packed::Poll(bool can_read)
 {
     if (!can_read) return;
     do

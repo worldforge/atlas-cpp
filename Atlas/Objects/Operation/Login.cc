@@ -12,7 +12,7 @@ namespace Atlas { namespace Objects { namespace Operation {
 Login::Login()
      : Get()
 {
-    SetId(string("login"));
+    SetId(std::string("login"));
     Object::ListType parents;
     parents.push_back(string("get"));
     SetParents(parents);
@@ -23,9 +23,9 @@ Login Login::Instantiate()
     Login value;
 
     Object::ListType parents;
-    parents.push_back(string("login"));
+    parents.push_back(std::string("login"));
     value.SetParents(parents);
-    value.SetObjtype(string("op"));
+    value.SetObjtype(std::string("op"));
     
     return value;
 }

@@ -12,7 +12,7 @@ namespace Atlas { namespace Objects { namespace Operation {
 Move::Move()
      : Set()
 {
-    SetId(string("move"));
+    SetId(std::string("move"));
     Object::ListType parents;
     parents.push_back(string("set"));
     SetParents(parents);
@@ -23,9 +23,9 @@ Move Move::Instantiate()
     Move value;
 
     Object::ListType parents;
-    parents.push_back(string("move"));
+    parents.push_back(std::string("move"));
     value.SetParents(parents);
-    value.SetObjtype(string("op"));
+    value.SetObjtype(std::string("op"));
     
     return value;
 }

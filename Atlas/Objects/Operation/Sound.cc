@@ -12,7 +12,7 @@ namespace Atlas { namespace Objects { namespace Operation {
 Sound::Sound()
      : Perception()
 {
-    SetId(string("sound"));
+    SetId(std::string("sound"));
     Object::ListType parents;
     parents.push_back(string("perception"));
     SetParents(parents);
@@ -23,9 +23,9 @@ Sound Sound::Instantiate()
     Sound value;
 
     Object::ListType parents;
-    parents.push_back(string("sound"));
+    parents.push_back(std::string("sound"));
     value.SetParents(parents);
-    value.SetObjtype(string("op"));
+    value.SetObjtype(std::string("op"));
     
     return value;
 }

@@ -12,7 +12,7 @@ namespace Atlas { namespace Objects { namespace Operation {
 Divide::Divide()
      : Create()
 {
-    SetId(string("divide"));
+    SetId(std::string("divide"));
     Object::ListType parents;
     parents.push_back(string("create"));
     SetParents(parents);
@@ -23,9 +23,9 @@ Divide Divide::Instantiate()
     Divide value;
 
     Object::ListType parents;
-    parents.push_back(string("divide"));
+    parents.push_back(std::string("divide"));
     value.SetParents(parents);
-    value.SetObjtype(string("op"));
+    value.SetObjtype(std::string("op"));
     
     return value;
 }

@@ -44,7 +44,7 @@ void Encoder::ListItem(const Object& obj)
     }
 }
 
-void Encoder::MapItem(const string& name, const Object& obj)
+void Encoder::MapItem(const std::string& name, const Object& obj)
 {
     switch (obj.GetType()) {
         case Object::TYPE_INT: b->MapItem(name, obj.AsInt()); break;

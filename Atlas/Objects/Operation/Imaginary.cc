@@ -12,7 +12,7 @@ namespace Atlas { namespace Objects { namespace Operation {
 Imaginary::Imaginary()
      : Action()
 {
-    SetId(string("imaginary"));
+    SetId(std::string("imaginary"));
     Object::ListType parents;
     parents.push_back(string("action"));
     SetParents(parents);
@@ -23,9 +23,9 @@ Imaginary Imaginary::Instantiate()
     Imaginary value;
 
     Object::ListType parents;
-    parents.push_back(string("imaginary"));
+    parents.push_back(std::string("imaginary"));
     value.SetParents(parents);
-    value.SetObjtype(string("op"));
+    value.SetObjtype(std::string("op"));
     
     return value;
 }

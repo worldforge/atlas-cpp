@@ -12,7 +12,7 @@ namespace Atlas { namespace Objects { namespace Operation {
 Disappearance::Disappearance()
      : Sight()
 {
-    SetId(string("disappearance"));
+    SetId(std::string("disappearance"));
     Object::ListType parents;
     parents.push_back(string("sight"));
     SetParents(parents);
@@ -23,9 +23,9 @@ Disappearance Disappearance::Instantiate()
     Disappearance value;
 
     Object::ListType parents;
-    parents.push_back(string("disappearance"));
+    parents.push_back(std::string("disappearance"));
     value.SetParents(parents);
-    value.SetObjtype(string("op"));
+    value.SetObjtype(std::string("op"));
     
     return value;
 }

@@ -12,7 +12,7 @@ namespace Atlas { namespace Objects { namespace Entity {
 Player::Player()
      : Account()
 {
-    SetId(string("player"));
+    SetId(std::string("player"));
     Object::ListType parents;
     parents.push_back(string("account"));
     SetParents(parents);
@@ -25,20 +25,20 @@ Player Player::Instantiate()
     Player value;
 
     Object::ListType parents;
-    parents.push_back(string("player"));
+    parents.push_back(std::string("player"));
     value.SetParents(parents);
-    value.SetObjtype(string("object"));
+    value.SetObjtype(std::string("object"));
     
     return value;
 }
 
-bool Player::HasAttr(const string& name) const
+bool Player::HasAttr(const std::string& name) const
 {
     if (name == "characters") return true;
     return Account::HasAttr(name);
 }
 
-Object Player::GetAttr(const string& name) const
+Object Player::GetAttr(const std::string& name) const
     throw (NoSuchAttrException)
 {
     if (name == "characters") return attr_characters;

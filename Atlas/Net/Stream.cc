@@ -17,9 +17,9 @@ using namespace Atlas;
 
 static const bool debug_flag = false;
 
-string get_line(string &s, char ch)
+std::string get_line(std::string &s, char ch)
 {
-  string out;
+  std::string out;
   int n = s.find(ch);
   if(n > 0) 
     {
@@ -30,21 +30,21 @@ string get_line(string &s, char ch)
   return out;
 }
 
-string get_line(string &s1, char ch, string &s2)
+std::string get_line(std::string &s1, char ch, std::string &s2)
 {
   s2 = get_line(s1, ch);
 
   return s2;
 }
 
-Atlas::Net::NegotiateHelper::NegotiateHelper(list<string> *names) :
+Atlas::Net::NegotiateHelper::NegotiateHelper(std::list<std::string> *names) :
   names(names)
 { 
 }
 
-bool Atlas::Net::NegotiateHelper::get(string &buf, string header)
+bool Atlas::Net::NegotiateHelper::get(std::string &buf, std::string header)
 {
-  string s, h;
+  std::string s, h;
   
   while(!buf.empty())
     {
@@ -62,15 +62,15 @@ bool Atlas::Net::NegotiateHelper::get(string &buf, string header)
 	{
 	  names->push_back(s);
 	    
-	  Debug(cout << " got: " << s << endl;);
+	  Debug(std::cout << " got: " << s << std::endl;);
 	}
       else
-	Debug(cerr << "Unknown pattern " << h << endl;);
+	Debug(std::cerr << "Unknown pattern " << h << std::endl;);
     }
   return false;
 }
 
-void Atlas::Net::NegotiateHelper::put(string &buf, string header)
+void Atlas::Net::NegotiateHelper::put(std::string &buf, std::string header)
 {
   buf.erase();
 
@@ -83,18 +83,18 @@ void Atlas::Net::NegotiateHelper::put(string &buf, string header)
   buf += "\n";
 }
 
-Atlas::Net::StreamConnect::StreamConnect(const string& name, iostream& s,
+Atlas::Net::StreamConnect::StreamConnect(const std::string& name, std::iostream& s,
 Bridge* bridge) :
   state(SERVER_GREETING), outName(name), socket(s), bridge(bridge),
   codecHelper(&inCodecs), m_canPacked(true), m_canXml(true)
 {
 }
 
-void Atlas::Net::StreamConnect::Poll(bool can_read = true)
+void Atlas::Net::StreamConnect::Poll(bool can_read)
 {
-    Debug(cout << "** Client(" << state << ") : " << endl;);
+    Debug(std::cout << "** Client(" << state << ") : " << std::endl;);
 
-    string out;
+    std::string out;
 
     do
     {
@@ -106,7 +106,7 @@ void Atlas::Net::StreamConnect::Poll(bool can_read = true)
 
 	if (buf.size() > 0 && get_line(buf, '\n', inName) != "")
 	{
-	    Debug(cout << "server: " << inName << endl;);
+	    Debug(std::cout << "server: " << inName << std::endl;);
 	    state++;
 	}
     }
@@ -115,7 +115,7 @@ void Atlas::Net::StreamConnect::Poll(bool can_read = true)
     {
 	// send client greeting
 	
-	socket << outName << endl;
+	socket << outName << std::endl;
 	state++;
     }
     
@@ -138,7 +138,7 @@ void Atlas::Net::StreamConnect::Poll(bool can_read = true)
     } while ((state != DONE) && (socket.rdbuf()->in_avail()));
 }
 
-Atlas::Negotiate<iostream>::State Atlas::Net::StreamConnect::GetState()
+Atlas::Negotiate<std::iostream>::State Atlas::Net::StreamConnect::GetState()
 {
     if (state == DONE)
     {
@@ -147,14 +147,14 @@ Atlas::Negotiate<iostream>::State Atlas::Net::StreamConnect::GetState()
             return SUCCEEDED;
         }
     }
-    else if (socket)
+    else if (socket.good())
     {
 	return IN_PROGRESS;
     }
     return FAILED;
 }
 
-Atlas::Codec<iostream>* Atlas::Net::StreamConnect::GetCodec()
+Atlas::Codec<std::iostream>* Atlas::Net::StreamConnect::GetCodec()
 {
     if (m_canXml) return new Atlas::Codecs::XML(socket, bridge);
     if (m_canPacked) return new Atlas::Codecs::Packed(socket, bridge);
@@ -164,7 +164,7 @@ Atlas::Codec<iostream>* Atlas::Net::StreamConnect::GetCodec()
 
 void Atlas::Net::StreamConnect::processServerCodecs()
 {
-    list<string>::iterator j;
+    std::list<std::string>::iterator j;
 
     for (j = inCodecs.begin(); j != inCodecs.end(); ++j)
       {
@@ -174,24 +174,24 @@ void Atlas::Net::StreamConnect::processServerCodecs()
 
 }
   
-Atlas::Net::StreamAccept::StreamAccept(const string& name, iostream& s,
+Atlas::Net::StreamAccept::StreamAccept(const std::string& name, std::iostream& s,
 Bridge* bridge) :
   state(SERVER_GREETING), outName(name), socket(s), bridge(bridge),
   codecHelper(&inCodecs), m_canPacked(false), m_canXml(false)
 {
 }
 
-void Atlas::Net::StreamAccept::Poll(bool can_read = true)
+void Atlas::Net::StreamAccept::Poll(bool can_read)
 {
-    Debug(cout << "** Server(" << state << ") : " << endl;);
+    Debug(std::cout << "** Server(" << state << ") : " << std::endl;);
 
-    string out;
+    std::string out;
 
     if (state == SERVER_GREETING) 
     {
 	// send server greeting
 
-	socket << outName << endl;
+	socket << outName << std::endl;
 	state++;
     }
 
@@ -204,7 +204,7 @@ void Atlas::Net::StreamAccept::Poll(bool can_read = true)
 	// get client greeting
 	
 	if (buf.size() <= 0 || get_line(buf, '\n', inName) == "") return;
-	Debug(cout << "client: " << inName << endl;);
+	Debug(std::cout << "client: " << inName << std::endl;);
 	state++;
     }
     
@@ -221,14 +221,14 @@ void Atlas::Net::StreamAccept::Poll(bool can_read = true)
     {
         if (m_canXml) socket << "IWILL XML\n";
         else if (m_canXml) socket << "IWILL Packed\n";
-	socket << endl;
+	socket << std::endl;
 	state++;
     }
     
     } while ((state != DONE) && (socket.rdbuf()->in_avail()));
 }
 
-Atlas::Negotiate<iostream>::State Atlas::Net::StreamAccept::GetState()
+Atlas::Negotiate<std::iostream>::State Atlas::Net::StreamAccept::GetState()
 {
     if (state == DONE)
     {
@@ -237,14 +237,14 @@ Atlas::Negotiate<iostream>::State Atlas::Net::StreamAccept::GetState()
             return SUCCEEDED;
         }
     }
-    else if (socket)
+    else if (socket.good())
     {
 	return IN_PROGRESS;
     }
     return FAILED;
 }
 
-Atlas::Codec<iostream>* Atlas::Net::StreamAccept::GetCodec()
+Atlas::Codec<std::iostream>* Atlas::Net::StreamAccept::GetCodec()
 {
     if (m_canXml) return new Atlas::Codecs::XML(socket, bridge);
     if (m_canPacked) return new Atlas::Codecs::Packed(socket, bridge);
@@ -253,7 +253,7 @@ Atlas::Codec<iostream>* Atlas::Net::StreamAccept::GetCodec()
 
 void Atlas::Net::StreamAccept::processClientCodecs()
 {
-    list<string>::iterator j;
+    std::list<std::string>::iterator j;
 
     for (j = inCodecs.begin(); j != inCodecs.end(); ++j)
       {

@@ -12,7 +12,7 @@ namespace Atlas { namespace Objects { namespace Operation {
 Perception::Perception()
      : Info()
 {
-    SetId(string("perception"));
+    SetId(std::string("perception"));
     Object::ListType parents;
     parents.push_back(string("info"));
     SetParents(parents);
@@ -23,9 +23,9 @@ Perception Perception::Instantiate()
     Perception value;
 
     Object::ListType parents;
-    parents.push_back(string("perception"));
+    parents.push_back(std::string("perception"));
     value.SetParents(parents);
-    value.SetObjtype(string("op"));
+    value.SetObjtype(std::string("op"));
     
     return value;
 }

@@ -1,3 +1,14 @@
+2001-03-13  Al Riddoch  <alriddoch@zepler.org>
+
+	* src/*: Added more std:: prefixes to symbols from the std namespace.
+
+	* src/Net/Stream.cc: Changed socket checks to check using the
+	  good() method.
+
+	* src/Net/Stream.cc, src/Codecs/XML.cc, src/Codecs/Packed.cc: Removed
+	  default argument from Poll method definition as it should not be
+	  in both declaration and definition.
+
 2001-03-12  Al Riddoch  <alriddoch@zepler.org>
 
         * index.dox, AUTHORS: Modified docs to indicate new maintainer.

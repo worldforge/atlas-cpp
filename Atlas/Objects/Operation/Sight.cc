@@ -12,7 +12,7 @@ namespace Atlas { namespace Objects { namespace Operation {
 Sight::Sight()
      : Perception()
 {
-    SetId(string("sight"));
+    SetId(std::string("sight"));
     Object::ListType parents;
     parents.push_back(string("perception"));
     SetParents(parents);
@@ -23,9 +23,9 @@ Sight Sight::Instantiate()
     Sight value;
 
     Object::ListType parents;
-    parents.push_back(string("sight"));
+    parents.push_back(std::string("sight"));
     value.SetParents(parents);
-    value.SetObjtype(string("op"));
+    value.SetObjtype(std::string("op"));
     
     return value;
 }

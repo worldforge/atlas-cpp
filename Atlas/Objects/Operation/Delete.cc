@@ -12,7 +12,7 @@ namespace Atlas { namespace Objects { namespace Operation {
 Delete::Delete()
      : Action()
 {
-    SetId(string("delete"));
+    SetId(std::string("delete"));
     Object::ListType parents;
     parents.push_back(string("action"));
     SetParents(parents);
@@ -23,9 +23,9 @@ Delete Delete::Instantiate()
     Delete value;
 
     Object::ListType parents;
-    parents.push_back(string("delete"));
+    parents.push_back(std::string("delete"));
     value.SetParents(parents);
-    value.SetObjtype(string("op"));
+    value.SetObjtype(std::string("op"));
     
     return value;
 }

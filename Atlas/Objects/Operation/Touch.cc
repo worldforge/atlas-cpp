@@ -12,7 +12,7 @@ namespace Atlas { namespace Objects { namespace Operation {
 Touch::Touch()
      : Perceive()
 {
-    SetId(string("touch"));
+    SetId(std::string("touch"));
     Object::ListType parents;
     parents.push_back(string("perceive"));
     SetParents(parents);
@@ -23,9 +23,9 @@ Touch Touch::Instantiate()
     Touch value;
 
     Object::ListType parents;
-    parents.push_back(string("touch"));
+    parents.push_back(std::string("touch"));
     value.SetParents(parents);
-    value.SetObjtype(string("op"));
+    value.SetObjtype(std::string("op"));
     
     return value;
 }

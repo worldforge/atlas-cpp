@@ -12,7 +12,7 @@ namespace Atlas { namespace Objects { namespace Operation {
 Appearance::Appearance()
      : Sight()
 {
-    SetId(string("appearance"));
+    SetId(std::string("appearance"));
     Object::ListType parents;
     parents.push_back(string("sight"));
     SetParents(parents);
@@ -23,9 +23,9 @@ Appearance Appearance::Instantiate()
     Appearance value;
 
     Object::ListType parents;
-    parents.push_back(string("appearance"));
+    parents.push_back(std::string("appearance"));
     value.SetParents(parents);
-    value.SetObjtype(string("op"));
+    value.SetObjtype(std::string("op"));
     
     return value;
 }

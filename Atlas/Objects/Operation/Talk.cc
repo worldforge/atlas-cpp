@@ -12,7 +12,7 @@ namespace Atlas { namespace Objects { namespace Operation {
 Talk::Talk()
      : Communicate()
 {
-    SetId(string("talk"));
+    SetId(std::string("talk"));
     Object::ListType parents;
     parents.push_back(string("communicate"));
     SetParents(parents);
@@ -23,9 +23,9 @@ Talk Talk::Instantiate()
     Talk value;
 
     Object::ListType parents;
-    parents.push_back(string("talk"));
+    parents.push_back(std::string("talk"));
     value.SetParents(parents);
-    value.SetObjtype(string("op"));
+    value.SetObjtype(std::string("op"));
     
     return value;
 }

@@ -12,12 +12,12 @@ namespace Atlas { namespace Objects { namespace Entity {
 RootEntity::RootEntity()
      : Root()
 {
-    SetId(string("root_entity"));
+    SetId(std::string("root_entity"));
     Object::ListType parents;
     parents.push_back(string("root"));
     SetParents(parents);
-    SetObjtype(string("class"));
-    SetLoc(string(""));
+    SetObjtype(std::string("class"));
+    SetLoc(std::string(""));
     Object::ListType pos;
     pos.push_back(0.0);
     pos.push_back(0.0);
@@ -38,14 +38,14 @@ RootEntity RootEntity::Instantiate()
     RootEntity value;
 
     Object::ListType parents;
-    parents.push_back(string("root_entity"));
+    parents.push_back(std::string("root_entity"));
     value.SetParents(parents);
-    value.SetObjtype(string("object"));
+    value.SetObjtype(std::string("object"));
     
     return value;
 }
 
-bool RootEntity::HasAttr(const string& name) const
+bool RootEntity::HasAttr(const std::string& name) const
 {
     if (name == "loc") return true;
     if (name == "pos") return true;
@@ -55,7 +55,7 @@ bool RootEntity::HasAttr(const string& name) const
     return Root::HasAttr(name);
 }
 
-Object RootEntity::GetAttr(const string& name) const
+Object RootEntity::GetAttr(const std::string& name) const
     throw (NoSuchAttrException)
 {
     if (name == "loc") return attr_loc;

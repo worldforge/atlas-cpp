@@ -94,12 +94,12 @@ protected:
     inline void ParseString(char);
     inline void ParseName(char);
 
-    inline const string HexEncode(const std::string& data)
+    inline const std::string HexEncode(const std::string& data)
     {
 	return hexEncode("+", "+[]()@#$=", data);
     }
 
-    inline const string HexDecode(const std::string& data)
+    inline const std::string HexDecode(const std::string& data)
     {
 	return hexDecode("+", data);
     }

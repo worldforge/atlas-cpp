@@ -12,7 +12,7 @@ namespace Atlas { namespace Objects { namespace Operation {
 Look::Look()
      : Perceive()
 {
-    SetId(string("look"));
+    SetId(std::string("look"));
     Object::ListType parents;
     parents.push_back(string("perceive"));
     SetParents(parents);
@@ -23,9 +23,9 @@ Look Look::Instantiate()
     Look value;
 
     Object::ListType parents;
-    parents.push_back(string("look"));
+    parents.push_back(std::string("look"));
     value.SetParents(parents);
-    value.SetObjtype(string("op"));
+    value.SetObjtype(std::string("op"));
     
     return value;
 }

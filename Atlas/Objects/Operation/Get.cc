@@ -12,7 +12,7 @@ namespace Atlas { namespace Objects { namespace Operation {
 Get::Get()
      : Action()
 {
-    SetId(string("get"));
+    SetId(std::string("get"));
     Object::ListType parents;
     parents.push_back(string("action"));
     SetParents(parents);
@@ -23,9 +23,9 @@ Get Get::Instantiate()
     Get value;
 
     Object::ListType parents;
-    parents.push_back(string("get"));
+    parents.push_back(std::string("get"));
     value.SetParents(parents);
-    value.SetObjtype(string("op"));
+    value.SetObjtype(std::string("op"));
     
     return value;
 }

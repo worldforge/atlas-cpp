@@ -12,7 +12,7 @@ namespace Atlas { namespace Objects { namespace Operation {
 Logout::Logout()
      : Login()
 {
-    SetId(string("logout"));
+    SetId(std::string("logout"));
     Object::ListType parents;
     parents.push_back(string("login"));
     SetParents(parents);
@@ -23,9 +23,9 @@ Logout Logout::Instantiate()
     Logout value;
 
     Object::ListType parents;
-    parents.push_back(string("logout"));
+    parents.push_back(std::string("logout"));
     value.SetParents(parents);
-    value.SetObjtype(string("op"));
+    value.SetObjtype(std::string("op"));
     
     return value;
 }

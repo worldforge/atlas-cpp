@@ -12,7 +12,7 @@ namespace Atlas { namespace Objects { namespace Operation {
 Combine::Combine()
      : Create()
 {
-    SetId(string("combine"));
+    SetId(std::string("combine"));
     Object::ListType parents;
     parents.push_back(string("create"));
     SetParents(parents);
@@ -23,9 +23,9 @@ Combine Combine::Instantiate()
     Combine value;
 
     Object::ListType parents;
-    parents.push_back(string("combine"));
+    parents.push_back(std::string("combine"));
     value.SetParents(parents);
-    value.SetObjtype(string("op"));
+    value.SetObjtype(std::string("op"));
     
     return value;
 }

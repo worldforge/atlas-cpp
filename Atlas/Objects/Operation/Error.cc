@@ -12,7 +12,7 @@ namespace Atlas { namespace Objects { namespace Operation {
 Error::Error()
      : Info()
 {
-    SetId(string("error"));
+    SetId(std::string("error"));
     Object::ListType parents;
     parents.push_back(string("info"));
     SetParents(parents);
@@ -23,9 +23,9 @@ Error Error::Instantiate()
     Error value;
 
     Object::ListType parents;
-    parents.push_back(string("error"));
+    parents.push_back(std::string("error"));
     value.SetParents(parents);
-    value.SetObjtype(string("op"));
+    value.SetObjtype(std::string("op"));
     
     return value;
 }

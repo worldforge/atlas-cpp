@@ -12,7 +12,7 @@ namespace Atlas { namespace Objects { namespace Operation {
 Info::Info()
      : RootOperation()
 {
-    SetId(string("info"));
+    SetId(std::string("info"));
     Object::ListType parents;
     parents.push_back(string("root_operation"));
     SetParents(parents);
@@ -23,9 +23,9 @@ Info Info::Instantiate()
     Info value;
 
     Object::ListType parents;
-    parents.push_back(string("info"));
+    parents.push_back(std::string("info"));
     value.SetParents(parents);
-    value.SetObjtype(string("op"));
+    value.SetObjtype(std::string("op"));
     
     return value;
 }

@@ -147,7 +147,7 @@ class GenerateCC:
                     self.default_map(sub_obj.name, sub_obj)
                 self.out.write('    Set' + classize(sub_obj.name) + '(')
                 if sub_obj.type == "string":
-                    self.out.write('string("' + sub_obj.value + '")')
+                    self.out.write('std::string("' + sub_obj.value + '")')
                 elif sub_obj.type == "list" or sub_obj.type == "map":
                     self.out.write(sub_obj.name)
                 else:
@@ -162,14 +162,14 @@ class GenerateCC:
                        % (self.classname, self.classname))
         self.out.write("    " + self.classname + " value;\n\n")
         self.out.write("    Object::ListType parents;\n")
-        self.out.write('    parents.push_back(string("%s"));\n' % id)
+        self.out.write('    parents.push_back(std::string("%s"));\n' % id)
         self.out.write('    value.SetParents(parents);\n')
         if objtype == "op_definition":
-            self.out.write('    value.SetObjtype(string("op"));\n')
+            self.out.write('    value.SetObjtype(std::string("op"));\n')
         elif objtype == "class":
-            self.out.write('    value.SetObjtype(string("object"));\n')
+            self.out.write('    value.SetObjtype(std::string("object"));\n')
         else:
-            self.out.write('    value.SetObjtype(string("instance"));\n')
+            self.out.write('    value.SetObjtype(std::string("instance"));\n')
         self.out.write("    \n")
         self.out.write("    return value;\n")
         self.out.write("}\n\n")
@@ -210,7 +210,7 @@ class GenerateCC:
             self.out.write('}\n\n')
     def hasattr_im(self, obj, statics):
         classname = classize(obj.attr['id'].value)
-        self.out.write("bool %s::HasAttr(const string& name) const\n"
+        self.out.write("bool %s::HasAttr(const std::string& name) const\n"
                         % classname)
         self.out.write("{\n")
         for attr in statics:
@@ -221,7 +221,7 @@ class GenerateCC:
     def getattr_im(self, obj, statics):
         classname = classize(obj.attr['id'].value)
         self.out.write("Object %s::GetAttr" % classname)
-        self.out.write("(const string& name) const\n")
+        self.out.write("(const std::string& name) const\n")
         self.out.write("    throw (NoSuchAttrException)\n")
         self.out.write("{\n")
         for attr in statics:

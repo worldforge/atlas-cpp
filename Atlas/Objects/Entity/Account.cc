@@ -12,11 +12,11 @@ namespace Atlas { namespace Objects { namespace Entity {
 Account::Account()
      : AdminEntity()
 {
-    SetId(string("account"));
+    SetId(std::string("account"));
     Object::ListType parents;
     parents.push_back(string("admin_entity"));
     SetParents(parents);
-    SetPassword(string(""));
+    SetPassword(std::string(""));
 }
 
 Account Account::Instantiate()
@@ -24,20 +24,20 @@ Account Account::Instantiate()
     Account value;
 
     Object::ListType parents;
-    parents.push_back(string("account"));
+    parents.push_back(std::string("account"));
     value.SetParents(parents);
-    value.SetObjtype(string("object"));
+    value.SetObjtype(std::string("object"));
     
     return value;
 }
 
-bool Account::HasAttr(const string& name) const
+bool Account::HasAttr(const std::string& name) const
 {
     if (name == "password") return true;
     return AdminEntity::HasAttr(name);
 }
 
-Object Account::GetAttr(const string& name) const
+Object Account::GetAttr(const std::string& name) const
     throw (NoSuchAttrException)
 {
     if (name == "password") return attr_password;

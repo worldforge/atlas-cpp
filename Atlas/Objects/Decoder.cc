@@ -30,7 +30,7 @@ void Decoder::ObjectArrived(const Object& o)
     if ((*o.AsMap().find("parents")).second.AsList().size() != 1)
         { UnknownObjectArrived(o); return; }
     
-    string
+    std::string
         parent((*(*o.AsMap().find("parents")).second.AsList().begin()).AsString());
     
     ARR("root", Root)

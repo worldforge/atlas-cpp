@@ -12,7 +12,7 @@ namespace Atlas { namespace Objects { namespace Entity {
 Game::Game()
      : AdminEntity()
 {
-    SetId(string("game"));
+    SetId(std::string("game"));
     Object::ListType parents;
     parents.push_back(string("admin_entity"));
     SetParents(parents);
@@ -23,9 +23,9 @@ Game Game::Instantiate()
     Game value;
 
     Object::ListType parents;
-    parents.push_back(string("game"));
+    parents.push_back(std::string("game"));
     value.SetParents(parents);
-    value.SetObjtype(string("object"));
+    value.SetObjtype(std::string("object"));
     
     return value;
 }
