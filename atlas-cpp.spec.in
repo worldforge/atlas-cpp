@@ -49,6 +49,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc README COPYING AUTHORS THANKS NEWS
 
 %files devel
+%defattr(-,root,root)
 %{prefix}/bin/atlas-config
 %{prefix}/lib/libAtlas*.so
 %{prefix}/lib/libAtlas*.la
