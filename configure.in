@@ -285,7 +285,7 @@ AC_LANG_RESTORE
 
 SYSTEM_LIBS="$SYSTEM_LIBS -lm"
 ATLAS_CFLAGS=""
-ATLAS_LIBS="-lAtlas -lAtlasCodecs -lAtlasMessage -lAtlasNet -lAtlasObjects -lAtlasObjectsOperation -lAtlasObjectsEntity"
+ATLAS_LIBS="-lAtlasObjects -lAtlasObjectsOperation -lAtlasObjectsEntity -lAtlasNet -lAtlas -lAtlasCodecs -lAtlasMessage -lAtlas"
 
 AC_SUBST(ATLAS_CFLAGS)
 AC_SUBST(ATLAS_LIBS)
