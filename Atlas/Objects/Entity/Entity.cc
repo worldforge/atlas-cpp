@@ -113,6 +113,17 @@ Object RootEntity::AsObject() const
     return Object(m);
 }
 
+Object::MapType RootEntity::AsMap() const
+{
+    Object::MapType m = Root::AsObject().AsMap();
+    m["loc"] = Object(attr_loc);
+    m["pos"] = Object(attr_pos);
+    m["velocity"] = Object(attr_velocity);
+    m["contains"] = Object(attr_contains);
+    m["stamp_contains"] = Object(attr_stamp_contains);
+    return m;
+}
+
 } } } // namespace Atlas::Objects::Entity
 
 #include "AdminEntity.h"
@@ -207,6 +218,13 @@ Object Account::AsObject() const
     return Object(m);
 }
 
+Object::MapType Account::AsMap() const
+{
+    Object::MapType m = AdminEntity::AsObject().AsMap();
+    m["password"] = Object(attr_password);
+    return m;
+}
+
 } } } // namespace Atlas::Objects::Entity
 
 #include "Player.h"
@@ -271,6 +289,13 @@ Object Player::AsObject() const
     Object::MapType m = Account::AsObject().AsMap();
     m["characters"] = Object(attr_characters);
     return Object(m);
+}
+
+Object::MapType Player::AsMap() const
+{
+    Object::MapType m = Account::AsObject().AsMap();
+    m["characters"] = Object(attr_characters);
+    return m;
 }
 
 } } } // namespace Atlas::Objects::Entity

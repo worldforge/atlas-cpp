@@ -1,5 +1,13 @@
 2001-11-08  Al Riddoch  <alriddoch@zepler.org>
 
+	* src/Objects/gen_cc.py, src/Objects/Entity/Account.h,
+	  src/Objects/Entity/Entity.cc, src/Objects/Entity/Player.h,
+	  src/Objects/Entity/RootEntity.h, src/Objects/Operation/Operation.cc,
+	  src/Objects/Operation/RootOperation.h: Implemented AsMap() member,
+	  so that apps which use AsMap() no longer break.
+
+2001-11-08  Al Riddoch  <alriddoch@zepler.org>
+
 	* Incremented version to 0.4.4 for release.
 
 2001-10-26  Al Riddoch  <alriddoch@zepler.org>

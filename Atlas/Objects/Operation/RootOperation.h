@@ -52,6 +52,9 @@ public:
     /// Convert this object to a Message::Object.
     virtual Atlas::Message::Object AsObject() const;
 
+    /// Convert this object to a Message::Object::MapType.
+    virtual Atlas::Message::Object::MapType AsMap() const;
+
     /// Set the "serialno" attribute.
     inline void SetSerialno(long val);
     /// Set the "refno" attribute.

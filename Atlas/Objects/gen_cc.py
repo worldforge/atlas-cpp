@@ -374,6 +374,15 @@ class GenerateCC:
                     (attr.name, attr.name))
         self.out.write('    return Object(m);\n')
         self.out.write("}\n\n")
+        self.out.write("Object::MapType %s::AsMap() const\n" % classname)
+        self.out.write("{\n")
+        parent = obj.attr['parents'].value[0]
+        self.out.write("    Object::MapType m = %s::AsObject().AsMap();\n" % classize(parent))
+        for attr in statics:
+            self.out.write('    m["%s"] = Object(attr_%s);\n' % \
+                    (attr.name, attr.name))
+        self.out.write('    return m;\n')
+        self.out.write("}\n\n")
     def asmap_im(self, obj, statics):
         classname = classize(obj.attr['id'].value)
         self.out.write("Object::MapType %s::AsMap() const\n" % classname)
@@ -451,6 +460,9 @@ class GenerateCC:
             self.out.write("\n")
             self.doc(4, 'Convert this object to a Message::Object.')
             self.out.write("    virtual Atlas::Message::Object AsObject() const;\n")
+            self.out.write("\n")
+            self.doc(4, 'Convert this object to a Message::Object::MapType.')
+            self.out.write("    virtual Atlas::Message::Object::MapType AsMap() const;\n")
             self.out.write("\n")
             for attr in static_attrs:
                 self.doc(4, 'Set the "%s" attribute.' % attr.name)

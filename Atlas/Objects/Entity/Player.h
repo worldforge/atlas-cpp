@@ -48,6 +48,9 @@ public:
     /// Convert this object to a Message::Object.
     virtual Atlas::Message::Object AsObject() const;
 
+    /// Convert this object to a Message::Object::MapType.
+    virtual Atlas::Message::Object::MapType AsMap() const;
+
     /// Set the "characters" attribute.
     inline void SetCharacters(const Atlas::Message::Object::ListType& val);
 

@@ -48,6 +48,9 @@ public:
     /// Convert this object to a Message::Object.
     virtual Atlas::Message::Object AsObject() const;
 
+    /// Convert this object to a Message::Object::MapType.
+    virtual Atlas::Message::Object::MapType AsMap() const;
+
     /// Set the "loc" attribute.
     inline void SetLoc(const std::string& val);
     /// Set the "pos" attribute.
