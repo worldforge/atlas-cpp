@@ -109,7 +109,7 @@ void Root::SendContents(Bridge* b) const
     SendName(b);
 
     Message::Encoder e(b);
-    typedef map<std::string, Object>::const_iterator Iter;
+    typedef std::map<std::string, Object>::const_iterator Iter;
     for (Iter I = attributes.begin(); I != attributes.end(); I++)
         e.MapItem((*I).first, (*I).second);
 }

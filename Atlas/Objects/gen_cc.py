@@ -206,7 +206,7 @@ class GenerateCC:
         self.out.write("}\n")
         self.out.write("\n")
         args = "id, parent"
-        self.out.write(self.classname + "::" + self.classname + "(const string & id, const string & parent)\n")
+        self.out.write(self.classname + "::" + self.classname + "(const std::string & id, const std::string & parent)\n")
         self.out.write("     : ")
         self.out.write(string.join(map(lambda parent,a=args:classize(parent)+"("+a+")", \
                        obj.attr['parents'].value), ", "))

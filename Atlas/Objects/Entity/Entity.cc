@@ -25,7 +25,7 @@ RootEntity::RootEntity()
     SetVelocity(velocity);
 }
 
-RootEntity::RootEntity(const string & id, const string & parent)
+RootEntity::RootEntity(const std::string & id, const std::string & parent)
      : Root(id, parent), attr_stamp_contains(0.0)
 {
     SetObjtype(std::string("class"));
@@ -126,7 +126,7 @@ AdminEntity::AdminEntity()
 {
 }
 
-AdminEntity::AdminEntity(const string & id, const string & parent)
+AdminEntity::AdminEntity(const std::string & id, const std::string & parent)
      : RootEntity(id, parent)
 {
 }
@@ -154,7 +154,7 @@ Account::Account()
 {
 }
 
-Account::Account(const string & id, const string & parent)
+Account::Account(const std::string & id, const std::string & parent)
      : AdminEntity(id, parent)
 {
 }
@@ -220,7 +220,7 @@ Player::Player()
 {
 }
 
-Player::Player(const string & id, const string & parent)
+Player::Player(const std::string & id, const std::string & parent)
      : Account(id, parent)
 {
 }
@@ -286,7 +286,7 @@ Admin::Admin()
 {
 }
 
-Admin::Admin(const string & id, const string & parent)
+Admin::Admin(const std::string & id, const std::string & parent)
      : Account(id, parent)
 {
 }
@@ -314,7 +314,7 @@ Game::Game()
 {
 }
 
-Game::Game(const string & id, const string & parent)
+Game::Game(const std::string & id, const std::string & parent)
      : AdminEntity(id, parent)
 {
 }
@@ -342,7 +342,7 @@ GameEntity::GameEntity()
 {
 }
 
-GameEntity::GameEntity(const string & id, const string & parent)
+GameEntity::GameEntity(const std::string & id, const std::string & parent)
      : RootEntity(id, parent)
 {
 }

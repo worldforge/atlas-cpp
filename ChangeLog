@@ -1,3 +1,9 @@
+2001-05-20  Al Riddoch  <alriddoch@zepler.org>
+
+	* src/Objects/Root.cc, src/Objects/Operation/Operation.cc,
+	  src/Objects/Entity/Entity.cc: Fixed std:: namespace errors
+	  discovered when using a strict ISO C++ compiler.
+
 2001-05-14  Al Riddoch  <alriddoch@zepler.org>
 
 	* 0.4.2 released
