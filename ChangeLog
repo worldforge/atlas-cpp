@@ -1,3 +1,23 @@
+2002-05-19  Al Riddoch  <alriddoch@zepler.org>
+
+	Many of the changes described here were submitted by Jesse Jones
+	in January. Thanks to Jesse for submitting the changes, and apologies
+	for delaying them so long.
+
+	* src/Bridge.h: Make MapBegin and ListBegin easier to read.
+
+	* src/Codecs/Packed.cc, src/Codecs/XML.cc, src/Net/Stream.cc:
+	  Work around the problem that in_avail() sometimes returns < 0 on
+	  some systems.
+
+	* src/Codecs/Packed.h, src/Codecs/XML.h:
+	  Remove extraneous trailing comma from enumerations.
+
+	* src/Message/Encoder.h: Ensure that methods from base class are
+	  not hidden.
+
+	* src/Net/Stream.cc: Make get_line functions static.
+
 2002-05-15  Michael Koch  <konqueror@gmx.de>
 
 	* atlas-config.in: dont output /usr/include when called with --cflags

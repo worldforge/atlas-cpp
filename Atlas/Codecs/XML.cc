@@ -336,7 +336,7 @@ void XML::Poll(bool can_read)
 	    case TOKEN_DATA:	    TokenData(next); break;
 	}
     }
-    while (socket.rdbuf()->in_avail());
+    while (socket.rdbuf()->in_avail() > 0);
 }
 
 void XML::StreamBegin()

@@ -315,7 +315,7 @@ void Packed::Poll(bool can_read)
 	    case PARSE_NAME:	    ParseName(next); break;
 	}
     }
-    while (socket.rdbuf()->in_avail());
+    while (socket.rdbuf()->in_avail() > 0);
 }
 
 void Packed::StreamBegin()
