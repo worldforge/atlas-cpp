@@ -4,7 +4,8 @@ Items are in no particular order.
 
 For 0.4.0:
 
- - fix tutorial/:
-    * should we use libsocket++ or not? If we build our own, it needs
-      to be standards compliant (sdt can help you with this)
  - update README
+
+For 0.4.1:
+ - remove libsocket++ dependency from tutorial/
+
