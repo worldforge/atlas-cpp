@@ -85,14 +85,6 @@ Atlas::Message::Object::ListType& Player::GetCharacters()
     return attr_characters;
 }
 
-void Player::SendCharacters(Atlas::Bridge* b) const
-{
-    if (!attr_characters.empty()) {
-        Atlas::Message::Encoder e(b);
-        e.MapItem("characters", attr_characters);
-    }
-}
-
 
 } } } // namespace Atlas::Objects::Entity
 

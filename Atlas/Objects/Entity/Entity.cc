@@ -95,6 +95,44 @@ void RootEntity::RemoveAttr(const std::string& name)
     Root::RemoveAttr(name);
 }
 
+void RootEntity::SendLoc(Atlas::Bridge* b) const
+{
+    if (!attr_loc.empty()) {
+        b->MapItem("loc", attr_loc);
+    }
+}
+
+void RootEntity::SendPos(Atlas::Bridge* b) const
+{
+    if (!attr_pos.empty()) {
+        Atlas::Message::Encoder e(b);
+        e.MapItem("pos", attr_pos);
+    }
+}
+
+void RootEntity::SendVelocity(Atlas::Bridge* b) const
+{
+    if (!attr_velocity.empty()) {
+        Atlas::Message::Encoder e(b);
+        e.MapItem("velocity", attr_velocity);
+    }
+}
+
+void RootEntity::SendContains(Atlas::Bridge* b) const
+{
+    if (!attr_contains.empty()) {
+        Atlas::Message::Encoder e(b);
+        e.MapItem("contains", attr_contains);
+    }
+}
+
+void RootEntity::SendStampContains(Atlas::Bridge* b) const
+{
+    if (attr_stamp_contains != 0.0) {
+        b->MapItem("stamp_contains", attr_stamp_contains);
+    }
+}
+
 void RootEntity::SendContents(Bridge* b) const
 {
     SendLoc(b);
@@ -214,6 +252,13 @@ void Account::RemoveAttr(const std::string& name)
     AdminEntity::RemoveAttr(name);
 }
 
+void Account::SendPassword(Atlas::Bridge* b) const
+{
+    if (!attr_password.empty()) {
+        b->MapItem("password", attr_password);
+    }
+}
+
 void Account::SendContents(Bridge* b) const
 {
     SendPassword(b);
@@ -288,6 +333,14 @@ void Player::RemoveAttr(const std::string& name)
 {
     if (name == "characters") return;
     Account::RemoveAttr(name);
+}
+
+void Player::SendCharacters(Atlas::Bridge* b) const
+{
+    if (!attr_characters.empty()) {
+        Atlas::Message::Encoder e(b);
+        e.MapItem("characters", attr_characters);
+    }
 }
 
 void Player::SendContents(Bridge* b) const

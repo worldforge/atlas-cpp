@@ -1,5 +1,14 @@
 2003-04-16  Al Riddoch  <alriddoch@zepler.org>
 
+	* Atlas/Objects/gen_cc.py, Atlas/Objects/Entity/Account.h,
+	  Atlas/Objects/Entity/Entity.cc, Atlas/Objects/Entity/Player.h,
+	  Atlas/Objects/Entity/RootEntity.h,
+	  Atlas/Objects/Operation/Operation.cc,
+	  Atlas/Objects/Operation/RootOperation.h:
+	  Move inlined sends into implementation.
+
+2003-04-16  Al Riddoch  <alriddoch@zepler.org>
+
 	* Atlas/Objects/gen_cc.py, Atlas/Objects/Entity/*.h,
 	  Atlas/Objects/Entity/Entity.cc, Atlas/Objects/Operation/*.h,
 	  Atlas/Objects/Operation/Operation.cc: Move virtual destructors

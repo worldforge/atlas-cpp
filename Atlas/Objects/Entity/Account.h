@@ -85,13 +85,6 @@ std::string& Account::GetPassword()
     return attr_password;
 }
 
-void Account::SendPassword(Atlas::Bridge* b) const
-{
-    if (!attr_password.empty()) {
-        b->MapItem("password", attr_password);
-    }
-}
-
 
 } } } // namespace Atlas::Objects::Entity
 

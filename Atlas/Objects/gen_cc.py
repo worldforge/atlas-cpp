@@ -505,7 +505,7 @@ class GenerateCC:
             self.out.write('//\n// Inlined member functions follow.\n//\n\n')
             self.static_inline_sets(obj, static_attrs)
             self.static_inline_gets(obj, static_attrs)
-            self.static_inline_sends(obj, static_attrs)
+            # self.static_inline_sends(obj, static_attrs)
             self.out.write('\n')
         if outdir != ".":
             self.ns_close(['Atlas', 'Objects', outdir])
@@ -562,6 +562,7 @@ class GenerateCC:
             self.getattr_im(obj, static_attrs)
             self.setattr_im(obj, static_attrs)
             self.remattr_im(obj, static_attrs)
+            self.static_inline_sends(obj, static_attrs)
             self.sendcontents_im(obj, static_attrs)
             self.asobject_im(obj, static_attrs)
         if outdir != ".":
