@@ -13,8 +13,7 @@ Game::Game()
      : AdminEntity()
 {
     SetId(std::string("game"));
-    Object::ListType parents;
-    parents.push_back(std::string("admin_entity"));
+    Object::ListType parents(1,std::string("admin_entity"));
     SetParents(parents);
 }
 
@@ -22,9 +21,7 @@ Game Game::Instantiate()
 {
     Game value;
 
-    Object::ListType parents;
-    parents.push_back(std::string("game"));
-    value.SetParents(parents);
+    value.SetParents(Object::ListType(1,std::string("game")));
     value.SetObjtype(std::string("object"));
     
     return value;

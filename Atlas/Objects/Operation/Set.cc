@@ -13,8 +13,7 @@ Set::Set()
      : Action()
 {
     SetId(std::string("set"));
-    Object::ListType parents;
-    parents.push_back(std::string("action"));
+    Object::ListType parents(1,std::string("action"));
     SetParents(parents);
 }
 
@@ -22,9 +21,7 @@ Set Set::Instantiate()
 {
     Set value;
 
-    Object::ListType parents;
-    parents.push_back(std::string("set"));
-    value.SetParents(parents);
+    value.SetParents(Object::ListType(1,std::string("set")));
     value.SetObjtype(std::string("op"));
     
     return value;

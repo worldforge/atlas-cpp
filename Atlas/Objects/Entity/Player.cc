@@ -13,8 +13,7 @@ Player::Player()
      : Account()
 {
     SetId(std::string("player"));
-    Object::ListType parents;
-    parents.push_back(std::string("account"));
+    Object::ListType parents(1,std::string("account"));
     SetParents(parents);
     Object::ListType characters;
     SetCharacters(characters);
@@ -24,9 +23,7 @@ Player Player::Instantiate()
 {
     Player value;
 
-    Object::ListType parents;
-    parents.push_back(std::string("player"));
-    value.SetParents(parents);
+    value.SetParents(Object::ListType(1,std::string("player")));
     value.SetObjtype(std::string("object"));
     
     return value;

@@ -13,8 +13,7 @@ Delete::Delete()
      : Action()
 {
     SetId(std::string("delete"));
-    Object::ListType parents;
-    parents.push_back(std::string("action"));
+    Object::ListType parents(1,std::string("action"));
     SetParents(parents);
 }
 
@@ -22,9 +21,7 @@ Delete Delete::Instantiate()
 {
     Delete value;
 
-    Object::ListType parents;
-    parents.push_back(std::string("delete"));
-    value.SetParents(parents);
+    value.SetParents(Object::ListType(1,std::string("delete")));
     value.SetObjtype(std::string("op"));
     
     return value;

@@ -13,8 +13,7 @@ Sniff::Sniff()
      : Perceive()
 {
     SetId(std::string("sniff"));
-    Object::ListType parents;
-    parents.push_back(std::string("perceive"));
+    Object::ListType parents(1,std::string("perceive"));
     SetParents(parents);
 }
 
@@ -22,9 +21,7 @@ Sniff Sniff::Instantiate()
 {
     Sniff value;
 
-    Object::ListType parents;
-    parents.push_back(std::string("sniff"));
-    value.SetParents(parents);
+    value.SetParents(Object::ListType(1,std::string("sniff")));
     value.SetObjtype(std::string("op"));
     
     return value;

@@ -13,8 +13,7 @@ Logout::Logout()
      : Login()
 {
     SetId(std::string("logout"));
-    Object::ListType parents;
-    parents.push_back(std::string("login"));
+    Object::ListType parents(1,std::string("login"));
     SetParents(parents);
 }
 
@@ -22,9 +21,7 @@ Logout Logout::Instantiate()
 {
     Logout value;
 
-    Object::ListType parents;
-    parents.push_back(std::string("logout"));
-    value.SetParents(parents);
+    value.SetParents(Object::ListType(1,std::string("logout")));
     value.SetObjtype(std::string("op"));
     
     return value;

@@ -13,8 +13,7 @@ RootEntity::RootEntity()
      : Root()
 {
     SetId(std::string("root_entity"));
-    Object::ListType parents;
-    parents.push_back(std::string("root"));
+    Object::ListType parents(1,std::string("root"));
     SetParents(parents);
     SetObjtype(std::string("class"));
     SetLoc(std::string(""));
@@ -37,9 +36,7 @@ RootEntity RootEntity::Instantiate()
 {
     RootEntity value;
 
-    Object::ListType parents;
-    parents.push_back(std::string("root_entity"));
-    value.SetParents(parents);
+    value.SetParents(Object::ListType(1,std::string("root_entity")));
     value.SetObjtype(std::string("object"));
     
     return value;

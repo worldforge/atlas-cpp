@@ -13,8 +13,7 @@ Appearance::Appearance()
      : Sight()
 {
     SetId(std::string("appearance"));
-    Object::ListType parents;
-    parents.push_back(std::string("sight"));
+    Object::ListType parents(1,std::string("sight"));
     SetParents(parents);
 }
 
@@ -22,9 +21,7 @@ Appearance Appearance::Instantiate()
 {
     Appearance value;
 
-    Object::ListType parents;
-    parents.push_back(std::string("appearance"));
-    value.SetParents(parents);
+    value.SetParents(Object::ListType(1,std::string("appearance")));
     value.SetObjtype(std::string("op"));
     
     return value;

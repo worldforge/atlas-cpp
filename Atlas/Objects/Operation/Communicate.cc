@@ -13,8 +13,7 @@ Communicate::Communicate()
      : Create()
 {
     SetId(std::string("communicate"));
-    Object::ListType parents;
-    parents.push_back(std::string("create"));
+    Object::ListType parents(1,std::string("create"));
     SetParents(parents);
 }
 
@@ -22,9 +21,7 @@ Communicate Communicate::Instantiate()
 {
     Communicate value;
 
-    Object::ListType parents;
-    parents.push_back(std::string("communicate"));
-    value.SetParents(parents);
+    value.SetParents(Object::ListType(1,std::string("communicate")));
     value.SetObjtype(std::string("op"));
     
     return value;

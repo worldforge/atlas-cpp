@@ -13,8 +13,7 @@ Touch::Touch()
      : Perceive()
 {
     SetId(std::string("touch"));
-    Object::ListType parents;
-    parents.push_back(std::string("perceive"));
+    Object::ListType parents(1,std::string("perceive"));
     SetParents(parents);
 }
 
@@ -22,9 +21,7 @@ Touch Touch::Instantiate()
 {
     Touch value;
 
-    Object::ListType parents;
-    parents.push_back(std::string("touch"));
-    value.SetParents(parents);
+    value.SetParents(Object::ListType(1,std::string("touch")));
     value.SetObjtype(std::string("op"));
     
     return value;

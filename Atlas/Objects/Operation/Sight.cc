@@ -13,8 +13,7 @@ Sight::Sight()
      : Perception()
 {
     SetId(std::string("sight"));
-    Object::ListType parents;
-    parents.push_back(std::string("perception"));
+    Object::ListType parents(1,std::string("perception"));
     SetParents(parents);
 }
 
@@ -22,9 +21,7 @@ Sight Sight::Instantiate()
 {
     Sight value;
 
-    Object::ListType parents;
-    parents.push_back(std::string("sight"));
-    value.SetParents(parents);
+    value.SetParents(Object::ListType(1,std::string("sight")));
     value.SetObjtype(std::string("op"));
     
     return value;

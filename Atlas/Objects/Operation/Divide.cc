@@ -13,8 +13,7 @@ Divide::Divide()
      : Create()
 {
     SetId(std::string("divide"));
-    Object::ListType parents;
-    parents.push_back(std::string("create"));
+    Object::ListType parents(1,std::string("create"));
     SetParents(parents);
 }
 
@@ -22,9 +21,7 @@ Divide Divide::Instantiate()
 {
     Divide value;
 
-    Object::ListType parents;
-    parents.push_back(std::string("divide"));
-    value.SetParents(parents);
+    value.SetParents(Object::ListType(1,std::string("divide")));
     value.SetObjtype(std::string("op"));
     
     return value;

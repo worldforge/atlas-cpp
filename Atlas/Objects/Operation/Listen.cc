@@ -13,8 +13,7 @@ Listen::Listen()
      : Perceive()
 {
     SetId(std::string("listen"));
-    Object::ListType parents;
-    parents.push_back(std::string("perceive"));
+    Object::ListType parents(1,std::string("perceive"));
     SetParents(parents);
 }
 
@@ -22,9 +21,7 @@ Listen Listen::Instantiate()
 {
     Listen value;
 
-    Object::ListType parents;
-    parents.push_back(std::string("listen"));
-    value.SetParents(parents);
+    value.SetParents(Object::ListType(1,std::string("listen")));
     value.SetObjtype(std::string("op"));
     
     return value;

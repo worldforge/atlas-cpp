@@ -13,8 +13,7 @@ Sound::Sound()
      : Perception()
 {
     SetId(std::string("sound"));
-    Object::ListType parents;
-    parents.push_back(std::string("perception"));
+    Object::ListType parents(1,std::string("perception"));
     SetParents(parents);
 }
 
@@ -22,9 +21,7 @@ Sound Sound::Instantiate()
 {
     Sound value;
 
-    Object::ListType parents;
-    parents.push_back(std::string("sound"));
-    value.SetParents(parents);
+    value.SetParents(Object::ListType(1,std::string("sound")));
     value.SetObjtype(std::string("op"));
     
     return value;

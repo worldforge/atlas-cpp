@@ -13,8 +13,7 @@ Action::Action()
      : RootOperation()
 {
     SetId(std::string("action"));
-    Object::ListType parents;
-    parents.push_back(std::string("root_operation"));
+    Object::ListType parents(1,std::string("root_operation"));
     SetParents(parents);
 }
 
@@ -22,9 +21,7 @@ Action Action::Instantiate()
 {
     Action value;
 
-    Object::ListType parents;
-    parents.push_back(std::string("action"));
-    value.SetParents(parents);
+    value.SetParents(Object::ListType(1,std::string("action")));
     value.SetObjtype(std::string("op"));
     
     return value;

@@ -13,8 +13,7 @@ Error::Error()
      : Info()
 {
     SetId(std::string("error"));
-    Object::ListType parents;
-    parents.push_back(std::string("info"));
+    Object::ListType parents(1,std::string("info"));
     SetParents(parents);
 }
 
@@ -22,9 +21,7 @@ Error Error::Instantiate()
 {
     Error value;
 
-    Object::ListType parents;
-    parents.push_back(std::string("error"));
-    value.SetParents(parents);
+    value.SetParents(Object::ListType(1,std::string("error")));
     value.SetObjtype(std::string("op"));
     
     return value;

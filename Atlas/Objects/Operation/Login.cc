@@ -13,8 +13,7 @@ Login::Login()
      : Get()
 {
     SetId(std::string("login"));
-    Object::ListType parents;
-    parents.push_back(std::string("get"));
+    Object::ListType parents(1,std::string("get"));
     SetParents(parents);
 }
 
@@ -22,9 +21,7 @@ Login Login::Instantiate()
 {
     Login value;
 
-    Object::ListType parents;
-    parents.push_back(std::string("login"));
-    value.SetParents(parents);
+    value.SetParents(Object::ListType(1,std::string("login")));
     value.SetObjtype(std::string("op"));
     
     return value;

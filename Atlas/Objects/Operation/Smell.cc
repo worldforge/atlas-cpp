@@ -13,8 +13,7 @@ Smell::Smell()
      : Perception()
 {
     SetId(std::string("smell"));
-    Object::ListType parents;
-    parents.push_back(std::string("perception"));
+    Object::ListType parents(1,std::string("perception"));
     SetParents(parents);
 }
 
@@ -22,9 +21,7 @@ Smell Smell::Instantiate()
 {
     Smell value;
 
-    Object::ListType parents;
-    parents.push_back(std::string("smell"));
-    value.SetParents(parents);
+    value.SetParents(Object::ListType(1,std::string("smell")));
     value.SetObjtype(std::string("op"));
     
     return value;

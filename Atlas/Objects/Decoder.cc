@@ -5,7 +5,7 @@
 #include <string>
 #include "Decoder.h"
 
-using namespace Atlas::Message;
+using Atlas::Message::Object;
 
 #define ARR(a, b) if (parent == a) { \
     b obj; \
@@ -25,13 +25,13 @@ Decoder::~Decoder()
 void Decoder::ObjectArrived(const Object& o)
 {
     if (!o.IsMap()) return;
-    if (o.AsMap().find("parents") == o.AsMap().end())
+    Object::MapType::const_iterator I = o.AsMap().find("parents");
+    if (I == o.AsMap().end())
         { UnknownObjectArrived(o); return; }
-    if ((*o.AsMap().find("parents")).second.AsList().size() != 1)
+    if ((*I).second.AsList().size() != 1)
         { UnknownObjectArrived(o); return; }
     
-    std::string
-        parent((*(*o.AsMap().find("parents")).second.AsList().begin()).AsString());
+    const std::string & parent = (*(*I).second.AsList().begin()).AsString();
     
     ARR("root", Root)
     ARR("account", Entity::Account)

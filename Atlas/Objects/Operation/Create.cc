@@ -13,8 +13,7 @@ Create::Create()
      : Action()
 {
     SetId(std::string("create"));
-    Object::ListType parents;
-    parents.push_back(std::string("action"));
+    Object::ListType parents(1,std::string("action"));
     SetParents(parents);
 }
 
@@ -22,9 +21,7 @@ Create Create::Instantiate()
 {
     Create value;
 
-    Object::ListType parents;
-    parents.push_back(std::string("create"));
-    value.SetParents(parents);
+    value.SetParents(Object::ListType(1,std::string("create")));
     value.SetObjtype(std::string("op"));
     
     return value;

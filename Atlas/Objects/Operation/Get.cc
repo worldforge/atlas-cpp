@@ -13,8 +13,7 @@ Get::Get()
      : Action()
 {
     SetId(std::string("get"));
-    Object::ListType parents;
-    parents.push_back(std::string("action"));
+    Object::ListType parents(1,std::string("action"));
     SetParents(parents);
 }
 
@@ -22,9 +21,7 @@ Get Get::Instantiate()
 {
     Get value;
 
-    Object::ListType parents;
-    parents.push_back(std::string("get"));
-    value.SetParents(parents);
+    value.SetParents(Object::ListType(1,std::string("get")));
     value.SetObjtype(std::string("op"));
     
     return value;

@@ -117,21 +117,31 @@ class GenerateCC:
             self.out.write(");\n")
     def default_list(self, name, obj):
         i = 0
-        self.out.write("    Object::ListType " + name + ";\n")
-        for sub in obj.value:
+        if len(obj.value) == 1:
+            self.out.write("    Object::ListType " + name + "(1,")
+            sub = obj.value[0]
             sub_type = type2string[type(sub)]
-            if sub_type == "list":
-                self.default_list("%s_%d" % (name, ++i), sub)
-            elif sub_type == "map":
-                self.default_map("%s_%d" % (name, ++i), sub)
-            self.out.write("    %s.push_back(" % name)
-            if sub_type == "list" or sub_type == "map":
-                self.out.write("%s_%d" % (name, i))
-            elif sub_type == "string":
+            if sub_type == "string":
                 self.out.write('std::string("%s")' % sub)
             else:
                 self.out.write('%s' % sub)
             self.out.write(");\n")
+        else:
+            self.out.write("    Object::ListType " + name + ";\n")
+            for sub in obj.value:
+                sub_type = type2string[type(sub)]
+                if sub_type == "list":
+                    self.default_list("%s_%d" % (name, ++i), sub)
+                elif sub_type == "map":
+                    self.default_map("%s_%d" % (name, ++i), sub)
+                self.out.write("    %s.push_back(" % name)
+                if sub_type == "list" or sub_type == "map":
+                    self.out.write("%s_%d" % (name, i))
+                elif sub_type == "string":
+                    self.out.write('std::string("%s")' % sub)
+                else:
+                    self.out.write('%s' % sub)
+                self.out.write(");\n")
     def constructors_im(self, obj):
         self.out.write(self.classname + "::" + self.classname + "()\n")
         self.out.write("     : ")
@@ -161,9 +171,9 @@ class GenerateCC:
         self.out.write("%s %s::Instantiate()\n{\n" \
                        % (self.classname, self.classname))
         self.out.write("    " + self.classname + " value;\n\n")
-        self.out.write("    Object::ListType parents;\n")
-        self.out.write('    parents.push_back(std::string("%s"));\n' % id)
-        self.out.write('    value.SetParents(parents);\n')
+        #self.out.write("    Object::ListType parents;\n")
+        #self.out.write('    parents.push_back(std::string("%s"));\n' % id)
+        self.out.write('    value.SetParents(Object::ListType(1,std::string("%s")));\n' % id)
         if objtype == "op_definition":
             self.out.write('    value.SetObjtype(std::string("op"));\n')
         elif objtype == "class":

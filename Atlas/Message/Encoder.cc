@@ -5,8 +5,6 @@
 #include <string>
 #include "Encoder.h"
 
-using namespace Atlas;
-
 namespace Atlas { namespace Message {
 
 Encoder::Encoder(Atlas::Bridge* b)

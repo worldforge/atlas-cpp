@@ -13,8 +13,7 @@ Combine::Combine()
      : Create()
 {
     SetId(std::string("combine"));
-    Object::ListType parents;
-    parents.push_back(std::string("create"));
+    Object::ListType parents(1,std::string("create"));
     SetParents(parents);
 }
 
@@ -22,9 +21,7 @@ Combine Combine::Instantiate()
 {
     Combine value;
 
-    Object::ListType parents;
-    parents.push_back(std::string("combine"));
-    value.SetParents(parents);
+    value.SetParents(Object::ListType(1,std::string("combine")));
     value.SetObjtype(std::string("op"));
     
     return value;

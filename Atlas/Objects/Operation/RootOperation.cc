@@ -13,8 +13,7 @@ RootOperation::RootOperation()
      : Root()
 {
     SetId(std::string("root_operation"));
-    Object::ListType parents;
-    parents.push_back(std::string("root"));
+    Object::ListType parents(1,std::string("root"));
     SetParents(parents);
     SetObjtype(std::string("op_definition"));
     SetSerialno(0);
@@ -32,9 +31,7 @@ RootOperation RootOperation::Instantiate()
 {
     RootOperation value;
 
-    Object::ListType parents;
-    parents.push_back(std::string("root_operation"));
-    value.SetParents(parents);
+    value.SetParents(Object::ListType(1,std::string("root_operation")));
     value.SetObjtype(std::string("op"));
     
     return value;

@@ -13,8 +13,7 @@ Look::Look()
      : Perceive()
 {
     SetId(std::string("look"));
-    Object::ListType parents;
-    parents.push_back(std::string("perceive"));
+    Object::ListType parents(1,std::string("perceive"));
     SetParents(parents);
 }
 
@@ -22,9 +21,7 @@ Look Look::Instantiate()
 {
     Look value;
 
-    Object::ListType parents;
-    parents.push_back(std::string("look"));
-    value.SetParents(parents);
+    value.SetParents(Object::ListType(1,std::string("look")));
     value.SetObjtype(std::string("op"));
     
     return value;

@@ -13,8 +13,7 @@ Account::Account()
      : AdminEntity()
 {
     SetId(std::string("account"));
-    Object::ListType parents;
-    parents.push_back(std::string("admin_entity"));
+    Object::ListType parents(1,std::string("admin_entity"));
     SetParents(parents);
     SetPassword(std::string(""));
 }
@@ -23,9 +22,7 @@ Account Account::Instantiate()
 {
     Account value;
 
-    Object::ListType parents;
-    parents.push_back(std::string("account"));
-    value.SetParents(parents);
+    value.SetParents(Object::ListType(1,std::string("account")));
     value.SetObjtype(std::string("object"));
     
     return value;

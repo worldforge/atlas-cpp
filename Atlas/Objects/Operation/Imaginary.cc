@@ -13,8 +13,7 @@ Imaginary::Imaginary()
      : Action()
 {
     SetId(std::string("imaginary"));
-    Object::ListType parents;
-    parents.push_back(std::string("action"));
+    Object::ListType parents(1,std::string("action"));
     SetParents(parents);
 }
 
@@ -22,9 +21,7 @@ Imaginary Imaginary::Instantiate()
 {
     Imaginary value;
 
-    Object::ListType parents;
-    parents.push_back(std::string("imaginary"));
-    value.SetParents(parents);
+    value.SetParents(Object::ListType(1,std::string("imaginary")));
     value.SetObjtype(std::string("op"));
     
     return value;

@@ -1,3 +1,30 @@
+2001-05-07  Al Riddoch  <alriddoch@zepler.org>
+
+	* Eliminated few remaining uses of "using namespace .." from
+	  the library code.
+
+	* src/Objects/Decoder.cc: Cut down repeated lookups for parents
+	  when decodeing object. Got rid of copying parents string.
+
+	* src/Objects/Root.cc: Removed redundant parents initialisation
+	  from constructor. Optimised parents initialisation in other
+	  constructor. Removed redundant map lookup in GetAttr().
+
+	* src/Objects/gen_cc.py, src/Objects/Entity/*, src/Objects/Operation/*:
+	  Optimised initialisation of parents in constructor and initialiser
+	  of all Objects classes.
+
+2001-05-06  Al Riddoch  <alriddoch@zepler.org>
+
+	* src/Message/Object.cc: Added true cc file so that class static
+	  member is handled cleanly.
+
+	* src/Message/Object.h: Moved clear and operation new/delete()
+	  functions around so they can be inlined.
+
+	* src/Net/Stream.cc: Fixed bug which meant that Packed codec
+	  was never negotiated. Thanks Demitar.
+
 2001-03-28  Al Riddoch  <alriddoch@zepler.org>
 
 	* src/Net/Stream.cc: Added ATLAS to greeting message as required

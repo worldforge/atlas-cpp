@@ -13,8 +13,7 @@ Move::Move()
      : Set()
 {
     SetId(std::string("move"));
-    Object::ListType parents;
-    parents.push_back(std::string("set"));
+    Object::ListType parents(1,std::string("set"));
     SetParents(parents);
 }
 
@@ -22,9 +21,7 @@ Move Move::Instantiate()
 {
     Move value;
 
-    Object::ListType parents;
-    parents.push_back(std::string("move"));
-    value.SetParents(parents);
+    value.SetParents(Object::ListType(1,std::string("move")));
     value.SetObjtype(std::string("op"));
     
     return value;

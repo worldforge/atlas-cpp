@@ -13,8 +13,6 @@
 #include "../Codecs/Packed.h"
 #include "Stream.h"
 
-using namespace Atlas;
-
 static const bool debug_flag = false;
 
 std::string get_line(std::string &s, char ch)

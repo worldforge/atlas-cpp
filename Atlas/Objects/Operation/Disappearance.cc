@@ -13,8 +13,7 @@ Disappearance::Disappearance()
      : Sight()
 {
     SetId(std::string("disappearance"));
-    Object::ListType parents;
-    parents.push_back(std::string("sight"));
+    Object::ListType parents(1,std::string("sight"));
     SetParents(parents);
 }
 
@@ -22,9 +21,7 @@ Disappearance Disappearance::Instantiate()
 {
     Disappearance value;
 
-    Object::ListType parents;
-    parents.push_back(std::string("disappearance"));
-    value.SetParents(parents);
+    value.SetParents(Object::ListType(1,std::string("disappearance")));
     value.SetObjtype(std::string("op"));
     
     return value;

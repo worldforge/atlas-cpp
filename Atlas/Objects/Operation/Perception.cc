@@ -13,8 +13,7 @@ Perception::Perception()
      : Info()
 {
     SetId(std::string("perception"));
-    Object::ListType parents;
-    parents.push_back(std::string("info"));
+    Object::ListType parents(1,std::string("info"));
     SetParents(parents);
 }
 
@@ -22,9 +21,7 @@ Perception Perception::Instantiate()
 {
     Perception value;
 
-    Object::ListType parents;
-    parents.push_back(std::string("perception"));
-    value.SetParents(parents);
+    value.SetParents(Object::ListType(1,std::string("perception")));
     value.SetObjtype(std::string("op"));
     
     return value;

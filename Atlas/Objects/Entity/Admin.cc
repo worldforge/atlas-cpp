@@ -13,8 +13,7 @@ Admin::Admin()
      : Account()
 {
     SetId(std::string("admin"));
-    Object::ListType parents;
-    parents.push_back(std::string("account"));
+    Object::ListType parents(1,std::string("account"));
     SetParents(parents);
 }
 
@@ -22,9 +21,7 @@ Admin Admin::Instantiate()
 {
     Admin value;
 
-    Object::ListType parents;
-    parents.push_back(std::string("admin"));
-    value.SetParents(parents);
+    value.SetParents(Object::ListType(1,std::string("admin")));
     value.SetObjtype(std::string("object"));
     
     return value;

@@ -13,8 +13,7 @@ Info::Info()
      : RootOperation()
 {
     SetId(std::string("info"));
-    Object::ListType parents;
-    parents.push_back(std::string("root_operation"));
+    Object::ListType parents(1,std::string("root_operation"));
     SetParents(parents);
 }
 
@@ -22,9 +21,7 @@ Info Info::Instantiate()
 {
     Info value;
 
-    Object::ListType parents;
-    parents.push_back(std::string("info"));
-    value.SetParents(parents);
+    value.SetParents(Object::ListType(1,std::string("info")));
     value.SetObjtype(std::string("op"));
     
     return value;
