@@ -42,7 +42,7 @@ Atlas::Net::NegotiateHelper::NegotiateHelper(std::list<std::string> *names) :
 { 
 }
 
-bool Atlas::Net::NegotiateHelper::get(std::string &buf, std::string header)
+bool Atlas::Net::NegotiateHelper::get(std::string &buf, const std::string & header)
 {
   std::string s, h;
   
@@ -70,7 +70,7 @@ bool Atlas::Net::NegotiateHelper::get(std::string &buf, std::string header)
   return false;
 }
 
-void Atlas::Net::NegotiateHelper::put(std::string &buf, std::string header)
+void Atlas::Net::NegotiateHelper::put(std::string &buf, const std::string & header)
 {
   buf.erase();
 
@@ -115,7 +115,7 @@ void Atlas::Net::StreamConnect::Poll(bool can_read)
     {
 	// send client greeting
 	
-	socket << outName << std::endl;
+	socket << "ATLAS " << outName << std::endl;
 	state++;
     }
     
@@ -191,7 +191,7 @@ void Atlas::Net::StreamAccept::Poll(bool can_read)
     {
 	// send server greeting
 
-	socket << outName << std::endl;
+	socket << "ATLAS " << outName << std::endl;
 	state++;
     }
 
