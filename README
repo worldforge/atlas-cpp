@@ -8,7 +8,7 @@ clients or servers.
 
 VERSION
 
-This is Atlas-C++ 0.4.0, the latest stable incarnation of Atlas-C++ as
+This is Atlas-C++ 0.4.2, the latest stable incarnation of Atlas-C++ as
 of 2001-01-24. The 0.4.x branch will contain NO API CHANGES. The 0.5.x
 branch is completely experimental and may not be easy to track. Any
 changes affecting the API should go into 0.5.x, as should any features
@@ -16,35 +16,33 @@ which are not completely stable. 0.6.0 will be the next stable branch.
 
 PREREQUISITES
 
-You need at least gcc 2.95.2, here is URL for RPMS:
-(not all are needed, like java, g77 and chil)
-ftp://rawhide.redhat.com/pub/rawhide/i386/RedHat/RPMS/ 
-   14414259 Dec 12 15:03 gcc-2.95.2-3.src.rpm
-      94155 Dec 13 23:21 cpp-2.95.2-3.i386.rpm
-    1005779 Dec 13 23:21 gcc-java-2.95.2-3.i386.rpm
-    1485682 Dec 13 23:21 gcc-g77-2.95.2-3.i386.rpm
-    1040751 Dec 13 23:21 gcc-chill-2.95.2-3.i386.rpm
-    1392905 Dec 13 23:21 gcc-c++-2.95.2-3.i386.rpm
-    2251218 Dec 13 23:21 gcc-2.95.2-3.i386.rpm
-     319122 Dec 13 23:21 libstdc++-devel-2.95.2-3.i386.rpm
-     655469 Dec 13 23:21 libstdc++-compat-2.95.2-3.i386.rpm
-     134706 Dec 13 23:21 libstdc++-2.95.2-3.i386.rpm
-     891616 Dec 13 23:21 gcc-objc-2.95.2-3.i386.rpm
-    2251260 Dec 13 23:21 gcc-libgcj-2.95.2-3.i386.rpm
-    5157017 Feb 24 20:58 binutils-2.9.5.0.22-6.src.rpm
-    1476868 Feb 24 21:04 binutils-2.9.5.0.22-6.i386.rpm
-     165138 Feb 24 21:05 kernel-utils-2.2.14-5.0.i386.rpm
+Atlas-C++ has been compiled on a number of different compilers including:
 
-* Any versions of gcc older than 2.95.2 are not supported! *
+Microsoft Visual C++
+egcs 2.91.66
+gcc 2.95.2
+gcc 2.96 (provided with recent Redhat releases)
 
-In order to generate the documentation, you will need doxygen.
+Previous versions of Atlas-C++ would not build on many compilers, including
+specifically egcs and Visial C++. This is no longer true of this version.
 
-This release should compile and work with:
- - gcc 2.95.2
- - gcc 2.95.3test2 and up
- - "gcc 2.96" from Red Hat 7 (make sure you have the latest update -
-   packages aending in "-69" and above should work)
- - gcc 3.0 (this was not out at the time of release, but CVS gcc worked)
+COMPILING
+
+For details of how to compile Atlas-C++ see INSTALL. Please note that
+optimisation has been disabled by default for the Atlas-C++ build. This
+has been done because Atlas-C++ build extremely slowly on some compilers
+if optimisation is enabled. It is recommended that production binaries
+and binaries for slower systems are built against an optimised build of
+Atlas-C++. To enable optimisation comment out this line in configure.in:
+
+	CXXFLAGS='-Wall -g'
+
+as follows:
+
+	# CXXFLAGS='-Wall -g'
+
+and then re-create the configure script using the autogen.sh script. Note
+that automake, autoconf and related tools will be required.
 
 SOCKET LIBRARIES
 

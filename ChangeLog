@@ -1,3 +1,11 @@
+2001-05-14  Al Riddoch  <alriddoch@zepler.org>
+
+	* 0.4.2 released
+
+	* Ensured that version is set to 0.4.2 in all files.
+
+	* HACKING, NEWS, README: Updated for 0.4.2 release
+
 2001-05-10  Al Riddoch  <alriddoch@zepler.org>
 
 	* src/Objects/Operation/Operation.cc, src/Objects/Entity/Entity.cc,
