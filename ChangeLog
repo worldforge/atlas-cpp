@@ -1,3 +1,11 @@
+2003-01-0 James Turner <james@worldforge.org>
+
+	* Added project files for Mac OS-X project builder. This produces
+	  a framework called Atlas, whose's headers folder contains symlinks
+	  so that standard Atlas include paths work correctly. If someone
+	  knows how to make PB export headers into a subdirectory, please
+	  inform me.
+
 2002-07-20  Al Riddoch  <alriddoch@zepler.org>
 
 	* Updated README, bumped up version number, and release 0.4.5.
