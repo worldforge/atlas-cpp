@@ -51,6 +51,7 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %{prefix}/bin/atlas-config
 %{prefix}/lib/libAtlas*.so
+%{prefix}/lib/libAtlas*.la
 %{prefix}/lib/libAtlas*.a
 %{prefix}/lib/pkgconfig
 %{prefix}/include/Atlas-C++-0.4
