@@ -1,5 +1,7 @@
 2001-01-25  Stefanus Du Toit  <sjdutoit@uwaterloo.ca>
 
+	* configure.am, configure.in: Changed version to 0.4.0
+	
 	* HACKING: Added info about CVS tags.
 
 2001-01-23  Stefanus Du Toit  <sjdutoit@uwaterloo.ca>
