@@ -2,6 +2,9 @@
 // GNU Lesser General Public License (See COPYING for details).
 // Copyright (C) 2000 Stefanus Du Toit, Michael Day
 
+#ifndef ATLAS_CODECS_UTILITY_H
+#define ATLAS_CODECS_UTILITY_H
+
 /** @file Codecs/Utility.h
  * Various utility functions for codec implementation.
  *
@@ -16,6 +19,8 @@
 #include <string>
 #include <algorithm>
 
+namespace Atlas { namespace Codecs {
+  
 /// Convert an ASCII char to its hexadecimal value
 inline const std::string charToHex(char c)
 {
@@ -99,3 +104,7 @@ inline const std::string hexDecode(const std::string& prefix,
 
     return newMessage;
 }
+
+} } // namespace Atlas::Codecs
+
+#endif

@@ -1,11 +1,28 @@
+2001-01-18  Stefanus Du Toit  <sjdutoit@uwaterloo.ca>
+
+	* src/Codecs/Utility.h: Added header guards. Placed file in
+	Atlas::Codecs namespace.
+
+	* src/Codecs/Packed.cc, src/Codecs/XML.cc: Changed constructor to
+	no longer take Codec::Parameters. Placed files in Atlas::Codecs
+	namespace.
+
+	* src/Codecs/Packed.h, src/Codecs/XML.h: Added headers for codecs.
+
+	* src/Net/Stream.cc, src/Net/Stream.h: Removed all references to
+	Factory and hard-coded the list of codecs.
+
+	* src/Codec.h: Removed Factory<Codec> and Codec::Parameters.
+
+	* src/Factory.h, src/Makefile.am: Removed Factory.h.
+
 2001-01-18  Al Riddoch  <ajr@ecs.soton.ac.uk>
 
 	* tutorial/example/*: Moved tutorial into example directory with its
 	own autoconf system so this is also part of the tutorial.
 
-2001-01-18  Al Riddoch  <ajr@ecs.soton.ac.uk>
-
-	* configure.in: Re-ordered libraries in ATLAS_LIBS so static linking		works.
+	* configure.in: Re-ordered libraries in ATLAS_LIBS so static
+	linking works.
 
 2001-01-17  Stefanus Du Toit  <sjdutoit@uwaterloo.ca>
 

@@ -1,9 +1,16 @@
 // This file may be redistributed and modified only under the terms of
 // the GNU Lesser General Public License (See COPYING for details).
-// Copyright (C) 2000 Michael Day, Dmitry Derevyanko
+// Copyright (C) 2000-2001 Michael Day, Dmitry Derevyanko, Stefanus Du Toit
+
+// Note: this is obviously an awful hack, but for now it should work.
+// All of this should be completely revised in Atlas-C++ 0.5.x.
+// Please.
+// The codecs are currently as hardcoded as they can be.
 
 #include <iostream>
 
+#include "../Codecs/XML.h"
+#include "../Codecs/Packed.h"
 #include "Stream.h"
 
 using namespace std;
@@ -29,15 +36,12 @@ string get_line(string &s1, char ch, string &s2)
   return s2;
 }
 
-
-template <class T>
-Atlas::Net::NegotiateHelper<T>::NegotiateHelper(list<string> *names, Factories *out_factories) :
-  names(names), outFactories(out_factories)
+Atlas::Net::NegotiateHelper::NegotiateHelper(list<string> *names) :
+  names(names)
 { 
 }
 
-template <class F>
-bool Atlas::Net::NegotiateHelper<F>::get(string &buf, string header)
+bool Atlas::Net::NegotiateHelper::get(string &buf, string header)
 {
   string s, h;
   
@@ -65,26 +69,23 @@ bool Atlas::Net::NegotiateHelper<F>::get(string &buf, string header)
   return false;
 }
 
-template <class T>
-void Atlas::Net::NegotiateHelper<T>::put(string &buf, string header)
+void Atlas::Net::NegotiateHelper::put(string &buf, string header)
 {
-  Factories::iterator i;
-  
   buf.erase();
-  for(i = outFactories->begin(); i != outFactories->end(); i++)
-    {
-      buf += header;
-      buf += " ";
-      buf += (*i)->GetName();
-      buf += "\n";
-    }
+
+  buf += header;
+  buf += " Packed\n";
+
+  buf += header;
+  buf += " XML\n";
+
   buf += "\n";
 }
 
 Atlas::Net::StreamConnect::StreamConnect(const string& name, iostream& s,
 Bridge* bridge) :
   state(SERVER_GREETING), outName(name), socket(s), bridge(bridge),
-  codecHelper(&inCodecs, &outCodecs)
+  codecHelper(&inCodecs), m_canPacked(true), m_canXml(true)
 {
 }
 
@@ -119,7 +120,6 @@ void Atlas::Net::StreamConnect::Poll(bool can_read = true)
     
     if (state == CLIENT_CODECS)
     {
-	processClientCodecs();
 	codecHelper.put(out, "ICAN");
 	socket << out << flush;
 	state++;
@@ -141,7 +141,7 @@ Atlas::Negotiate<iostream>::State Atlas::Net::StreamConnect::GetState()
 {
     if (state == DONE)
     {
-        if (! outCodecs.empty ())
+        if (m_canPacked || m_canXml)
         {
             return SUCCEEDED;
         }
@@ -155,48 +155,28 @@ Atlas::Negotiate<iostream>::State Atlas::Net::StreamConnect::GetState()
 
 Atlas::Codec<iostream>* Atlas::Net::StreamConnect::GetCodec()
 {
-    if (! outCodecs.empty ())
-    {
-        return (*outCodecs.begin())-> \
-                New(Codec<iostream>::Parameters(socket,bridge));
-    }
-    return NULL; // throw exception?
+    if (m_canXml) return new Atlas::Codecs::XML(socket, bridge);
+    if (m_canPacked) return new Atlas::Codecs::Packed(socket, bridge);
+    return NULL;
 }
 
 
 void Atlas::Net::StreamConnect::processServerCodecs()
 {
-    FactoryCodecs::iterator i;
     list<string>::iterator j;
 
-    outCodecs.erase(outCodecs.begin(), outCodecs.end());
+    for (j = inCodecs.begin(); j != inCodecs.end(); ++j)
+      {
+        if (*j == "Packed") m_canPacked = true;
+        if (*j == "XML") m_canXml = true;
+      }
 
-    FactoryCodecs *myCodecs = &Factory<Codec<iostream> >::Factories();
-
-    for (i = myCodecs->begin(); i != myCodecs->end(); ++i)
-    {
-	for (j = inCodecs.begin(); j != inCodecs.end(); ++j)
-	{
-	    if ((*i)->GetName() == *j)
-	    {
-		outCodecs.push_back(*i);
-		cerr << *j << " is the one" << endl << flush;
-		return;	      
-	    }
-	}
-    }
-}
-  
-void Atlas::Net::StreamConnect::processClientCodecs()
-{
-    FactoryCodecs *myCodecs = &Factory<Codec<iostream> >::Factories();
-    outCodecs = *myCodecs;
 }
   
 Atlas::Net::StreamAccept::StreamAccept(const string& name, iostream& s,
 Bridge* bridge) :
   state(SERVER_GREETING), outName(name), socket(s), bridge(bridge),
-  codecHelper(&inCodecs, &outCodecs)
+  codecHelper(&inCodecs), m_canPacked(false), m_canXml(false)
 {
 }
 
@@ -237,9 +217,9 @@ void Atlas::Net::StreamAccept::Poll(bool can_read = true)
     
     if (state == SERVER_CODECS)
     {
-	processServerCodecs();
-	codecHelper.put(out, "IWILL");
-	socket << out << flush;
+        if (m_canXml) socket << "IWILL XML\n";
+        else if (m_canXml) socket << "IWILL Packed\n";
+	socket << endl;
 	state++;
     }
     
@@ -250,7 +230,7 @@ Atlas::Negotiate<iostream>::State Atlas::Net::StreamAccept::GetState()
 {
     if (state == DONE)
     {
-        if (! outCodecs.empty ())
+        if (m_canPacked || m_canXml)
         {
             return SUCCEEDED;
         }
@@ -264,37 +244,18 @@ Atlas::Negotiate<iostream>::State Atlas::Net::StreamAccept::GetState()
 
 Atlas::Codec<iostream>* Atlas::Net::StreamAccept::GetCodec()
 {
-    if (! outCodecs.empty ())
-    {
-        return (*outCodecs.begin())-> \
-                New(Codec<iostream>::Parameters(socket,bridge));
-    }
-    return NULL; // throw exception?
+    if (m_canXml) return new Atlas::Codecs::XML(socket, bridge);
+    if (m_canPacked) return new Atlas::Codecs::Packed(socket, bridge);
+    return NULL;
 }
 
-void Atlas::Net::StreamAccept::processServerCodecs()
-{
-    FactoryCodecs::iterator i;
-    list<string>::iterator j;
-
-    FactoryCodecs *myCodecs = &Factory<Codec<iostream> >::Factories();
-
-    for (i = myCodecs->begin(); i != myCodecs->end(); ++i)
-    {
-	for (j = inCodecs.begin(); j != inCodecs.end(); ++j)
-	{
-	    if ((*i)->GetName() == *j)
-	    {
-		outCodecs.push_back(*i);
-		return;	      
-	    }
-	}
-    }
-}
-  
 void Atlas::Net::StreamAccept::processClientCodecs()
 {
-    FactoryCodecs *myCodecs = &Factory<Codec<iostream> >::Factories();
-    outCodecs = *myCodecs;
+    list<string>::iterator j;
+
+    for (j = inCodecs.begin(); j != inCodecs.end(); ++j)
+      {
+        if (*j == "XML") m_canXml = true;
+        if (*j == "Packed") m_canPacked = true;
+      }
 }
-  

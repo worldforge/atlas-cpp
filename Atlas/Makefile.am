@@ -8,5 +8,5 @@ libAtlas_la_SOURCES = \
 	Bridge.cc Codec.cc
 
 libAtlasinclude_HEADERS = \
-	Factory.h Bridge.h Codec.h Negotiate.h EncoderBase.h \
+	Bridge.h Codec.h Negotiate.h EncoderBase.h \
 	Task.h Codec_impl.h
