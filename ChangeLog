@@ -1,5 +1,10 @@
 2001-01-18  Al Riddoch  <ajr@ecs.soton.ac.uk>
 
+	* tutorial/example/*: Moved tutorial into example directory with its
+	own autoconf system so this is also part of the tutorial.
+
+2001-01-18  Al Riddoch  <ajr@ecs.soton.ac.uk>
+
 	* configure.in: Re-ordered libraries in ATLAS_LIBS so static linking		works.
 
 2001-01-17  Stefanus Du Toit  <sjdutoit@uwaterloo.ca>
