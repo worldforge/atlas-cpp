@@ -1,3 +1,7 @@
+2001-11-08  Al Riddoch  <alriddoch@zepler.org>
+
+	* Incremented version to 0.4.4 for release.
+
 2001-10-26  Al Riddoch  <alriddoch@zepler.org>
 
 	* src/Objects/Encoder.h: Fix includes so file is stand-alone.

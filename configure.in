@@ -4,7 +4,7 @@ AC_INIT()
 
 dnl Initialise automake
 
-ATLAS_VERSION=0.4.3.1
+ATLAS_VERSION=0.4.4
 AC_SUBST(ATLAS_VERSION)
 
 # libtool versioning
@@ -17,7 +17,7 @@ INTERFACE_VERSION='-version-info 1:1:0'
 
 AC_SUBST(INTERFACE_VERSION)    
 
-AM_INIT_AUTOMAKE("Atlas-C++", "0.4.3.1")
+AM_INIT_AUTOMAKE("Atlas-C++", "0.4.4")
 AM_CONFIG_HEADER(config.h)
 
 dnl Test for GNU libtool
@@ -31,7 +31,7 @@ dnl Test for C++ compiler
 
 AC_PROG_CXX
 
-CXXFLAGS='-Wall -g'
+dnl CXXFLAGS='-Wall -g'
 
 dnl Test for ANSI standard language features
 
