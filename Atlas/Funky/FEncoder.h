@@ -9,7 +9,7 @@
 
 #include <string>
 
-namespace Atlas {
+namespace Atlas { namespace Funky {
 
 /** @defgroup funky_encoder Atlas Funky Encoder
  *
@@ -80,7 +80,7 @@ class BeginList {};
  */
 class EndList {};
 
-template<class B> class FunkyEncoder;
+template<class B> class Encoder;
 template<class B, class T> class EncMap;
 template<class B, class T> class EncList;
 template<class B, class T> class EncMapValue;
@@ -98,35 +98,35 @@ public:
     /// Begin a map.
     EncMap<B, T> operator<<(const BeginMap&)
     {
-        b.mapItem(name, B::mapBegin);
+        b.MapItem(name, B::MapBegin);
         return EncMap<B, T>(b);
     }
 
     /// Begin a list.
     EncList<B, T> operator<<(const BeginList&)
     {
-        b.mapItem(name, B::listBegin);
+        b.MapItem(name, B::ListBegin);
         return EncList<B, T>(b);
     }
 
     /// Send an integer value.
     T operator<<(int i)
     {
-        b.mapItem(name, i);
+        b.MapItem(name, i);
         return T(b);
     }
 
     /// Send a double value.
     T operator<<(double d)
     {
-        b.mapItem(name, d);
+        b.MapItem(name, d);
         return T(b);
     }
 
     /// Send a string value.
     T operator<<(const std::string& s)
     {
-        b.mapItem(name, s);
+        b.MapItem(name, s);
         return T(b);
     }
 
@@ -134,7 +134,7 @@ public:
     template<typename Arg>
     T operator<<(const Arg& a)
     {
-        b.mapItem(name, a);
+        b.MapItem(name, a);
         return T(b);
     }
 
@@ -164,7 +164,7 @@ public:
     /// End this map
     T operator<<(EndMap)
     {
-        b.mapEnd();
+        b.MapEnd();
         return T(b);
     }
     
@@ -186,35 +186,35 @@ public:
     /// Start a map.
     EncMap<B, EncList<B, T> > operator<<(const BeginMap&)
     {
-        b.listItem(B::mapBegin);
+        b.ListItem(B::MapBegin);
         return EncMap<B, EncList<B, T> >(b);
     }
 
     /// Start a list.
     EncList<B, EncList<B, T> > operator<<(const BeginList&)
     {
-        b.listItem(B::listBegin);
+        b.ListItem(B::ListBegin);
         return EncList<B, EncList<B, T> >(b);
     }
 
     /// Send an integer value.
     EncList<B, T> operator<<(int i)
     {
-        b.listItem(i);
+        b.ListItem(i);
         return *this;
     }
 
     /// Send a double value.
     EncList<B, T> operator<<(double d)
     {
-        b.listItem(d);
+        b.ListItem(d);
         return *this;
     }
 
     /// Send a string value.
     EncList<B, T> operator<<(const std::string& s)
     {
-        b.listItem(s);
+        b.ListItem(s);
         return *this;
     }
 
@@ -222,14 +222,14 @@ public:
     template<typename Arg>
     EncList<B, T> operator<<(const Arg& a)
     {
-        b.listItem(a);
+        b.ListItem(a);
         return *this;
     }
     
     /// End this list.
     T operator<<(EndList)
     {
-        b.listEnd();
+        b.ListEnd();
         return T(b);
     }
     
@@ -244,22 +244,22 @@ protected:
  * @see funky_encoder
  */
 template <class B>
-class FunkyEncoder
+class Encoder
 {
 public:
-    FunkyEncoder(B& b) : b(b) { }
+    Encoder(B& b) : b(b) { }
     
     /// Start a message (as a map).
-    EncMap<B, FunkyEncoder> operator<<(const BeginMap&) {
-        b.streamMessage(B::mapBegin);
-        return EncMap<B, FunkyEncoder>(b);
+    EncMap<B, Encoder> operator<<(const BeginMap&) {
+        b.StreamMessage(B::MapBegin);
+        return EncMap<B, Encoder>(b);
     }
 
     /// If the encoder supports it, send a different kind of message.
     template<typename Arg>
-    FunkyEncoder<B> operator<<(const Arg& a)
+    Encoder<B> operator<<(const Arg& a)
     {
-        b.streamMessage(a);
+        b.StreamMessage(a);
         return *this;
     }
 
@@ -284,6 +284,6 @@ public:
 };
 
 
-} // Atlas::Funky namespace
+} } // Atlas::Funky namespace
 
 #endif

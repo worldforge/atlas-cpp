@@ -8,8 +8,5 @@ For 0.4.0:
  - write tests/
  - make all tests succeed
  - make compilable on gcc 2.95.3
- - make compilable on gcc 3.0 (or current CVS)
- - make ISO/IEC 14882 conformant, with the exception of compiler
-   kludges
  - FIXMEs in src/Net/Stream.cc
  - update README

@@ -1,13 +1,16 @@
 2001-01-14  Stefanus Du Toit  <sjdutoit@uwaterloo.ca>
 
+	* src/*: Made code ISO 14882:1998 compliant from what I can
+	tell. Compiles with CVS gcc now.
+
 	* src/Codec.h: Applied template instantiation technique as
 	mentioned in HACKING.
 
-	* src/: Removed Filter and Filters/ completely
+	* src/: Removed Filter and Filters/ completely.
 
-	* src/Net/Stream.cpp: Removed references to Filter
+	* src/Net/Stream.cpp: Removed references to Filter.
 
-	* *.cpp: Removed .cpp files
+	* *.cpp: Removed .cpp files.
 
 2000-11-01  Al Riddoch  <ajr@ecs.soton.ac.uk>
 

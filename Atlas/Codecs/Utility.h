@@ -2,9 +2,6 @@
 // GNU Lesser General Public License (See COPYING for details).
 // Copyright (C) 2000 Stefanus Du Toit, Michael Day
 
-#ifndef ATLAS_CODECS_UTILITY_H
-#define ATLAS_CODECS_UTILITY_H
-
 /** @file Codecs/Utility.h
  * Various utility functions for codec implementation.
  *
@@ -23,12 +20,7 @@
 inline const std::string charToHex(char c)
 {
     char hex[3];
-#ifdef __MINGW32__
-    // Perhaps this should #ifdef _WIN32 instead?    
-    _snprintf(hex, 3, "%x", c);
-#else
     snprintf(hex, 3, "%x", c);
-#endif
     return hex;
 }
 
@@ -49,15 +41,13 @@ inline char hexToChar(const std::string& hex)
  * @param message The message that is to be escaped.
  * @see hexDecode
  */
-inline const std::string hexEncodeWithPrefix(const std::string&
-                                             prefix,
-                                             const std::string& special,
-                                             const std::string& message)
+inline const std::string hexEncode(const std::string& prefix,
+        const std::string& special, const std::string& message)
 {
-    using std::string;
-    string encoded;
+    std::string encoded;
 
-    for (string::const_iterator i = message.begin(); i != message.end(); ++i)
+    for (std::string::const_iterator i = message.begin();
+         i != message.end(); ++i)
     {
 	if (find(special.begin(), special.end(), *i) != special.end())
 	{
@@ -84,13 +74,11 @@ inline const std::string hexEncodeWithPrefix(const std::string&
  * @param prefix The string that is followed by the escaped characters
  * @param message The escaped message.
  */
-inline const std::string hexDecodeWithPrefix(const std::string&
-                                             prefix,
-                                             const std::string& message)
+inline const std::string hexDecode(const std::string& prefix,
+                                   const std::string& message)
 {
-    using std::string;
-    string newMessage;
-    string curFragment;
+    std::string newMessage;
+    std::string curFragment;
     
     for (size_t i = 0; i < message.size(); i++) {
         if (equal(prefix.begin(), prefix.begin() + curFragment.length() + 1, 
@@ -101,7 +89,7 @@ inline const std::string hexDecodeWithPrefix(const std::string&
             curFragment = "";
         }
         if (curFragment == prefix) {
-            string hex;
+            std::string hex;
             hex += message[++i];
             hex += message[++i];
             newMessage += hexToChar(hex);
@@ -111,5 +99,3 @@ inline const std::string hexDecodeWithPrefix(const std::string&
 
     return newMessage;
 }
-
-#endif // ATLAS_CODECS_UTILITY_H

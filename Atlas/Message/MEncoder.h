@@ -5,12 +5,11 @@
 #ifndef ATLAS_MESSAGE_ENCODER_H
 #define ATLAS_MESSAGE_ENCODER_H
 
-#include <string>
 #include "../EncoderBase.h"
 #include "../Bridge.h"
 #include "Object.h"
 
-namespace Atlas {
+namespace Atlas { namespace Message {
 
 /** Encoder that transmits Atlas::Message::Object.
  *
@@ -30,13 +29,15 @@ public:
     virtual ~Encoder() { }
 
     /// Send a message (must be a map!) in stream state.
-    virtual void streamMessage(const Object& obj);
+    virtual void StreamMessage(const Object& obj);
     /// Send an object as a map item.
-    virtual void mapItem(const std::string&, const Object&);
+    virtual void MapItem(const std::string&, const Object&);
     /// Send an object as a list item.
-    virtual void listItem(const Object&);
+    virtual void ListItem(const Object&);
 };
 
-} // namespace Atlas
+} } // namespace Atlas::Message
 
 #endif
+
+

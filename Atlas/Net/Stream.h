@@ -5,6 +5,10 @@
 #ifndef ATLAS_NET_STREAM_H
 #define ATLAS_NET_STREAM_H
 
+#include <iosfwd>
+#include <string>
+#include <list>
+
 #include "../Negotiate.h"
 
 namespace Atlas { namespace Net {
@@ -38,18 +42,18 @@ along with the name of sender and a Socket
 
   };
 
-class StreamConnect : public Atlas::Negotiate<iostream>
+class StreamConnect : public Atlas::Negotiate<std::iostream>
 {
     public:
 
-    StreamConnect(const std::string& name, iostream&, Atlas::Bridge*);
+    StreamConnect(const std::string& name, std::iostream&, Atlas::Bridge*);
 
     virtual ~StreamConnect() {}
 
     virtual void Poll(bool can_read = true);
 
     virtual State GetState();
-    virtual Atlas::Codec<iostream>* GetCodec();
+    virtual Atlas::Codec<std::iostream>* GetCodec();
 
     private:
 
@@ -68,14 +72,14 @@ class StreamConnect : public Atlas::Negotiate<iostream>
 
     std::string outName;
     std::string inName;
-    iostream& socket;
+    std::iostream& socket;
     Atlas::Bridge* bridge;
     std::list<std::string> inCodecs;
   
-    typedef std::list<Atlas::Factory<Atlas::Codec<iostream> >*> FactoryCodecs;
+    typedef std::list<Atlas::Factory<Atlas::Codec<std::iostream> >*> FactoryCodecs;
 
     FactoryCodecs outCodecs;
-    NegotiateHelper<Atlas::Factory<Atlas::Codec<iostream> > > codecHelper;
+    NegotiateHelper<Atlas::Factory<Atlas::Codec<std::iostream> > > codecHelper;
     std::string buf;
 
     void processServerCodecs();
@@ -83,18 +87,18 @@ class StreamConnect : public Atlas::Negotiate<iostream>
     void processClientCodecs();
 };
  
-class StreamAccept : public Atlas::Negotiate<iostream>
+class StreamAccept : public Atlas::Negotiate<std::iostream>
 {
     public:
 
-    StreamAccept(const std::string& name, iostream&, Atlas::Bridge*);
+    StreamAccept(const std::string& name, std::iostream&, Atlas::Bridge*);
 
     virtual ~StreamAccept() {}
 
     virtual void Poll(bool can_read = true);
 
     virtual State GetState();
-    virtual Atlas::Codec<iostream>* GetCodec();
+    virtual Atlas::Codec<std::iostream>* GetCodec();
 
     private:
 
@@ -113,14 +117,14 @@ class StreamAccept : public Atlas::Negotiate<iostream>
 
     std::string outName;
     std::string inName;
-    iostream& socket;
+    std::iostream& socket;
     Atlas::Bridge* bridge;
     std::list<std::string> inCodecs;
   
-    typedef std::list<Atlas::Factory<Atlas::Codec<iostream> >*> FactoryCodecs;
+    typedef std::list<Atlas::Factory<Atlas::Codec<std::iostream> >*> FactoryCodecs;
 
     FactoryCodecs outCodecs;
-    NegotiateHelper<Atlas::Factory<Atlas::Codec<iostream> > > codecHelper;
+    NegotiateHelper<Atlas::Factory<Atlas::Codec<std::iostream> > > codecHelper;
     std::string buf;
 
     void processServerCodecs();
