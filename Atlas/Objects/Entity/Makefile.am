@@ -2,6 +2,8 @@ SUBDIRS = .
 
 lib_LTLIBRARIES = libAtlasObjectsEntity.la
 
+libAtlasObjectsEntity_la_LDFLAGS = $(INTERFACE_VERSION)
+
 libAtlasObjectsEntityincludedir = $(includedir)/Atlas/Objects/Entity
 
 libAtlasObjectsEntity_la_SOURCES = \

@@ -1,6 +1,6 @@
 // This file may be redistributed and modified only under the terms of
 // the GNU Lesser General Public License (See COPYING for details).
-// Copyright (C) 2000 Stefanus Du Toit
+// Copyright (C) 2000-2001 Stefanus Du Toit and Alistair Riddoch
 
 #ifndef ATLAS_OBJECTS_ROOT_H
 #define ATLAS_OBJECTS_ROOT_H
@@ -33,7 +33,7 @@ public:
     /// Construct a Root instance.
     Root(const std::string& id);
 protected:
-    /// Construct a Root instance.
+    /// Constructor for classes which inherit from this one
     Root(const std::string& id, const std::string& parent);
 public:
     /// Default destructor.

@@ -1,6 +1,6 @@
 // This file may be redistributed and modified only under the terms of
 // the GNU Lesser General Public License (See COPYING for details).
-// Copyright 2000 Stefanus Du Toit.
+// Copyright 2000-2001 Stefanus Du Toit and Alistair Riddoch.
 // Automatically generated using gen_cc.py.
 
 #include "RootOperation.h"
@@ -10,23 +10,15 @@ using Atlas::Message::Object;
 namespace Atlas { namespace Objects { namespace Operation { 
 
 RootOperation::RootOperation()
-     : Root("root_operation", "root")
+     : Root("root_operation", "root"), attr_serialno(0), attr_refno(0), attr_seconds(0.0), attr_future_seconds(0.0)
 {
     SetObjtype(std::string("op_definition"));
-    SetSerialno(0);
-    SetRefno(0);
-    SetSeconds(0.0);
-    SetFutureSeconds(0.0);
 }
 
 RootOperation::RootOperation(const string & id, const string & parent)
-     : Root(id, parent)
+     : Root(id, parent), attr_serialno(0), attr_refno(0), attr_seconds(0.0), attr_future_seconds(0.0)
 {
     SetObjtype(std::string("op_definition"));
-    SetSerialno(0);
-    SetRefno(0);
-    SetSeconds(0.0);
-    SetFutureSeconds(0.0);
 }
 
 RootOperation RootOperation::Instantiate()

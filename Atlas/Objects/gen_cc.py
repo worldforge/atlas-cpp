@@ -11,7 +11,7 @@ from ParseDef import read_all_defs
 copyright = \
 "// This file may be redistributed and modified only under the terms of\n\
 // the GNU Lesser General Public License (See COPYING for details).\n\
-// Copyright 2000 Stefanus Du Toit.\n\
+// Copyright 2000-2001 Stefanus Du Toit and Alistair Riddoch.\n\
 // Automatically generated using gen_cc.py.\n"
 
 # These are only used for description.
@@ -145,7 +145,7 @@ class GenerateCC:
                 else:
                     self.out.write('%s' % sub)
                 self.out.write(");\n")
-    def constructors_im(self, obj):
+    def constructors_im(self, obj, statics):
         for sub_obj in obj.attr_list:
             if sub_obj.name == "id":
                 oid = sub_obj.value
@@ -158,11 +158,35 @@ class GenerateCC:
         self.out.write(self.classname + "::" + self.classname + "()\n")
         self.out.write("     : ")
         self.out.write(string.join(map(lambda parent,a=args:classize(parent)+"("+a+")", \
-                       obj.attr['parents'].value), ", ") + "\n")
-        self.out.write("{\n")
+                       obj.attr['parents'].value), ", "))
+        constructed_statics = []
+        if len(statics) > 0:
+            for attr in statics:
+                if attr.type == "list":
+                    if len(attr.value) == 1:
+                        self.out.write(", ")
+                        self.out.write("attr_%s(1," % attr.name)
+                        sub = attr.value[0]
+                        sub_type = type2string[type(sub)]
+                        if sub_type == "string":
+                            self.out.write('std::string("%s"))' % sub)
+                        else:
+                            self.out.write('%s)' % sub)
+                        constructed_statics.append(attr.name)
+                elif attr.type == "string":
+                    if len(attr.value) > 1:
+                        self.out.write(", ")
+                        self.out.write("attr_%s(\"%s\")" % (attr.name, attr.value))
+                        constructed_statics.append(attr.name)
+                else:
+                    self.out.write(", ")
+                    self.out.write("attr_%s(%s)" % (attr.name, attr.value))
+                    constructed_statics.append(attr.name)
+        self.out.write("\n{\n")
         for sub_obj in obj.attr_list:
             if sub_obj.attr_container_obj == obj and \
                sub_obj.name != "id" and sub_obj.name != "parents" and \
+               sub_obj.name not in constructed_statics and \
                sub_obj.name not in descr_attrs:
                 if (sub_obj.type == "list" or sub_obj.type == "map") and len(sub_obj.value) == 0: pass
                 elif sub_obj.type == "string" and len(sub_obj.value) == 0: pass
@@ -185,11 +209,35 @@ class GenerateCC:
         self.out.write(self.classname + "::" + self.classname + "(const string & id, const string & parent)\n")
         self.out.write("     : ")
         self.out.write(string.join(map(lambda parent,a=args:classize(parent)+"("+a+")", \
-                       obj.attr['parents'].value), ", ") + "\n")
-        self.out.write("{\n")
+                       obj.attr['parents'].value), ", "))
+        constructed_statics = []
+        if len(statics) > 0:
+            for attr in statics:
+                if attr.type == "list":
+                    if len(attr.value) == 1:
+                        self.out.write(", ")
+                        self.out.write("attr_%s(1," % attr.name)
+                        sub = attr.value[0]
+                        sub_type = type2string[type(sub)]
+                        if sub_type == "string":
+                            self.out.write('std::string("%s"))' % sub)
+                        else:
+                            self.out.write('%s)' % sub)
+                        constructed_statics.append(attr.name)
+                elif attr.type == "string":
+                    if len(attr.value) > 1:
+                        self.out.write(", ")
+                        self.out.write("attr_%s(\"%s\")" % (attr.name, attr.value))
+                        constructed_statics.append(attr.name)
+                else:
+                    self.out.write(", ")
+                    self.out.write("attr_%s(%s)" % (attr.name, attr.value))
+                    constructed_statics.append(attr.name)
+        self.out.write("\n{\n")
         for sub_obj in obj.attr_list:
             if sub_obj.attr_container_obj == obj and \
                sub_obj.name != "id" and sub_obj.name != "parents" and \
+               sub_obj.name not in constructed_statics and \
                sub_obj.name not in descr_attrs:
                 if (sub_obj.type == "list" or sub_obj.type == "map") and len(sub_obj.value) == 0: pass
                 elif sub_obj.type == "string" and len(sub_obj.value) == 0: pass
@@ -470,16 +518,16 @@ class GenerateCC:
         #self.out.write("using namespace Atlas::Message;\n")
         self.out.write("using Atlas::Message::Object;\n")
         self.out.write("\n")
+        static_attrs = filter(lambda attr,obj=obj:(not attr.name in descr_attrs) \
+          and (not find_in_parents(obj.attr['parents'].value, attr.name)), \
+          obj.attr_list)
         if outdir != ".":
             self.ns_open(['Atlas', 'Objects', outdir])
         else:
             self.ns_open(['Atlas', 'Objects'])
         self.out.write("\n")
-        self.constructors_im(obj)
+        self.constructors_im(obj, static_attrs)
         self.instantiation(obj)
-        static_attrs = filter(lambda attr,obj=obj:(not attr.name in descr_attrs) \
-          and (not find_in_parents(obj.attr['parents'].value, attr.name)), \
-          obj.attr_list)
         if len(static_attrs) > 0:
             self.hasattr_im(obj, static_attrs)
             self.getattr_im(obj, static_attrs)

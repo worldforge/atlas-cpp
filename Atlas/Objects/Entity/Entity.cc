@@ -1,6 +1,6 @@
 // This file may be redistributed and modified only under the terms of
 // the GNU Lesser General Public License (See COPYING for details).
-// Copyright 2000 Stefanus Du Toit.
+// Copyright 2000-2001 Stefanus Du Toit and Alistair Riddoch.
 // Automatically generated using gen_cc.py.
 
 #include "RootEntity.h"
@@ -10,7 +10,7 @@ using Atlas::Message::Object;
 namespace Atlas { namespace Objects { namespace Entity { 
 
 RootEntity::RootEntity()
-     : Root("root_entity", "root")
+     : Root("root_entity", "root"), attr_stamp_contains(0.0)
 {
     SetObjtype(std::string("class"));
     Object::ListType pos;
@@ -23,11 +23,10 @@ RootEntity::RootEntity()
     velocity.push_back(0.0);
     velocity.push_back(0.0);
     SetVelocity(velocity);
-    SetStampContains(0.0);
 }
 
 RootEntity::RootEntity(const string & id, const string & parent)
-     : Root(id, parent)
+     : Root(id, parent), attr_stamp_contains(0.0)
 {
     SetObjtype(std::string("class"));
     Object::ListType pos;
@@ -40,7 +39,6 @@ RootEntity::RootEntity(const string & id, const string & parent)
     velocity.push_back(0.0);
     velocity.push_back(0.0);
     SetVelocity(velocity);
-    SetStampContains(0.0);
 }
 
 RootEntity RootEntity::Instantiate()

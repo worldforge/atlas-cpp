@@ -1,6 +1,6 @@
 // This file may be redistributed and modified only under the terms of
 // the GNU Lesser General Public License (See COPYING for details).
-// Copyright (C) 2000 Stefanus Du Toit
+// Copyright (C) 2000-2001 Stefanus Du Toit and Alistair Riddoch
 
 #include "../Message/Encoder.h"
 #include "Root.h"
@@ -9,23 +9,26 @@ using Atlas::Message::Object;
 
 namespace Atlas { namespace Objects {
 
-Root::Root()
+Root::Root() : attr_id("root"), attr_objtype("meta")
 {
-    SetId("root");
-    SetObjtype("meta");
+    // SetId("root");
+    // SetObjtype("meta");
 }
 
-Root::Root(const std::string& id)
+Root::Root(const std::string& id) : attr_parents(1, std::string("root")),
+                                    attr_id(id),
+                                    attr_objtype("instance")
 {
-    SetParents(Object::ListType(1,std::string("root")));
-    SetId(id);
-    SetObjtype("instance");
+    // SetParents(Object::ListType(1,std::string("root")));
+    // SetId(id);
+    // SetObjtype("instance");
 }
 
 Root::Root(const std::string& id, const std::string & parent)
+                                : attr_parents(1,parent), attr_id(id)
 {
-    SetId(id);
-    SetParents(Object::ListType(1,parent));
+    // SetId(id);
+    // SetParents(Object::ListType(1,parent));
 }
 
 Root::~Root()

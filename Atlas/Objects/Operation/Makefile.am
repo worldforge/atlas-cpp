@@ -2,6 +2,8 @@ SUBDIRS = .
 
 lib_LTLIBRARIES = libAtlasObjectsOperation.la
 
+libAtlasObjectsOperation_la_LDFLAGS = $(INTERFACE_VERSION)
+
 libAtlasObjectsOperationincludedir = $(includedir)/Atlas/Objects/Operation
 
 libAtlasObjectsOperation_la_SOURCES = \

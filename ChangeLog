@@ -1,3 +1,13 @@
+2001-05-10  Al Riddoch  <alriddoch@zepler.org>
+
+	* src/Objects/Operation/Operation.cc, src/Objects/Entity/Entity.cc,
+	  src/Objects/Root.cc, gen_cc.py: Static attributes are now
+	  constructed in the traditional C++ way.
+
+	* Updated copyright dates.
+
+	* configure.in, */Makefile.am: Added library interfave versioning.
+
 2001-05-09  Al Riddoch  <alriddoch@zepler.org>
 
 	* src/Net/Stream.cc: Nodified negotiation code so that Packed is
