@@ -1,3 +1,8 @@
+2001-01-16  Stefanus Du Toit  <sjdutoit@uwaterloo.ca>
+
+	* src/Message/DecoderBase.*: Changed int to long in List/MapItem
+	functions. Thanks to klaux for this.
+
 2001-01-15  Stefanus Du Toit  <sjdutoit@uwaterloo.ca>
 
 	* src/Codecs/XMLish.cc: Removed the XMLish codec.
