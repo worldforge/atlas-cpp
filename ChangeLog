@@ -1,3 +1,8 @@
+2001-09-24  Al Riddoch  <alriddoch@zepler.org>
+
+	* src/Net/Stream.cc: Re-wrote client greeting code so it is more
+	  efficient, as described by Damien McGinnes.
+
 2001-07-02  Al Riddoch  <alriddoch@zepler.org>
 
 	* src/Message/Object.h: Removed memory pool as it causes crashes
