@@ -8,7 +8,7 @@
 #include <string>
 #include <list>
 #include <algorithm>
-#include "../StuffFactory.h"
+#include "StuffFactory.h"
 namespace Atlas {
 
 /** Class factory

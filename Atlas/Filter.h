@@ -5,7 +5,7 @@
 #ifndef ATLAS_FILTER_H
 #define ATLAS_FILTER_H
 
-#include "../StuffFactory.h"
+#include "StuffFactory.h"
 #include "Factory.h"
 
 namespace Atlas {

@@ -30,7 +30,7 @@ The complete specification is located in cvs at:
     forge/protocols/atlas/spec/packed_syntax.html
     
 */
-#include "../../StuffFactory.h"
+#include "../StuffFactory.h"
 
 
 

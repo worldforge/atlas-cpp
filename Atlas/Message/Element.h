@@ -242,6 +242,11 @@ public:
         throw WrongTypeException();
     }
 
+	/*operator= (Object& rhs)
+	{
+		t = rhs.
+	}*/
+
 protected:
 
     Type t;
