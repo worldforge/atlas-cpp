@@ -2,3 +2,5 @@ Makefile.in
 Makefile
 simple_client
 simple_server
+.libs
+.deps
