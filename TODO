@@ -15,4 +15,4 @@ For 0.4.0:
  - make ISO/IEC 14882 conformant, with the exception of compiler
    kludges
  - make all template classes use format as documented in HACKING
- - remove .cpp files
+
