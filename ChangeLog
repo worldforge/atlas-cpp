@@ -1,7 +1,7 @@
 2003-07-03  Al Riddoch  <alriddoch@zepler.org>
 
-        * Update rpm spec to be cleaner, and make the technical sections
-          more generic.
+	* Update rpm spec to be cleaner, and make the technical sections
+	  more generic.
 
 2003-06-23  Al Riddoch  <alriddoch@zepler.org>
 
