@@ -1,3 +1,7 @@
+2002-05-21  Michael Koch  <konqueror@gmx.de>
+
+	* configure.in: added --enable-debug.
+	
 2002-05-19  Al Riddoch  <alriddoch@zepler.org>
 
 	Many of the changes described here were submitted by Jesse Jones

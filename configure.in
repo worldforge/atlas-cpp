@@ -26,12 +26,23 @@ AM_PROG_LIBTOOL
 
 dnl Test for C++ Language
 
-
 dnl Test for C++ compiler
 
 AC_PROG_CXX
 
-CXXFLAGS="$CXXFLAGS -Wall -g"
+AC_ARG_ENABLE(debug,
+    [  --enable-debug          enable debug information [default=no]],
+    [
+        if test "$enableval" = "yes"; then
+            CXXFLAGS="$CXXFGLAGS -Wall -DDEBUG"
+        else
+            CXXFLAGS="$CXXFGLAGS -Wall -DNDEBUG"
+        fi
+    ],[
+        CXXFLAGS="$CXXFGLAGS -Wall -DNDEBUG"
+    ]
+)
+									
 
 dnl Test for ANSI standard language features
 
