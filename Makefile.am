@@ -7,6 +7,9 @@ EXTRA_DIST = ROADMAP Doxyfile footer.html index.dox Atlas.mak Atlas.dsp atlas.m4
 m4datadir = $(datadir)/aclocal
 m4data_DATA = atlas.m4
 
+pkgconfigdir = $(libdir)/pkgconfig
+pkgconfig_DATA = atlascpp-0.4.pc
+
 install-data-local:
 	mkdir -p $(DESTDIR)$(datadir)/doc/Atlas-C++-$(VERSION)
 	$(INSTALL_DATA) README $(DESTDIR)$(datadir)/doc/Atlas-C++-$(VERSION)

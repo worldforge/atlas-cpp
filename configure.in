@@ -4,7 +4,7 @@ AC_INIT()
 
 dnl Initialise automake
 
-ATLAS_VERSION=0.4.5
+ATLAS_VERSION=0.4.6
 AC_SUBST(ATLAS_VERSION)
 
 # libtool versioning
@@ -334,4 +334,5 @@ AC_OUTPUT([
 	tutorial/Makefile
 	atlas-config
 	atlas-cpp.spec
+	atlascpp-0.4.pc
 ], [chmod +x atlas-config])

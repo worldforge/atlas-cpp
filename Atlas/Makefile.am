@@ -4,7 +4,7 @@ lib_LTLIBRARIES = libAtlas.la
 
 libAtlas_la_LDFLAGS = -version-info @ATLAS_INTERFACE_VERSION_INFO@
 
-libAtlasincludedir = $(includedir)/Atlas
+libAtlasincludedir = $(includedir)/Atlas-C++-0.4/Atlas
 
 libAtlas_la_SOURCES = \
 	Bridge.cc Codec.cc

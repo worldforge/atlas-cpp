@@ -4,7 +4,7 @@ lib_LTLIBRARIES = libAtlasObjects.la
 
 libAtlasObjects_la_LDFLAGS = -version-info @ATLAS_INTERFACE_VERSION_INFO@
 
-libAtlasObjectsincludedir = $(includedir)/Atlas/Objects
+libAtlasObjectsincludedir = $(includedir)/Atlas-C++-0.4/Atlas/Objects
 
 libAtlasObjects_la_SOURCES = \
 	Root.cc Decoder.cc

@@ -3,7 +3,7 @@ lib_LTLIBRARIES = libAtlasCodecs.la
 
 libAtlasCodecs_la_LDFLAGS = -version-info @ATLAS_INTERFACE_VERSION_INFO@
 
-libAtlasCodecsincludedir = $(includedir)/Atlas/Codecs
+libAtlasCodecsincludedir = $(includedir)/Atlas-C++-0.4/Atlas/Codecs
 
 libAtlasCodecs_la_SOURCES = \
 	Packed.cc \
