@@ -1,5 +1,13 @@
 2001-03-13  Al Riddoch  <alriddoch@zepler.org>
 
+	* rename4*.pl: Scripts that rename .cc files as .cpp and visa versa
+	  to help windows work.
+
+	* Atlas.mak, Atlas.dsp: Makefile for nmake, and Visual Studio project
+	  files for Windows build.
+
+2001-03-13  Al Riddoch  <alriddoch@zepler.org>
+
 	* src/Net/Stream.cc: Added std:: to flush;
 
 	* src/Codecs/Utility.h: Use _snprintf() for Win32 build.
