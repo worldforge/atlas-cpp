@@ -13,27 +13,26 @@ namespace Atlas {
 
 /** Class factory
 
-Factory is a template class for automatic registration, construction and
-destruction of particular classes. It is used by creating a static instance
-for each class that requires it. Each registered class specifies a name and
-Metrics (can be any class) that is used when enumerating the classes for the
-purposes of negotiation. Each class also declares a Parameters structure,
-which is passed to the constructor of the class at creation time by the
-factory.
+Factory is a template class for automatic registration, construction
+and destruction of particular classes. It is used by creating a static
+instance for each class that requires it. Each registered class
+specifies a name that is used when enumerating the classes for the
+purposes of negotiation. Each class also declares a Parameters
+structure, which is passed to the constructor of the class at creation
+time by the factory.
 
-Both Codec specialises Factory and uses it for class registration.
+Codec specialises Factory and uses it for class registration.
 
 @see Codec
-@see Negotiate
-*/
+@see Negotiate */
 
 template <typename T>
 class Factory
 {
     public:
 
-    Factory(const std::string& name, const typename T::Metrics& metrics)
-     : name(name), metrics(metrics)
+    Factory(const std::string& name)
+     : name(name)
     {
 	Factories().push_back(this);
     }
@@ -52,12 +51,7 @@ class Factory
     {
 	return name;
     }
-    
-    typename T::Metrics GetMetrics()
-    {
-	return metrics;
-    }
-   
+       
     static std::list<Factory*>& Factories()
     {
 	static std::list<Factory*> factories;
@@ -67,7 +61,6 @@ class Factory
     protected:
 
     std::string name;
-    typename T::Metrics metrics;
 };
 
 } // Atlas namespace
