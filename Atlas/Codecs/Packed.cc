@@ -330,6 +330,7 @@ void Packed::StreamMessage(const Map&)
 
 void Packed::StreamEnd()
 {
+    bridge->StreamEnd();
 }
 
 void Packed::MapItem(const std::string& name, const Map&)

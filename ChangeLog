@@ -1,3 +1,9 @@
+2001-10-26  Al Riddoch  <alriddoch@zepler.org>
+
+	* src/Objects/Encoder.h: Fix includes so file is stand-alone.
+
+	* src/Codecs/Packed.cc: Fix Packed codec so it gets shutdown properlly.
+
 2001-09-24  Al Riddoch  <alriddoch@zepler.org>
 
 	* src/Net/Stream.cc: Re-wrote client greeting code so it is more

@@ -6,39 +6,40 @@
 #define ATLAS_OBJECTS_ENCODER_H
 
 #include "../EncoderBase.h"
+#include "Root.h"
 
-namespace Atlas {
+namespace Atlas { namespace Objects {
 
 /** Objects hierarchy encoder
  *
  * This Encoder can be used to send objects in the Atlas::Objects hierarchy to
  * a certain Bridge (e.g. a codec).
  *
- * Simply call the streamMessage member with a pointer to the object to be
+ * Simply call the StreamMessage member with a pointer to the object to be
  * sent.
  *
  * @see Atlas::Objects::Decoder
  * @author Stefanus Du Toit <sdt@gmx.net>
  */
-class ObjectsEncoder : public Atlas::EncoderBase
+class Encoder : public Atlas::EncoderBase
 {
 public:
     /// The default constructor.
     /// @param b The Bridge to which objects are to be sent.
-    ObjectsEncoder(Atlas::Bridge* b) : EncoderBase(b) { }
+    Encoder(Atlas::Bridge* b) : EncoderBase(b) { }
     /// The default destructor.
-    virtual ~ObjectsEncoder() { }
+    virtual ~Encoder() { }
 
     /// Send an object to the bridge.
     /// @param o The object that is to be sent.
-    virtual void streamMessage(const Atlas::Root& o)
+    virtual void StreamMessage(const Atlas::Objects::Root* o)
     {
-        b->streamMessage(Bridge::mapBegin);
-        o->sendContents(b);
-        b->mapEnd();
+        b->StreamMessage(Bridge::MapBegin);
+        o->SendContents(b);
+        b->MapEnd();
     }
 };
 
-} // namespace Atlas
+} } // namespace Atlas::Objects
 
 #endif
