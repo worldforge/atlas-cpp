@@ -36,7 +36,6 @@ class Factory
 		std::string classname;
 		std::list<Factory*> aImpFactories;
 	};
-
 	static std::list<sClassInfo> aClassFactories;
 
 	StuffFactory* m_pFactory;

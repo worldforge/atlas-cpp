@@ -486,7 +486,7 @@ SOURCE=.\src\Net\Stream.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\StuffFactory.h
+SOURCE=.\src\StuffFactory.h
 # End Source File
 # Begin Source File
 
