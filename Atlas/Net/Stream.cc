@@ -220,7 +220,7 @@ void Atlas::Net::StreamAccept::Poll(bool can_read)
     if (state == SERVER_CODECS)
     {
         if (m_canXml) socket << "IWILL XML\n";
-        else if (m_canXml) socket << "IWILL Packed\n";
+        else if (m_canPacked) socket << "IWILL Packed\n";
 	socket << std::endl;
 	state++;
     }

@@ -9,8 +9,6 @@ using namespace Atlas;
 
 namespace Atlas { namespace Message {
 
-void * Object::freeList = NULL;
-
 Encoder::Encoder(Atlas::Bridge* b)
     : EncoderBase(b)
 {
