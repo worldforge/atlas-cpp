@@ -3,7 +3,12 @@
 import string
 import sys
 import os
-import cmp
+try:
+    import filecmp
+    filecmp = filecmp.cmp
+except ImportError:
+    import cmp
+    filecmp = cmp.cmp
 sys.path.append("../../../../protocols/atlas/spec")
 from types import *
 from ParseDef import read_all_defs
@@ -301,13 +306,20 @@ class GenerateCC:
             self.out.write('void %s::Send%s' % (classname, classize(attr.name)))
             self.out.write('(Atlas::Bridge* b) const\n')
             self.out.write('{\n')
+            if attr.type == 'int':
+                self.out.write('    if (attr_%s != 0) {\n' % (attr.name))
+            elif attr.type == 'float':
+                self.out.write('    if (attr_%s != 0.0) {\n' % (attr.name))
+            else:
+                self.out.write('    if (!attr_%s.empty()) {\n' % (attr.name))
             if attr.type in ('int', 'float', 'string'):
-                self.out.write('    b->MapItem("%s", attr_%s);\n' \
+                self.out.write('        b->MapItem("%s", attr_%s);\n' \
                                % (attr.name, attr.name))
             else:
-                self.out.write('    Atlas::Message::Encoder e(b);\n')
-                self.out.write('    e.MapItem("%s", attr_%s);\n' \
+                self.out.write('        Atlas::Message::Encoder e(b);\n')
+                self.out.write('        e.MapItem("%s", attr_%s);\n' \
                                % (attr.name, attr.name))
+            self.out.write('    }\n')
             self.out.write('}\n\n')
     def hasattr_im(self, obj, statics):
         classname = classize(obj.attr['id'].value)
@@ -501,7 +513,7 @@ class GenerateCC:
             self.footer(['Atlas', 'Objects', self.classname, "H"])
         self.out.close()
         if os.access(outfile, os.F_OK):
-            if cmp.cmp(outfile + ".tmp", outfile) == 0:
+            if filecmp(outfile + ".tmp", outfile) == 0:
                 os.remove(outfile)
                 os.rename(outfile + ".tmp", outfile)
             else:
@@ -559,7 +571,7 @@ class GenerateCC:
         print "Closing implementation file"
         self.out.close()
         if os.access(outfile, os.F_OK):
-            if cmp.cmp(outfile + ".tmp", outfile) == 0:
+            if filecmp(outfile + ".tmp", outfile) == 0:
                 os.remove(outfile)
                 os.rename(outfile + ".tmp", outfile)
             else:

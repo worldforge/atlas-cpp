@@ -252,43 +252,59 @@ Atlas::Message::Object::ListType& RootOperation::GetArgs()
 
 void RootOperation::SendSerialno(Atlas::Bridge* b) const
 {
-    b->MapItem("serialno", attr_serialno);
+    if (attr_serialno != 0) {
+        b->MapItem("serialno", attr_serialno);
+    }
 }
 
 void RootOperation::SendRefno(Atlas::Bridge* b) const
 {
-    b->MapItem("refno", attr_refno);
+    if (attr_refno != 0) {
+        b->MapItem("refno", attr_refno);
+    }
 }
 
 void RootOperation::SendFrom(Atlas::Bridge* b) const
 {
-    b->MapItem("from", attr_from);
+    if (!attr_from.empty()) {
+        b->MapItem("from", attr_from);
+    }
 }
 
 void RootOperation::SendTo(Atlas::Bridge* b) const
 {
-    b->MapItem("to", attr_to);
+    if (!attr_to.empty()) {
+        b->MapItem("to", attr_to);
+    }
 }
 
 void RootOperation::SendSeconds(Atlas::Bridge* b) const
 {
-    b->MapItem("seconds", attr_seconds);
+    if (attr_seconds != 0.0) {
+        b->MapItem("seconds", attr_seconds);
+    }
 }
 
 void RootOperation::SendFutureSeconds(Atlas::Bridge* b) const
 {
-    b->MapItem("future_seconds", attr_future_seconds);
+    if (attr_future_seconds != 0.0) {
+        b->MapItem("future_seconds", attr_future_seconds);
+    }
 }
 
 void RootOperation::SendTimeString(Atlas::Bridge* b) const
 {
-    b->MapItem("time_string", attr_time_string);
+    if (!attr_time_string.empty()) {
+        b->MapItem("time_string", attr_time_string);
+    }
 }
 
 void RootOperation::SendArgs(Atlas::Bridge* b) const
 {
-    Atlas::Message::Encoder e(b);
-    e.MapItem("args", attr_args);
+    if (!attr_args.empty()) {
+        Atlas::Message::Encoder e(b);
+        e.MapItem("args", attr_args);
+    }
 }
 
 

@@ -87,7 +87,9 @@ std::string& Account::GetPassword()
 
 void Account::SendPassword(Atlas::Bridge* b) const
 {
-    b->MapItem("password", attr_password);
+    if (!attr_password.empty()) {
+        b->MapItem("password", attr_password);
+    }
 }
 
 

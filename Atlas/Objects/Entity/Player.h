@@ -87,8 +87,10 @@ Atlas::Message::Object::ListType& Player::GetCharacters()
 
 void Player::SendCharacters(Atlas::Bridge* b) const
 {
-    Atlas::Message::Encoder e(b);
-    e.MapItem("characters", attr_characters);
+    if (!attr_characters.empty()) {
+        Atlas::Message::Encoder e(b);
+        e.MapItem("characters", attr_characters);
+    }
 }
 
 

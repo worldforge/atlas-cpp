@@ -179,30 +179,40 @@ double& RootEntity::GetStampContains()
 
 void RootEntity::SendLoc(Atlas::Bridge* b) const
 {
-    b->MapItem("loc", attr_loc);
+    if (!attr_loc.empty()) {
+        b->MapItem("loc", attr_loc);
+    }
 }
 
 void RootEntity::SendPos(Atlas::Bridge* b) const
 {
-    Atlas::Message::Encoder e(b);
-    e.MapItem("pos", attr_pos);
+    if (!attr_pos.empty()) {
+        Atlas::Message::Encoder e(b);
+        e.MapItem("pos", attr_pos);
+    }
 }
 
 void RootEntity::SendVelocity(Atlas::Bridge* b) const
 {
-    Atlas::Message::Encoder e(b);
-    e.MapItem("velocity", attr_velocity);
+    if (!attr_velocity.empty()) {
+        Atlas::Message::Encoder e(b);
+        e.MapItem("velocity", attr_velocity);
+    }
 }
 
 void RootEntity::SendContains(Atlas::Bridge* b) const
 {
-    Atlas::Message::Encoder e(b);
-    e.MapItem("contains", attr_contains);
+    if (!attr_contains.empty()) {
+        Atlas::Message::Encoder e(b);
+        e.MapItem("contains", attr_contains);
+    }
 }
 
 void RootEntity::SendStampContains(Atlas::Bridge* b) const
 {
-    b->MapItem("stamp_contains", attr_stamp_contains);
+    if (attr_stamp_contains != 0.0) {
+        b->MapItem("stamp_contains", attr_stamp_contains);
+    }
 }
 
 
