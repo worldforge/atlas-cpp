@@ -7,12 +7,6 @@ For 0.4.0:
  - finish tutorial/:
     * should we use libsocket++ or not? If we build our own, it needs
       to be standards compliant (sdt can help you with this)
-    * should it be included in the top-level Makefile.am? Or should we
-      just provide a regular Makefile (the latter might make it
-      clearer how to use Atlas-C++) (not building the tutorial may be
-      a good thing... maybe we could build the docs but move the
-      example programs to a subdirectory of tutorial/... oh, what a
-      good idea!)
  - write tests/:
     * definitely the biggest task
  - make all tests succeed:
@@ -22,6 +16,8 @@ For 0.4.0:
    minimise #includes and use forward declarations in headers
    whereever possible (that actually reduces the _need_ to compile)
    (not sure how compile time itself could be reduced any further)
- - fix Factory on all supported compilers:
-    * hard-code the list of codecs
-    * make sure the factory list is instantiated
+
+For 0.5.x:
+
+ - rewrite the whole negotiation/Factory system. It's currently an
+   awful mess.
