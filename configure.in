@@ -7,7 +7,7 @@ dnl Initialise automake
 ATLAS_VERSION=0.4.0
 AC_SUBST(ATLAS_VERSION)
 
-AM_INIT_AUTOMAKE("Atlas", "0.3.11")
+AM_INIT_AUTOMAKE("Atlas", "0.4.0")
 AM_CONFIG_HEADER(config.h)
 
 dnl Test for GNU libtool
