@@ -23,9 +23,8 @@ RootOperation::RootOperation(const std::string & id, const std::string & parent)
 
 RootOperation RootOperation::Instantiate()
 {
-    RootOperation value;
+    RootOperation value("", "root_operation");
 
-    value.SetParents(Object::ListType(1,std::string("root_operation")));
     value.SetObjtype(std::string("op"));
     
     return value;
@@ -145,9 +144,8 @@ Action::Action(const std::string & id, const std::string & parent)
 
 Action Action::Instantiate()
 {
-    Action value;
+    Action value("", "action");
 
-    value.SetParents(Object::ListType(1,std::string("action")));
     value.SetObjtype(std::string("op"));
     
     return value;
@@ -173,9 +171,8 @@ Create::Create(const std::string & id, const std::string & parent)
 
 Create Create::Instantiate()
 {
-    Create value;
+    Create value("", "create");
 
-    value.SetParents(Object::ListType(1,std::string("create")));
     value.SetObjtype(std::string("op"));
     
     return value;
@@ -201,9 +198,8 @@ Combine::Combine(const std::string & id, const std::string & parent)
 
 Combine Combine::Instantiate()
 {
-    Combine value;
+    Combine value("", "combine");
 
-    value.SetParents(Object::ListType(1,std::string("combine")));
     value.SetObjtype(std::string("op"));
     
     return value;
@@ -229,9 +225,8 @@ Divide::Divide(const std::string & id, const std::string & parent)
 
 Divide Divide::Instantiate()
 {
-    Divide value;
+    Divide value("", "divide");
 
-    value.SetParents(Object::ListType(1,std::string("divide")));
     value.SetObjtype(std::string("op"));
     
     return value;
@@ -257,9 +252,8 @@ Communicate::Communicate(const std::string & id, const std::string & parent)
 
 Communicate Communicate::Instantiate()
 {
-    Communicate value;
+    Communicate value("", "communicate");
 
-    value.SetParents(Object::ListType(1,std::string("communicate")));
     value.SetObjtype(std::string("op"));
     
     return value;
@@ -285,9 +279,8 @@ Talk::Talk(const std::string & id, const std::string & parent)
 
 Talk Talk::Instantiate()
 {
-    Talk value;
+    Talk value("", "talk");
 
-    value.SetParents(Object::ListType(1,std::string("talk")));
     value.SetObjtype(std::string("op"));
     
     return value;
@@ -313,9 +306,8 @@ Delete::Delete(const std::string & id, const std::string & parent)
 
 Delete Delete::Instantiate()
 {
-    Delete value;
+    Delete value("", "delete");
 
-    value.SetParents(Object::ListType(1,std::string("delete")));
     value.SetObjtype(std::string("op"));
     
     return value;
@@ -341,9 +333,8 @@ Set::Set(const std::string & id, const std::string & parent)
 
 Set Set::Instantiate()
 {
-    Set value;
+    Set value("", "set");
 
-    value.SetParents(Object::ListType(1,std::string("set")));
     value.SetObjtype(std::string("op"));
     
     return value;
@@ -369,9 +360,8 @@ Move::Move(const std::string & id, const std::string & parent)
 
 Move Move::Instantiate()
 {
-    Move value;
+    Move value("", "move");
 
-    value.SetParents(Object::ListType(1,std::string("move")));
     value.SetObjtype(std::string("op"));
     
     return value;
@@ -397,9 +387,8 @@ Get::Get(const std::string & id, const std::string & parent)
 
 Get Get::Instantiate()
 {
-    Get value;
+    Get value("", "get");
 
-    value.SetParents(Object::ListType(1,std::string("get")));
     value.SetObjtype(std::string("op"));
     
     return value;
@@ -425,9 +414,8 @@ Perceive::Perceive(const std::string & id, const std::string & parent)
 
 Perceive Perceive::Instantiate()
 {
-    Perceive value;
+    Perceive value("", "perceive");
 
-    value.SetParents(Object::ListType(1,std::string("perceive")));
     value.SetObjtype(std::string("op"));
     
     return value;
@@ -453,9 +441,8 @@ Look::Look(const std::string & id, const std::string & parent)
 
 Look Look::Instantiate()
 {
-    Look value;
+    Look value("", "look");
 
-    value.SetParents(Object::ListType(1,std::string("look")));
     value.SetObjtype(std::string("op"));
     
     return value;
@@ -481,9 +468,8 @@ Listen::Listen(const std::string & id, const std::string & parent)
 
 Listen Listen::Instantiate()
 {
-    Listen value;
+    Listen value("", "listen");
 
-    value.SetParents(Object::ListType(1,std::string("listen")));
     value.SetObjtype(std::string("op"));
     
     return value;
@@ -509,9 +495,8 @@ Sniff::Sniff(const std::string & id, const std::string & parent)
 
 Sniff Sniff::Instantiate()
 {
-    Sniff value;
+    Sniff value("", "sniff");
 
-    value.SetParents(Object::ListType(1,std::string("sniff")));
     value.SetObjtype(std::string("op"));
     
     return value;
@@ -537,9 +522,8 @@ Touch::Touch(const std::string & id, const std::string & parent)
 
 Touch Touch::Instantiate()
 {
-    Touch value;
+    Touch value("", "touch");
 
-    value.SetParents(Object::ListType(1,std::string("touch")));
     value.SetObjtype(std::string("op"));
     
     return value;
@@ -565,9 +549,8 @@ Login::Login(const std::string & id, const std::string & parent)
 
 Login Login::Instantiate()
 {
-    Login value;
+    Login value("", "login");
 
-    value.SetParents(Object::ListType(1,std::string("login")));
     value.SetObjtype(std::string("op"));
     
     return value;
@@ -593,9 +576,8 @@ Logout::Logout(const std::string & id, const std::string & parent)
 
 Logout Logout::Instantiate()
 {
-    Logout value;
+    Logout value("", "logout");
 
-    value.SetParents(Object::ListType(1,std::string("logout")));
     value.SetObjtype(std::string("op"));
     
     return value;
@@ -621,9 +603,8 @@ Imaginary::Imaginary(const std::string & id, const std::string & parent)
 
 Imaginary Imaginary::Instantiate()
 {
-    Imaginary value;
+    Imaginary value("", "imaginary");
 
-    value.SetParents(Object::ListType(1,std::string("imaginary")));
     value.SetObjtype(std::string("op"));
     
     return value;
@@ -649,9 +630,8 @@ Info::Info(const std::string & id, const std::string & parent)
 
 Info Info::Instantiate()
 {
-    Info value;
+    Info value("", "info");
 
-    value.SetParents(Object::ListType(1,std::string("info")));
     value.SetObjtype(std::string("op"));
     
     return value;
@@ -677,9 +657,8 @@ Perception::Perception(const std::string & id, const std::string & parent)
 
 Perception Perception::Instantiate()
 {
-    Perception value;
+    Perception value("", "perception");
 
-    value.SetParents(Object::ListType(1,std::string("perception")));
     value.SetObjtype(std::string("op"));
     
     return value;
@@ -705,9 +684,8 @@ Sight::Sight(const std::string & id, const std::string & parent)
 
 Sight Sight::Instantiate()
 {
-    Sight value;
+    Sight value("", "sight");
 
-    value.SetParents(Object::ListType(1,std::string("sight")));
     value.SetObjtype(std::string("op"));
     
     return value;
@@ -733,9 +711,8 @@ Appearance::Appearance(const std::string & id, const std::string & parent)
 
 Appearance Appearance::Instantiate()
 {
-    Appearance value;
+    Appearance value("", "appearance");
 
-    value.SetParents(Object::ListType(1,std::string("appearance")));
     value.SetObjtype(std::string("op"));
     
     return value;
@@ -761,9 +738,8 @@ Disappearance::Disappearance(const std::string & id, const std::string & parent)
 
 Disappearance Disappearance::Instantiate()
 {
-    Disappearance value;
+    Disappearance value("", "disappearance");
 
-    value.SetParents(Object::ListType(1,std::string("disappearance")));
     value.SetObjtype(std::string("op"));
     
     return value;
@@ -789,9 +765,8 @@ Sound::Sound(const std::string & id, const std::string & parent)
 
 Sound Sound::Instantiate()
 {
-    Sound value;
+    Sound value("", "sound");
 
-    value.SetParents(Object::ListType(1,std::string("sound")));
     value.SetObjtype(std::string("op"));
     
     return value;
@@ -817,9 +792,8 @@ Smell::Smell(const std::string & id, const std::string & parent)
 
 Smell Smell::Instantiate()
 {
-    Smell value;
+    Smell value("", "smell");
 
-    value.SetParents(Object::ListType(1,std::string("smell")));
     value.SetObjtype(std::string("op"));
     
     return value;
@@ -845,9 +819,8 @@ Feel::Feel(const std::string & id, const std::string & parent)
 
 Feel Feel::Instantiate()
 {
-    Feel value;
+    Feel value("", "feel");
 
-    value.SetParents(Object::ListType(1,std::string("feel")));
     value.SetObjtype(std::string("op"));
     
     return value;
@@ -873,9 +846,8 @@ Error::Error(const std::string & id, const std::string & parent)
 
 Error Error::Instantiate()
 {
-    Error value;
+    Error value("", "error");
 
-    value.SetParents(Object::ListType(1,std::string("error")));
     value.SetObjtype(std::string("op"));
     
     return value;

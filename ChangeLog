@@ -1,3 +1,11 @@
+2002-05-02  Al Riddoch  <alriddoch@zepler.org>
+
+	* src/Objects/gen_cc.py, src/Objects/Entity/Entity.cc,
+	  src/Objects/Operation/Operation.cc: Made Objects::*::Instantiate()
+	  methods more efficient by making them use the protected constructor,
+	  and at the same time make sure the id is not set to the parent by
+	  default on instances, for bandwidth efficiency and correctness.
+
 2001-11-08  Al Riddoch  <alriddoch@zepler.org>
 
 	* src/Objects/gen_cc.py, src/Objects/Entity/Account.h,

@@ -261,10 +261,10 @@ class GenerateCC:
         objtype = obj.attr['objtype'].value
         self.out.write("%s %s::Instantiate()\n{\n" \
                        % (self.classname, self.classname))
-        self.out.write("    " + self.classname + " value;\n\n")
+        self.out.write("    " + self.classname + " value(\"\", \"" + id + "\");\n\n")
         #self.out.write("    Object::ListType parents;\n")
         #self.out.write('    parents.push_back(std::string("%s"));\n' % id)
-        self.out.write('    value.SetParents(Object::ListType(1,std::string("%s")));\n' % id)
+        #self.out.write('    value.SetParents(Object::ListType(1,std::string("%s")));\n' % id)
         if objtype == "op_definition":
             self.out.write('    value.SetObjtype(std::string("op"));\n')
         elif objtype == "class":

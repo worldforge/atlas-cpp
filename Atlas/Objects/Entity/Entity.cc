@@ -43,9 +43,8 @@ RootEntity::RootEntity(const std::string & id, const std::string & parent)
 
 RootEntity RootEntity::Instantiate()
 {
-    RootEntity value;
+    RootEntity value("", "root_entity");
 
-    value.SetParents(Object::ListType(1,std::string("root_entity")));
     value.SetObjtype(std::string("object"));
     
     return value;
@@ -144,9 +143,8 @@ AdminEntity::AdminEntity(const std::string & id, const std::string & parent)
 
 AdminEntity AdminEntity::Instantiate()
 {
-    AdminEntity value;
+    AdminEntity value("", "admin_entity");
 
-    value.SetParents(Object::ListType(1,std::string("admin_entity")));
     value.SetObjtype(std::string("object"));
     
     return value;
@@ -172,9 +170,8 @@ Account::Account(const std::string & id, const std::string & parent)
 
 Account Account::Instantiate()
 {
-    Account value;
+    Account value("", "account");
 
-    value.SetParents(Object::ListType(1,std::string("account")));
     value.SetObjtype(std::string("object"));
     
     return value;
@@ -245,9 +242,8 @@ Player::Player(const std::string & id, const std::string & parent)
 
 Player Player::Instantiate()
 {
-    Player value;
+    Player value("", "player");
 
-    value.SetParents(Object::ListType(1,std::string("player")));
     value.SetObjtype(std::string("object"));
     
     return value;
@@ -318,9 +314,8 @@ Admin::Admin(const std::string & id, const std::string & parent)
 
 Admin Admin::Instantiate()
 {
-    Admin value;
+    Admin value("", "admin");
 
-    value.SetParents(Object::ListType(1,std::string("admin")));
     value.SetObjtype(std::string("object"));
     
     return value;
@@ -346,9 +341,8 @@ Game::Game(const std::string & id, const std::string & parent)
 
 Game Game::Instantiate()
 {
-    Game value;
+    Game value("", "game");
 
-    value.SetParents(Object::ListType(1,std::string("game")));
     value.SetObjtype(std::string("object"));
     
     return value;
@@ -374,9 +368,8 @@ GameEntity::GameEntity(const std::string & id, const std::string & parent)
 
 GameEntity GameEntity::Instantiate()
 {
-    GameEntity value;
+    GameEntity value("", "game_entity");
 
-    value.SetParents(Object::ListType(1,std::string("game_entity")));
     value.SetObjtype(std::string("object"));
     
     return value;
