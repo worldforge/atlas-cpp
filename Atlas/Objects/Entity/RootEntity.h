@@ -25,7 +25,7 @@ public:
     RootEntity(const std::string&,const std::string&);
   public:
     /// Default destructor.
-    virtual ~RootEntity() { }
+    virtual ~RootEntity();
 
     /// Create a new instance of RootEntity.
     static RootEntity Instantiate();

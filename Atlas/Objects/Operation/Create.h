@@ -25,7 +25,7 @@ public:
     Create(const std::string&,const std::string&);
   public:
     /// Default destructor.
-    virtual ~Create() { }
+    virtual ~Create();
 
     /// Create a new instance of Create.
     static Create Instantiate();

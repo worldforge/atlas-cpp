@@ -29,7 +29,7 @@ public:
     Action(const std::string&,const std::string&);
   public:
     /// Default destructor.
-    virtual ~Action() { }
+    virtual ~Action();
 
     /// Create a new instance of Action.
     static Action Instantiate();

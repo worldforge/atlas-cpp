@@ -25,7 +25,7 @@ public:
     Player(const std::string&,const std::string&);
   public:
     /// Default destructor.
-    virtual ~Player() { }
+    virtual ~Player();
 
     /// Create a new instance of Player.
     static Player Instantiate();

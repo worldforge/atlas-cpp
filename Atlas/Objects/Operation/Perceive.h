@@ -29,7 +29,7 @@ public:
     Perceive(const std::string&,const std::string&);
   public:
     /// Default destructor.
-    virtual ~Perceive() { }
+    virtual ~Perceive();
 
     /// Create a new instance of Perceive.
     static Perceive Instantiate();

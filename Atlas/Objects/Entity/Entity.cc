@@ -41,6 +41,10 @@ RootEntity::RootEntity(const std::string & id, const std::string & parent)
     SetVelocity(velocity);
 }
 
+RootEntity::~RootEntity()
+{
+}
+
 RootEntity RootEntity::Instantiate()
 {
     RootEntity value("", "root_entity");
@@ -141,6 +145,10 @@ AdminEntity::AdminEntity(const std::string & id, const std::string & parent)
 {
 }
 
+AdminEntity::~AdminEntity()
+{
+}
+
 AdminEntity AdminEntity::Instantiate()
 {
     AdminEntity value("", "admin_entity");
@@ -165,6 +173,10 @@ Account::Account()
 
 Account::Account(const std::string & id, const std::string & parent)
      : AdminEntity(id, parent)
+{
+}
+
+Account::~Account()
 {
 }
 
@@ -240,6 +252,10 @@ Player::Player(const std::string & id, const std::string & parent)
 {
 }
 
+Player::~Player()
+{
+}
+
 Player Player::Instantiate()
 {
     Player value("", "player");
@@ -312,6 +328,10 @@ Admin::Admin(const std::string & id, const std::string & parent)
 {
 }
 
+Admin::~Admin()
+{
+}
+
 Admin Admin::Instantiate()
 {
     Admin value("", "admin");
@@ -339,6 +359,10 @@ Game::Game(const std::string & id, const std::string & parent)
 {
 }
 
+Game::~Game()
+{
+}
+
 Game Game::Instantiate()
 {
     Game value("", "game");
@@ -363,6 +387,10 @@ GameEntity::GameEntity()
 
 GameEntity::GameEntity(const std::string & id, const std::string & parent)
      : RootEntity(id, parent)
+{
+}
+
+GameEntity::~GameEntity()
 {
 }
 

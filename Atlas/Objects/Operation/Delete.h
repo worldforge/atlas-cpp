@@ -29,7 +29,7 @@ public:
     Delete(const std::string&,const std::string&);
   public:
     /// Default destructor.
-    virtual ~Delete() { }
+    virtual ~Delete();
 
     /// Create a new instance of Delete.
     static Delete Instantiate();

@@ -25,7 +25,7 @@ public:
     Login(const std::string&,const std::string&);
   public:
     /// Default destructor.
-    virtual ~Login() { }
+    virtual ~Login();
 
     /// Create a new instance of Login.
     static Login Instantiate();

@@ -25,7 +25,7 @@ public:
     Move(const std::string&,const std::string&);
   public:
     /// Default destructor.
-    virtual ~Move() { }
+    virtual ~Move();
 
     /// Create a new instance of Move.
     static Move Instantiate();

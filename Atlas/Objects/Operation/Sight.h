@@ -25,7 +25,7 @@ public:
     Sight(const std::string&,const std::string&);
   public:
     /// Default destructor.
-    virtual ~Sight() { }
+    virtual ~Sight();
 
     /// Create a new instance of Sight.
     static Sight Instantiate();

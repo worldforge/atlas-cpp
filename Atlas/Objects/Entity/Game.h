@@ -25,7 +25,7 @@ public:
     Game(const std::string&,const std::string&);
   public:
     /// Default destructor.
-    virtual ~Game() { }
+    virtual ~Game();
 
     /// Create a new instance of Game.
     static Game Instantiate();

@@ -25,7 +25,7 @@ public:
     Account(const std::string&,const std::string&);
   public:
     /// Default destructor.
-    virtual ~Account() { }
+    virtual ~Account();
 
     /// Create a new instance of Account.
     static Account Instantiate();

@@ -25,7 +25,7 @@ public:
     Feel(const std::string&,const std::string&);
   public:
     /// Default destructor.
-    virtual ~Feel() { }
+    virtual ~Feel();
 
     /// Create a new instance of Feel.
     static Feel Instantiate();

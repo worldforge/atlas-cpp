@@ -29,7 +29,7 @@ public:
     Get(const std::string&,const std::string&);
   public:
     /// Default destructor.
-    virtual ~Get() { }
+    virtual ~Get();
 
     /// Create a new instance of Get.
     static Get Instantiate();

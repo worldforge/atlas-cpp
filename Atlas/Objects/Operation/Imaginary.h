@@ -29,7 +29,7 @@ public:
     Imaginary(const std::string&,const std::string&);
   public:
     /// Default destructor.
-    virtual ~Imaginary() { }
+    virtual ~Imaginary();
 
     /// Create a new instance of Imaginary.
     static Imaginary Instantiate();

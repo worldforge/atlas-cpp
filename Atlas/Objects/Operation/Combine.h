@@ -25,7 +25,7 @@ public:
     Combine(const std::string&,const std::string&);
   public:
     /// Default destructor.
-    virtual ~Combine() { }
+    virtual ~Combine();
 
     /// Create a new instance of Combine.
     static Combine Instantiate();

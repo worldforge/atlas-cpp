@@ -29,7 +29,7 @@ public:
     Error(const std::string&,const std::string&);
   public:
     /// Default destructor.
-    virtual ~Error() { }
+    virtual ~Error();
 
     /// Create a new instance of Error.
     static Error Instantiate();

@@ -25,7 +25,7 @@ public:
     Smell(const std::string&,const std::string&);
   public:
     /// Default destructor.
-    virtual ~Smell() { }
+    virtual ~Smell();
 
     /// Create a new instance of Smell.
     static Smell Instantiate();

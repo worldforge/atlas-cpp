@@ -25,7 +25,7 @@ public:
     Logout(const std::string&,const std::string&);
   public:
     /// Default destructor.
-    virtual ~Logout() { }
+    virtual ~Logout();
 
     /// Create a new instance of Logout.
     static Logout Instantiate();

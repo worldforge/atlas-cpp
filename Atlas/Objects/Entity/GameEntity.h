@@ -25,7 +25,7 @@ public:
     GameEntity(const std::string&,const std::string&);
   public:
     /// Default destructor.
-    virtual ~GameEntity() { }
+    virtual ~GameEntity();
 
     /// Create a new instance of GameEntity.
     static GameEntity Instantiate();

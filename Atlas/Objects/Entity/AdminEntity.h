@@ -25,7 +25,7 @@ public:
     AdminEntity(const std::string&,const std::string&);
   public:
     /// Default destructor.
-    virtual ~AdminEntity() { }
+    virtual ~AdminEntity();
 
     /// Create a new instance of AdminEntity.
     static AdminEntity Instantiate();

@@ -21,6 +21,10 @@ RootOperation::RootOperation(const std::string & id, const std::string & parent)
     SetObjtype(std::string("op_definition"));
 }
 
+RootOperation::~RootOperation()
+{
+}
+
 RootOperation RootOperation::Instantiate()
 {
     RootOperation value("", "root_operation");
@@ -142,6 +146,10 @@ Action::Action(const std::string & id, const std::string & parent)
 {
 }
 
+Action::~Action()
+{
+}
+
 Action Action::Instantiate()
 {
     Action value("", "action");
@@ -166,6 +174,10 @@ Create::Create()
 
 Create::Create(const std::string & id, const std::string & parent)
      : Action(id, parent)
+{
+}
+
+Create::~Create()
 {
 }
 
@@ -196,6 +208,10 @@ Combine::Combine(const std::string & id, const std::string & parent)
 {
 }
 
+Combine::~Combine()
+{
+}
+
 Combine Combine::Instantiate()
 {
     Combine value("", "combine");
@@ -220,6 +236,10 @@ Divide::Divide()
 
 Divide::Divide(const std::string & id, const std::string & parent)
      : Create(id, parent)
+{
+}
+
+Divide::~Divide()
 {
 }
 
@@ -250,6 +270,10 @@ Communicate::Communicate(const std::string & id, const std::string & parent)
 {
 }
 
+Communicate::~Communicate()
+{
+}
+
 Communicate Communicate::Instantiate()
 {
     Communicate value("", "communicate");
@@ -274,6 +298,10 @@ Talk::Talk()
 
 Talk::Talk(const std::string & id, const std::string & parent)
      : Communicate(id, parent)
+{
+}
+
+Talk::~Talk()
 {
 }
 
@@ -304,6 +332,10 @@ Delete::Delete(const std::string & id, const std::string & parent)
 {
 }
 
+Delete::~Delete()
+{
+}
+
 Delete Delete::Instantiate()
 {
     Delete value("", "delete");
@@ -328,6 +360,10 @@ Set::Set()
 
 Set::Set(const std::string & id, const std::string & parent)
      : Action(id, parent)
+{
+}
+
+Set::~Set()
 {
 }
 
@@ -358,6 +394,10 @@ Move::Move(const std::string & id, const std::string & parent)
 {
 }
 
+Move::~Move()
+{
+}
+
 Move Move::Instantiate()
 {
     Move value("", "move");
@@ -382,6 +422,10 @@ Get::Get()
 
 Get::Get(const std::string & id, const std::string & parent)
      : Action(id, parent)
+{
+}
+
+Get::~Get()
 {
 }
 
@@ -412,6 +456,10 @@ Perceive::Perceive(const std::string & id, const std::string & parent)
 {
 }
 
+Perceive::~Perceive()
+{
+}
+
 Perceive Perceive::Instantiate()
 {
     Perceive value("", "perceive");
@@ -436,6 +484,10 @@ Look::Look()
 
 Look::Look(const std::string & id, const std::string & parent)
      : Perceive(id, parent)
+{
+}
+
+Look::~Look()
 {
 }
 
@@ -466,6 +518,10 @@ Listen::Listen(const std::string & id, const std::string & parent)
 {
 }
 
+Listen::~Listen()
+{
+}
+
 Listen Listen::Instantiate()
 {
     Listen value("", "listen");
@@ -490,6 +546,10 @@ Sniff::Sniff()
 
 Sniff::Sniff(const std::string & id, const std::string & parent)
      : Perceive(id, parent)
+{
+}
+
+Sniff::~Sniff()
 {
 }
 
@@ -520,6 +580,10 @@ Touch::Touch(const std::string & id, const std::string & parent)
 {
 }
 
+Touch::~Touch()
+{
+}
+
 Touch Touch::Instantiate()
 {
     Touch value("", "touch");
@@ -544,6 +608,10 @@ Login::Login()
 
 Login::Login(const std::string & id, const std::string & parent)
      : Get(id, parent)
+{
+}
+
+Login::~Login()
 {
 }
 
@@ -574,6 +642,10 @@ Logout::Logout(const std::string & id, const std::string & parent)
 {
 }
 
+Logout::~Logout()
+{
+}
+
 Logout Logout::Instantiate()
 {
     Logout value("", "logout");
@@ -598,6 +670,10 @@ Imaginary::Imaginary()
 
 Imaginary::Imaginary(const std::string & id, const std::string & parent)
      : Action(id, parent)
+{
+}
+
+Imaginary::~Imaginary()
 {
 }
 
@@ -628,6 +704,10 @@ Info::Info(const std::string & id, const std::string & parent)
 {
 }
 
+Info::~Info()
+{
+}
+
 Info Info::Instantiate()
 {
     Info value("", "info");
@@ -652,6 +732,10 @@ Perception::Perception()
 
 Perception::Perception(const std::string & id, const std::string & parent)
      : Info(id, parent)
+{
+}
+
+Perception::~Perception()
 {
 }
 
@@ -682,6 +766,10 @@ Sight::Sight(const std::string & id, const std::string & parent)
 {
 }
 
+Sight::~Sight()
+{
+}
+
 Sight Sight::Instantiate()
 {
     Sight value("", "sight");
@@ -706,6 +794,10 @@ Appearance::Appearance()
 
 Appearance::Appearance(const std::string & id, const std::string & parent)
      : Sight(id, parent)
+{
+}
+
+Appearance::~Appearance()
 {
 }
 
@@ -736,6 +828,10 @@ Disappearance::Disappearance(const std::string & id, const std::string & parent)
 {
 }
 
+Disappearance::~Disappearance()
+{
+}
+
 Disappearance Disappearance::Instantiate()
 {
     Disappearance value("", "disappearance");
@@ -760,6 +856,10 @@ Sound::Sound()
 
 Sound::Sound(const std::string & id, const std::string & parent)
      : Perception(id, parent)
+{
+}
+
+Sound::~Sound()
 {
 }
 
@@ -790,6 +890,10 @@ Smell::Smell(const std::string & id, const std::string & parent)
 {
 }
 
+Smell::~Smell()
+{
+}
+
 Smell Smell::Instantiate()
 {
     Smell value("", "smell");
@@ -817,6 +921,10 @@ Feel::Feel(const std::string & id, const std::string & parent)
 {
 }
 
+Feel::~Feel()
+{
+}
+
 Feel Feel::Instantiate()
 {
     Feel value("", "feel");
@@ -841,6 +949,10 @@ Error::Error()
 
 Error::Error(const std::string & id, const std::string & parent)
      : Info(id, parent)
+{
+}
+
+Error::~Error()
 {
 }
 

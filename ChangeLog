@@ -1,3 +1,14 @@
+2003-04-16  Al Riddoch  <alriddoch@zepler.org>
+
+	* Atlas/Objects/gen_cc.py, Atlas/Objects/Entity/*.h,
+	  Atlas/Objects/Entity/Entity.cc, Atlas/Objects/Operation/*.h,
+	  Atlas/Objects/Operation/Operation.cc: Move virtual destructors
+	  into implementation.
+
+	* benchmark/Message_Move.cc, benchmark/Objects2_Move.cpp,
+	  benchmark/Objects_Move.cc, benchmark/SmartPtr_Move.cc,
+	  benchmark/Static_Move.cc: Clean up some includes.
+
 2003-04-11  Al Riddoch  <alriddoch@zepler.org>
 
 	* Rename src to Atlas for portability

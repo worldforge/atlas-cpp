@@ -25,7 +25,7 @@ public:
     Appearance(const std::string&,const std::string&);
   public:
     /// Default destructor.
-    virtual ~Appearance() { }
+    virtual ~Appearance();
 
     /// Create a new instance of Appearance.
     static Appearance Instantiate();

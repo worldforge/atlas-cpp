@@ -29,7 +29,7 @@ public:
     Touch(const std::string&,const std::string&);
   public:
     /// Default destructor.
-    virtual ~Touch() { }
+    virtual ~Touch();
 
     /// Create a new instance of Touch.
     static Touch Instantiate();

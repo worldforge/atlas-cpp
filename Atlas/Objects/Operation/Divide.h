@@ -25,7 +25,7 @@ public:
     Divide(const std::string&,const std::string&);
   public:
     /// Default destructor.
-    virtual ~Divide() { }
+    virtual ~Divide();
 
     /// Create a new instance of Divide.
     static Divide Instantiate();

@@ -29,7 +29,7 @@ public:
     RootOperation(const std::string&,const std::string&);
   public:
     /// Default destructor.
-    virtual ~RootOperation() { }
+    virtual ~RootOperation();
 
     /// Create a new instance of RootOperation.
     static RootOperation Instantiate();

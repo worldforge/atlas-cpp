@@ -29,7 +29,7 @@ public:
     Look(const std::string&,const std::string&);
   public:
     /// Default destructor.
-    virtual ~Look() { }
+    virtual ~Look();
 
     /// Create a new instance of Look.
     static Look Instantiate();

@@ -25,7 +25,7 @@ public:
     Sound(const std::string&,const std::string&);
   public:
     /// Default destructor.
-    virtual ~Sound() { }
+    virtual ~Sound();
 
     /// Create a new instance of Sound.
     static Sound Instantiate();

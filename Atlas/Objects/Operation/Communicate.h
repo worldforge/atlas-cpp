@@ -25,7 +25,7 @@ public:
     Communicate(const std::string&,const std::string&);
   public:
     /// Default destructor.
-    virtual ~Communicate() { }
+    virtual ~Communicate();
 
     /// Create a new instance of Communicate.
     static Communicate Instantiate();

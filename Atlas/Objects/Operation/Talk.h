@@ -25,7 +25,7 @@ public:
     Talk(const std::string&,const std::string&);
   public:
     /// Default destructor.
-    virtual ~Talk() { }
+    virtual ~Talk();
 
     /// Create a new instance of Talk.
     static Talk Instantiate();

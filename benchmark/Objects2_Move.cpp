@@ -1,13 +1,16 @@
-#include <iostream>
-#include <cassert>
-#include "../src/Message/Object.h"
-#include "../src/Objects/Root.h"
-#include "../src/Objects/Operation/Operation.h"
-#include "../src/Objects/Entity/Entity.h"
-
 #include "timer.h"
 
+#include <Atlas/Message/Object.h>
+#include <Atlas/Objects/Root.h>
+#include <Atlas/Objects/Operation/Operation.h>
+#include <Atlas/Objects/Entity/Entity.h>
+
+#include <iostream>
+#include <cassert>
+
 using namespace Atlas;
+using namespace Atlas::Objects;
+using namespace Atlas::Message;
 using namespace std;
 
 #define DEBUG 0
@@ -24,19 +27,19 @@ class NPC
 {
 public:
   NPC() : id("123") {x=y=z = vx=vy=vz = 0.0;}
-  SightInstance move(MoveInstance &op);
-  string getId() {return id;}
+  Operation::SightInstance move(Operation::MoveInstance &op);
+  string GetId() {return id;}
 private:
   string id;
   double x,y,z;
   double vx,vy,vz;
 };
 
-SightInstance NPC::move(MoveInstance &op)
+Operation::SightInstance NPC::move(Operation::MoveInstance &op)
 {
     Object::ListType::const_iterator new_vel_i =
-        ((GameEntityInstance&)op->getArgs()[0])->
-        getVelocity().begin();
+        ((Entity::GameEntityInstance&)op->GetArgs()[0])->
+        GetVelocity().begin();
     vx = (*new_vel_i).AsFloat();
     new_vel_i++; vy = (*new_vel_i).AsFloat();
     new_vel_i++; vz = (*new_vel_i).AsFloat();
@@ -46,34 +49,34 @@ SightInstance NPC::move(MoveInstance &op)
     z += vz;
     
     //human:
-    GameEntityInstance human;
-    //GameEntity human = GameInstantiate();
-    human->setId(getId());
+    Entity::GameEntityInstance human;
+    //Entity::GameEntity human = Entity::GameEntity::Instantiate();
+    human->SetId(GetId());
     Object::ListType pos;
     pos.push_back(x);
     pos.push_back(y);
     pos.push_back(z);
-    human->setPos(pos);
+    human->SetPos(pos);
     Object::ListType vel;
     vel.push_back(vx);
     vel.push_back(vy);
     vel.push_back(vz);
-    human->setVelocity(vel);
+    human->SetVelocity(vel);
     
     //move:
-    MoveInstance move;
-    //Move move = Move::Instantiate();
+    Operation::MoveInstance move;
+    //Operation::Move move = Operation::Move::Instantiate();
     vector<Root> move_args(1);
     move_args[0] = (Root&)human;
-    move->setArgs(move_args);
+    move->SetArgs(move_args);
 
     //sight:
-    SightInstance sight;
-    //Sight sight = Sight::Instantiate();
-    sight->setFrom(getId());
+    Operation::SightInstance sight;
+    //Operation::Sight sight = Operation::Sight::Instantiate();
+    sight->SetFrom(GetId());
     vector<Root> sight_args(1);
     sight_args[0] = (Root&)move;
-    sight->setArgs(sight_args);
+    sight->SetArgs(sight_args);
     
     return sight;
 }
@@ -84,38 +87,38 @@ int main(int argc, char** argv)
     TIME_ON;
     for(i=0; i<MAX_ITER; i+=1.0) {
         //human:
-        GameEntityInstance human;
+        Entity::GameEntityInstance human;
         Object::ListType pos;
         pos.push_back(i);
         pos.push_back(i-1.0);
         pos.push_back(i+1.0);
-        human->setPos(pos);
+        human->SetPos(pos);
         
         Object::ListType vel;
         vel.push_back(i);
         vel.push_back(i-1.0);
         vel.push_back(i+1.0);
-        human->setVelocity(vel);
-//        Object::ListType foo = human->getVelocity();
-//        cout<<foo.size()<<":"<<foo.front().asFloat()<<","<<foo.back().asFloat()<<endl;
+        human->SetVelocity(vel);
+//        Object::ListType foo = human->GetVelocity();
+//        cout<<foo.size()<<":"<<foo.front().AsFloat()<<","<<foo.back().AsFloat()<<endl;
 
         //move:
-        MoveInstance move;
+        Operation::MoveInstance move;
         vector<Root> move_args(1);
         move_args[0] = (Root&)human;
-        move->setArgs(move_args);
-//        Object::MapType ent = move.getArgs().front().asMap();
-//        cout<<"vel0:"<<ent["velocity"].asList().front().asFloat()<<endl;
+        move->SetArgs(move_args);
+//        Object::MapType ent = move.GetArgs().front().AsMap();
+//        cout<<"vel0:"<<ent["velocity"].AsList().front().AsFloat()<<endl;
 
         //sight:
-        SightInstance sight;
-        sight->setFrom("123");
+        Operation::SightInstance sight;
+        sight->SetFrom("123");
         vector<Root> sight_args(1);
         sight_args[0] = (Root&)move;
-        sight->setArgs(sight_args);
-//        Object::MapType ent = sight.getArgs().front().asMap()
-//          ["args"].asList().front().asMap();
-//        cout<<"vel0:"<<ent["velocity"].asList().front().asFloat()<<endl;
+        sight->SetArgs(sight_args);
+//        Object::MapType ent = sight.GetArgs().front().AsMap()
+//          ["args"].AsList().front().AsMap();
+//        cout<<"vel0:"<<ent["velocity"].AsList().front().AsFloat()<<endl;
     }
     TIME_OFF("Plain creating of sight operation");
     NPC npc1;
@@ -123,29 +126,29 @@ int main(int argc, char** argv)
     TIME_ON;
     for(i=0; i<MAX_ITER; i+=1.0) {
         //human:
-        GameEntityInstance human;
-        human->setId(npc1.getId());
+        Entity::GameEntityInstance human;
+        human->SetId(npc1.GetId());
         Object::ListType vel;
         vel.push_back(i);
         vel.push_back(i-1.0);
         vel.push_back(i+1.0);
-        human->setVelocity(vel);
+        human->SetVelocity(vel);
         
         //move:
-        MoveInstance move;
+        Operation::MoveInstance move;
         vector<Root> move_args(1);
         move_args[0] = (Root&)human;
-        move->setArgs(move_args);
+        move->SetArgs(move_args);
 
-        SightInstance res_sight = npc1.move(move);
+        Operation::SightInstance res_sight = npc1.move(move);
         Object::ListType::const_iterator new_pos_i =
-            ((GameEntityInstance&)
-               ((MoveInstance&)res_sight->getArgs()[0])
-             ->getArgs()[0])->
-            getVelocity().begin();
-        x = (*new_pos_i).asFloat();
-        new_pos_i++; y = (*new_pos_i).asFloat();
-        new_pos_i++; z = (*new_pos_i).asFloat();
+            ((Entity::GameEntityInstance&)
+               ((Operation::MoveInstance&)res_sight->GetArgs()[0])
+             ->GetArgs()[0])->
+            GetVelocity().begin();
+        x = (*new_pos_i).AsFloat();
+        new_pos_i++; y = (*new_pos_i).AsFloat();
+        new_pos_i++; z = (*new_pos_i).AsFloat();
     }
     TIME_OFF("NPC movements");
     cout<<"Resulting position: ("<<x<<","<<y<<","<<z<<")"<<endl;

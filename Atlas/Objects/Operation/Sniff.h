@@ -29,7 +29,7 @@ public:
     Sniff(const std::string&,const std::string&);
   public:
     /// Default destructor.
-    virtual ~Sniff() { }
+    virtual ~Sniff();
 
     /// Create a new instance of Sniff.
     static Sniff Instantiate();

@@ -29,7 +29,7 @@ public:
     Set(const std::string&,const std::string&);
   public:
     /// Default destructor.
-    virtual ~Set() { }
+    virtual ~Set();
 
     /// Create a new instance of Set.
     static Set Instantiate();

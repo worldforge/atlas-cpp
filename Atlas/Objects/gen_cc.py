@@ -261,6 +261,8 @@ class GenerateCC:
                     self.out.write(');\n')
         self.out.write("}\n")
         self.out.write("\n")
+    def destructor_im(self, obj):
+        self.out.write("%s::~%s()\n{\n}\n\n" % (self.classname, self.classname))
     def instantiation(self, obj):
         id = obj.attr['id'].value
         objtype = obj.attr['objtype'].value
@@ -439,7 +441,7 @@ class GenerateCC:
         self.out.write("public:\n")
         self.constructors_if(obj)
         self.doc(4, "Default destructor.")
-        self.out.write("    virtual ~" + self.classname + "() { }\n")
+        self.out.write("    virtual ~" + self.classname + "();\n")
         self.out.write("\n")
         self.doc(4, "Create a new instance of " + self.classname + ".")
         self.out.write("    static " + self.classname + " Instantiate();\n")
@@ -553,6 +555,7 @@ class GenerateCC:
             self.ns_open(['Atlas', 'Objects'])
         self.out.write("\n")
         self.constructors_im(obj, static_attrs)
+        self.destructor_im(obj)
         self.instantiation(obj)
         if len(static_attrs) > 0:
             self.hasattr_im(obj, static_attrs)

@@ -25,7 +25,7 @@ public:
     Admin(const std::string&,const std::string&);
   public:
     /// Default destructor.
-    virtual ~Admin() { }
+    virtual ~Admin();
 
     /// Create a new instance of Admin.
     static Admin Instantiate();

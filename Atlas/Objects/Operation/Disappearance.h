@@ -25,7 +25,7 @@ public:
     Disappearance(const std::string&,const std::string&);
   public:
     /// Default destructor.
-    virtual ~Disappearance() { }
+    virtual ~Disappearance();
 
     /// Create a new instance of Disappearance.
     static Disappearance Instantiate();

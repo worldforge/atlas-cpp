@@ -29,7 +29,7 @@ public:
     Listen(const std::string&,const std::string&);
   public:
     /// Default destructor.
-    virtual ~Listen() { }
+    virtual ~Listen();
 
     /// Create a new instance of Listen.
     static Listen Instantiate();

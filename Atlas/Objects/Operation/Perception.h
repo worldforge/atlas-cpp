@@ -25,7 +25,7 @@ public:
     Perception(const std::string&,const std::string&);
   public:
     /// Default destructor.
-    virtual ~Perception() { }
+    virtual ~Perception();
 
     /// Create a new instance of Perception.
     static Perception Instantiate();

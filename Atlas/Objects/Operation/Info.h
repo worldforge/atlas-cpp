@@ -29,7 +29,7 @@ public:
     Info(const std::string&,const std::string&);
   public:
     /// Default destructor.
-    virtual ~Info() { }
+    virtual ~Info();
 
     /// Create a new instance of Info.
     static Info Instantiate();
