@@ -2,7 +2,7 @@ SUBDIRS = src tutorial benchmark
 
 bin_SCRIPTS = atlas-config
 
-EXTRA_DIST = ROADMAP Doxyfile footer.html index.dox Atlas.mak Atlas.dsp
+EXTRA_DIST = ROADMAP Doxyfile footer.html index.dox Atlas.mak Atlas.dsp atlas.m4
 
 m4datadir = $(datadir)/aclocal
 m4data_DATA = atlas.m4
