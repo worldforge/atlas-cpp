@@ -13,6 +13,8 @@
 #include <Atlas/Codecs/Packed.h>
 #include <Atlas/Net/Stream.h>
 
+#define Debug(prg) { if (debug_flag) { prg } }
+
 static const bool debug_flag = false;
 
 static std::string get_line(std::string &s, char ch)

@@ -1,3 +1,9 @@
+2003-07-30  Al Riddoch  <alriddoch@zepler.org>
+
+	* Atlas/Net/Stream.cc, Atlas/Negotiate.h:
+	  Move otherwise unused Debug macro into .cc file to avoid
+	  global namespace pollution.
+
 2003-07-03  Al Riddoch  <alriddoch@zepler.org>
 
 	* Update rpm spec to be cleaner, and make the technical sections

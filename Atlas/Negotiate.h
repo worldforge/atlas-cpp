@@ -7,8 +7,6 @@
 
 #include <Atlas/Task.h>
 
-#define Debug(prg) { if (debug_flag) { prg } }
-
 namespace Atlas {
 
 template <class Stream>
