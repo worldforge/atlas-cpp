@@ -103,6 +103,18 @@ public:
 			delete m_pList;
 	}
 
+	///Assigns an object to another. Required for pointer member content to be copied correctly.
+	Object& operator=(const Object& rhs)
+	{
+		f = rhs.f;
+		i = rhs.i;
+		s = rhs.s;
+		t = rhs.t;
+		*m_pMap = *rhs.m_pMap;
+		*m_pList = *rhs.m_pList;
+		return *this;
+	}
+
     /// Check for equality with another Object.
     bool operator==(const Object& o) const
     {
