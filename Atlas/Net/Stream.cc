@@ -16,6 +16,8 @@
 using namespace std;
 using namespace Atlas;
 
+static const bool debug_flag = false;
+
 string get_line(string &s, char ch)
 {
   string out;
@@ -61,10 +63,10 @@ bool Atlas::Net::NegotiateHelper::get(string &buf, string header)
 	{
 	  names->push_back(s);
 	    
-	  cout << " got: " << s << endl;
+	  Debug(cout << " got: " << s << endl;);
 	}
       else
-	cerr << "Unknown pattern " << h << endl;
+	Debug(cerr << "Unknown pattern " << h << endl;);
     }
   return false;
 }
@@ -91,7 +93,7 @@ Bridge* bridge) :
 
 void Atlas::Net::StreamConnect::Poll(bool can_read = true)
 {
-    cout << "** Client(" << state << ") : " << endl;
+    Debug(cout << "** Client(" << state << ") : " << endl;);
 
     string out;
 
@@ -105,7 +107,7 @@ void Atlas::Net::StreamConnect::Poll(bool can_read = true)
 
 	if (buf.size() > 0 && get_line(buf, '\n', inName) != "")
 	{
-	    cout << "server: " << inName << endl;
+	    Debug(cout << "server: " << inName << endl;);
 	    state++;
 	}
     }
@@ -182,7 +184,7 @@ Bridge* bridge) :
 
 void Atlas::Net::StreamAccept::Poll(bool can_read = true)
 {
-    cout << "** Server(" << state << ") : " << endl;
+    Debug(cout << "** Server(" << state << ") : " << endl;);
 
     string out;
 
@@ -203,7 +205,7 @@ void Atlas::Net::StreamAccept::Poll(bool can_read = true)
 	// get client greeting
 	
 	if (buf.size() <= 0 || get_line(buf, '\n', inName) == "") return;
-	cout << "client: " << inName << endl;
+	Debug(cout << "client: " << inName << endl;);
 	state++;
     }
     

@@ -8,6 +8,7 @@
 #include <string>
 #include <map>
 #include <list>
+#include <vector>
 
 namespace Atlas { namespace Message {
 
@@ -41,7 +42,7 @@ public:
     typedef double FloatType;
     typedef std::string StringType;
     typedef std::map<std::string, Object> MapType;
-    typedef std::list<Object> ListType;
+    typedef std::vector<Object> ListType;
 
     enum Type {
         TYPE_NONE,
@@ -309,6 +310,13 @@ public:
         if (t == TYPE_FLOAT) return f;
         throw WrongTypeException();
     }
+    /// Retrieve the current value as a number.
+    FloatType AsNum() const throw (WrongTypeException)
+    {
+        if (t == TYPE_FLOAT) return f;
+        if (t == TYPE_INT) return FloatType(i);
+        throw WrongTypeException();
+    }
     /// Retrieve the current value as a const std::string reference.
     const std::string& AsString() const throw (WrongTypeException)
     {
@@ -355,7 +363,52 @@ protected:
       StringType* s;
       MapType* m;
       ListType* l;
+      void* n;
     };
+
+    static void * freeList;
+public:
+    static void * operator new(size_t size, void * location)
+    {
+        return location;
+    }
+
+    static void * operator new(size_t size)
+    {
+        if (size == 0) { size = 1; }
+
+        if (size != sizeof(Object)) {
+            return ::operator new(size);
+        }
+
+        if (freeList == NULL) {
+            Object * block = (Object *)::operator new(sizeof(Object) * 512);
+            freeList = block;
+            for(int i = 0; i < 511; i++) {
+                block->n = ++block;
+            }
+            block->n = NULL;
+        }
+
+        Object * ret = (Object *)freeList;
+        freeList = ret->n;
+        return ret;
+    }
+
+    static void operator delete(void * rawMem, size_t size)
+    {
+        if (rawMem == NULL) return;
+
+        if (size != sizeof(Object)) {
+            ::operator delete(rawMem);
+            return;
+        }
+
+        ((Object *)rawMem)->n = freeList;
+        freeList = rawMem;
+
+        return;
+    }
 };
 
 } } // namespace Atlas::Message

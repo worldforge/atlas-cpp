@@ -1,3 +1,19 @@
+2001-02-28  Al Riddoch  <sjdutoit@uwaterloo.ca>
+
+	* src/Message/Object.g: Added operator new() and operator delete()
+	  to Atlas::Message::Object and implemented memory pool to improve
+	  performance.
+
+	* src/Message/Object.g: Changed ListType in Message::Object to
+	  std::vector for performance.
+
+	* src/Message/Object.h: Added AsNum() accessor for
+	  Message::Object, for when coder does not care if it is Int or
+	  Float.
+
+	* src/Negotiate.h, src/Net/Stream.cc: Made negotiation debugging
+	  output an option, and disabled by default.
+
 2001-01-25  Stefanus Du Toit  <sjdutoit@uwaterloo.ca>
 
 	* configure.am, configure.in: Changed version to 0.4.0
