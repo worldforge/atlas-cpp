@@ -312,9 +312,11 @@ AC_LANG_RESTORE
 
 SYSTEM_LIBS="$SYSTEM_LIBS -lm"
 ATLAS_CFLAGS=""
+ATLAS_LIB_SUFFIX="-0.4"
 ATLAS_LIBS="-lAtlasObjects -lAtlasObjectsOperation -lAtlasObjectsEntity -lAtlasNet -lAtlas -lAtlasCodecs -lAtlasMessage -lAtlas"
 
 AC_SUBST(ATLAS_CFLAGS)
+AC_SUBST(ATLAS_LIB_SUFFIX)
 AC_SUBST(ATLAS_LIBS)
 AC_SUBST(SYSTEM_LIBS)
 
