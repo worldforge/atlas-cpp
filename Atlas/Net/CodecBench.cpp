@@ -48,7 +48,7 @@ void CodecBench::execute()
         ACodec* 	codec = new ACodec(proto);
 
         AObject test = AObject::mkMap("test1");
-        AObject list = AObject::mkList("list1",1);
+        AObject list = AObject::mkList("list1",0);
         AObject amap = AObject::mkMap("map1");
 
         list.append("stringval");
@@ -64,14 +64,14 @@ void CodecBench::execute()
 
 	time_t stim = time(NULL);
 
-	for (int i=0; i<50; i++) {
-		printf("encode\n",i);
+	for (int i=0; i<5000; i++) {
+		//printf("encode\n",i);
 		fflush(stdout);
 	        msg = codec->encodeMessage(test);
-		printf("feed stream\n",i);
+		//printf("feed stream\n",i);
 		fflush(stdout);
 	        codec->feedStream(msg);
-		printf("check for msg\n",i);
+		//printf("check for msg\n",i);
 		fflush(stdout);
 	        int res = codec->hasMessage();
 		codec->freeMessage();
@@ -79,7 +79,7 @@ void CodecBench::execute()
 
 	time_t tim = (time(NULL) - stim);
 
-	double perloop = 1 / (tim / 50.0);
+	double perloop = 5000.0 / tim;
 
 	printf("Codecs/Sec = %.2f\n", perloop);
 

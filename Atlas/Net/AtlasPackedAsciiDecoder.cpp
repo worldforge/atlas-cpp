@@ -43,15 +43,15 @@ int APackedAsciiDecoder::hasTokens()
 	int	chk;
 	string	typ;
 
-	printf("BEG TOKEN=%i\n", token);
+	//printf("BEG TOKEN=%i\n", token);
 
 	if (token == -1) return-1; // buffer overflow !!!
 
 	do {
 		chk = 0;
 
-		printf("BEG STATE=%i\n", state);
-		printf("BEG BUFFR=%s\n", buffer.c_str());
+		//printf("BEG STATE=%i\n", state);
+		//printf("BEG BUFFR=%s\n", buffer.c_str());
 
 		// this is where we are gonna put the state machine
 		switch (state) {
@@ -152,9 +152,9 @@ int APackedAsciiDecoder::hasTokens()
 	} while (chk == 1 && token == 0);
 
 	// see if we have a token to return
-	printf("END TOKEN=%i\n", token);
-	printf("END STATE=%i\n", state);
-	printf("END BUFFR=%s\n\n\n", buffer.c_str());
+	//printf("END TOKEN=%i\n", token);
+	//printf("END STATE=%i\n", state);
+	//printf("END BUFFR=%s\n\n\n", buffer.c_str());
 	if (token != 0) {
 		return 1;
 	}

@@ -91,7 +91,7 @@ int ACodec::hasMessage()
 	// got a token, we must be busy processing a message !!
 	state = codecBUSY;
 	// process tokens until we run out or we complete a msg
-	printf("Scanning Tokens\n");
+	//printf("Scanning Tokens\n");
 	AProtocolDecoder* adec = proto->getDecoder();
 	do {
 		//printf("fetching token !!!\n");
@@ -100,15 +100,15 @@ int ACodec::hasMessage()
 		int type = proto->getDecoder()->getType();
 		string name = proto->getDecoder()->getName();
 		if (name.length() == 0) name = string("(null)");
-		printf("tok=%i name=%s type=%i\n",
-			tok, name.c_str(), type
-		);
+		//printf("tok=%i name=%s type=%i\n",
+		//	tok, name.c_str(), type
+		//);
 		if (tok == AProtocol::atlasATRVAL) {
 			// got a value for an attribute
 			if (type == AProtocol::atlasSTR) copySTR(stack[nestd],adec);
 			if (type == AProtocol::atlasINT) copyINT(stack[nestd],adec);
 			if (type == AProtocol::atlasFLT) copyFLT(stack[nestd],adec);
-			printf("ADDATTR nest=%i name=%s\n", nestd, name.c_str());
+			//printf("ADDATTR nest=%i name=%s\n", nestd, name.c_str());
 			waitn = 1;	// wait for the end attribute message
 		}
 		if (tok == AProtocol::atlasATRBEG) {
@@ -117,12 +117,12 @@ int ACodec::hasMessage()
 				// start a nested list
 				nestd++;
 				stack[nestd] = AObject::mkMap(name);
-				printf("ADDLIST nest=%i name=%s\n", nestd, name.c_str());
+				//printf("ADDLIST nest=%i name=%s\n", nestd, name.c_str());
 			} else if (type == AProtocol::atlasLST) {
 				// start a nested list
 				nestd++;
 				stack[nestd] = AObject::mkList(name,0);
-				printf("ADDLIST nest=%i name=%s\n", nestd, name.c_str());
+				//printf("ADDLIST nest=%i name=%s\n", nestd, name.c_str());
 			} else {
 				// its a scalar, wait for the value
 			}
@@ -134,7 +134,7 @@ int ACodec::hasMessage()
 				waitn = 0;
 			} else {
 				// end of list detected.. un-nest
-				printf("ENDLIST nest=%i\n", nestd);
+				//printf("ENDLIST nest=%i\n", nestd);
 				if (stack[nestd-1].isList()) {
 					stack[nestd-1].append(stack[nestd]);
 				} else {

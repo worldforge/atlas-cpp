@@ -20,11 +20,10 @@ void APackedAsciiEncoder::walkTree(int nest, int names, AObject& list)
 {
 	int	i;
 	string	buf;
-	string	pre;
-
-	pre.append(nest, '\t');
 
 	if (list.isList()) {
+		//::printf("encode list\n");
+		//fflush(stdout);
 		string name;
 		if (names) name = list.getName();
 		printf("(%s=", name.c_str());
@@ -36,6 +35,8 @@ void APackedAsciiEncoder::walkTree(int nest, int names, AObject& list)
 		printf(")");
 	} 
 	if (list.isMap()) {
+		//::printf("encode map\n");
+		//fflush(stdout);
 		AObject keys = list.keys();
 		string name;
 		if (names) name = list.getName();
@@ -51,16 +52,22 @@ void APackedAsciiEncoder::walkTree(int nest, int names, AObject& list)
 	} 
 
 	if (list.isString()) {
+		//::printf("encode string\n");
+		//fflush(stdout);
 		string name;
 		if (names) name = list.getName();
 		printf("$%s=%s", name.c_str(), list.asString().c_str());
 	}
 	if (list.isLong()) {
+		//::printf("encode long\n");
+		//fflush(stdout);
 		string name;
 		if (names) name = list.getName();
 		printf("%%%s=%li", name.c_str(), list.asLong());
 	}
 	if (list.isFloat()) {
+		//::printf("encode float\n");
+		//fflush(stdout);
 		string name;
 		if (names) name = list.getName();
 		printf("#%s=%.2f", name.c_str(), list.asFloat());
