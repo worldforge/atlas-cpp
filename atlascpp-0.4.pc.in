@@ -3,7 +3,7 @@ exec_prefix=@exec_prefix@
 libdir=@libdir@
 includedir=@includedir@
 
-Name: varconf
+Name: Atlas-C++
 Description: The Atlas protocol C++ implementation
 Version: @VERSION@
 Libs: -L${libdir} @ATLAS_LIBS@
