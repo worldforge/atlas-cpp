@@ -39,7 +39,7 @@ public:
     };
 
 
-	CommonConstruct()
+	void CommonConstruct()
 	{
 		MapType* m_pM = new MapType;
 		ListType* m_pL = new ListType;

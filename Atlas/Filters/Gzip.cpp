@@ -37,9 +37,22 @@ class Gzip : public Filter
     virtual string Decode(const string&);
 };
 
+class GZIPFactory : public StuffFactory
+{
+public:
+	void* New(void* pParameters)
+	{
+		return (void*)new Gzip();
+	}
+	void Delete(void* pObject)
+	{
+		delete (Gzip*)pObject;
+	}
+} g_GZIPFactory;
+
 namespace
 {
-    Filter::Factory<Gzip> factory("GZIP", Filter::Metrics(Filter::COMPRESSION));
+    Filter::Factory factory(&g_GZIPFactory, "GZIP");
 }
 
 void Gzip::Begin()

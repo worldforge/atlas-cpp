@@ -45,9 +45,22 @@ class Bzip2 : public Filter
     virtual string Decode(const string&);
 };
 
+class BZIP2Factory : public StuffFactory
+{
+public:
+	void* New(void* pParameters)
+	{
+		return (void*)new Bzip2();
+	}
+	void Delete(void* pObject)
+	{
+		delete (Bzip2*)pObject;
+	}
+} g_BZIP2Factory;
+
 namespace
 {
-    Filter::Factory<Bzip2> factory("BZIP2", Filter::Metrics(Filter::COMPRESSION));
+    Filter::Factory factory(&g_BZIP2Factory, "BZIP2");
 }
 
 void Bzip2::Begin()
