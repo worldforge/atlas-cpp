@@ -1,6 +1,6 @@
 <package>
     <name>Atlas-C++</name>
-    <version>0.4.2</version>
+    <version>0.4.3</version>
     <desc></desc>
     <generate id="config" name="config.h"/>
     <require id="libtool"/>
