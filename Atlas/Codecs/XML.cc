@@ -47,15 +47,15 @@ class XML : public Codec<std::iostream>
     
     virtual void MapItem(const std::string& name, const Map&);
     virtual void MapItem(const std::string& name, const List&);
-    virtual void MapItem(const std::string& name, int);
+    virtual void MapItem(const std::string& name, long);
     virtual void MapItem(const std::string& name, double);
     virtual void MapItem(const std::string& name, const std::string&);
     virtual void MapEnd();
     
     virtual void ListItem(const Map&);
     virtual void ListItem(const List&);
-    virtual void ListItem(int);
     virtual void ListItem(double);
+    virtual void ListItem(long);
     virtual void ListItem(const std::string&);
     virtual void ListEnd();
 
@@ -366,11 +366,11 @@ void XML::ParseEndTag()
 		state.pop();
 		if (state.top() == PARSE_MAP)
 		{
-		    bridge->MapItem(name, atoi(data.top().c_str()));
+		    bridge->MapItem(name, atol(data.top().c_str()));
 		}
 		else
 		{
-		    bridge->ListItem(atoi(data.top().c_str()));
+		    bridge->ListItem(atol(data.top().c_str()));
 		}
 	    }
 	    else
@@ -465,7 +465,7 @@ void XML::MapItem(const std::string& name, const List&)
     socket << "<list name=\"" << name << "\">";
 }
 
-void XML::MapItem(const std::string& name, int data)
+void XML::MapItem(const std::string& name, long data)
 {
     socket << "<int name=\"" << name << "\">" << data << "</int>";
 }
@@ -495,7 +495,7 @@ void XML::ListItem(const List&)
     socket << "<list>";
 }
 
-void XML::ListItem(int data)
+void XML::ListItem(long data)
 {
     socket << "<int>" << data << "</int>";
 }

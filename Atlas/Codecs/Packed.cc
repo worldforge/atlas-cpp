@@ -47,14 +47,14 @@ public:
 
     virtual void MapItem(const std::string& name, const Map&);
     virtual void MapItem(const std::string& name, const List&);
-    virtual void MapItem(const std::string& name, int);
+    virtual void MapItem(const std::string& name, long);
     virtual void MapItem(const std::string& name, double);
     virtual void MapItem(const std::string& name, const std::string&);
     virtual void MapEnd();
     
     virtual void ListItem(const Map&);
     virtual void ListItem(const List&);
-    virtual void ListItem(int);
+    virtual void ListItem(long);
     virtual void ListItem(double);
     virtual void ListItem(const std::string&);
     virtual void ListEnd();
@@ -244,12 +244,12 @@ void Packed::ParseInt(char next)
 	    state.pop();
 	    if (state.top() == PARSE_MAP)
 	    {
-		bridge->MapItem(HexDecode(name), atoi(data.c_str()));
+		bridge->MapItem(HexDecode(name), atol(data.c_str()));
 		name.erase();
 	    }
 	    else if (state.top() == PARSE_LIST)
 	    {
-		bridge->ListItem(atoi(data.c_str()));
+		bridge->ListItem(atol(data.c_str()));
 	    }
 	    else
 	    {
@@ -445,7 +445,7 @@ void Packed::MapItem(const std::string& name, const List&)
     socket << '(' << HexEncode(name) << '=';
 }
 
-void Packed::MapItem(const std::string& name, int data)
+void Packed::MapItem(const std::string& name, long data)
 {
     socket << '@' << HexEncode(name) << '=' << data;
 }
@@ -475,7 +475,7 @@ void Packed::ListItem(const List&)
     socket << '(';
 }
 
-void Packed::ListItem(int data)
+void Packed::ListItem(long data)
 {
     socket << '@' << data;
 }

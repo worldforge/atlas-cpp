@@ -1,5 +1,12 @@
 2001-01-15  Stefanus Du Toit  <sjdutoit@uwaterloo.ca>
 
+	* src/Codecs/XMLish.cc: Removed the XMLish codec.
+	
+	* src/*: Many changes to adopt modified object.
+	
+	* src/Message/Object.h (class Object): Added Karsten's modified
+	Message::Object.
+
 	* src/Codec.h, src/Factory.h, Codecs/*.cc: removed Metrics
 
 	* .cvsignore, tests/.cvsignore, tests/Objects/.cvsignore,

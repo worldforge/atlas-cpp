@@ -9,3 +9,4 @@ For 0.4.0:
  - make all tests succeed
  - FIXMEs in src/Net/Stream.cc
  - update README
+ - Maybe: change from MemberFunc() to memberFunc()

@@ -1,6 +1,6 @@
 // This file may be redistributed and modified only under the terms of
 // the GNU Lesser General Public License (See COPYING for details).
-// Copyright (C) 2000 Stefanus Du Toit
+// Copyright (C) 2000 Stefanus Du Toit, Karsten-O. Laux
 
 #ifndef ATLAS_MESSAGE_OBJECT_H
 #define ATLAS_MESSAGE_OBJECT_H
@@ -9,7 +9,7 @@
 #include <map>
 #include <list>
 
-namespace Atlas {
+namespace Atlas { namespace Message {
 
 /// An exception class issued when the wrong type is requested in As().
 class WrongTypeException { };
@@ -283,64 +283,64 @@ public:
     }
 
     /// Get the current type.
-    Type getType() const { return t; }
+    Type GetType() const { return t; }
     /// Check whether the current type is nothing.
-    bool isNone() const { return (t == TYPE_NONE); }
+    bool IsNone() const { return (t == TYPE_NONE); }
     /// Check whether the current type is int.
-    bool isInt() const { return (t == TYPE_INT); }
+    bool IsInt() const { return (t == TYPE_INT); }
     /// Check whether the current type is double.
-    bool isFloat() const { return (t == TYPE_FLOAT); }
+    bool IsFloat() const { return (t == TYPE_FLOAT); }
     /// Check whether the current type is std::string.
-    bool isString() const { return (t == TYPE_STRING); }
+    bool IsString() const { return (t == TYPE_STRING); }
     /// Check whether the current type is MapType.
-    bool isMap() const { return (t == TYPE_MAP); }
+    bool IsMap() const { return (t == TYPE_MAP); }
     /// Check whether the current type is ListType.
-    bool isList() const { return (t == TYPE_LIST); }
+    bool IsList() const { return (t == TYPE_LIST); }
 
     /// Retrieve the current value as a int.
-    long asInt() const throw (WrongTypeException)
+    long AsInt() const throw (WrongTypeException)
     {
         if (t == TYPE_INT) return i;
         throw WrongTypeException();
     }
     /// Retrieve the current value as a double.
-    FloatType asFloat() const throw (WrongTypeException)
+    FloatType AsFloat() const throw (WrongTypeException)
     {
         if (t == TYPE_FLOAT) return f;
         throw WrongTypeException();
     }
     /// Retrieve the current value as a const std::string reference.
-    const std::string& asString() const throw (WrongTypeException)
+    const std::string& AsString() const throw (WrongTypeException)
     {
         if (t == TYPE_STRING) return *s;
         throw WrongTypeException();
     }
     /// Retrieve the current value as a non-const std::string reference.
-    std::string& asString() throw (WrongTypeException)
+    std::string& AsString() throw (WrongTypeException)
     {
         if (t == TYPE_STRING) return *s;
         throw WrongTypeException();
     }
     /// Retrieve the current value as a const MapType reference.
-    const MapType& asMap() const throw (WrongTypeException)
+    const MapType& AsMap() const throw (WrongTypeException)
     {
         if (t == TYPE_MAP) return *m;
         throw WrongTypeException();
     }
     /// Retrieve the current value as a non-const MapType reference.
-    MapType& asMap() throw (WrongTypeException)
+    MapType& AsMap() throw (WrongTypeException)
     {
         if (t == TYPE_MAP) return *m;
         throw WrongTypeException();
     }
     /// Retrieve the current value as a const ListType reference.
-    const ListType& asList() const throw (WrongTypeException)
+    const ListType& AsList() const throw (WrongTypeException)
     {
         if (t == TYPE_LIST) return *l;
         throw WrongTypeException();
     }
     /// Retrieve the current value as a non-const ListType reference.
-    ListType& asList() throw (WrongTypeException)
+    ListType& AsList() throw (WrongTypeException)
     {
         if (t == TYPE_LIST) return *l;
         throw WrongTypeException();
@@ -358,7 +358,7 @@ protected:
     };
 };
 
-} // namespace Atlas
+} } // namespace Atlas::Message
 
 
 #endif
