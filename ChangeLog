@@ -1,3 +1,7 @@
+2002-06-11  Al Riddoch  <alriddoch@zepler.org>
+
+	* configure.in: Fix typos in configure.in
+
 2002-06-10  Al Riddoch  <alriddoch@zepler.org>
 
 	* Fixed rpm dependencies. I think the spec is now done.
