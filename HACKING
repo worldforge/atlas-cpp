@@ -1,0 +1,27 @@
+Read this carefully before working on Atlas-C++.
+
+On writing templates:
+
+ - put the declaration for the template class X in X.h
+ - put the definitions for the template class X in X_impl.h
+ - put any instantiations of X in X.cpp (or X.cc?), e.g.:
+     template class X<int>;
+
+This avoids duplicated instantiations and speeds up compile time.
+
+On filenames:
+
+In 0.4.0, C++ implementation filenames will end in .cc.
+In 0.4.x, this may change to .cpp.
+
+In 0.4.x:
+ - files will have CapitalisedFilenames.extension
+ - headers will end in .h
+
+In 0.5.x and up:
+ - C++ implementation filenames will end in .cpp
+ - headers will end in .h
+ - files may be lower cased. This is up to debate.
+
+Written by Stefanus Du Toit <sjdutoit@uwaterloo.ca> 2001-01-14.
+

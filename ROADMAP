@@ -1,15 +1,25 @@
-Roadmap for Atlas-C++:
+Roadmap for Atlas-C++
 
-0.4.0: All documentation finished. All tests added. All tests successful.
-       Tutorial completed. [?]
-0.4.1: Objects/ generated automatically. [?]
+There will be two branches. Linux version numbering will be applied.
 
-Past versions:
+0.3.9: This is the current mess.
 
-0.3.7: No release planned
-0.3.8: Most documentation finished, tutorial half-way finished, simple test
-       with socket classes working. [Release: 30/5/2000]
-0.3.9: All documentation done. Tutorial still the same, various bugfixes,
-       Objects hierarchy fully working. [Release: 21/6/2000]
+0.4.0: This version will be made from 0.3.9 and contains:
+ - bugfixes
+ - support for recent compilers:
+    * gcc 2.95.2
+    * gcc 2.95.3
+    * gcc 3.0 [or latest CVS]
+ - fully ISO/IEC 14882:1998 (the C++ standard) compliant code
+ - a 99.9% stable API
 
-Last change: Wed Jun 21 07:28:25 UTC 2000 by Stefanus Du Toit <sdt@gmx.net>
+0.5.0: This is the playground. It shall contain:
+ - Aloril's Objects/ changes
+ - Changes to the API
+ - All fixes made in 0.4.0
+0.5.0 will be developed from 0.4.0.
+
+0.6.0: This will be the next stable version, with a fully stable API,
+developed from 0.5.0.
+
+Stefanus Du Toit, 2001-01-14.
