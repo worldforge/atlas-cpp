@@ -1,3 +1,8 @@
+2001-03-08  Al Riddoch  <sjdutoit@uwaterloo.ca>
+
+	* src/Message/Object.h: Added IsNum() to correspond to AsNum()
+	  accessor.
+
 2001-02-28  Al Riddoch  <sjdutoit@uwaterloo.ca>
 
 	* src/Message/Object.g: Added operator new() and operator delete()

@@ -291,6 +291,8 @@ public:
     bool IsInt() const { return (t == TYPE_INT); }
     /// Check whether the current type is double.
     bool IsFloat() const { return (t == TYPE_FLOAT); }
+    /// Check whether the current type is numeric.
+    bool IsNum() const { return ((t == TYPE_FLOAT) || (t == TYPE_INT)); }
     /// Check whether the current type is std::string.
     bool IsString() const { return (t == TYPE_STRING); }
     /// Check whether the current type is MapType.
