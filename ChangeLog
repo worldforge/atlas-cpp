@@ -1,3 +1,8 @@
+2001-03-22  Al Riddoch  <alriddoch@zepler.org>
+
+	* Changed package name to Atlas-C++ to ensure it is distinguishable
+	  from the other versions.
+
 2001-03-14  Al Riddoch  <alriddoch@zepler.org>
 
 	* src/Codecs/Makefile.am: Install Codec header files, so codecs can
