@@ -213,6 +213,7 @@ void Atlas::Net::StreamAccept::Poll(bool can_read = true)
 	{
 	    state++;
 	}
+        processClientCodecs();
     }
     
     if (state == SERVER_CODECS)
