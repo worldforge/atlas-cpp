@@ -14,89 +14,6 @@ XML::XML(std::iostream& s, Atlas::Bridge* b)
     data.push("");
 }
 
-void XML::TokenTag(char next)
-{
-    tag.erase();
-    
-    switch (next)
-    {
-	case '/':
-	    token = TOKEN_END_TAG;
-	break;
-	
-	case '>':
-	    // FIXME signal error here
-	    // unexpected character
-	break;
-	
-	default:
-	    token = TOKEN_START_TAG;
-	    tag += next;
-	break;
-    }
-}
-
-void XML::TokenStartTag(char next)
-{
-    switch (next)
-    {
-	case '<':
-	    // FIXME signal error here
-	    // unexpected character
-	break;
-
-	case '>':
-	    ParseStartTag();
-	    token = TOKEN_DATA;
-	    data.push("");
-	break;
-
-	default:
-	    tag += next;
-	break;
-    }
-}
-
-void XML::TokenEndTag(char next)
-{
-    switch (next)
-    {
-	case '<':
-	    // FIXME signal error here
-	    // unexpected character
-	break;
-
-	case '>':
-	    ParseEndTag();
-	    token = TOKEN_DATA;
-	    data.pop();
-	break;
-
-	default:
-	    tag += next;
-	break;
-    }
-}
-
-void XML::TokenData(char next)
-{
-    switch (next)
-    {
-	case '<':
-	    token = TOKEN_TAG;
-	break;
-
-	case '>':
-	    // FIXME signal error here
-	    // unexpected character
-	break;
-
-	default:
-	    data.top() += next;
-	break;
-    }
-}
-
 void XML::ParseStartTag()
 {
     int tag_end = tag.find(' ');
@@ -317,6 +234,89 @@ void XML::ParseEndTag()
 		// FIXME signal error here
 		// unexpected tag
 	    }
+	break;
+    }
+}
+
+void XML::TokenTag(char next)
+{
+    tag.erase();
+    
+    switch (next)
+    {
+	case '/':
+	    token = TOKEN_END_TAG;
+	break;
+	
+	case '>':
+	    // FIXME signal error here
+	    // unexpected character
+	break;
+	
+	default:
+	    token = TOKEN_START_TAG;
+	    tag += next;
+	break;
+    }
+}
+
+void XML::TokenStartTag(char next)
+{
+    switch (next)
+    {
+	case '<':
+	    // FIXME signal error here
+	    // unexpected character
+	break;
+
+	case '>':
+	    ParseStartTag();
+	    token = TOKEN_DATA;
+	    data.push("");
+	break;
+
+	default:
+	    tag += next;
+	break;
+    }
+}
+
+void XML::TokenEndTag(char next)
+{
+    switch (next)
+    {
+	case '<':
+	    // FIXME signal error here
+	    // unexpected character
+	break;
+
+	case '>':
+	    ParseEndTag();
+	    token = TOKEN_DATA;
+	    data.pop();
+	break;
+
+	default:
+	    tag += next;
+	break;
+    }
+}
+
+void XML::TokenData(char next)
+{
+    switch (next)
+    {
+	case '<':
+	    token = TOKEN_TAG;
+	break;
+
+	case '>':
+	    // FIXME signal error here
+	    // unexpected character
+	break;
+
+	default:
+	    data.top() += next;
 	break;
     }
 }

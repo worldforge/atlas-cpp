@@ -6,10 +6,9 @@
 #define ATLAS_MESSAGE_QUEUEDDECODER_H
 
 #include <queue>
-#include "Object.h"
 #include "DecoderBase.h"
 
-namespace Atlas {
+namespace Atlas { namespace Message {
 
 /** Decoder that presents a queue of Atlas::Message::Object.
  *
@@ -31,24 +30,24 @@ public:
     QueuedDecoder();
 
     /// Retrieve the current size of the message queue.    
-    size_t queueSize();
+    size_t QueueSize();
     /// Pop an object from the front of the message queue.
-    Object pop();
+    Object Pop();
     /// Peek at the object at the front of the queue.
-    Object front();
+    Object Front();
     /// Clear the message queue.
-    void clear();
+    void Clear();
     
 protected:
 
     /// This adds a message to the queue.
-    void objectArrived(const Object& obj);
+    void ObjectArrived(const Object& obj);
     
 private:
     
     std::queue<Object> objectQueue;
 };
 
-} // namespace Atlas
+} } // namespace Atlas::Message
 
 #endif

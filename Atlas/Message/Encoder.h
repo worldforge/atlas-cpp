@@ -6,10 +6,10 @@
 #define ATLAS_MESSAGE_ENCODER_H
 
 #include "../EncoderBase.h"
-#include "../Bridge.h"
-#include "Object.h"
 
 namespace Atlas { namespace Message {
+
+class Object;
 
 /** Encoder that transmits Atlas::Message::Object.
  *

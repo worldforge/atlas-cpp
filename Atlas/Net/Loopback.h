@@ -5,12 +5,14 @@
 #ifndef ATLAS_NET_LOOPBACK_H
 #define ATLAS_NET_LOOPBACK_H
 
-#include "../Bridge.h"
-
 namespace Atlas {
 
-void loopback(Bridge*, Bridge*, Bridge*&, Bridge*&);
+class Bridge;
 
-} // namespace Atlas
+namespace Net {
+
+void Loopback(Bridge*, Bridge*, Bridge*&, Bridge*&);
+
+} } // Atlas::Net namespace
 
 #endif

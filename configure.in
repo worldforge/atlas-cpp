@@ -21,6 +21,8 @@ dnl Test for C++ compiler
 
 AC_PROG_CXX
 
+CXXFLAGS='-Wall -g'
+
 dnl Test for ANSI standard language features
 
 

@@ -3,6 +3,7 @@
 // Copyright (C) 2000 Michael Day
 
 #include "Loopback.h"
+#include "../Bridge.h"
 
 using Atlas::Bridge;
 

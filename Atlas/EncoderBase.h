@@ -5,8 +5,6 @@
 #ifndef ATLAS_ENCODERBASE_H
 #define ATLAS_ENCODERBASE_H
 
-#include <string>
-
 #include "Bridge.h"
 
 namespace Atlas {

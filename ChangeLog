@@ -1,5 +1,13 @@
 2001-05-07  Al Riddoch  <alriddoch@zepler.org>
 
+	* configure.in: Disabled optimisation by default.
+
+	* src/Codecs/XML.cc: Re-ordered functions so inlining is possible.
+
+	* Removed unnecessary includes throughout.
+
+2001-05-07  Al Riddoch  <alriddoch@zepler.org>
+
 	* Eliminated few remaining uses of "using namespace .." from
 	  the library code.
 
