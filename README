@@ -8,8 +8,8 @@ clients or servers.
 
 VERSION
 
-This is Atlas-C++ 0.4.3, the latest stable incarnation of Atlas-C++ as
-of 2001-06-25. The 0.4.x branch will contain NO API CHANGES. The 0.5.x
+This is Atlas-C++ 0.4.5, the latest stable incarnation of Atlas-C++ as
+of 2002-07-20. The 0.4.x branch will contain NO API CHANGES. The 0.5.x
 branch is completely experimental and may not be easy to track. Any
 changes affecting the API should go into 0.5.x, as should any features
 which are not completely stable. 0.6.0 will be the next stable branch.
@@ -21,7 +21,9 @@ Atlas-C++ has been compiled on a number of different compilers including:
 Microsoft Visual C++
 egcs 2.91.66
 gcc 2.95.2
-gcc 2.96 (provided with recent Redhat releases)
+gcc 2.96 (provided many recent Redhat releases)
+gcc 3.0
+gcc 3.1
 
 Previous versions of Atlas-C++ would not build on many compilers, including
 specifically egcs and Visial C++. This is no longer true of this version.
@@ -29,20 +31,17 @@ specifically egcs and Visial C++. This is no longer true of this version.
 COMPILING
 
 For details of how to compile Atlas-C++ see INSTALL. Please note that
-optimisation has been disabled by default for the Atlas-C++ build. This
-has been done because Atlas-C++ build extremely slowly on some compilers
-if optimisation is enabled. It is recommended that production binaries
-and binaries for slower systems are built against an optimised build of
-Atlas-C++. To enable optimisation comment out this line in configure.in:
+optimisation has been enabled by default for the Atlas-C++ build.
+Atlas-C++ builds extremely slowly on some older compilers
+if optimisation is enabled, and on such compilers it is recommended that
+on slower systems binaries are built non-optimised.
 
-	CXXFLAGS='-Wall -g'
+To disable optimisation set the following environment variable before
+running the configure script.
 
-as follows:
+	CXXFLAGS=""
 
-	# CXXFLAGS='-Wall -g'
-
-and then re-create the configure script using the autogen.sh script. Note
-that automake, autoconf and related tools will be required.
+This overrides that default compiler flags, which include -O2.
 
 SOCKET LIBRARIES
 
@@ -50,17 +49,13 @@ Atlas-C++ relies on iostreams being used as socket streams for network
 communications. This means you will need to either use an existing library
 or use your own.
 
-One such a library is libsocket++, which you can download at:
+One such a library is skstream, which is maintained by the worldforge
+project, and can be downloaded from:
 
-ftp://ftp.umsicht.fhg.de/pub/unix/language/C++/class-libraries/socket++-1.10.tar.gz
+ftp://ftp.worldforge.org/pub/worldforge/libs/skstream/
 
-For a version that compiles in recent Linux versions:
-
-http://3.141593.org/source/socket++-1.10-wf1.tar.gz
-
-If you are using FreeBSD, please use the version in /usr/ports/net/.
-
-We have not had the chance to test this in windows yet.
+This library works on many platforms including Windows, and is derived from
+the FreeSockets library by Rafael Guterres Jeffman.
 
 DOCUMENTATION
 

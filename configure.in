@@ -4,7 +4,7 @@ AC_INIT()
 
 dnl Initialise automake
 
-ATLAS_VERSION=0.4.4.99
+ATLAS_VERSION=0.4.5
 AC_SUBST(ATLAS_VERSION)
 
 # libtool versioning
