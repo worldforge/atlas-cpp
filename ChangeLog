@@ -1,3 +1,7 @@
+2001-01-25  Stefanus Du Toit  <sjdutoit@uwaterloo.ca>
+
+	* HACKING: Added info about CVS tags.
+
 2001-01-23  Stefanus Du Toit  <sjdutoit@uwaterloo.ca>
 
 	* TODO, HACKING, ROADMAP, README: Updated to reflect imminent

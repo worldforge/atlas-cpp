@@ -44,3 +44,26 @@ examples of this.
 
 Written by Stefanus Du Toit <sjdutoit@uwaterloo.ca> on 2001-01-14.
 Last updated by Stefanus Du Toit <sjdutoit@uwaterloo.ca> on 2001-01-23.
+
+V   On CVS:
+
+There shall be the following tags:
+ atlas-cpp-x_y_z: Represents Atlas-C++ version x.y.z
+   WARNING: Do not check out with one of these tags and then commit!
+            Any versions tagged as this are to STAY EXACTLY THE SAME.
+ atlas-cpp-stable: Represents the current "stable" branch of
+  Atlas-C++, i.e. versions that being with x.y where y is even. If you
+  are doing work on the stable Atlas-C++ version, make sure you check
+  out with this tag only! Don't use a tag called atlas-cpp-x_y_z.
+  Once an official release is made, it shall be tagged as
+  atlas-cpp-x_y_z where x_y_z represents the version number. Then that
+  tag shall not be touched, further development shall continue with
+  the atlas-cpp-stable tag.
+ HEAD: the default tag, indicates the unstable branch. The same holds
+  as for atlas-cpp-stable. Once this becomes stable, do the following:
+   - fetch atlas-cpp-stable. Tag it as atlas-cpp-x_y where x_y
+     corresponds with major version x.y.
+   - fetch HEAD. Tag it as atlas-stable.
+   - Tag a release, if necessary.
+
+
