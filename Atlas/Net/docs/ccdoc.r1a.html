@@ -2,7 +2,7 @@
 <!--NewPage-->
 <html>
 <head>
-<meta name="CreationDate"   content="Tue Dec 07 08:06:22 1999">
+<meta name="CreationDate"   content="Wed Dec 08 14:31:13 1999">
 <meta name="CcDocCopyright" content="(C) Joe Linoff 1998,1999">
 <meta name="CcDocAuthor"    content="Joe Linoff">
 <meta name="CcDocVersion"   content="0.7a">
@@ -81,7 +81,7 @@ AtlasCodec.h:21
 <a href="#_top_"><img src="images/yellow-ball.gif" border=0></a><b> ACodec</b>
 <dir>
 <pre>
-public <b>ACodec</b> ( <a href="ccdoc.r10b.html">AProtocol</a> * aproto ) ;</pre>
+public <b>ACodec</b> ( <a href="ccdoc.r112.html">AProtocol</a> * aproto ) ;</pre>
 <p>
 </dir>
 <hr>
@@ -94,7 +94,7 @@ public <b>ACodec</b> ( <a href="ccdoc.r10b.html">AProtocol</a> * aproto ) ;</pre
 <a href="#_top_"><img src="images/red-ball.gif" border=0></a><b> encodeMessage</b>
 <dir>
 <pre>
-public <font color=green><b>char</b></font> * <b>encodeMessage</b> ( <a href="ccdoc.r36.html">AObject</a> * amsg ) ;</pre>
+public string <b>encodeMessage</b> ( <a href="ccdoc.r37.html">AObject</a> & amsg ) ;</pre>
 <p>
 </dir>
 <a name="r29"></a>
@@ -110,8 +110,7 @@ public <font color=green><b>int</b></font> <b>encodedLength</b> ( ) ;</pre>
 <a href="#_top_"><img src="images/red-ball.gif" border=0></a><b> feedStream</b>
 <dir>
 <pre>
-public <font color=green><b>void</b></font> <b>feedStream</b> ( <font color=green><b>char</b></font> * data ,
-                         <font color=green><b>int</b></font> len ) ;</pre>
+public <font color=green><b>void</b></font> <b>feedStream</b> ( string & data ) ;</pre>
 <p>
 </dir>
 <a name="r2b"></a>
@@ -119,7 +118,7 @@ public <font color=green><b>void</b></font> <b>feedStream</b> ( <font color=gree
 <a href="#_top_"><img src="images/red-ball.gif" border=0></a><b> getMessage</b>
 <dir>
 <pre>
-public <a href="ccdoc.r36.html">AObject</a> * <b>getMessage</b> ( ) ;</pre>
+public <a href="ccdoc.r37.html">AObject</a> <b>getMessage</b> ( ) ;</pre>
 <p>
 </dir>
 <a name="r2c"></a>

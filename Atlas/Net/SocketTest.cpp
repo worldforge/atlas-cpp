@@ -8,23 +8,40 @@
 
 #include "SocketTest.h"
 
-int main(int argc, char** argv)
+static stest SocketTest("SocketTest");
+
+int AppMain(int argc, char** argv)
 {
-	SocketTest* app = new SocketTest();
+	theApp->NewAppWin(0,"SocketTest",600,400, 0);
 
-	app->execute();
+	return 0;	
 }
 
-int WINAPI WinMain( 
-	HINSTANCE hInstance, 	  // handle to current instance 
-	HINSTANCE hPrevInstance,  // handle to previous instance 
-	LPSTR lpCmdLine,	  // pointer to command line 
-	int nCmdShow		  // show state of window 
-) {
-	main(0,NULL);
-}
+//int WINAPI WinMain( 
+//	HINSTANCE hInstance, 	  // handle to current instance 
+//	HINSTANCE hPrevInstance,  // handle to previous instance 
+//	LPSTR lpCmdLine,	  // pointer to command line 
+//	int nCmdShow		  // show state of window 
+//) {
+//	main(0,NULL);
+//}
  
-void SocketTest::execute()
+vWindow* SocketTest::NewAppWin(
+		vWindow* win, char* aname, int w, int h,
+		vAppWinInfo* winInfo
+) {
+	vWindow*	awin = win;
+	vAppWinInfo*	ainf = winInfo;
+	char*		name = aname;
+
+	//if (!awin) awin = new SockWindow(name,600,400);
+
+	return vApp::NewAppWin(awin,name,600,400,ainf);
+}
+
+
+
+void execute()
 {
 	int res;
 

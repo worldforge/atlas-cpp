@@ -9,7 +9,14 @@
 #ifndef __AtlasObject_h_
 #define __AtlasObject_h_
 
+#ifdef _WIN32
 #include <Python/python.h>
+#else
+#include <python.h>
+#endif
+
+#include <string>
+
 
 /**
  * Atlas Base Object Structure
@@ -62,7 +69,7 @@ protected:
 	int		typ;
 
 /** Name of this AObject */
-	char*		nam;
+	string		nam;
 
 /** Python Object to hold the data */
 	PyObject*	obj;
@@ -87,42 +94,49 @@ static	int AStringList;
 /** "typ" value for a List of Objects */
 static	int AObjList;
 
+/** overload assignment so copying works right */
+	AObject &operator=(const AObject& src);
 
-
-/** Construct an AObject from an existing PyObject */
-	AObject(char* name, PyObject* src);
+/** Construct an AObject */
+	AObject();
 
 /** Construct a copy of an existing AObject */
-	AObject(char* name, AObject* src);
+	AObject(const AObject& src);
+
+/** Construct an AObject from an existing PyObject */
+	AObject(const string& name, PyObject* src);
+
+/** Construct an AObject from an existing AObject, but with a new name */
+	AObject(const string& name, AObject& src);
 
 /** Constuct an Int type AObject */
-	AObject(char* name, long val);
+	AObject(const string& name, long val);
 
 /** Contruct a Float type AObject */
-	AObject(char* name, double val);
+	AObject(const string& name, double val);
 
 /** Construct a String type AObject */
-	AObject(char* name, char* val);
+	AObject(const string& name, const string& val);
 
 
 /** Construct a String typed list AObject */
-	AObject(char* name, int len, char* val, ...);
+	AObject(const string& name, int len, string* val, ...);
 
 /** Construct a Float typed list AObject */
-	AObject(char* name, int len, double val, ...);
+	AObject(const string& name, int len, double val, ...);
 
 /** Construct a Long typed list AObject */
-	AObject(char* name, int len, long val, ...);
+	AObject(const string& name, int len, long val, ...);
 
 
 /** Construct a String typed list AObject from an array */
-	AObject(char* name, int len, char** val);
+	AObject(const string& name, int len, string* val);
 
 /** Construct a Float typed list AObject from an array */
-	AObject(char* name, int len, double *val);
+	AObject(const string& name, int len, double *val);
 
 /** Construct a Long typed list AObject from an array */
-	AObject(char* name, int len, long *val);
+	AObject(const string& name, int len, long *val);
 
 
 /** Construct an anonymous Int AObject */
@@ -132,12 +146,12 @@ static	int AObjList;
 	AObject(double val);
 
 /** Construct an anonymous String AObject */
-	AObject(char* val);
+	AObject(const string& val);
 
 
 
 /** Construct an anonymous String typed list AObject */
-	AObject(int len, char* val, ...);
+	AObject(int len, string* val, ...);
 
 /** Construct an anonymous Float typed list AObject */
 	AObject(int len, double val, ...);
@@ -148,7 +162,7 @@ static	int AObjList;
 
 
 /** Construct an anonymous String typed list AObject from an array */
-	AObject(int len, char** val);
+	AObject(int len, string* val);
 
 /** Construct an anonymous Float typed list AObject from an array */
 	AObject(int len, double* val);
@@ -169,10 +183,10 @@ static	int AObjList;
 
 
 /** Get the name of this AObject */
-	char*		getName();
+	string		getName() const;
 
 /** Change the name of this AObject */
-	void		setName(char* name);
+	void		setName(const string& name);
 
 /** get the data type for a typed list */
 	int		getListType();
@@ -181,43 +195,43 @@ static	int AObjList;
 	void		setListType(int atype);
 
 /** (Map) test for named element of a map */
-	int		has(char* name);
+	int		has(const string& name);
 
 
 
 /** (Map) get an AObject attribute */
-	int		get(char* name, AObject*& val);
+	int		get(const string& name, AObject& val);
 
 /** (Map) get an Int attribute */
-	int		get(char* name, long& val);
+	int		get(const string& name, long& val);
 
 /** (Map) get a Float attribute */
-	int		get(char* name, double& val);
+	int		get(const string& name, double& val);
 
 /** (Map) get a String attribute */
-	int		get(char* name, char*& val);
+	int		get(const string& name, string& val);
 
 
 
 /** (Map) set an Object attribute */
-	int		set(char* name, AObject* src);
+	int		set(const string& name, AObject& src);
 
 /** (Map) set an Int attribute */
-	int		set(char* name, long src);
+	int		set(const string& name, long src);
 
 /** (Map) set a Float attribute */
-	int		set(char* name, double src);
+	int		set(const string& name, double src);
 
 /** (Map) set a String attribute */
-	int		set(char* name, char* src);
+	int		set(const string& name, const string& src);
 
 /** (Map) set an AObject attribute using its stored name */
-	int		set(AObject* src);
+	int		set(AObject& src);
 
 
 
 /** (Map) remove an attribute */
-	int		del(char* name);
+	int		del(const string& name);
 
 
 
@@ -233,22 +247,22 @@ static	int AObjList;
 
 
 /** return an empty map */
-static	AObject*	mkMap(char* name);
+static	AObject	mkMap(const string& name);
 
 /** return an empty list */
-static	AObject*	mkList(char* name);
+static	AObject	mkList(const string& name);
 
 /** return an empty list with (len) elements */
-static	AObject*	mkList(char* name, int len);
+static	AObject	mkList(const string& name, int len);
 
 /** return an Int AObject */
-static	AObject*	mkLong(char* name, long val);
+static	AObject	mkLong(const string& name, long val);
 
 /** return a Float AObject */
-static	AObject*	mkFloat(char* name, double val);
+static	AObject	mkFloat(const string& name, double val);
 
 /** return a String AObject */
-static	AObject*	mkString(char* name, char* val);
+static	AObject	mkString(const string& name, const string& val);
 
 
 
@@ -270,10 +284,10 @@ static	AObject*	mkString(char* name, char* val);
 
 
 /** (Map) return a List of all keys for a Map */
-	AObject*	keys();
+	AObject		keys();
 
 /** (Map) return a List of all values for a Map */
-	AObject*	vals();
+	AObject		vals();
 
 
 /** (List) sort a List */
@@ -284,40 +298,40 @@ static	AObject*	mkString(char* name, char* val);
 	int		reverse();
 
 /** (List) insert an AObject at this index */
-	int		insert(int ndx, AObject* val);
+	int		insert(int ndx, AObject& val);
 /** (List) insert an Int at this index */
 	int		insert(int ndx, long val);
 /** (List) insert a Float at this index */
 	int		insert(int ndx, double val);
 /** (List) insert a String at this index */
-	int		insert(int ndx, char* val);
+	int		insert(int ndx, const string& val);
 
 /** (List) append an AObject */
-	int		append(AObject* val);
+	int		append(AObject& val);
 /** (List) append an Int */
 	int		append(long val);
 /** (List) append a Float */
 	int		append(double val);
 /** (List) append a String */
-	int		append(char* val);
+	int		append(const string& val);
 
 /** (List) replace an AObject at this index */
-	int		set(int ndx, AObject* src);
+	int		set(int ndx, AObject& src);
 /** (List) replace an Int at this index */
 	int		set(int ndx, long val);
 /** (List) replace a Float at this index */
 	int		set(int ndx, double val);
 /** (List) replace a String at this index */
-	int		set(int ndx, char* val);
+	int		set(int ndx, const string& val);
 
 /** (List) get an AObject from this index */
-	int		get(int ndx, AObject*& src);
+	int		get(int ndx, AObject& src);
 /** (List) get an Int from this index */
 	int		get(int ndx, long& val);
 /** (List) get a Float from this index */
 	int		get(int ndx, double& val);
 /** (List) get a String from this index */
-	int		get(int ndx, char*& val);
+	int		get(int ndx, string& val);
 
 	// typed returns
 /** get an Int value from this AObject */
@@ -325,7 +339,7 @@ static	AObject*	mkString(char* name, char* val);
 /** get a Float value from this AObject */
 	double		asFloat();
 /** get a String value from this AObject */
-	char*		asString();
+	string		asString();
 
 };
 

@@ -22,7 +22,7 @@ SOCKET AClient::getSock()
 void AClient::canRead()
 {
 	int	len;
-	char	buf[2050];
+	string	buf;
 
 	len = csock->recv(buf,2048);
 	codec->feedStream(buf,len);
@@ -40,15 +40,15 @@ void AClient::gotErrs()
 {
 }
 
-void AClient::sendMsg(AObject* msg)
+void AClient::sendMsg(AObject& msg)
 {
-	char* data = codec->encodeMessage(msg);
+	string data = codec->encodeMessage(msg);
 	int len =  codec->encodedLength();
 
 	int sent = csock->send(data,len);
 	// do something about buffer full conditions here
 }
 
-void AClient::gotMsg(AObject* msg)
+void AClient::gotMsg(AObject& msg)
 {
 }

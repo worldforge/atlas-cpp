@@ -2,7 +2,7 @@
 <!--NewPage-->
 <html>
 <head>
-<meta name="CreationDate"   content="Tue Dec 07 08:06:22 1999">
+<meta name="CreationDate"   content="Wed Dec 08 14:31:13 1999">
 <meta name="CcDocCopyright" content="(C) Joe Linoff 1998,1999">
 <meta name="CcDocAuthor"    content="Joe Linoff">
 <meta name="CcDocVersion"   content="0.7a">
@@ -16,7 +16,7 @@
 <hr>
 <dl>
   <dt> <font size="+3">class <b>ATCPSocket</b></font>
-  <dt> &nbsp;&nbsp;&nbsp;&nbsp;extends <a href="ccdoc.r161.html">ASocket</a> as public</dt>
+  <dt> &nbsp;&nbsp;&nbsp;&nbsp;extends <a href="ccdoc.r167.html">ASocket</a> as public</dt>
 </dl>
 <dir>
 <p>
@@ -52,8 +52,6 @@ AtlasTCPSocket.h:21
   <dd><b>[public]</b> 
   <dt><a href="#_top_"><img src="images/yellow-ball-small.gif" border=0></a>  <a href="#r186"><b>ATCPSocket</b></a>
   <dd><b>[public]</b> 
-  <dt><a href="#_top_"><img src="images/yellow-ball-small.gif" border=0></a>  <a href="#r187"><b>ATCPSocket</b></a>
-  <dd><b>[public]</b> 
 </dl>
 <p>
 <hr>
@@ -62,19 +60,15 @@ AtlasTCPSocket.h:21
 <img src="images/method-index.gif" alt="Methods Index">
 </h2>
 <dl>
-  <dt><a href="#_top_"><img src="images/red-ball-small.gif" border=0></a>  <a href="#r18a"><b>accept</b></a>
+  <dt><a href="#_top_"><img src="images/red-ball-small.gif" border=0></a>  <a href="#r187"><b>accept</b></a>
   <dd><b>[public]</b> 
   <dt><a href="#_top_"><img src="images/red-ball-small.gif" border=0></a>  <a href="#r188"><b>connect</b></a>
   <dd><b>[public]</b> 
   <dt><a href="#_top_"><img src="images/red-ball-small.gif" border=0></a>  <a href="#r189"><b>listen</b></a>
   <dd><b>[public]</b> 
-  <dt><a href="#_top_"><img src="images/red-ball-small.gif" border=0></a>  <a href="#r18d"><b>recv</b></a>
+  <dt><a href="#_top_"><img src="images/red-ball-small.gif" border=0></a>  <a href="#r18b"><b>recv</b></a>
   <dd><b>[public]</b> 
-  <dt><a href="#_top_"><img src="images/red-ball-small.gif" border=0></a>  <a href="#r18e"><b>recv</b></a>
-  <dd><b>[public]</b> 
-  <dt><a href="#_top_"><img src="images/red-ball-small.gif" border=0></a>  <a href="#r18b"><b>send</b></a>
-  <dd><b>[public]</b> 
-  <dt><a href="#_top_"><img src="images/red-ball-small.gif" border=0></a>  <a href="#r18c"><b>send</b></a>
+  <dt><a href="#_top_"><img src="images/red-ball-small.gif" border=0></a>  <a href="#r18a"><b>send</b></a>
   <dd><b>[public]</b> 
 </dl>
 <p>
@@ -96,16 +90,7 @@ public <b>ATCPSocket</b> ( ) ;</pre>
 <a href="#_top_"><img src="images/yellow-ball.gif" border=0></a><b> ATCPSocket</b>
 <dir>
 <pre>
-public <b>ATCPSocket</b> ( <font color=green><b>int</b></font> bufsz ) ;</pre>
-<p>
-</dir>
-<a name="r187"></a>
-<p>
-<a href="#_top_"><img src="images/yellow-ball.gif" border=0></a><b> ATCPSocket</b>
-<dir>
-<pre>
-public <b>ATCPSocket</b> ( <font color=green><b>int</b></font> asock ,
-                    <font color=green><b>int</b></font> bufsz ) ;</pre>
+public <b>ATCPSocket</b> ( <font color=green><b>int</b></font> asock ) ;</pre>
 <p>
 </dir>
 <hr>
@@ -113,12 +98,20 @@ public <b>ATCPSocket</b> ( <font color=green><b>int</b></font> asock ,
 <h2>
 <img src="images/methods.gif" alt="Methods">
 </h2>
+<a name="r187"></a>
+<p>
+<a href="#_top_"><img src="images/red-ball.gif" border=0></a><b> accept</b>
+<dir>
+<pre>
+public <a href="ccdoc.r181.html">ATCPSocket</a> * <b>accept</b> ( ) ;</pre>
+<p>
+</dir>
 <a name="r188"></a>
 <p>
 <a href="#_top_"><img src="images/red-ball.gif" border=0></a><b> connect</b>
 <dir>
 <pre>
-public <font color=green><b>int</b></font> <b>connect</b> ( <font color=green><b>char</b></font> * addr ,
+public <font color=green><b>int</b></font> <b>connect</b> ( string & addr ,
                      <font color=green><b>int</b></font> port ) ;</pre>
 <p>
 </dir>
@@ -127,51 +120,25 @@ public <font color=green><b>int</b></font> <b>connect</b> ( <font color=green><b
 <a href="#_top_"><img src="images/red-ball.gif" border=0></a><b> listen</b>
 <dir>
 <pre>
-public <font color=green><b>int</b></font> <b>listen</b> ( <font color=green><b>char</b></font> * addr ,
+public <font color=green><b>int</b></font> <b>listen</b> ( string & addr ,
                     <font color=green><b>int</b></font> port ,
-                    <font color=green><b>int</b></font> backlog ) ;</pre>
+                    <font color=green><b>int</b></font> blog ) ;</pre>
 <p>
 </dir>
 <a name="r18a"></a>
 <p>
-<a href="#_top_"><img src="images/red-ball.gif" border=0></a><b> accept</b>
+<a href="#_top_"><img src="images/red-ball.gif" border=0></a><b> send</b>
 <dir>
 <pre>
-public <a href="ccdoc.r181.html">ATCPSocket</a> * <b>accept</b> ( ) ;</pre>
+public <font color=green><b>int</b></font> <b>send</b> ( string & data ) ;</pre>
 <p>
 </dir>
 <a name="r18b"></a>
 <p>
-<a href="#_top_"><img src="images/red-ball.gif" border=0></a><b> send</b>
-<dir>
-<pre>
-public <font color=green><b>int</b></font> <b>send</b> ( <font color=green><b>char</b></font> * data ) ;</pre>
-<p>
-</dir>
-<a name="r18c"></a>
-<p>
-<a href="#_top_"><img src="images/red-ball.gif" border=0></a><b> send</b>
-<dir>
-<pre>
-public <font color=green><b>int</b></font> <b>send</b> ( <font color=green><b>char</b></font> * data ,
-                  size_t len ) ;</pre>
-<p>
-</dir>
-<a name="r18d"></a>
-<p>
 <a href="#_top_"><img src="images/red-ball.gif" border=0></a><b> recv</b>
 <dir>
 <pre>
-public <font color=green><b>char</b></font> * <b>recv</b> ( ) ;</pre>
-<p>
-</dir>
-<a name="r18e"></a>
-<p>
-<a href="#_top_"><img src="images/red-ball.gif" border=0></a><b> recv</b>
-<dir>
-<pre>
-public <font color=green><b>int</b></font> <b>recv</b> ( <font color=green><b>char</b></font> * buf ,
-                  <font color=green><b>int</b></font> len ) ;</pre>
+public <font color=green><b>int</b></font> <b>recv</b> ( string & data ) ;</pre>
 <p>
 </dir>
 </dir>
