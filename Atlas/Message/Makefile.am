@@ -1,7 +1,7 @@
 
 lib_LTLIBRARIES = libAtlasMessage.la
 
-libAtlasMessage_la_LDFLAGS = $(INTERFACE_VERSION)
+libAtlasMessage_la_LDFLAGS = -version-info @ATLAS_INTERFACE_VERSION_INFO@
 
 libAtlasMessageincludedir = $(includedir)/Atlas/Message
 

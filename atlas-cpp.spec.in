@@ -7,7 +7,7 @@ Release: 1
 Copyright: LGPL
 Group: Amusements/Games
 Source: Atlas-C++-@VERSION@.tar.gz
-Requires: libstdc++ >= 2.95.2
+Requires: libstdc++ = 2.96
 BuildRoot: /var/tmp/%{name}-buildroot
 
 %description
@@ -18,6 +18,13 @@ clients or servers.
 
 %package devel
 Summary: The Atlas protocol C++ implementation library headers and static libs.
+Group: Amusements/Games
+
+%description devel
+This library implements the Atlas protocol, for use in client-server
+game applications. It is the standard implementation used by games written
+by the WorldForge project. This library is suitable for linking to either
+clients or servers.
 
 %prep
 %setup -q
@@ -35,24 +42,22 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
-%{prefix}/lib/libAtlas.so.1.0.0
-%{prefix}/lib/libAtlas.so.1
-%{prefix}/lib/libAtlasMessage.so.1.0.0
-%{prefix}/lib/libAtlasMessage.so.1
-%{prefix}/lib/libAtlasCodecs.so.1.0.0
-%{prefix}/lib/libAtlasCodecs.so.1
-%{prefix}/lib/libAtlasFilters.so.1.0.0
-%{prefix}/lib/libAtlasFilters.so.1
-%{prefix}/lib/libAtlasNet.so.1.0.0
-%{prefix}/lib/libAtlasNet.so.1
-%{prefix}/lib/libAtlasFunky.so.1.0.0
-%{prefix}/lib/libAtlasFunky.so.1
-%{prefix}/lib/libAtlasObjects.so.1.0.0
-%{prefix}/lib/libAtlasObjects.so.1
-%{prefix}/lib/libAtlasObjectsEntity.so.1.0.0
-%{prefix}/lib/libAtlasObjectsEntity.so.1
-%{prefix}/lib/libAtlasObjectsOperation.so.1.0.0
-%{prefix}/lib/libAtlasObjectsOperation.so.1
+%{prefix}/lib/libAtlas.so.@ATLAS_INTERFACE_VERSION_NO@
+%{prefix}/lib/libAtlas.so.@ATLAS_CURRENT@
+%{prefix}/lib/libAtlasMessage.so.@ATLAS_INTERFACE_VERSION_NO@
+%{prefix}/lib/libAtlasMessage.so.@ATLAS_CURRENT@
+%{prefix}/lib/libAtlasCodecs.so.@ATLAS_INTERFACE_VERSION_NO@
+%{prefix}/lib/libAtlasCodecs.so.@ATLAS_CURRENT@
+%{prefix}/lib/libAtlasNet.so.@ATLAS_INTERFACE_VERSION_NO@
+%{prefix}/lib/libAtlasNet.so.@ATLAS_CURRENT@
+%{prefix}/lib/libAtlasFunky.so.@ATLAS_INTERFACE_VERSION_NO@
+%{prefix}/lib/libAtlasFunky.so.@ATLAS_CURRENT@
+%{prefix}/lib/libAtlasObjects.so.@ATLAS_INTERFACE_VERSION_NO@
+%{prefix}/lib/libAtlasObjects.so.@ATLAS_CURRENT@
+%{prefix}/lib/libAtlasObjectsEntity.so.@ATLAS_INTERFACE_VERSION_NO@
+%{prefix}/lib/libAtlasObjectsEntity.so.@ATLAS_CURRENT@
+%{prefix}/lib/libAtlasObjectsOperation.so.@ATLAS_INTERFACE_VERSION_NO@
+%{prefix}/lib/libAtlasObjectsOperation.so.@ATLAS_CURRENT@
 %{prefix}/share/doc/Atlas-C++-@VERSION@/README
 %{prefix}/share/doc/Atlas-C++-@VERSION@/COPYING
 %{prefix}/share/doc/Atlas-C++-@VERSION@/AUTHORS
@@ -66,8 +71,6 @@ rm -rf $RPM_BUILD_ROOT
 %{prefix}/lib/libAtlasMessage.a
 %{prefix}/lib/libAtlasCodecs.so
 %{prefix}/lib/libAtlasCodecs.a
-%{prefix}/lib/libAtlasFilters.so
-%{prefix}/lib/libAtlasFilters.a
 %{prefix}/lib/libAtlasNet.so
 %{prefix}/lib/libAtlasNet.a
 %{prefix}/lib/libAtlasFunky.so
@@ -78,10 +81,8 @@ rm -rf $RPM_BUILD_ROOT
 %{prefix}/lib/libAtlasObjectsEntity.a
 %{prefix}/lib/libAtlasObjectsOperation.so
 %{prefix}/lib/libAtlasObjectsOperation.a
-%{prefix}/include/Atlas/Factory.h
 %{prefix}/include/Atlas/Bridge.h
 %{prefix}/include/Atlas/Codec.h
-%{prefix}/include/Atlas/Filter.h
 %{prefix}/include/Atlas/Negotiate.h
 %{prefix}/include/Atlas/Message/Object.h
 %{prefix}/include/Atlas/Message/Layer.h
@@ -93,7 +94,6 @@ rm -rf $RPM_BUILD_ROOT
 %{prefix}/include/Atlas/Funky/Encoder.h
 %{prefix}/include/Atlas/Task.h
 %{prefix}/include/Atlas/EncoderBase.h
-%{prefix}/include/Atlas/Objects/ObjectType.h
 %{prefix}/include/Atlas/Objects/Root.h
 %{prefix}/include/Atlas/Objects/Decoder.h
 %{prefix}/include/Atlas/Objects/Encoder.h
@@ -132,3 +132,4 @@ rm -rf $RPM_BUILD_ROOT
 %{prefix}/include/Atlas/Objects/Operation/Sound.h
 %{prefix}/include/Atlas/Objects/Operation/Talk.h
 %{prefix}/include/Atlas/Objects/Operation/Touch.h
+%{prefix}/share/aclocal/atlas.m4

@@ -1,7 +1,7 @@
 
 lib_LTLIBRARIES = libAtlasCodecs.la
 
-libAtlasCodecs_la_LDFLAGS = $(INTERFACE_VERSION)
+libAtlasCodecs_la_LDFLAGS = -version-info @ATLAS_INTERFACE_VERSION_INFO@
 
 libAtlasCodecsincludedir = $(includedir)/Atlas/Codecs
 

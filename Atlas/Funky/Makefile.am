@@ -1,7 +1,7 @@
 
 lib_LTLIBRARIES = libAtlasFunky.la
 
-libAtlasFunky_la_LDFLAGS = $(INTERFACE_VERSION)
+libAtlasFunky_la_LDFLAGS = -version-info @ATLAS_INTERFACE_VERSION_INFO@
 
 libAtlasFunkyincludedir = $(includedir)/Atlas/Funky
 

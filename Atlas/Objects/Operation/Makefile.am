@@ -2,7 +2,7 @@ SUBDIRS = .
 
 lib_LTLIBRARIES = libAtlasObjectsOperation.la
 
-libAtlasObjectsOperation_la_LDFLAGS = $(INTERFACE_VERSION)
+libAtlasObjectsOperation_la_LDFLAGS = -version-info @ATLAS_INTERFACE_VERSION_INFO@
 
 libAtlasObjectsOperationincludedir = $(includedir)/Atlas/Objects/Operation
 

@@ -2,7 +2,7 @@ SUBDIRS = . Objects Message Codecs Net Funky
 
 lib_LTLIBRARIES = libAtlas.la
 
-libAtlas_la_LDFLAGS = $(INTERFACE_VERSION)
+libAtlas_la_LDFLAGS = -version-info @ATLAS_INTERFACE_VERSION_INFO@
 
 libAtlasincludedir = $(includedir)/Atlas
 

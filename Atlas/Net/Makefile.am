@@ -1,7 +1,7 @@
 
 lib_LTLIBRARIES = libAtlasNet.la
 
-libAtlasNet_la_LDFLAGS = $(INTERFACE_VERSION)
+libAtlasNet_la_LDFLAGS = -version-info @ATLAS_INTERFACE_VERSION_INFO@
 
 libAtlasNetincludedir = $(includedir)/Atlas/Net
 

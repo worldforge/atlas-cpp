@@ -1,5 +1,10 @@
 2002-06-10  Al Riddoch  <alriddoch@zepler.org>
 
+	* Fixes to rpm spec, and modify the way interface versioning is
+	  set up, so it is handled more automaically, and used correctly.
+
+2002-06-10  Al Riddoch  <alriddoch@zepler.org>
+
 	* Add a new cleanly generated rpm spec, with devel subpackage,
 	  and sort out install process so doc files get installed.
 
