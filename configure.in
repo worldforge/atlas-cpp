@@ -31,7 +31,7 @@ dnl Test for C++ compiler
 
 AC_PROG_CXX
 
-dnl CXXFLAGS='-Wall -g'
+CXXFLAGS='-Wall -g'
 
 dnl Test for ANSI standard language features
 
