@@ -63,7 +63,6 @@
 				014CEA460018CE2711CA2923,
 				014CEA470018CE2711CA2923,
 			);
-			hasScannedForEncodings = 1;
 			isa = PBXProject;
 			mainGroup = 08FB7794FE84155DC02AAC07;
 			projectDirPath = "";
@@ -98,8 +97,8 @@
 				C4D7052E03C3768700A800C4,
 			);
 			isa = PBXGroup;
-			name = Source;
-			refType = 4;
+			path = Atlas;
+			refType = 2;
 		};
 //080
 //081
@@ -132,36 +131,31 @@
 		C4D7050B03C3768700A800C4 = {
 			fileEncoding = 30;
 			isa = PBXFileReference;
-			name = Bridge.cc;
-			path = src/Bridge.cc;
+			path = Bridge.cc;
 			refType = 4;
 		};
 		C4D7050C03C3768700A800C4 = {
 			fileEncoding = 30;
 			isa = PBXFileReference;
-			name = Bridge.h;
-			path = src/Bridge.h;
+			path = Bridge.h;
 			refType = 4;
 		};
 		C4D7050F03C3768700A800C4 = {
 			fileEncoding = 30;
 			isa = PBXFileReference;
-			name = Codec.cc;
-			path = src/Codec.cc;
+			path = Codec.cc;
 			refType = 4;
 		};
 		C4D7051003C3768700A800C4 = {
 			fileEncoding = 30;
 			isa = PBXFileReference;
-			name = Codec.h;
-			path = src/Codec.h;
+			path = Codec.h;
 			refType = 4;
 		};
 		C4D7051303C3768700A800C4 = {
 			fileEncoding = 30;
 			isa = PBXFileReference;
-			name = Codec_impl.h;
-			path = src/Codec_impl.h;
+			path = Codec_impl.h;
 			refType = 4;
 		};
 		C4D7051403C3768700A800C4 = {
@@ -173,8 +167,7 @@
 				C4D7052A03C3768700A800C4,
 			);
 			isa = PBXGroup;
-			name = Codecs;
-			path = src/Codecs;
+			path = Codecs;
 			refType = 4;
 		};
 		C4D7052403C3768700A800C4 = {
@@ -210,8 +203,7 @@
 		C4D7052D03C3768700A800C4 = {
 			fileEncoding = 30;
 			isa = PBXFileReference;
-			name = EncoderBase.h;
-			path = src/EncoderBase.h;
+			path = EncoderBase.h;
 			refType = 4;
 		};
 		C4D7052E03C3768700A800C4 = {
@@ -220,8 +212,7 @@
 				C4D7053A03C3768700A800C4,
 			);
 			isa = PBXGroup;
-			name = Funky;
-			path = src/Funky;
+			path = Funky;
 			refType = 4;
 		};
 		C4D7053903C3768700A800C4 = {
@@ -250,8 +241,7 @@
 				C4D7056603C3768700A800C4,
 			);
 			isa = PBXGroup;
-			name = Message;
-			path = src/Message;
+			path = Message;
 			refType = 4;
 		};
 		C4D7055303C3768700A800C4 = {
@@ -317,8 +307,7 @@
 		C4D7056903C3768700A800C4 = {
 			fileEncoding = 30;
 			isa = PBXFileReference;
-			name = Negotiate.h;
-			path = src/Negotiate.h;
+			path = Negotiate.h;
 			refType = 4;
 		};
 		C4D7056A03C3768700A800C4 = {
@@ -329,8 +318,7 @@
 				C4D7057F03C3768700A800C4,
 			);
 			isa = PBXGroup;
-			name = Net;
-			path = src/Net;
+			path = Net;
 			refType = 4;
 		};
 		C4D7057703C3768700A800C4 = {
@@ -368,8 +356,7 @@
 				C4D7060503C3768800A800C4,
 			);
 			isa = PBXGroup;
-			name = Objects;
-			path = src/Objects;
+			path = Objects;
 			refType = 4;
 		};
 		C4D7058E03C3768700A800C4 = {
@@ -923,8 +910,7 @@
 		C4D7060803C3768800A800C4 = {
 			fileEncoding = 30;
 			isa = PBXFileReference;
-			name = Task.h;
-			path = src/Task.h;
+			path = Task.h;
 			refType = 4;
 		};
 		C4DB39AF03C3780500A800C4 = {
@@ -936,55 +922,6 @@
 				C4DB39BB03C3782800A800C4,
 				C4DB39BC03C3782900A800C4,
 				C4DB39BD03C3782A00A800C4,
-				C4DB39BF03C3783800A800C4,
-				C4DB39C103C3783900A800C4,
-				C4DB39C303C3783900A800C4,
-				C4DB39C703C3783C00A800C4,
-				C4DB39C803C3783D00A800C4,
-				C4DB39CA03C3784C00A800C4,
-				C4DB39CC03C3784E00A800C4,
-				C4DB39CE03C3785300A800C4,
-				C4DB39CF03C3785500A800C4,
-				C4DB39D103C3787400A800C4,
-				C4DB39D303C3787A00A800C4,
-				C4DB39D403C3787B00A800C4,
-				C4DB39D603C3787C00A800C4,
-				C4DB39D703C3787F00A800C4,
-				C4DB39DA03C379BB00A800C4,
-				C4DB39DC03C379BC00A800C4,
-				C4DB39DE03C379BE00A800C4,
-				C4DB39E103C379C500A800C4,
-				C4DB39E203C379C600A800C4,
-				C4DB39E703C379D200A800C4,
-				C4DB39E803C379F400A800C4,
-				C4DB39EA03C379F500A800C4,
-				C4DB39EC03C379F600A800C4,
-				C4DB39F003C379F800A800C4,
-				C4DB39F103C379F800A800C4,
-				C4DB39F403C379FA00A800C4,
-				C4DB39F603C379FB00A800C4,
-				C4DB39F803C379FC00A800C4,
-				C4DB39FB03C379FE00A800C4,
-				C4DB39FD03C379FF00A800C4,
-				C4DB39FE03C379FF00A800C4,
-				C4DB3A0003C37A0000A800C4,
-				C4DB3A0303C37A0600A800C4,
-				C4DB3A0503C37A0700A800C4,
-				C4DB3A0703C37A0800A800C4,
-				C4DB3A0903C37A0900A800C4,
-				C4DB3A0B03C37A0A00A800C4,
-				C4DB3A0C03C37A0A00A800C4,
-				C4DB3A0F03C37A0E00A800C4,
-				C4DB3A1103C37A0F00A800C4,
-				C4DB3A1403C37A1100A800C4,
-				C4DB3A1603C37A1200A800C4,
-				C4DB3A1703C37A1700A800C4,
-				C4DB3A1903C37A1900A800C4,
-				C4DB3A1C03C37A1A00A800C4,
-				C4DB3A1D03C37A2400A800C4,
-				C4DB3A1F03C37A2400A800C4,
-				C4DB3A2103C37C6200A800C4,
-				C4DB3A2303C37C9900A800C4,
 			);
 			isa = PBXHeadersBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1035,17 +972,24 @@
 		C4DB39B403C3780500A800C4 = {
 			buildPhases = (
 				C4DB39AF03C3780500A800C4,
+				F5614A780447239801A800CD,
+				F5614A7A044723BE01A800CD,
+				F5614A7B044723C901A800CD,
+				F5614A7C044723D401A800CD,
+				F5614A7D0447241901A800CD,
+				F5614A7E0447243101A800CD,
+				F5614A7F0447254501A800CD,
 				C4DB39B003C3780500A800C4,
 				C4DB39B103C3780500A800C4,
 				C4DB39B203C3780500A800C4,
 				C4DB39B303C3780500A800C4,
-				C4DB3A2403C37D3F00A800C4,
 			);
 			buildSettings = {
 				DEBUGGING_SYMBOLS = NO;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
+				INSTALL_PATH = "$(HOME)/Library/Frameworks";
 				OPTIMIZATION_CFLAGS = "-O2";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
@@ -1061,7 +1005,7 @@
 			);
 			isa = PBXFrameworkTarget;
 			name = Atlas;
-			productInstallPath = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+			productInstallPath = "";
 			productName = Atlas;
 			productReference = C4DB39B503C3780500A800C4;
 			productSettingsXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
@@ -1073,7 +1017,7 @@
 	<key>CFBundleExecutable</key>
 	<string></string>
 	<key>CFBundleGetInfoString</key>
-	<string></string>
+	<string>Atlas-C++ 0.4.5, see www.worldforge.org for information.</string>
 	<key>CFBundleIconFile</key>
 	<string></string>
 	<key>CFBundleIdentifier</key>
@@ -1081,18 +1025,19 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string></string>
+	<string>Atlas-C++</string>
 	<key>CFBundlePackageType</key>
 	<string>FMWK</string>
 	<key>CFBundleShortVersionString</key>
-	<string></string>
+	<string>0.4.5</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>0.0.1d1</string>
+	<string>0.4.5</string>
 </dict>
 </plist>
 ";
+			shouldUseHeadermap = 0;
 		};
 		C4DB39B503C3780500A800C4 = {
 			isa = PBXFrameworkReference;
@@ -1133,12 +1078,18 @@
 			fileRef = C4D7051303C3768700A800C4;
 			isa = PBXBuildFile;
 			settings = {
+				ATTRIBUTES = (
+					Public,
+				);
 			};
 		};
 		C4DB39BB03C3782800A800C4 = {
 			fileRef = C4D7052D03C3768700A800C4;
 			isa = PBXBuildFile;
 			settings = {
+				ATTRIBUTES = (
+					Public,
+				);
 			};
 		};
 		C4DB39BC03C3782900A800C4 = {
@@ -1154,6 +1105,9 @@
 			fileRef = C4D7060803C3768800A800C4;
 			isa = PBXBuildFile;
 			settings = {
+				ATTRIBUTES = (
+					Public,
+				);
 			};
 		};
 		C4DB39BE03C3783700A800C4 = {
@@ -1540,18 +1494,127 @@
 			settings = {
 			};
 		};
-		C4DB3A2403C37D3F00A800C4 = {
+//C40
+//C41
+//C42
+//C43
+//C44
+//F50
+//F51
+//F52
+//F53
+//F54
+		F5614A780447239801A800CD = {
 			buildActionMask = 2147483647;
+			dstPath = Headers/Message;
+			dstSubfolderSpec = 1;
 			files = (
+				C4DB39BF03C3783800A800C4,
+				C4DB39C103C3783900A800C4,
+				C4DB39C303C3783900A800C4,
+				C4DB39C703C3783C00A800C4,
+				C4DB39C803C3783D00A800C4,
 			);
-			generatedFileNames = (
-			);
-			isa = PBXShellScriptBuildPhase;
-			neededFileNames = (
-			);
+			isa = PBXCopyFilesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "./link-headers.sh";
+		};
+		F5614A7A044723BE01A800CD = {
+			buildActionMask = 2147483647;
+			dstPath = Headers/Net;
+			dstSubfolderSpec = 1;
+			files = (
+				C4DB39CA03C3784C00A800C4,
+				C4DB39CC03C3784E00A800C4,
+			);
+			isa = PBXCopyFilesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5614A7B044723C901A800CD = {
+			buildActionMask = 2147483647;
+			dstPath = Headers/Codecs;
+			dstSubfolderSpec = 1;
+			files = (
+				C4DB39D303C3787A00A800C4,
+				C4DB39D403C3787B00A800C4,
+				C4DB39D603C3787C00A800C4,
+			);
+			isa = PBXCopyFilesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5614A7C044723D401A800CD = {
+			buildActionMask = 2147483647;
+			dstPath = Headers/Objects;
+			dstSubfolderSpec = 1;
+			files = (
+				C4DB39CE03C3785300A800C4,
+				C4DB39CF03C3785500A800C4,
+				C4DB39D103C3787400A800C4,
+			);
+			isa = PBXCopyFilesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5614A7D0447241901A800CD = {
+			buildActionMask = 2147483647;
+			dstPath = Headers/Objects/Entity;
+			dstSubfolderSpec = 1;
+			files = (
+				C4DB39DA03C379BB00A800C4,
+				C4DB39DC03C379BC00A800C4,
+				C4DB39DE03C379BE00A800C4,
+				C4DB39E103C379C500A800C4,
+				C4DB39E203C379C600A800C4,
+				C4DB39E703C379D200A800C4,
+				C4DB3A2103C37C6200A800C4,
+			);
+			isa = PBXCopyFilesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5614A7E0447243101A800CD = {
+			buildActionMask = 2147483647;
+			dstPath = Headers/Objects/Operation;
+			dstSubfolderSpec = 1;
+			files = (
+				C4DB39E803C379F400A800C4,
+				C4DB39EA03C379F500A800C4,
+				C4DB39EC03C379F600A800C4,
+				C4DB39F003C379F800A800C4,
+				C4DB39F103C379F800A800C4,
+				C4DB39F403C379FA00A800C4,
+				C4DB39F603C379FB00A800C4,
+				C4DB39F803C379FC00A800C4,
+				C4DB39FB03C379FE00A800C4,
+				C4DB39FD03C379FF00A800C4,
+				C4DB39FE03C379FF00A800C4,
+				C4DB3A0003C37A0000A800C4,
+				C4DB3A0303C37A0600A800C4,
+				C4DB3A0503C37A0700A800C4,
+				C4DB3A0703C37A0800A800C4,
+				C4DB3A0903C37A0900A800C4,
+				C4DB3A0B03C37A0A00A800C4,
+				C4DB3A0C03C37A0A00A800C4,
+				C4DB3A0F03C37A0E00A800C4,
+				C4DB3A1103C37A0F00A800C4,
+				C4DB3A1403C37A1100A800C4,
+				C4DB3A1603C37A1200A800C4,
+				C4DB3A1703C37A1700A800C4,
+				C4DB3A1903C37A1900A800C4,
+				C4DB3A1C03C37A1A00A800C4,
+				C4DB3A1D03C37A2400A800C4,
+				C4DB3A1F03C37A2400A800C4,
+				C4DB3A2303C37C9900A800C4,
+			);
+			isa = PBXCopyFilesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5614A7F0447254501A800CD = {
+			buildActionMask = 2147483647;
+			dstPath = Headers/Funky;
+			dstSubfolderSpec = 1;
+			files = (
+				C4DB39D703C3787F00A800C4,
+			);
+			isa = PBXCopyFilesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 	};
 	rootObject = 08FB7793FE84155DC02AAC07;

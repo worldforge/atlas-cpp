@@ -1,3 +1,9 @@
+2003-04-16 James Turner <james@worldforge.org>
+
+	* Updating the ProjectBuilder files post the great src ->
+	  Atlas renaming. All seems to work well, sweetness, joy,
+	  light and relocatable code.
+
 2003-04-16  Al Riddoch  <alriddoch@zepler.org>
 
 	* Atlas/Objects/gen_cc.py, Atlas/Objects/Entity/Account.h,
