@@ -4,7 +4,8 @@
 	  Atlas/Objects/Entity/Entity.cc, Atlas/Objects/Entity/Player.h,
 	  Atlas/Objects/Entity/RootEntity.h,
 	  Atlas/Objects/Operation/Operation.cc,
-	  Atlas/Objects/Operation/RootOperation.h:
+	  Atlas/Objects/Operation/RootOperation.h,
+	  Atlas/Objects/Root.cc, Atlas/Objects/Root.h,
 	  Move inlined sends into implementation.
 
 2003-04-16  Al Riddoch  <alriddoch@zepler.org>

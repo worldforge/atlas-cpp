@@ -101,6 +101,27 @@ Object::MapType Root::AsMap() const
     return allattrs;
 }
 
+void Root::SendParents(Atlas::Bridge* b) const
+{
+    Atlas::Message::Encoder e(b);
+    e.MapItem("parents", attr_parents);
+}
+
+void Root::SendId(Atlas::Bridge* b) const
+{
+    b->MapItem("id", attr_id);
+}
+
+void Root::SendObjtype(Atlas::Bridge* b) const
+{
+    b->MapItem("objtype", attr_objtype);
+}
+
+void Root::SendName(Atlas::Bridge* b) const
+{
+    b->MapItem("name", attr_name);
+}
+
 void Root::SendContents(Bridge* b) const
 {
     SendParents(b);
