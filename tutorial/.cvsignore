@@ -1,4 +1,4 @@
 Makefile.in
 Makefile
-simple-client
-simple-server
+simple_client
+simple_server
