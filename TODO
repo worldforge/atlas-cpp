@@ -2,10 +2,6 @@ TODO list for Atlas-C++
 
 Items are in no particular order.
 
-For 0.4.0:
-
- - update README
-
 For 0.4.1:
  - remove libsocket++ dependency from tutorial/ (i.e. write a nice,
    _standards compliant_ sockbuf and use that
