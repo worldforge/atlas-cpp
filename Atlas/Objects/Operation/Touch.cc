@@ -14,7 +14,7 @@ Touch::Touch()
 {
     SetId(std::string("touch"));
     Object::ListType parents;
-    parents.push_back(string("perceive"));
+    parents.push_back(std::string("perceive"));
     SetParents(parents);
 }
 

@@ -14,7 +14,7 @@ Sound::Sound()
 {
     SetId(std::string("sound"));
     Object::ListType parents;
-    parents.push_back(string("perception"));
+    parents.push_back(std::string("perception"));
     SetParents(parents);
 }
 

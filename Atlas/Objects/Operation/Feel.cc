@@ -14,7 +14,7 @@ Feel::Feel()
 {
     SetId(std::string("feel"));
     Object::ListType parents;
-    parents.push_back(string("perception"));
+    parents.push_back(std::string("perception"));
     SetParents(parents);
 }
 

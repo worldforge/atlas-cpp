@@ -14,7 +14,7 @@ Communicate::Communicate()
 {
     SetId(std::string("communicate"));
     Object::ListType parents;
-    parents.push_back(string("create"));
+    parents.push_back(std::string("create"));
     SetParents(parents);
 }
 

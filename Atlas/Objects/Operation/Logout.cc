@@ -14,7 +14,7 @@ Logout::Logout()
 {
     SetId(std::string("logout"));
     Object::ListType parents;
-    parents.push_back(string("login"));
+    parents.push_back(std::string("login"));
     SetParents(parents);
 }
 

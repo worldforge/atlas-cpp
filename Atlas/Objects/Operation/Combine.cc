@@ -14,7 +14,7 @@ Combine::Combine()
 {
     SetId(std::string("combine"));
     Object::ListType parents;
-    parents.push_back(string("create"));
+    parents.push_back(std::string("create"));
     SetParents(parents);
 }
 

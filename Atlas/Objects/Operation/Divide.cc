@@ -14,7 +14,7 @@ Divide::Divide()
 {
     SetId(std::string("divide"));
     Object::ListType parents;
-    parents.push_back(string("create"));
+    parents.push_back(std::string("create"));
     SetParents(parents);
 }
 

@@ -14,7 +14,7 @@ Player::Player()
 {
     SetId(std::string("player"));
     Object::ListType parents;
-    parents.push_back(string("account"));
+    parents.push_back(std::string("account"));
     SetParents(parents);
     Object::ListType characters;
     SetCharacters(characters);
@@ -45,13 +45,13 @@ Object Player::GetAttr(const std::string& name) const
     return Account::GetAttr(name);
 }
 
-void Player::SetAttr(const string& name, const Object& attr)
+void Player::SetAttr(const std::string& name, const Object& attr)
 {
     if (name == "characters") { SetCharacters(attr.AsList()); return; }
     Account::SetAttr(name, attr);
 }
 
-void Player::RemoveAttr(const string& name)
+void Player::RemoveAttr(const std::string& name)
 {
     if (name == "characters") return;
     Account::RemoveAttr(name);

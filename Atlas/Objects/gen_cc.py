@@ -111,7 +111,7 @@ class GenerateCC:
             if sub.type == "list" or sub_type == "map":
                 self.out.write("%s_%d" % (name, sub.name))
             elif sub.type == "string":
-                self.out.write('string("%s")' % sub.value)
+                self.out.write('std::string("%s")' % sub.value)
             else:
                 self.out.write("%s" % sub.value)
             self.out.write(");\n")
@@ -128,7 +128,7 @@ class GenerateCC:
             if sub_type == "list" or sub_type == "map":
                 self.out.write("%s_%d" % (name, i))
             elif sub_type == "string":
-                self.out.write('string("%s")' % sub)
+                self.out.write('std::string("%s")' % sub)
             else:
                 self.out.write('%s' % sub)
             self.out.write(");\n")
@@ -233,7 +233,7 @@ class GenerateCC:
     def setattr_im(self, obj, statics):
         classname = classize(obj.attr['id'].value)
         self.out.write("void %s::SetAttr" % classname)
-        self.out.write("(const string& name, const Object& attr)\n")
+        self.out.write("(const std::string& name, const Object& attr)\n")
         self.out.write("{\n")
         for attr in statics:
             self.out.write('    if (name == "%s") {' % attr.name)
@@ -245,7 +245,7 @@ class GenerateCC:
         self.out.write("}\n\n")
     def remattr_im(self, obj, statics):
         classname = classize(obj.attr['id'].value)
-        self.out.write("void %s::RemoveAttr(const string& name)\n"
+        self.out.write("void %s::RemoveAttr(const std::string& name)\n"
                         % classname)
         self.out.write("{\n")
         for attr in statics:

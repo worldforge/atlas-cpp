@@ -14,7 +14,7 @@ Sight::Sight()
 {
     SetId(std::string("sight"));
     Object::ListType parents;
-    parents.push_back(string("perception"));
+    parents.push_back(std::string("perception"));
     SetParents(parents);
 }
 

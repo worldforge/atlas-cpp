@@ -14,7 +14,7 @@ Action::Action()
 {
     SetId(std::string("action"));
     Object::ListType parents;
-    parents.push_back(string("root_operation"));
+    parents.push_back(std::string("root_operation"));
     SetParents(parents);
 }
 

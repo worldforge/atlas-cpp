@@ -14,7 +14,7 @@ RootEntity::RootEntity()
 {
     SetId(std::string("root_entity"));
     Object::ListType parents;
-    parents.push_back(string("root"));
+    parents.push_back(std::string("root"));
     SetParents(parents);
     SetObjtype(std::string("class"));
     SetLoc(std::string(""));
@@ -66,7 +66,7 @@ Object RootEntity::GetAttr(const std::string& name) const
     return Root::GetAttr(name);
 }
 
-void RootEntity::SetAttr(const string& name, const Object& attr)
+void RootEntity::SetAttr(const std::string& name, const Object& attr)
 {
     if (name == "loc") { SetLoc(attr.AsString()); return; }
     if (name == "pos") { SetPos(attr.AsList()); return; }
@@ -76,7 +76,7 @@ void RootEntity::SetAttr(const string& name, const Object& attr)
     Root::SetAttr(name, attr);
 }
 
-void RootEntity::RemoveAttr(const string& name)
+void RootEntity::RemoveAttr(const std::string& name)
 {
     if (name == "loc") return;
     if (name == "pos") return;

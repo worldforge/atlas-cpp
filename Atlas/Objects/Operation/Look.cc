@@ -14,7 +14,7 @@ Look::Look()
 {
     SetId(std::string("look"));
     Object::ListType parents;
-    parents.push_back(string("perceive"));
+    parents.push_back(std::string("perceive"));
     SetParents(parents);
 }
 

@@ -14,7 +14,7 @@ AdminEntity::AdminEntity()
 {
     SetId(std::string("admin_entity"));
     Object::ListType parents;
-    parents.push_back(string("root_entity"));
+    parents.push_back(std::string("root_entity"));
     SetParents(parents);
 }
 

@@ -14,7 +14,7 @@ Delete::Delete()
 {
     SetId(std::string("delete"));
     Object::ListType parents;
-    parents.push_back(string("action"));
+    parents.push_back(std::string("action"));
     SetParents(parents);
 }
 

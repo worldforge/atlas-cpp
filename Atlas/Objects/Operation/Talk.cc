@@ -14,7 +14,7 @@ Talk::Talk()
 {
     SetId(std::string("talk"));
     Object::ListType parents;
-    parents.push_back(string("communicate"));
+    parents.push_back(std::string("communicate"));
     SetParents(parents);
 }
 

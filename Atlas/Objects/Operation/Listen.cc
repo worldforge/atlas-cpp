@@ -14,7 +14,7 @@ Listen::Listen()
 {
     SetId(std::string("listen"));
     Object::ListType parents;
-    parents.push_back(string("perceive"));
+    parents.push_back(std::string("perceive"));
     SetParents(parents);
 }
 

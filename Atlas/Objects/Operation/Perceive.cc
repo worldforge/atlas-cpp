@@ -14,7 +14,7 @@ Perceive::Perceive()
 {
     SetId(std::string("perceive"));
     Object::ListType parents;
-    parents.push_back(string("get"));
+    parents.push_back(std::string("get"));
     SetParents(parents);
 }
 

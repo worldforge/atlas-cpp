@@ -1,5 +1,9 @@
 2001-03-13  Al Riddoch  <alriddoch@zepler.org>
 
+	* src/Objects/*/*.cc: More std:: additions.
+
+2001-03-13  Al Riddoch  <alriddoch@zepler.org>
+
 	* src/*: Added more std:: prefixes to symbols from the std namespace.
 
 	* src/Net/Stream.cc: Changed socket checks to check using the

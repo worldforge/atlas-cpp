@@ -14,7 +14,7 @@ Set::Set()
 {
     SetId(std::string("set"));
     Object::ListType parents;
-    parents.push_back(string("action"));
+    parents.push_back(std::string("action"));
     SetParents(parents);
 }
 

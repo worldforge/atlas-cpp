@@ -14,7 +14,7 @@ Appearance::Appearance()
 {
     SetId(std::string("appearance"));
     Object::ListType parents;
-    parents.push_back(string("sight"));
+    parents.push_back(std::string("sight"));
     SetParents(parents);
 }
 

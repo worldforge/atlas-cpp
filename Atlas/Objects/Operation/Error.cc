@@ -14,7 +14,7 @@ Error::Error()
 {
     SetId(std::string("error"));
     Object::ListType parents;
-    parents.push_back(string("info"));
+    parents.push_back(std::string("info"));
     SetParents(parents);
 }
 

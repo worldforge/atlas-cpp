@@ -14,7 +14,7 @@ Game::Game()
 {
     SetId(std::string("game"));
     Object::ListType parents;
-    parents.push_back(string("admin_entity"));
+    parents.push_back(std::string("admin_entity"));
     SetParents(parents);
 }
 

@@ -14,7 +14,7 @@ Sniff::Sniff()
 {
     SetId(std::string("sniff"));
     Object::ListType parents;
-    parents.push_back(string("perceive"));
+    parents.push_back(std::string("perceive"));
     SetParents(parents);
 }
 

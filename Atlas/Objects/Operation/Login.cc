@@ -14,7 +14,7 @@ Login::Login()
 {
     SetId(std::string("login"));
     Object::ListType parents;
-    parents.push_back(string("get"));
+    parents.push_back(std::string("get"));
     SetParents(parents);
 }
 

@@ -14,7 +14,7 @@ Admin::Admin()
 {
     SetId(std::string("admin"));
     Object::ListType parents;
-    parents.push_back(string("account"));
+    parents.push_back(std::string("account"));
     SetParents(parents);
 }
 

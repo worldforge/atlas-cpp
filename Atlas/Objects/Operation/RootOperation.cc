@@ -14,7 +14,7 @@ RootOperation::RootOperation()
 {
     SetId(std::string("root_operation"));
     Object::ListType parents;
-    parents.push_back(string("root"));
+    parents.push_back(std::string("root"));
     SetParents(parents);
     SetObjtype(std::string("op_definition"));
     SetSerialno(0);
@@ -67,7 +67,7 @@ Object RootOperation::GetAttr(const std::string& name) const
     return Root::GetAttr(name);
 }
 
-void RootOperation::SetAttr(const string& name, const Object& attr)
+void RootOperation::SetAttr(const std::string& name, const Object& attr)
 {
     if (name == "serialno") { SetSerialno(attr.AsInt()); return; }
     if (name == "refno") { SetRefno(attr.AsInt()); return; }
@@ -80,7 +80,7 @@ void RootOperation::SetAttr(const string& name, const Object& attr)
     Root::SetAttr(name, attr);
 }
 
-void RootOperation::RemoveAttr(const string& name)
+void RootOperation::RemoveAttr(const std::string& name)
 {
     if (name == "serialno") return;
     if (name == "refno") return;

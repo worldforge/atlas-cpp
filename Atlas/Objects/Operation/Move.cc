@@ -14,7 +14,7 @@ Move::Move()
 {
     SetId(std::string("move"));
     Object::ListType parents;
-    parents.push_back(string("set"));
+    parents.push_back(std::string("set"));
     SetParents(parents);
 }
 

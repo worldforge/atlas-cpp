@@ -14,7 +14,7 @@ Account::Account()
 {
     SetId(std::string("account"));
     Object::ListType parents;
-    parents.push_back(string("admin_entity"));
+    parents.push_back(std::string("admin_entity"));
     SetParents(parents);
     SetPassword(std::string(""));
 }
@@ -44,13 +44,13 @@ Object Account::GetAttr(const std::string& name) const
     return AdminEntity::GetAttr(name);
 }
 
-void Account::SetAttr(const string& name, const Object& attr)
+void Account::SetAttr(const std::string& name, const Object& attr)
 {
     if (name == "password") { SetPassword(attr.AsString()); return; }
     AdminEntity::SetAttr(name, attr);
 }
 
-void Account::RemoveAttr(const string& name)
+void Account::RemoveAttr(const std::string& name)
 {
     if (name == "password") return;
     AdminEntity::RemoveAttr(name);

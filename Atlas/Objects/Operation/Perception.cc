@@ -14,7 +14,7 @@ Perception::Perception()
 {
     SetId(std::string("perception"));
     Object::ListType parents;
-    parents.push_back(string("info"));
+    parents.push_back(std::string("info"));
     SetParents(parents);
 }
 
