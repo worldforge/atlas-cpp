@@ -103,8 +103,7 @@ class XML : public Codec<std::iostream>
 namespace
 {
     Codec<std::iostream>::Factory<XML> factory(
-	"XML",					    // name
-	Codec<std::iostream>::Metrics(1, 2)		    // metrics
+	"XML"					    // name
     );
 }
     

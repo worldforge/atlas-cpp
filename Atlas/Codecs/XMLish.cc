@@ -54,8 +54,7 @@ namespace
         We're not going to enable this sucker until it actually works.
     
     Codec<iostream>::Factory<XMLish> factory(
-	"XMLish",				    // name
-	Codec<iostream>::Metrics(1, 2)		    // metrics
+	"XMLish"				    // name
     );
 
     */

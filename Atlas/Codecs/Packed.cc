@@ -106,8 +106,7 @@ protected:
 namespace
 {
     Codec<std::iostream>::Factory<Packed> factory(
-	"Packed",				    // name
-	Codec<std::iostream>::Metrics(1, 2)		    // metrics
+	"Packed"				    // name
     );
 }
 

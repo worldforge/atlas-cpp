@@ -41,13 +41,6 @@ class Codec : public Bridge, public Task
 
     virtual ~Codec();
 
-    class Metrics
-    {
-	public:
-
-	Metrics(int speed, int bandwidth) { }
-    };
-
     struct Parameters
     {
         Stream& stream;
@@ -62,8 +55,8 @@ class Codec : public Bridge, public Task
     {
 	public:
 
-	Factory(const std::string& name, const Metrics& metrics)
-	    : Atlas::Factory<Codec>(name, metrics)
+        Factory(const std::string& name)
+	    : Atlas::Factory<Codec>(name)
 	{
 	}
 
