@@ -11,15 +11,15 @@ namespace Atlas {
 
 /** Negotiation of codecs and filters for an Atlas connection
 
-non blocking negotiation of Codecs and Filters
-requires a list of avalable Codecs and Filters,
+non blocking negotiation of Codecs
+requires a list of avalable Codecs,
 along with the name of sender and a Socket
 
 @see Connection
 @see Codec
-@see Filter
 */
 
+template <typename Stream>
 class Negotiate : public Task
 {
     public:
@@ -31,8 +31,8 @@ class Negotiate : public Task
 	FAILED,
     };
 
-    virtual State getState() = 0;
-    virtual Codec * getCodec() = 0;
+    virtual State GetState() = 0;
+    virtual Codec<Stream>* GetCodec() = 0;
 };
 
 } // Atlas namespace
