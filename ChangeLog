@@ -1,3 +1,9 @@
+2001-03-12  Al Riddoch  <alriddoch@zepler.org>
+
+        * index.dox, AUTHORS: Modified docs to indicate new maintainer.
+
+	* NEWS: Added planned 0.5 release.
+
 2001-03-10  Al Riddoch  <alriddoch@zepler.org>
 
 	* tutorial/example/simple_*.cc: Modified tutorial programs to
