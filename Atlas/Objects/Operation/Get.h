@@ -3,15 +3,15 @@
 // Copyright 2000 Stefanus Du Toit.
 // Automatically generated using gen_cc.py.
 
-#ifndef ATLAS_OBJECTS_OPERATION_IMAGINARY_H
-#define ATLAS_OBJECTS_OPERATION_IMAGINARY_H
+#ifndef ATLAS_OBJECTS_OPERATION_GET_H
+#define ATLAS_OBJECTS_OPERATION_GET_H
 
 #include "Action.h"
 
 
 namespace Atlas { namespace Objects { namespace Operation { 
 
-/** When something is not yet implemented in server, then character can pretend to do something ;-)
+/** Generic operation for getting info about things.
 
 This is base operation for all other
     operations and defines basic attributes. You can use this as
@@ -20,19 +20,19 @@ This is base operation for all other
     are just as examples (and thus world specific) are started with 'e_'.
 
 */
-class Imaginary : public Action
+class Get : public Action
 {
 public:
-    /// Construct a Imaginary class definition.
-    Imaginary();
+    /// Construct a Get class definition.
+    Get();
   protected:
-    Imaginary(const std::string&,const std::string&);
+    Get(const std::string&,const std::string&);
   public:
     /// Default destructor.
-    virtual ~Imaginary() { }
+    virtual ~Get() { }
 
-    /// Create a new instance of Imaginary.
-    static Imaginary Instantiate();
+    /// Create a new instance of Get.
+    static Get Instantiate();
 
 protected:
 
@@ -40,4 +40,4 @@ protected:
 
 } } } // namespace Atlas::Objects::Operation
 
-#endif // ATLAS_OBJECTS_OPERATION_IMAGINARY_H
+#endif // ATLAS_OBJECTS_OPERATION_GET_H

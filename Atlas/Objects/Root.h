@@ -5,11 +5,8 @@
 #ifndef ATLAS_OBJECTS_ROOT_H
 #define ATLAS_OBJECTS_ROOT_H
 
-#include <map>
-#include <string>
 #include "../Message/Encoder.h"
 #include "../Message/Object.h"
-#include "../Bridge.h"
 
 namespace Atlas { namespace Objects {
 
@@ -35,6 +32,10 @@ public:
     Root();
     /// Construct a Root instance.
     Root(const std::string& id);
+protected:
+    /// Construct a Root instance.
+    Root(const std::string& id, const std::string& parent);
+public:
     /// Default destructor.
     virtual ~Root();
 

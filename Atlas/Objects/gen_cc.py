@@ -100,6 +100,9 @@ class GenerateCC:
     def constructors_if(self, obj):
         self.doc(4, "Construct a " + self.classname + " class definition.")
         self.out.write("    " + self.classname + "();\n")
+        self.out.write("  protected:\n")
+        self.out.write("    " + self.classname + "(const std::string&,const std::string&);\n")
+        self.out.write("  public:\n")
     def default_map(self, name, obj):
         self.out.write("    Object::MapType " + name + ";\n")
         for sub in obj.attr_list:
@@ -143,26 +146,66 @@ class GenerateCC:
                     self.out.write('%s' % sub)
                 self.out.write(");\n")
     def constructors_im(self, obj):
+        for sub_obj in obj.attr_list:
+            if sub_obj.name == "id":
+                oid = sub_obj.value
+            if sub_obj.name == "parents":
+                parents = sub_obj.value[0]
+        args = ""
+        if oid and parents:
+            args = "\""+oid+"\", \""+parents+"\""
+            print "Got parent init ", args
         self.out.write(self.classname + "::" + self.classname + "()\n")
         self.out.write("     : ")
-        self.out.write(string.join(map(lambda parent:classize(parent)+"()", \
+        self.out.write(string.join(map(lambda parent,a=args:classize(parent)+"("+a+")", \
                        obj.attr['parents'].value), ", ") + "\n")
         self.out.write("{\n")
         for sub_obj in obj.attr_list:
             if sub_obj.attr_container_obj == obj and \
+               sub_obj.name != "id" and sub_obj.name != "parents" and \
                sub_obj.name not in descr_attrs:
-                if sub_obj.type == "list":
-                    self.default_list(sub_obj.name, sub_obj)
-                if sub_obj.type == "map":
-                    self.default_map(sub_obj.name, sub_obj)
-                self.out.write('    Set' + classize(sub_obj.name) + '(')
-                if sub_obj.type == "string":
-                    self.out.write('std::string("' + sub_obj.value + '")')
-                elif sub_obj.type == "list" or sub_obj.type == "map":
-                    self.out.write(sub_obj.name)
+                if (sub_obj.type == "list" or sub_obj.type == "map") and len(sub_obj.value) == 0: pass
+                elif sub_obj.type == "string" and len(sub_obj.value) == 0: pass
                 else:
-                    self.out.write('%s' % sub_obj.value)
-                self.out.write(');\n')
+                    if sub_obj.type == "list":
+                        self.default_list(sub_obj.name, sub_obj)
+                    if sub_obj.type == "map":
+                        self.default_map(sub_obj.name, sub_obj)
+                    self.out.write('    Set' + classize(sub_obj.name) + '(')
+                    if sub_obj.type == "string":
+                        self.out.write('std::string("' + sub_obj.value + '")')
+                    elif sub_obj.type == "list" or sub_obj.type == "map":
+                        self.out.write(sub_obj.name)
+                    else:
+                        self.out.write('%s' % sub_obj.value)
+                    self.out.write(');\n')
+        self.out.write("}\n")
+        self.out.write("\n")
+        args = "id, parent"
+        self.out.write(self.classname + "::" + self.classname + "(const string & id, const string & parent)\n")
+        self.out.write("     : ")
+        self.out.write(string.join(map(lambda parent,a=args:classize(parent)+"("+a+")", \
+                       obj.attr['parents'].value), ", ") + "\n")
+        self.out.write("{\n")
+        for sub_obj in obj.attr_list:
+            if sub_obj.attr_container_obj == obj and \
+               sub_obj.name != "id" and sub_obj.name != "parents" and \
+               sub_obj.name not in descr_attrs:
+                if (sub_obj.type == "list" or sub_obj.type == "map") and len(sub_obj.value) == 0: pass
+                elif sub_obj.type == "string" and len(sub_obj.value) == 0: pass
+                else:
+                    if sub_obj.type == "list":
+                        self.default_list(sub_obj.name, sub_obj)
+                    if sub_obj.type == "map":
+                        self.default_map(sub_obj.name, sub_obj)
+                    self.out.write('    Set' + classize(sub_obj.name) + '(')
+                    if sub_obj.type == "string":
+                        self.out.write('std::string("' + sub_obj.value + '")')
+                    elif sub_obj.type == "list" or sub_obj.type == "map":
+                        self.out.write(sub_obj.name)
+                    else:
+                        self.out.write('%s' % sub_obj.value)
+                    self.out.write(');\n')
         self.out.write("}\n")
         self.out.write("\n")
     def instantiation(self, obj):
@@ -406,13 +449,20 @@ class GenerateCC:
                 os.remove(outfile + ".tmp")
         else:
             os.rename(outfile + ".tmp", outfile)
-    def implementation(self, obj):
-        print "Output of implementation for:"
-        outfile = self.outdir + '/' + self.classname + ".cc"
-        print outfile
-        self.out = open(outfile + ".tmp", "w")
+    def implementation_setup(self):
+        outfile = self.outdir + '/' + self.outdir + ".cc"
+        self.imp_out = open(outfile + ".tmp", "w")
+        self.out = self.imp_out
         self.out.write(copyright)
         self.out.write("\n")
+    def implementation(self, obj):
+        print "Output of implementation for:"
+        #outfile = self.outdir + '/' + self.classname + ".cc"
+        print self.classname
+        # self.out = open(outfile + ".tmp", "w")
+        self.out = self.imp_out
+        #self.out.write(copyright)
+        #self.out.write("\n")
         self.out.write('#include "' + self.classname + '.h"\n')
         self.out.write("\n")
         #self.out.write("using namespace std;\n")
@@ -441,6 +491,12 @@ class GenerateCC:
             self.ns_close(['Atlas', 'Objects', outdir])
         else:
             self.ns_close(['Atlas', 'Objects'])
+        self.out.write("\n")
+        self.out = None
+    def implementation_close(self):
+        outfile = self.outdir + '/' + self.outdir + ".cc"
+        self.out = self.imp_out
+        print "Closing implementation file"
         self.out.close()
         if os.access(outfile, os.F_OK):
             if cmp.cmp(outfile + ".tmp", outfile) == 0:
@@ -465,4 +521,6 @@ if len(sys.argv) >= 3:
 else:
     outdir = "."
 gen_header = GenerateCC(defs, outdir)
+gen_header.implementation_setup()
 gen_header([sys.argv[1]])
+gen_header.implementation_close()

@@ -1,3 +1,28 @@
+2001-05-09  Al Riddoch  <alriddoch@zepler.org>
+
+	* src/Net/Stream.cc: Nodified negotiation code so that Packed is
+	  the default if it is available.
+
+	* src/Net/Stream.h: Added forward declararion of Bridge which can
+	  be required.
+
+	* src/Objects/Root.*: Removed redundant includes.
+	  Removed initialisation of empty lists and strings. Add protected
+	  constructor to Root class that accepts strings for id and
+	  parents.
+
+	* src/Objects/gen_cc.py, src/Object/Operation/*, src/Objects/Entity/*:
+	  Modified gen_cc.py to make the following changes to entity and
+	  operation classes:
+	  Add and make use of protected constructor in parent class to
+	  set id and parents, rather than initialising them in the
+	  constructor.
+	  Remove initialisation of empty list and string members.
+	  Move implementation of classes into one file each for Entities
+	  and Operation respecively. Old implementation files are left
+	  in place for reference, but will not be included in the
+	  distribution.
+
 2001-05-07  Al Riddoch  <alriddoch@zepler.org>
 
 	* configure.in: Disabled optimisation by default.

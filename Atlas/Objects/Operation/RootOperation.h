@@ -25,6 +25,9 @@ class RootOperation : public Root
 public:
     /// Construct a RootOperation class definition.
     RootOperation();
+  protected:
+    RootOperation(const std::string&,const std::string&);
+  public:
     /// Default destructor.
     virtual ~RootOperation() { }
 

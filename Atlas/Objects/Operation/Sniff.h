@@ -3,15 +3,15 @@
 // Copyright 2000 Stefanus Du Toit.
 // Automatically generated using gen_cc.py.
 
-#ifndef ATLAS_OBJECTS_OPERATION_IMAGINARY_H
-#define ATLAS_OBJECTS_OPERATION_IMAGINARY_H
+#ifndef ATLAS_OBJECTS_OPERATION_SNIFF_H
+#define ATLAS_OBJECTS_OPERATION_SNIFF_H
 
-#include "Action.h"
+#include "Perceive.h"
 
 
 namespace Atlas { namespace Objects { namespace Operation { 
 
-/** When something is not yet implemented in server, then character can pretend to do something ;-)
+/** Sniff something
 
 This is base operation for all other
     operations and defines basic attributes. You can use this as
@@ -20,19 +20,19 @@ This is base operation for all other
     are just as examples (and thus world specific) are started with 'e_'.
 
 */
-class Imaginary : public Action
+class Sniff : public Perceive
 {
 public:
-    /// Construct a Imaginary class definition.
-    Imaginary();
+    /// Construct a Sniff class definition.
+    Sniff();
   protected:
-    Imaginary(const std::string&,const std::string&);
+    Sniff(const std::string&,const std::string&);
   public:
     /// Default destructor.
-    virtual ~Imaginary() { }
+    virtual ~Sniff() { }
 
-    /// Create a new instance of Imaginary.
-    static Imaginary Instantiate();
+    /// Create a new instance of Sniff.
+    static Sniff Instantiate();
 
 protected:
 
@@ -40,4 +40,4 @@ protected:
 
 } } } // namespace Atlas::Objects::Operation
 
-#endif // ATLAS_OBJECTS_OPERATION_IMAGINARY_H
+#endif // ATLAS_OBJECTS_OPERATION_SNIFF_H

@@ -13,7 +13,6 @@ Root::Root()
 {
     SetId("root");
     SetObjtype("meta");
-    SetName("");
 }
 
 Root::Root(const std::string& id)
@@ -21,6 +20,12 @@ Root::Root(const std::string& id)
     SetParents(Object::ListType(1,std::string("root")));
     SetId(id);
     SetObjtype("instance");
+}
+
+Root::Root(const std::string& id, const std::string & parent)
+{
+    SetId(id);
+    SetParents(Object::ListType(1,parent));
 }
 
 Root::~Root()

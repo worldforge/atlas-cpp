@@ -3,15 +3,15 @@
 // Copyright 2000 Stefanus Du Toit.
 // Automatically generated using gen_cc.py.
 
-#ifndef ATLAS_OBJECTS_OPERATION_IMAGINARY_H
-#define ATLAS_OBJECTS_OPERATION_IMAGINARY_H
+#ifndef ATLAS_OBJECTS_OPERATION_SET_H
+#define ATLAS_OBJECTS_OPERATION_SET_H
 
 #include "Action.h"
 
 
 namespace Atlas { namespace Objects { namespace Operation { 
 
-/** When something is not yet implemented in server, then character can pretend to do something ;-)
+/** Sets attributes for existing entity.
 
 This is base operation for all other
     operations and defines basic attributes. You can use this as
@@ -20,19 +20,19 @@ This is base operation for all other
     are just as examples (and thus world specific) are started with 'e_'.
 
 */
-class Imaginary : public Action
+class Set : public Action
 {
 public:
-    /// Construct a Imaginary class definition.
-    Imaginary();
+    /// Construct a Set class definition.
+    Set();
   protected:
-    Imaginary(const std::string&,const std::string&);
+    Set(const std::string&,const std::string&);
   public:
     /// Default destructor.
-    virtual ~Imaginary() { }
+    virtual ~Set() { }
 
-    /// Create a new instance of Imaginary.
-    static Imaginary Instantiate();
+    /// Create a new instance of Set.
+    static Set Instantiate();
 
 protected:
 
@@ -40,4 +40,4 @@ protected:
 
 } } } // namespace Atlas::Objects::Operation
 
-#endif // ATLAS_OBJECTS_OPERATION_IMAGINARY_H
+#endif // ATLAS_OBJECTS_OPERATION_SET_H

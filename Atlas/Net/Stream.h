@@ -11,7 +11,11 @@
 
 #include "../Negotiate.h"
 
-namespace Atlas { namespace Net {
+namespace Atlas {
+
+class Bridge;
+
+namespace Net {
 
 /** Negotiation of codecs for an Atlas connection
 
