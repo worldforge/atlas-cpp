@@ -1,17 +1,18 @@
 // This file may be redistributed and modified only under the terms of
 // the GNU Lesser General Public License (See COPYING for details).
-// Copyright (C) 2000 Stefanus Du Toit, Michael Day
+// Copyright (C) 2000-2001 Stefanus Du Toit, Michael Day
 
 #ifndef ATLAS_CODECS_PACKED_H
 #define ATLAS_CODECS_PACKED_H
 
+#include <iostream>
+#include <string>
+#include <stack>
+
 #include "Utility.h"
 #include "../Codec.h"
 
-#include <stack>
-
-using namespace std;
-using namespace Atlas;
+namespace Atlas { namespace Codecs {
 
 /*
 
@@ -33,36 +34,36 @@ The complete specification is located in cvs at:
     forge/protocols/atlas/spec/packed_syntax.html
     
 */
-
-class Packed : public Codec
+  
+class Packed : public Codec<std::iostream>
 {
 public:
     
-    Packed(const Codec::Parameters&);
+    Packed(std::iostream& s, Atlas::Bridge* b);
 
-    virtual void poll(bool can_read = true);
+    virtual void Poll(bool can_read = true);
 
-    virtual void streamBegin();
-    virtual void streamMessage(const Map&);
-    virtual void streamEnd();
+    virtual void StreamBegin();
+    virtual void StreamMessage(const Map&);
+    virtual void StreamEnd();
 
-    virtual void mapItem(const std::string& name, const Map&);
-    virtual void mapItem(const std::string& name, const List&);
-    virtual void mapItem(const std::string& name, int);
-    virtual void mapItem(const std::string& name, double);
-    virtual void mapItem(const std::string& name, const std::string&);
-    virtual void mapEnd();
+    virtual void MapItem(const std::string& name, const Map&);
+    virtual void MapItem(const std::string& name, const List&);
+    virtual void MapItem(const std::string& name, long);
+    virtual void MapItem(const std::string& name, double);
+    virtual void MapItem(const std::string& name, const std::string&);
+    virtual void MapEnd();
     
-    virtual void listItem(const Map&);
-    virtual void listItem(const List&);
-    virtual void listItem(int);
-    virtual void listItem(double);
-    virtual void listItem(const std::string&);
-    virtual void listEnd();
+    virtual void ListItem(const Map&);
+    virtual void ListItem(const List&);
+    virtual void ListItem(long);
+    virtual void ListItem(double);
+    virtual void ListItem(const std::string&);
+    virtual void ListEnd();
 
 protected:
     
-    iostream& socket;
+    std::iostream& socket;
     Bridge* bridge;
 
     enum State
@@ -78,30 +79,32 @@ protected:
         PARSE_NAME,
     };
     
-    stack<State> state;
+    std::stack<State> state;
 
-    string name;
-    string data;
+    std::string name;
+    std::string data;
 
-    inline void parseStream(char);
-    inline void parseMap(char);
-    inline void parseList(char);
-    inline void parseMapBegin(char);
-    inline void parseListBegin(char);
-    inline void parseInt(char);
-    inline void parseFloat(char);
-    inline void parseString(char);
-    inline void parseName(char);
+    inline void ParseStream(char);
+    inline void ParseMap(char);
+    inline void ParseList(char);
+    inline void ParseMapBegin(char);
+    inline void ParseListBegin(char);
+    inline void ParseInt(char);
+    inline void ParseFloat(char);
+    inline void ParseString(char);
+    inline void ParseName(char);
 
-    inline const string hexEncode(const string& data)
+    inline const string HexEncode(const std::string& data)
     {
-	return hexEncodeWithPrefix("+", "+[]()@#$=", data);
+	return hexEncode("+", "+[]()@#$=", data);
     }
 
-    inline const string hexDecode(const string& data)
+    inline const string HexDecode(const std::string& data)
     {
-	return hexDecodeWithPrefix("+", data);
+	return hexDecode("+", data);
     }
 };
 
-#endif // ATLAS_CODECS_PACKED_H
+} } // namespace Atlas::Codecs
+
+#endif

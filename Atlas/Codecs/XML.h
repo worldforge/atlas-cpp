@@ -1,17 +1,18 @@
 // This file may be redistributed and modified under the terms of the
 // GNU Lesser General Public License (See COPYING for details).
-// Copyright (C) 2000 Michael Day
+// Copyright (C) 2000-2001 Michael Day, Stefanus Du Toit
 
 #ifndef ATLAS_CODECS_XML_H
 #define ATLAS_CODECS_XML_H
 
+#include <iostream>
+#include <string>
+#include <stack>
+
 #include "Utility.h"
 #include "../Codec.h"
 
-#include <stack>
-
-using namespace std;
-using namespace Atlas;
+namespace Atlas { namespace Codecs {
 
 /*
 
@@ -35,35 +36,35 @@ The complete specification is located in cvs at:
 
 */
 
-class XML : public Codec
+class XML : public Codec<std::iostream>
 {
     public:
 
-    XML(const Codec::Parameters&);
+    XML(std::iostream& s, Atlas::Bridge* b);
 
-    virtual void poll(bool can_read = true);
+    virtual void Poll(bool can_read = true);
 
-    virtual void streamBegin();
-    virtual void streamMessage(const Map&);
-    virtual void streamEnd();
+    virtual void StreamBegin();
+    virtual void StreamMessage(const Map&);
+    virtual void StreamEnd();
     
-    virtual void mapItem(const std::string& name, const Map&);
-    virtual void mapItem(const std::string& name, const List&);
-    virtual void mapItem(const std::string& name, int);
-    virtual void mapItem(const std::string& name, double);
-    virtual void mapItem(const std::string& name, const std::string&);
-    virtual void mapEnd();
+    virtual void MapItem(const std::string& name, const Map&);
+    virtual void MapItem(const std::string& name, const List&);
+    virtual void MapItem(const std::string& name, long);
+    virtual void MapItem(const std::string& name, double);
+    virtual void MapItem(const std::string& name, const std::string&);
+    virtual void MapEnd();
     
-    virtual void listItem(const Map&);
-    virtual void listItem(const List&);
-    virtual void listItem(int);
-    virtual void listItem(double);
-    virtual void listItem(const std::string&);
-    virtual void listEnd();
+    virtual void ListItem(const Map&);
+    virtual void ListItem(const List&);
+    virtual void ListItem(double);
+    virtual void ListItem(long);
+    virtual void ListItem(const std::string&);
+    virtual void ListEnd();
 
     protected:
 
-    iostream& socket;
+    std::iostream& socket;
     Bridge* bridge;
     
     enum Token
@@ -87,19 +88,21 @@ class XML : public Codec
 	PARSE_STRING,
     };
     
-    stack<State> state;
-    stack<string> data;
+    std::stack<State> state;
+    std::stack<std::string> data;
 
-    string tag;
-    string name;
+    std::string tag;
+    std::string name;
 
-    inline void tokenTag(char);
-    inline void tokenStartTag(char);
-    inline void tokenEndTag(char);
-    inline void tokenData(char);
+    inline void TokenTag(char);
+    inline void TokenStartTag(char);
+    inline void TokenEndTag(char);
+    inline void TokenData(char);
 
-    inline void parseStartTag();
-    inline void parseEndTag();
+    inline void ParseStartTag();
+    inline void ParseEndTag();
 };
 
-#endif // ATLAS_CODECS_XML_H
+} } // namespace Atlas::Codecs
+
+#endif
