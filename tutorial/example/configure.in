@@ -9,7 +9,6 @@ AM_INIT_AUTOMAKE(atlas_cpp_tutorial, 0.0.0)
 dnl Need libtool
 
 AM_PROG_LIBTOOL
-AC_PROG_LIBTOOL
 
 dnl Test for C++ compiler
 

@@ -66,4 +66,29 @@ There shall be the following tags:
    - fetch HEAD. Tag it as atlas-stable.
    - Tag a release, if necessary.
 
+VI  On review and ownership:
 
+Stefanus du Toit and Michael Day are no longer directly incolved with the
+WorldForge project on a day to day basis, so ownership and maintenance
+of this code has been handed over to Al Riddoch.
+
+Due to the importance of Atlas-C++ to the WorldForge project, changes are
+strictly controlled. Please contact Al Riddoch on irc, where he is known
+as alriddoch, via the WorldForge mailing lists, or via direct email
+as alriddoch@zepler.org before starting any development, and before
+commiting any changes. This does not affect your right to modify the code
+as described in the LGPL (see COPYING).
+
+VII On namespaces:
+
+Each subdirectory should use its own namespace for classes it contains,
+and package the object files in a library file associated with
+this namespace. namespaces are hierarchical following the directory
+hierarchy, and everything exists with the Atlas namespace.
+
+From 0.5.x onwards, the "using namespace ..." directive should never be used
+is it increases the likelyhood on namespace pollution, and slows down compile
+times. Use is also discouraged in programs which use Atlas-C++, and 
+in any C++ program. No additional use should be made of the
+"using namespace ..." directive should be made in branch before 0.5.x, and
+its use may be phased out in these branches eventually.

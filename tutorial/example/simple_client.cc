@@ -21,77 +21,76 @@
 #include <map>
 #include <list>
 
-using namespace Atlas;
-using namespace std;
-
 // This sends a very simple message to c
-void helloWorld(Codec<iostream>& c)
+void helloWorld(Atlas::Codec<std::iostream>& c)
 {
-    cout << "Sending hello world message... " << flush;
-    c.StreamMessage(Bridge::MapBegin);
+    std::cout << "Sending hello world message... " << flush;
+    c.StreamMessage(Atlas::Bridge::MapBegin);
     c.MapItem("hello", "world");
     c.MapEnd();
-    cout << "done." << endl;
+    std::cout << "done." << endl;
 }
 
 int main(int argc, char** argv)
 {
     // The socket that connects us to the server
-    iosockinet stream(sockbuf::sock_stream);
+    iosockinet connection(sockbuf::sock_stream);
 
-    cout << "Connecting..." << flush;
+    std::cout << "Connecting..." << flush;
     
     // Connect to the server
     if(argc>1) {
-      stream->connect(argv[1], 6767);
+      connection->connect(argv[1], 6767);
     } else {
-      stream->connect("127.0.0.1", 6767);
+      connection->connect("127.0.0.1", 6767);
     }
     
     // The DebugBridge puts all that comes through the codec on cout
     DebugBridge bridge;
     // Do client negotiation with the server
-    Net::StreamConnect conn("simple_client", stream, &bridge);
+    Atlas::Net::StreamConnect conn("simple_client", connection, &bridge);
 
-    cout << "Negotiating... " << flush;
+    std::cout << "Negotiating... " << flush;
     // conn.Poll() does all the negotiation
-    while (conn.GetState() == Negotiate<iostream>::IN_PROGRESS) {
+    while (conn.GetState() == Atlas::Net::StreamConnect::IN_PROGRESS) {
         conn.Poll();
     }
-    cout << "done" << endl;
+    std::cout << "done" << endl;
 
     // Check whether negotiation was successful
-    if (conn.GetState() == Negotiate<iostream>::FAILED) {
+    if (conn.GetState() == Atlas::Net::StreamConnect::FAILED) {
         cerr << "Failed to negotiate" << endl;
         return 2;
     }
     // Negotiation was successful
 
     // Get the codec that negotiation established
-    Codec<iostream>* codec = conn.GetCodec();
+    Atlas::Codec<std::iostream>* codec = conn.GetCodec();
 
     // This should always be sent at the beginning of a session
     codec->StreamBegin();
     
     // Say hello to the server
     helloWorld(*codec);
-    stream << flush;
+    connection << flush;
 
-    cout << "Sleeping for 2 seconds... " << flush;
+    std::cout << "Sleeping for 2 seconds... " << flush;
     // Sleep a little
     sleep(2);
-    cout << "done." << endl;
+    std::cout << "done." << endl;
 
     // iosockinet::operator bool() returns false if the connection was broken
-    if (!stream) cout << "Server exited." << endl; else {
+    if (!connection) {
+        std::cout << "Server exited." << endl;
+    } else {
         // It was not broken by the server, so we'll close ourselves
-        cout << "Closing connection... " << flush;
+        std::cout << "Closing connection... " << flush;
         // This should always be sent at the end of a session
         codec->StreamEnd();
-        stream << flush;
+        connection << flush;
         // Close the socket
-        stream->close();
-        cout << "done." << endl;
+        connection->close();
+        std::cout << "done." << endl;
     }
 
     return 0;

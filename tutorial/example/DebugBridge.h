@@ -1,3 +1,6 @@
+#ifndef DEBUG_BRIDGE_H
+#define DEBUG_BRIDGE_H
+
 #include <iostream>
 #include <string>
 #include <Atlas/Bridge.h>
@@ -95,3 +98,5 @@ protected:
 
     std::string padding;
 };
+
+#endif // DEBUG_BRIDGE_H

@@ -1,4 +1,13 @@
-2001-03-09  Al Riddoch  <sjdutoit@uwaterloo.ca>
+2001-03-10  Al Riddoch  <alriddoch@zepler.org>
+
+	* tutorial/example/simple_*.cc: Modified tutorial programs to
+	  make sure they are completely immaculate.
+
+	* Bumped up version to 0.4.1 ready for release soon.
+
+	* HACKING: Updated to reflect current changes policy.
+
+2001-03-09  Al Riddoch  <alriddoch@zepler.org>
 
 	* src/Object/gen_cc.py: Modified so that the generated files no
 	  longer contain "using namespace ...;" which speeds up compile
@@ -7,18 +16,18 @@
 	* src/Object/Operation/* src/Objects/Entity/*: Re-generated using
 	  modified gen_cc.py.
 
-2001-03-08  Al Riddoch  <sjdutoit@uwaterloo.ca>
+2001-03-08  Al Riddoch  <alriddoch@zepler.org>
 
 	* src/Message/Object.h: Added IsNum() to correspond to AsNum()
 	  accessor.
 
-2001-02-28  Al Riddoch  <sjdutoit@uwaterloo.ca>
+2001-02-28  Al Riddoch  <alriddoch@zepler.org>
 
-	* src/Message/Object.g: Added operator new() and operator delete()
+	* src/Message/Object.h: Added operator new() and operator delete()
 	  to Atlas::Message::Object and implemented memory pool to improve
 	  performance.
 
-	* src/Message/Object.g: Changed ListType in Message::Object to
+	* src/Message/Object.h: Changed ListType in Message::Object to
 	  std::vector for performance.
 
 	* src/Message/Object.h: Added AsNum() accessor for
