@@ -1,17 +1,20 @@
 noinst_PROGRAMS = simple_client simple_server
 
-CPPFLAGS = -I../src
+CPPFLAGS = -I$(prefix)/include
 
-LDADD  = -L../src/.libs -L../src/Codecs/.libs -L../src/Filters/.libs \
-         -L../src/Message/.libs -L../src/Net/.libs -L../src/Objects/.libs
+LDADD  = -L$(prefix)/lib -lsocket++
+LDADD += \
+	../src/.libs/libAtlas.a \
+	../src/Codecs/.libs/libAtlasCodecs.a \
+	../src/Net/.libs/libAtlasNet.a
 
-LIBS = -lAtlasNet -lAtlas -lAtlasCodecs -lAtlasFilters -lAtlas -lbz2 -lz
+# In a real program the above lines should be:
+# LDADD +=-lAtlasCodecs -lAtlasNet
 
-LDFLAGS = -all-static
-
-simple_client_SOURCES = simple_client.cpp sockbuf.h
-simple_server_SOURCES = simple_server.cpp sockbuf.h
+simple_client_SOURCES = simple_client.cc
+simple_server_SOURCES = simple_server.cc
 
 EXTRA_DIST = \
 	DebugBridge.h building.dox index.dox message.dox \
 	objects.dox preamble.dox simple.dox
+

@@ -280,14 +280,6 @@ AC_CHECK_HEADERS(vector)
 
 AC_LANG_RESTORE
 
-dnl Test for <streambuf> header file
-
-AC_LANG_SAVE
-AC_LANG_CPLUSPLUS
-AC_CHECK_HEADERS(streambuf)
-
-AC_LANG_RESTORE
-
 dnl Test for gzip compression library
 
 AC_ARG_WITH(zlib,
@@ -330,15 +322,16 @@ dnl Generate files
 
 AC_OUTPUT([
 	Makefile
-	benchmark/Makefile
 	src/Makefile
 	src/Codecs/Makefile
-	src/Filters/Makefile
 	src/Funky/Makefile
 	src/Message/Makefile
 	src/Net/Makefile
 	src/Objects/Makefile
+	src/Objects/Entity/Makefile
+	src/Objects/Operation/Makefile
 	tests/Makefile
 	tests/Objects/Makefile
 	tutorial/Makefile
+	benchmark/Makefile
 ])

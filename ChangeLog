@@ -1,5 +1,8 @@
 2001-01-14  Stefanus Du Toit  <sjdutoit@uwaterloo.ca>
 
+	* src/Codec.h: Applied template instantiation technique as
+	mentioned in HACKING.
+
 	* src/: Removed Filter and Filters/ completely
 
 	* src/Net/Stream.cpp: Removed references to Filter

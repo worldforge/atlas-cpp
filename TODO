@@ -11,5 +11,5 @@ For 0.4.0:
  - make compilable on gcc 3.0 (or current CVS)
  - make ISO/IEC 14882 conformant, with the exception of compiler
    kludges
- - make all template classes use format as documented in HACKING
  - FIXMEs in src/Net/Stream.cc
+ - update README

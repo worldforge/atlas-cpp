@@ -8,6 +8,8 @@ On writing templates:
      template class X<int>;
 
 This avoids duplicated instantiations and speeds up compile time.
+Note that this doesn't apply for absolutely all classes. If unsure,
+talk to somebody who knows more about templates.
 
 On filenames:
 

@@ -1,11 +1,10 @@
 // This file may be redistributed and modified only under the terms of
 // the GNU Lesser General Public License (See COPYING for details).
-// Copyright (C) 2000 Michael Day
+// Copyright (C) 2000-2001 Michael Day, Stefanus Du Toit
 
 #ifndef ATLAS_CODEC_H
 #define ATLAS_CODEC_H
 
-#include <iosfwd>
 #include "Bridge.h"
 #include "Task.h"
 #include "Factory.h"
@@ -35,11 +34,12 @@ However, the scale of these values is not yet decided upon. FIXME
 @see Negotiate
 */
 
+template <class Stream>
 class Codec : public Bridge, public Task
 {
     public:
 
-    virtual ~Codec() { }
+    virtual ~Codec();
 
     class Metrics
     {
@@ -50,10 +50,10 @@ class Codec : public Bridge, public Task
 
     struct Parameters
     {
-        std::iostream& stream;
+        Stream& stream;
 	Bridge* bridge;
 
-        Parameters(std::iostream& stream, Bridge* bridge) 
+        Parameters(Stream& stream, Bridge* bridge) 
            : stream(stream), bridge(bridge) { }
     };
 
