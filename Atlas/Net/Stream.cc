@@ -122,7 +122,7 @@ void Atlas::Net::StreamConnect::Poll(bool can_read)
     if (state == CLIENT_CODECS)
     {
 	codecHelper.put(out, "ICAN");
-	socket << out << flush;
+	socket << out << std::flush;
 	state++;
     }
 
