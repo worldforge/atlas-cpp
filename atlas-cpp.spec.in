@@ -67,6 +67,7 @@ rm -rf $RPM_BUILD_ROOT
 %{prefix}/share/doc/Atlas-C++-@VERSION@/NEWS
 
 %files devel
+%{prefix}/bin/atlas-config
 %{prefix}/lib/libAtlas.so
 %{prefix}/lib/libAtlas.a
 %{prefix}/lib/libAtlasMessage.so
