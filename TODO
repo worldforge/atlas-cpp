@@ -22,3 +22,6 @@ For 0.4.0:
    minimise #includes and use forward declarations in headers
    whereever possible (that actually reduces the _need_ to compile)
    (not sure how compile time itself could be reduced any further)
+ - fix Factory on all supported compilers:
+    * hard-code the list of codecs
+    * make sure the factory list is instantiated
