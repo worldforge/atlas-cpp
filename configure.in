@@ -329,4 +329,5 @@ AC_OUTPUT([
 	src/Objects/Operation/Makefile
 	tutorial/Makefile
 	atlas-config
+	atlas-cpp.spec
 ], [chmod +x atlas-config])

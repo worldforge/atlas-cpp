@@ -1,29 +1,29 @@
 %define prefix /usr
 
-Summary: The protocol library for the WorldForge project
+Summary: The Atlas protocol C++ implementation
 Name: Atlas-C++
-Version: 0.3.11
+Version: @VERSION@
 Release: 1
 Copyright: LGPL
 Group: Amusements/Games
-Source: ftp://ftp.worldforge.org/pub/WorldForge/libs/source/Atlas-C++-0.3.11.tar.gz
+Source: Atlas-C++-@VERSION@.tar.gz
+Requires: libstdc++ >= 2.95.2
 BuildRoot: /var/tmp/%{name}-buildroot
 
 %description
 This library implements the Atlas protocol, for use in client-server
-game applications.  This library is suitable for linking to either
+game applications. It is the standard implementation used by games written
+by the WorldForge project. This library is suitable for linking to either
 clients or servers.
+
+%package devel
+Summary: The Atlas protocol C++ implementation library headers and static libs.
 
 %prep
 %setup -q
 
 %build
-
-if [ -x ./configure ]; then
-  CFLAGS=$RPM_OPT_FLAGS ./configure --prefix=%{prefix}
-else 
-  CFLAGS=$RPM_OPT_FLAGS ./autogen.sh --prefix=%{prefix}
-fi
+CFLAGS=$RPM_OPT_FLAGS ./configure --prefix=%{prefix}
 make
 
 %install
@@ -35,32 +35,48 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
-%{prefix}/lib/libAtlas.so.0.0.0
-%{prefix}/lib/libAtlas.la
+%{prefix}/lib/libAtlas.so.1.0.0
+%{prefix}/lib/libAtlas.so.1
+%{prefix}/lib/libAtlasMessage.so.1.0.0
+%{prefix}/lib/libAtlasMessage.so.1
+%{prefix}/lib/libAtlasCodecs.so.1.0.0
+%{prefix}/lib/libAtlasCodecs.so.1
+%{prefix}/lib/libAtlasFilters.so.1.0.0
+%{prefix}/lib/libAtlasFilters.so.1
+%{prefix}/lib/libAtlasNet.so.1.0.0
+%{prefix}/lib/libAtlasNet.so.1
+%{prefix}/lib/libAtlasFunky.so.1.0.0
+%{prefix}/lib/libAtlasFunky.so.1
+%{prefix}/lib/libAtlasObjects.so.1.0.0
+%{prefix}/lib/libAtlasObjects.so.1
+%{prefix}/lib/libAtlasObjectsEntity.so.1.0.0
+%{prefix}/lib/libAtlasObjectsEntity.so.1
+%{prefix}/lib/libAtlasObjectsOperation.so.1.0.0
+%{prefix}/lib/libAtlasObjectsOperation.so.1
+%{prefix}/share/doc/Atlas-C++-@VERSION@/README
+%{prefix}/share/doc/Atlas-C++-@VERSION@/COPYING
+%{prefix}/share/doc/Atlas-C++-@VERSION@/AUTHORS
+%{prefix}/share/doc/Atlas-C++-@VERSION@/THANKS
+%{prefix}/share/doc/Atlas-C++-@VERSION@/NEWS
+
+%files devel
+%{prefix}/lib/libAtlas.so
 %{prefix}/lib/libAtlas.a
-%{prefix}/lib/libAtlasMessage.so.0.0.0
-%{prefix}/lib/libAtlasMessage.la
+%{prefix}/lib/libAtlasMessage.so
 %{prefix}/lib/libAtlasMessage.a
-%{prefix}/lib/libAtlasCodecs.so.0.0.0
-%{prefix}/lib/libAtlasCodecs.la
+%{prefix}/lib/libAtlasCodecs.so
 %{prefix}/lib/libAtlasCodecs.a
-%{prefix}/lib/libAtlasFilters.so.0.0.0
-%{prefix}/lib/libAtlasFilters.la
+%{prefix}/lib/libAtlasFilters.so
 %{prefix}/lib/libAtlasFilters.a
-%{prefix}/lib/libAtlasNet.so.0.0.0
-%{prefix}/lib/libAtlasNet.la
+%{prefix}/lib/libAtlasNet.so
 %{prefix}/lib/libAtlasNet.a
-%{prefix}/lib/libAtlasFunky.so.0.0.0
-%{prefix}/lib/libAtlasFunky.la
+%{prefix}/lib/libAtlasFunky.so
 %{prefix}/lib/libAtlasFunky.a
-%{prefix}/lib/libAtlasObjects.so.0.0.0
-%{prefix}/lib/libAtlasObjects.la
+%{prefix}/lib/libAtlasObjects.so
 %{prefix}/lib/libAtlasObjects.a
-%{prefix}/lib/libAtlasObjectsEntity.so.0.0.0
-%{prefix}/lib/libAtlasObjectsEntity.la
+%{prefix}/lib/libAtlasObjectsEntity.so
 %{prefix}/lib/libAtlasObjectsEntity.a
-%{prefix}/lib/libAtlasObjectsOperation.so.0.0.0
-%{prefix}/lib/libAtlasObjectsOperation.la
+%{prefix}/lib/libAtlasObjectsOperation.so
 %{prefix}/lib/libAtlasObjectsOperation.a
 %{prefix}/include/Atlas/Factory.h
 %{prefix}/include/Atlas/Bridge.h

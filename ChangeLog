@@ -1,3 +1,8 @@
+2002-06-10  Al Riddoch  <alriddoch@zepler.org>
+
+	* Add a new cleanly generated rpm spec, with devel subpackage,
+	  and sort out install process so doc files get installed.
+
 2002-05-21  Michael Koch  <konqueror@gmx.de>
 
 	* configure.in: added --enable-debug.
