@@ -17,7 +17,7 @@ INTERFACE_VERSION='-version-info 1:1:0'
 
 AC_SUBST(INTERFACE_VERSION)    
 
-AM_INIT_AUTOMAKE("Atlas-C++", "0.4.4")
+AM_INIT_AUTOMAKE("Atlas-C++", "0.4.4.90")
 AM_CONFIG_HEADER(config.h)
 
 dnl Test for GNU libtool
