@@ -1,2 +1,2 @@
 
-SUBDIRS = Objects
+SUBDIRS = unit Objects

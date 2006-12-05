@@ -1,53 +1,9 @@
-2006-10-28  Al Riddoch  <alriddoch@zepler.org>
+2006-12-05  Al Riddoch  <alriddoch@zepler.org>
 
-	* Atlas/Objects/AttributeInfo.py, Atlas/Objects/GenerateDecoder.py,
-	  Atlas/Objects/GenerateDispatcher.py,
-	  Atlas/Objects/GenerateForward.py,
-	  Atlas/Objects/GenerateObjectFactory.py, Atlas/Objects/common.py,
-	  Atlas/Objects/flag.cpp, Atlas/Objects/gen_cpp.py:
-	  Add RCS Id keywords to all python code generators, for better
-	  version tracking.
+	* tests/unit/Makefile.am: Add new directory for true unit tests.
 
-2006-10-28  Al Riddoch  <alriddoch@zepler.org>
-
-	* Atlas/Bridge.cpp, Atlas/Codec.cpp, Atlas/EncoderBase.cpp,
-	  Atlas/Exception.cpp, Atlas/Factory.cpp, Atlas/Filter.cpp,
-	  Atlas/Formatter.cpp, Atlas/Negotiate.cpp, Atlas/Codecs/Bach.cpp,
-	  Atlas/Codecs/Packed.cpp, Atlas/Codecs/Utility.cpp,
-	  Atlas/Codecs/XML.cpp, Atlas/Codecs/XMLish.cpp,
-	  Atlas/Filters/Bzip2.cpp, Atlas/Filters/Gzip.cpp,
-	  Atlas/Funky/FEncoder.cpp, Atlas/Message/DecoderBase.cpp,
-	  Atlas/Message/Element.cpp, Atlas/Message/Layer.cpp,
-	  Atlas/Message/MEncoder.cpp, Atlas/Message/QueuedDecoder.cpp,
-	  Atlas/Net/Loopback.cpp, Atlas/Net/Stream.cpp,
-	  Atlas/Objects/BaseObject.cpp, Atlas/Objects/Encoder.cpp,
-	  Atlas/Objects/SmartPtr.cpp, Atlas/Objects/loadDefaults.cpp:
-	  Add RCS Id keywords to all non-generated bodies, for better
-	  version tracking.
-
-2006-10-28  Al Riddoch  <alriddoch@zepler.org>
-
-	* Atlas/Bridge.h, Atlas/Codec.h, Atlas/Codec_impl.h, Atlas/Debug.h,
-	  Atlas/EncoderBase.h, Atlas/Exception.h, Atlas/Factory.h,
-	  Atlas/Filter.h, Atlas/Formatter.h, Atlas/Negotiate.h, Atlas/Task.h,
-	  Atlas/Version.h, Atlas/Codecs/Bach.h, Atlas/Codecs/Packed.h,
-	  Atlas/Codecs/Utility.h, Atlas/Codecs/XML.h, Atlas/Filters/Bzip2.h,
-	  Atlas/Filters/Gzip.h, Atlas/Funky/FEncoder.h,
-	  Atlas/Message/DecoderBase.h, Atlas/Message/Element.h,
-	  Atlas/Message/Layer.h, Atlas/Message/MEncoder.h,
-	  Atlas/Message/QueuedDecoder.h, Atlas/Net/Loopback.h,
-	  Atlas/Net/Stream.h, Atlas/Objects/BaseObject.h,
-	  Atlas/Objects/Encoder.h, Atlas/Objects/SmartPtr.h,
-	  Atlas/Objects/loadDefaults.h, Atlas/Objects/objectFactory.h:
-	  Add RCS Id keywords to all non-generated headers, for better
-	  version tracking.
-
-2006-10-16  Al Riddoch  <alriddoch@zepler.org>
-
-	* configure.ac: Create a new unstable branch, 0.7.x
-
-	* README: Clean up the documentation, and update notes about
-	  current stable and development branch status.
+	* tests/unit/AtlasDebugtest.cpp: Add initial proof of concept unit
+	  test for the debug header.
 
 2006-10-12  Al Riddoch  <alriddoch@zepler.org>
 
