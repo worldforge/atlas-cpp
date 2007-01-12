@@ -1,3 +1,7 @@
+2007-01-12  Al Riddoch  <alriddoch@zepler.org>
+
+	* Atlas/Message/Makefile.am: Remove Layer.h from the distribution.
+
 2006-12-05  Al Riddoch  <alriddoch@zepler.org>
 
 	* tests/unit/Makefile.am: Add new directory for true unit tests.
