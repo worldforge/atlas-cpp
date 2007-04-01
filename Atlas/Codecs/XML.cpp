@@ -2,8 +2,6 @@
 // GNU Lesser General Public License (See COPYING for details).
 // Copyright (C) 2000-2001 Michael Day, Stefanus Du Toit
 
-// $Id$
-
 #include <Atlas/Codecs/XML.h>
 
 #include <iostream>
@@ -328,23 +326,26 @@ void XML::parseEndTag()
 void XML::poll(bool can_read)
 {
     if (!can_read) return;
-    do
-    {
-	int next = m_socket.get();
 
-	if (next == std::iostream::traits_type::eof()) {
-	    return;
-	}
+    m_socket.peek();
 
-	switch (m_token)
-	{
-	    case TOKEN_TAG:	    tokenTag(next); break;
-	    case TOKEN_START_TAG:   tokenStartTag(next); break;
-	    case TOKEN_END_TAG:	    tokenEndTag(next); break;
-	    case TOKEN_DATA:	    tokenData(next); break;
-	}
+    std::streamsize count;
+
+    while ((count = m_socket.rdbuf()->in_avail()) > 0) {
+
+        for (int i = 0; i < count; ++i) {
+
+	    int next = m_socket.rdbuf()->sbumpc();
+
+	    switch (m_token)
+	    {
+	        case TOKEN_TAG:		    tokenTag(next); break;
+	        case TOKEN_START_TAG:	    tokenStartTag(next); break;
+	        case TOKEN_END_TAG:	    tokenEndTag(next); break;
+	        case TOKEN_DATA:	    tokenData(next); break;
+	    }
+        }
     }
-    while (m_socket.rdbuf()->in_avail() > 0);
 }
 
 void XML::streamBegin()

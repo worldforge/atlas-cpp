@@ -2,8 +2,6 @@
 // the GNU Lesser General Public License (See COPYING for details).
 // Copyright (C) 2000 Michael Day, Dmitry Derevyanko
 
-// $Id$
-
 #include <Atlas/Net/Stream.h>
 
 #include <Atlas/Codecs/XML.h>
@@ -115,8 +113,11 @@ void StreamConnect::poll(bool can_read)
         m_socket.peek();
     }
 
-    while (m_socket.rdbuf()->in_avail() > 0) {
-        m_buf += (char) m_socket.get();
+    std::streamsize count;
+    while ((count = m_socket.rdbuf()->in_avail()) > 0) {
+        for (int i = 0 ; i < count; ++i) {
+            m_buf += (char) m_socket.rdbuf()->sbumpc();
+        }
     }
 
     if(m_state == SERVER_GREETING)
@@ -276,8 +277,11 @@ void StreamAccept::poll(bool can_read)
         m_socket.peek();
     }
 
-    while (m_socket.rdbuf()->in_avail() > 0) {
-        m_buf += (char) m_socket.get();
+    std::streamsize count;
+    while ((count = m_socket.rdbuf()->in_avail()) > 0) {
+        for (int i = 0 ; i < count; ++i) {
+            m_buf += (char) m_socket.rdbuf()->sbumpc();
+        }
     }
 
     if (m_state == CLIENT_GREETING)

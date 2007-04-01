@@ -2,8 +2,6 @@
 // the GNU Lesser General Public License (See COPYING for details).
 // Copyright (C) 2000-2001 Stefanus Du Toit, Michael Day
 
-// $Id$
-
 #include <Atlas/Codecs/Packed.h>
 
 #include <iostream>
@@ -302,28 +300,31 @@ void Packed::parseName(char next)
 void Packed::poll(bool can_read)
 {
     if (!can_read) return;
-    do
-    {
-	int next = m_socket.get();
 
-	if (next == std::iostream::traits_type::eof()) {
-	    return;
-	}
+    m_socket.peek();
 
-	switch (m_state.top())
-	{
-	    case PARSE_STREAM:	    parseStream(next); break;
-	    case PARSE_MAP:	    parseMap(next); break;
-	    case PARSE_LIST:	    parseList(next); break;
-	    case PARSE_MAP_BEGIN:   parseMapBegin(next); break;
-	    case PARSE_LIST_BEGIN:  parseListBegin(next); break;
-	    case PARSE_INT:	    parseInt(next); break;
-	    case PARSE_FLOAT:	    parseFloat(next); break;
-	    case PARSE_STRING:	    parseString(next); break;
-	    case PARSE_NAME:	    parseName(next); break;
-	}
+    std::streamsize count;
+
+    while ((count = m_socket.rdbuf()->in_avail()) > 0) {
+
+        for (int i = 0; i < count; ++i) {
+
+	    int next = m_socket.rdbuf()->sbumpc();
+
+	    switch (m_state.top())
+	    {
+	        case PARSE_STREAM:	    parseStream(next); break;
+	        case PARSE_MAP:		    parseMap(next); break;
+	        case PARSE_LIST:	    parseList(next); break;
+	        case PARSE_MAP_BEGIN:	    parseMapBegin(next); break;
+	        case PARSE_LIST_BEGIN:	    parseListBegin(next); break;
+	        case PARSE_INT:		    parseInt(next); break;
+	        case PARSE_FLOAT:	    parseFloat(next); break;
+	        case PARSE_STRING:	    parseString(next); break;
+	        case PARSE_NAME:	    parseName(next); break;
+	    }
+        }
     }
-    while (m_socket.rdbuf()->in_avail() > 0);
 }
 
 void Packed::streamBegin()
