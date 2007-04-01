@@ -8,6 +8,8 @@
 
 #include <iostream>
 
+#include <cstdlib>
+
 static const bool debug_flag = false;
 
 namespace Atlas { namespace Codecs {
