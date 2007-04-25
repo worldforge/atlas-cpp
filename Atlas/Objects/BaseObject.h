@@ -2,8 +2,6 @@
 // the GNU Lesser General Public License (See COPYING for details).
 // Copyright (C) 2000-2004 Stefanus Du Toit, Aloril and Al Riddoch
 
-// $Id$
-
 #ifndef ATLAS_OBJECTS_BASEOBJECT_H
 #define ATLAS_OBJECTS_BASEOBJECT_H
 
@@ -85,6 +83,11 @@ public:
     int getClassNo() const 
     {
         return m_class_no;
+    }
+
+    int getAttrFlags() const
+    {
+        return m_attrFlags;
     }
 
     virtual BaseObjectData * copy() const = 0;
