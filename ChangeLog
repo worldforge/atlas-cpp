@@ -1,3 +1,8 @@
+2007-11-22  Al Riddoch  <alriddoch@zepler.org>
+
+	* Atlas/Objects/BaseObject.cpp, Atlas/Objects/BaseObject.h:
+	  Move the constructor out of the header, and clean it up a bit.
+
 2007-04-29  Al Riddoch  <alriddoch@zepler.org>
 
 	* configure.ac: Increment version to 0.6.1. Hey, maybe I'll even

@@ -2,8 +2,6 @@
 // the GNU Lesser General Public License (See COPYING for details).
 // Copyright (C) 2000-2001 Stefanus Du Toit and Aloril
 
-// $Id$
-
 #include <Atlas/Objects/BaseObject.h>
 
 using Atlas::Message::Element;
@@ -13,6 +11,15 @@ namespace Atlas { namespace Objects {
 
 NoSuchAttrException::~NoSuchAttrException() throw ()
 {
+}
+
+BaseObjectData::BaseObjectData(BaseObjectData *defaults) :
+    m_class_no(BASE_OBJECT_NO), m_refCount(0), m_defaults(defaults),
+    m_attrFlags(0)
+{
+    if(defaults == NULL) {
+        m_attrFlags = -1; //this is default object: all attributes here
+    }
 }
 
 BaseObjectData::~BaseObjectData()
