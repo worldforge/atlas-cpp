@@ -1,3 +1,7 @@
+2007-11-24  Al Riddoch  <alriddoch@zepler.org>
+
+	* configure.ac, AUTHORS: Update contact email addresses.
+
 2007-11-22  Al Riddoch  <alriddoch@zepler.org>
 
 	* Atlas/Objects/BaseObject.cpp, Atlas/Objects/BaseObject.h:
