@@ -1,3 +1,11 @@
+2008-08-14  Al Riddoch  <alriddoch@googlemail.com>
+
+	Changes by Alexey Torkhov  <atorkhov@gmail.com>
+
+	* Atlas/Filter.cpp: Add <cstring> include as required by GCC 4.3.
+
+	* tools/atlas_convert.cpp: Add <cstdlib> include as required by
+
 2007-11-24  Al Riddoch  <alriddoch@googlemail.com>
 
 	* Release 0.6.1, Interface version 1.

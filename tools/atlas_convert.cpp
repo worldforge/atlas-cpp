@@ -14,6 +14,8 @@
 #include <fstream>
 #include <iostream>
 
+#include <cstdlib>
+
 #include <unistd.h>
 
 int option_format = 0;
