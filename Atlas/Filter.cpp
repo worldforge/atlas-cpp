@@ -24,12 +24,12 @@ filterbuf::~filterbuf()
   
 int_type filterbuf::overflow(int_type c)
 {
-    if (c != EOF) {
+    if (c != traits_type::eof()) {
         *pptr() = (char) c;
         pbump(1);
     }
-    if (flushOutBuffer() == EOF) {
-        return EOF;
+    if (flushOutBuffer() == traits_type::eof()) {
+        return traits_type::eof();
     }
     return c;
 }
@@ -61,7 +61,7 @@ int_type filterbuf::underflow()
     // limitation.
     num = m_streamBuffer.sgetn(m_inBuffer + m_inPutback,
                                m_inBufferSize - m_inPutback);
-    if (num <= 0) return EOF;
+    if (num <= 0) return traits_type::eof();
 
     setg(m_inBuffer + (m_inPutback - numPutback),
          m_inBuffer + m_inPutback,
@@ -72,7 +72,7 @@ int_type filterbuf::underflow()
   
 int filterbuf::sync()
 {
-    if (flushOutBuffer() == EOF) return -1;
+    if (flushOutBuffer() == traits_type::eof()) return -1;
     return 0;
 }
 
