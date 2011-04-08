@@ -7,6 +7,10 @@
 #ifndef ATLAS_OBJECTS_OBJECTS_FWD_H
 #define ATLAS_OBJECTS_OBJECTS_FWD_H
 
+#include <Atlas/Objects/RootOperation.h>
+#include <Atlas/Objects/RootEntity.h>
+#include <Atlas/Objects/RootOperation.h>
+
 namespace Atlas { namespace Objects { 
 
 template <class T> class SmartPtr;
