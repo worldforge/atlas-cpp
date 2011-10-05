@@ -43,6 +43,61 @@ class NoSuchAttrException : public Atlas::Exception
     }
 };
 
+class BaseObjectData;
+
+
+template <typename T>
+class Allocator {
+protected:
+    T* defaults_Data;
+    T* begin_Data;
+
+public:
+
+    std::map<std::string, int> attr_flags_Data;
+
+    Allocator() : defaults_Data(0), begin_Data(0)
+    {
+    }
+
+    ~Allocator() {
+        delete defaults_Data;
+        delete begin_Data;
+    }
+
+    T *getDefaultObjectInstance()
+    {
+        if (defaults_Data == 0) {
+            defaults_Data = new T;
+            T::fillDefaultObjectInstance(*defaults_Data, attr_flags_Data);
+        }
+        return defaults_Data;
+    }
+
+    T *alloc()
+    {
+        if (begin_Data) {
+            T *res = begin_Data;
+            assert( res->m_refCount == 0 );
+            res->m_attrFlags = 0;
+            res->m_attributes.clear();
+            begin_Data = static_cast<T*>(begin_Data->m_next);
+            return res;
+        }
+        return new T(getDefaultObjectInstance());
+    }
+
+    void free(T *instance)
+    {
+        instance->m_next = begin_Data;
+        begin_Data = instance;
+    }
+
+};
+
+
+
+
 static const int BASE_OBJECT_NO = 0;
 
 /** Atlas base object class.
@@ -67,13 +122,19 @@ these flags are cleared, indicating that none of the members are in use.
 class BaseObjectData
 {
 public:
+    template <typename>
+    friend class Allocator;
+    template <typename>
+    friend class SmartPtr;
+
     /// Construct a new BaseObjectData from a subclass.
-    /// Initialises flags to zero, and stores a pointer to the reference
+    /// Initializes flags to zero, and stores a pointer to the reference
     /// object that provides default values for all attributes. Subclasses
     /// must pass in a pointer to their class specific reference object.
     BaseObjectData(BaseObjectData *defaults);
 
     virtual ~BaseObjectData();
+
 
     /// Get class number:
     int getClassNo() const 
@@ -125,12 +186,6 @@ public:
     inline void incRef();
     inline void decRef();
 
-    /// \brief Allocate a new instance of this class, using an existing
-    /// instance if available.
-    ///
-    /// This is the key function for implementing the memory pool
-    /// for the Atlas::Objects API.
-    static BaseObjectData *alloc() {assert(0); return NULL;} //not callable
     /// \brief Free an instance of this class, returning it to the memory
     /// pool.
     ///
@@ -286,21 +341,21 @@ protected:
     virtual void iterate(int& current_class, std::string& attr) const;
 
     int m_class_no; //each class has different enum
-    int m_refCount; //how many instances 
+    int m_refCount; //how many instances
     BaseObjectData *m_defaults;
     //this will be defined in each subclass separately, so no need here for it
-    //static BaseObjectData *begin; 
+    //static BaseObjectData *begin;
     BaseObjectData *m_next;
     std::map<std::string, Atlas::Message::Element> m_attributes;
     // is attribute in this object or in default object?
     int m_attrFlags;
 };
 
-void BaseObjectData::incRef() {
+inline void BaseObjectData::incRef() {
     m_refCount++;
 }
 
-void BaseObjectData::decRef() {
+inline void BaseObjectData::decRef() {
     //why zero based refCount? avoids one m_refCount-- ;-)
     assert( m_refCount >= 0 );
     if(!m_refCount) {
@@ -310,7 +365,7 @@ void BaseObjectData::decRef() {
     m_refCount--;
 }
 
-BaseObjectData::iterator BaseObjectData::iterator::operator++(int) // postincrement
+inline BaseObjectData::iterator BaseObjectData::iterator::operator++(int) // postincrement
 {
     iterator tmp = *this;
     operator++();
@@ -323,7 +378,6 @@ BaseObjectData::const_iterator BaseObjectData::const_iterator::operator++(int) /
     operator++();
     return tmp;
 }
-
 
 } } // namespace Atlas::Objects
 

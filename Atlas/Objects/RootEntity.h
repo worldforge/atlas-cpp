@@ -145,27 +145,19 @@ protected:
 
     virtual void iterate(int& current_class, std::string& attr) const;
 
-    //freelist related things
 public:
-    static RootEntityData *alloc();
+    template <typename>
+    friend class ::Atlas::Objects::Allocator;
+    static Allocator<RootEntityData> allocator;
+
+private:
     virtual void free();
-
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of the same class as this object.
-    ///
-    /// @return a pointer to the default object.
-    virtual RootEntityData *getDefaultObject();
-
     /// \brief Get the reference object that contains the default values for
     /// attributes of instances of this class.
     ///
     /// @return a pointer to the default object.
-    static RootEntityData *getDefaultObjectInstance();
-private:
-    static RootEntityData *defaults_RootEntityData;
-    static RootEntityData *begin_RootEntityData;
+    static void fillDefaultObjectInstance(RootEntityData& data, std::map<std::string, int>& attr_data);
 
-    static std::map<std::string, int> * attr_flags_RootEntityData;
 };
 
 //
@@ -403,6 +395,10 @@ bool RootEntityData::isDefaultStampContains() const
     return (m_attrFlags & STAMP_CONTAINS_FLAG) == 0;
 }
 
+inline void RootEntityData::free()
+{
+    allocator.free(this);
+}
 
 } } } // namespace Atlas::Objects::Entity
 

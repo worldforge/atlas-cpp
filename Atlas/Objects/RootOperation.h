@@ -176,25 +176,14 @@ protected:
 
     //freelist related things
 public:
-    static RootOperationData *alloc();
+    template <typename>
+    friend class ::Atlas::Objects::Allocator;
+    static Allocator<RootOperationData> allocator;
+
+private:
     virtual void free();
 
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of the same class as this object.
-    ///
-    /// @return a pointer to the default object.
-    virtual RootOperationData *getDefaultObject();
-
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of this class.
-    ///
-    /// @return a pointer to the default object.
-    static RootOperationData *getDefaultObjectInstance();
-private:
-    static RootOperationData *defaults_RootOperationData;
-    static RootOperationData *begin_RootOperationData;
-
-    static std::map<std::string, int> * attr_flags_RootOperationData;
+    static void fillDefaultObjectInstance(RootOperationData& data, std::map<std::string, int>& attr_data);
 };
 
 //
@@ -445,6 +434,10 @@ bool RootOperationData::isDefaultArgs() const
     return (m_attrFlags & ARGS_FLAG) == 0;
 }
 
+inline void RootOperationData::free()
+{
+    allocator.free(this);
+}
 
 } } } // namespace Atlas::Objects::Operation
 

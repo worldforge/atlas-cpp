@@ -49,6 +49,10 @@ protected:
     virtual ~ActionData();
 
 public:
+    template <typename>
+    friend class ::Atlas::Objects::Allocator;
+    static Allocator<ActionData> allocator;
+
     /// Copy this object.
     virtual ActionData * copy() const;
 
@@ -59,25 +63,10 @@ public:
     virtual void iterate(int& current_class, std::string& attr) const
         {if(current_class == ACTION_NO) current_class = -1; RootOperationData::iterate(current_class, attr);}
 
-    //freelist related things
-public:
-    static ActionData *alloc();
+private:
     virtual void free();
 
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of the same class as this object.
-    ///
-    /// @return a pointer to the default object.
-    virtual ActionData *getDefaultObject();
-
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of this class.
-    ///
-    /// @return a pointer to the default object.
-    static ActionData *getDefaultObjectInstance();
-private:
-    static ActionData *defaults_ActionData;
-    static ActionData *begin_ActionData;
+    static void fillDefaultObjectInstance(ActionData& data, std::map<std::string, int>& attr_data);
 };
 
 
@@ -121,23 +110,15 @@ public:
 
     //freelist related things
 public:
-    static CreateData *alloc();
+    template <typename>
+    friend class ::Atlas::Objects::Allocator;
+    static Allocator<CreateData> allocator;
+
+private:
     virtual void free();
 
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of the same class as this object.
-    ///
-    /// @return a pointer to the default object.
-    virtual CreateData *getDefaultObject();
+    static void fillDefaultObjectInstance(CreateData& data, std::map<std::string, int>& attr_data);
 
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of this class.
-    ///
-    /// @return a pointer to the default object.
-    static CreateData *getDefaultObjectInstance();
-private:
-    static CreateData *defaults_CreateData;
-    static CreateData *begin_CreateData;
 };
 
 
@@ -181,23 +162,14 @@ public:
 
     //freelist related things
 public:
-    static CombineData *alloc();
+    template <typename>
+    friend class ::Atlas::Objects::Allocator;
+    static Allocator<CombineData> allocator;
+
+private:
     virtual void free();
 
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of the same class as this object.
-    ///
-    /// @return a pointer to the default object.
-    virtual CombineData *getDefaultObject();
-
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of this class.
-    ///
-    /// @return a pointer to the default object.
-    static CombineData *getDefaultObjectInstance();
-private:
-    static CombineData *defaults_CombineData;
-    static CombineData *begin_CombineData;
+    static void fillDefaultObjectInstance(CombineData& data, std::map<std::string, int>& attr_data);
 };
 
 
@@ -241,23 +213,14 @@ public:
 
     //freelist related things
 public:
-    static DivideData *alloc();
+    template <typename>
+    friend class ::Atlas::Objects::Allocator;
+    static Allocator<DivideData> allocator;
+
+private:
     virtual void free();
 
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of the same class as this object.
-    ///
-    /// @return a pointer to the default object.
-    virtual DivideData *getDefaultObject();
-
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of this class.
-    ///
-    /// @return a pointer to the default object.
-    static DivideData *getDefaultObjectInstance();
-private:
-    static DivideData *defaults_DivideData;
-    static DivideData *begin_DivideData;
+    static void fillDefaultObjectInstance(DivideData& data, std::map<std::string, int>& attr_data);
 };
 
 
@@ -301,23 +264,14 @@ public:
 
     //freelist related things
 public:
-    static CommunicateData *alloc();
+    template <typename>
+    friend class ::Atlas::Objects::Allocator;
+    static Allocator<CommunicateData> allocator;
+
+private:
     virtual void free();
 
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of the same class as this object.
-    ///
-    /// @return a pointer to the default object.
-    virtual CommunicateData *getDefaultObject();
-
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of this class.
-    ///
-    /// @return a pointer to the default object.
-    static CommunicateData *getDefaultObjectInstance();
-private:
-    static CommunicateData *defaults_CommunicateData;
-    static CommunicateData *begin_CommunicateData;
+    static void fillDefaultObjectInstance(CommunicateData& data, std::map<std::string, int>& attr_data);
 };
 
 
@@ -361,23 +315,14 @@ public:
 
     //freelist related things
 public:
-    static TalkData *alloc();
+    template <typename>
+    friend class ::Atlas::Objects::Allocator;
+    static Allocator<TalkData> allocator;
+
+private:
     virtual void free();
 
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of the same class as this object.
-    ///
-    /// @return a pointer to the default object.
-    virtual TalkData *getDefaultObject();
-
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of this class.
-    ///
-    /// @return a pointer to the default object.
-    static TalkData *getDefaultObjectInstance();
-private:
-    static TalkData *defaults_TalkData;
-    static TalkData *begin_TalkData;
+    static void fillDefaultObjectInstance(TalkData& data, std::map<std::string, int>& attr_data);
 };
 
 
@@ -429,23 +374,14 @@ public:
 
     //freelist related things
 public:
-    static DeleteData *alloc();
+    template <typename>
+    friend class ::Atlas::Objects::Allocator;
+    static Allocator<DeleteData> allocator;
+
+private:
     virtual void free();
 
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of the same class as this object.
-    ///
-    /// @return a pointer to the default object.
-    virtual DeleteData *getDefaultObject();
-
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of this class.
-    ///
-    /// @return a pointer to the default object.
-    static DeleteData *getDefaultObjectInstance();
-private:
-    static DeleteData *defaults_DeleteData;
-    static DeleteData *begin_DeleteData;
+    static void fillDefaultObjectInstance(DeleteData& data, std::map<std::string, int>& attr_data);
 };
 
 
@@ -485,6 +421,10 @@ protected:
     virtual ~SetData();
 
 public:
+    template <typename>
+    friend class ::Atlas::Objects::Allocator;
+    static Allocator<SetData> allocator;
+
     /// Copy this object.
     virtual SetData * copy() const;
 
@@ -495,25 +435,10 @@ public:
     virtual void iterate(int& current_class, std::string& attr) const
         {if(current_class == SET_NO) current_class = -1; ActionData::iterate(current_class, attr);}
 
-    //freelist related things
-public:
-    static SetData *alloc();
+private:
     virtual void free();
 
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of the same class as this object.
-    ///
-    /// @return a pointer to the default object.
-    virtual SetData *getDefaultObject();
-
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of this class.
-    ///
-    /// @return a pointer to the default object.
-    static SetData *getDefaultObjectInstance();
-private:
-    static SetData *defaults_SetData;
-    static SetData *begin_SetData;
+    static void fillDefaultObjectInstance(SetData& data, std::map<std::string, int>& attr_data);
 };
 
 
@@ -553,6 +478,10 @@ protected:
     virtual ~AffectData();
 
 public:
+    template <typename>
+    friend class ::Atlas::Objects::Allocator;
+    static Allocator<AffectData> allocator;
+
     /// Copy this object.
     virtual AffectData * copy() const;
 
@@ -563,25 +492,10 @@ public:
     virtual void iterate(int& current_class, std::string& attr) const
         {if(current_class == AFFECT_NO) current_class = -1; SetData::iterate(current_class, attr);}
 
-    //freelist related things
-public:
-    static AffectData *alloc();
+private:
     virtual void free();
 
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of the same class as this object.
-    ///
-    /// @return a pointer to the default object.
-    virtual AffectData *getDefaultObject();
-
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of this class.
-    ///
-    /// @return a pointer to the default object.
-    static AffectData *getDefaultObjectInstance();
-private:
-    static AffectData *defaults_AffectData;
-    static AffectData *begin_AffectData;
+    static void fillDefaultObjectInstance(AffectData& data, std::map<std::string, int>& attr_data);
 };
 
 
@@ -625,23 +539,13 @@ public:
 
     //freelist related things
 public:
-    static MoveData *alloc();
+    template <typename>
+    friend class ::Atlas::Objects::Allocator;
+    static Allocator<MoveData> allocator;
+private:
     virtual void free();
 
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of the same class as this object.
-    ///
-    /// @return a pointer to the default object.
-    virtual MoveData *getDefaultObject();
-
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of this class.
-    ///
-    /// @return a pointer to the default object.
-    static MoveData *getDefaultObjectInstance();
-private:
-    static MoveData *defaults_MoveData;
-    static MoveData *begin_MoveData;
+    static void fillDefaultObjectInstance(MoveData& data, std::map<std::string, int>& attr_data);
 };
 
 
@@ -693,23 +597,13 @@ public:
 
     //freelist related things
 public:
-    static WieldData *alloc();
+    template <typename>
+    friend class ::Atlas::Objects::Allocator;
+    static Allocator<WieldData> allocator;
+private:
     virtual void free();
 
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of the same class as this object.
-    ///
-    /// @return a pointer to the default object.
-    virtual WieldData *getDefaultObject();
-
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of this class.
-    ///
-    /// @return a pointer to the default object.
-    static WieldData *getDefaultObjectInstance();
-private:
-    static WieldData *defaults_WieldData;
-    static WieldData *begin_WieldData;
+    static void fillDefaultObjectInstance(WieldData& data, std::map<std::string, int>& attr_data);
 };
 
 
@@ -761,23 +655,13 @@ public:
 
     //freelist related things
 public:
-    static GetData *alloc();
+    template <typename>
+    friend class ::Atlas::Objects::Allocator;
+    static Allocator<GetData> allocator;
+private:
     virtual void free();
 
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of the same class as this object.
-    ///
-    /// @return a pointer to the default object.
-    virtual GetData *getDefaultObject();
-
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of this class.
-    ///
-    /// @return a pointer to the default object.
-    static GetData *getDefaultObjectInstance();
-private:
-    static GetData *defaults_GetData;
-    static GetData *begin_GetData;
+    static void fillDefaultObjectInstance(GetData& data, std::map<std::string, int>& attr_data);
 };
 
 
@@ -829,23 +713,13 @@ public:
 
     //freelist related things
 public:
-    static PerceiveData *alloc();
+    template <typename>
+    friend class ::Atlas::Objects::Allocator;
+    static Allocator<PerceiveData> allocator;
+private:
     virtual void free();
 
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of the same class as this object.
-    ///
-    /// @return a pointer to the default object.
-    virtual PerceiveData *getDefaultObject();
-
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of this class.
-    ///
-    /// @return a pointer to the default object.
-    static PerceiveData *getDefaultObjectInstance();
-private:
-    static PerceiveData *defaults_PerceiveData;
-    static PerceiveData *begin_PerceiveData;
+    static void fillDefaultObjectInstance(PerceiveData& data, std::map<std::string, int>& attr_data);
 };
 
 
@@ -897,23 +771,13 @@ public:
 
     //freelist related things
 public:
-    static LookData *alloc();
+    template <typename>
+    friend class ::Atlas::Objects::Allocator;
+    static Allocator<LookData> allocator;
+private:
     virtual void free();
 
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of the same class as this object.
-    ///
-    /// @return a pointer to the default object.
-    virtual LookData *getDefaultObject();
-
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of this class.
-    ///
-    /// @return a pointer to the default object.
-    static LookData *getDefaultObjectInstance();
-private:
-    static LookData *defaults_LookData;
-    static LookData *begin_LookData;
+    static void fillDefaultObjectInstance(LookData& data, std::map<std::string, int>& attr_data);
 };
 
 
@@ -965,23 +829,13 @@ public:
 
     //freelist related things
 public:
-    static ListenData *alloc();
+    template <typename>
+    friend class ::Atlas::Objects::Allocator;
+    static Allocator<ListenData> allocator;
+private:
     virtual void free();
 
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of the same class as this object.
-    ///
-    /// @return a pointer to the default object.
-    virtual ListenData *getDefaultObject();
-
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of this class.
-    ///
-    /// @return a pointer to the default object.
-    static ListenData *getDefaultObjectInstance();
-private:
-    static ListenData *defaults_ListenData;
-    static ListenData *begin_ListenData;
+    static void fillDefaultObjectInstance(ListenData& data, std::map<std::string, int>& attr_data);
 };
 
 
@@ -1033,23 +887,13 @@ public:
 
     //freelist related things
 public:
-    static SniffData *alloc();
+    template <typename>
+    friend class ::Atlas::Objects::Allocator;
+    static Allocator<SniffData> allocator;
+private:
     virtual void free();
 
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of the same class as this object.
-    ///
-    /// @return a pointer to the default object.
-    virtual SniffData *getDefaultObject();
-
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of this class.
-    ///
-    /// @return a pointer to the default object.
-    static SniffData *getDefaultObjectInstance();
-private:
-    static SniffData *defaults_SniffData;
-    static SniffData *begin_SniffData;
+    static void fillDefaultObjectInstance(SniffData& data, std::map<std::string, int>& attr_data);
 };
 
 
@@ -1101,23 +945,13 @@ public:
 
     //freelist related things
 public:
-    static TouchData *alloc();
+    template <typename>
+    friend class ::Atlas::Objects::Allocator;
+    static Allocator<TouchData> allocator;
+private:
     virtual void free();
 
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of the same class as this object.
-    ///
-    /// @return a pointer to the default object.
-    virtual TouchData *getDefaultObject();
-
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of this class.
-    ///
-    /// @return a pointer to the default object.
-    static TouchData *getDefaultObjectInstance();
-private:
-    static TouchData *defaults_TouchData;
-    static TouchData *begin_TouchData;
+    static void fillDefaultObjectInstance(TouchData& data, std::map<std::string, int>& attr_data);
 };
 
 
@@ -1161,23 +995,13 @@ public:
 
     //freelist related things
 public:
-    static LoginData *alloc();
+    template <typename>
+    friend class ::Atlas::Objects::Allocator;
+    static Allocator<LoginData> allocator;
+private:
     virtual void free();
 
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of the same class as this object.
-    ///
-    /// @return a pointer to the default object.
-    virtual LoginData *getDefaultObject();
-
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of this class.
-    ///
-    /// @return a pointer to the default object.
-    static LoginData *getDefaultObjectInstance();
-private:
-    static LoginData *defaults_LoginData;
-    static LoginData *begin_LoginData;
+    static void fillDefaultObjectInstance(LoginData& data, std::map<std::string, int>& attr_data);
 };
 
 
@@ -1221,23 +1045,13 @@ public:
 
     //freelist related things
 public:
-    static LogoutData *alloc();
+    template <typename>
+    friend class ::Atlas::Objects::Allocator;
+    static Allocator<LogoutData> allocator;
+private:
     virtual void free();
 
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of the same class as this object.
-    ///
-    /// @return a pointer to the default object.
-    virtual LogoutData *getDefaultObject();
-
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of this class.
-    ///
-    /// @return a pointer to the default object.
-    static LogoutData *getDefaultObjectInstance();
-private:
-    static LogoutData *defaults_LogoutData;
-    static LogoutData *begin_LogoutData;
+    static void fillDefaultObjectInstance(LogoutData& data, std::map<std::string, int>& attr_data);
 };
 
 
@@ -1277,6 +1091,9 @@ protected:
     virtual ~ImaginaryData();
 
 public:
+    template <typename>
+    friend class ::Atlas::Objects::Allocator;
+    static Allocator<ImaginaryData> allocator;
     /// Copy this object.
     virtual ImaginaryData * copy() const;
 
@@ -1287,25 +1104,10 @@ public:
     virtual void iterate(int& current_class, std::string& attr) const
         {if(current_class == IMAGINARY_NO) current_class = -1; ActionData::iterate(current_class, attr);}
 
-    //freelist related things
-public:
-    static ImaginaryData *alloc();
+private:
     virtual void free();
 
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of the same class as this object.
-    ///
-    /// @return a pointer to the default object.
-    virtual ImaginaryData *getDefaultObject();
-
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of this class.
-    ///
-    /// @return a pointer to the default object.
-    static ImaginaryData *getDefaultObjectInstance();
-private:
-    static ImaginaryData *defaults_ImaginaryData;
-    static ImaginaryData *begin_ImaginaryData;
+    static void fillDefaultObjectInstance(ImaginaryData& data, std::map<std::string, int>& attr_data);
 };
 
 
@@ -1357,23 +1159,13 @@ public:
 
     //freelist related things
 public:
-    static UseData *alloc();
+    template <typename>
+    friend class ::Atlas::Objects::Allocator;
+    static Allocator<UseData> allocator;
+private:
     virtual void free();
 
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of the same class as this object.
-    ///
-    /// @return a pointer to the default object.
-    virtual UseData *getDefaultObject();
-
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of this class.
-    ///
-    /// @return a pointer to the default object.
-    static UseData *getDefaultObjectInstance();
-private:
-    static UseData *defaults_UseData;
-    static UseData *begin_UseData;
+    static void fillDefaultObjectInstance(UseData& data, std::map<std::string, int>& attr_data);
 };
 
 
@@ -1413,6 +1205,9 @@ protected:
     virtual ~InfoData();
 
 public:
+    template <typename>
+    friend class ::Atlas::Objects::Allocator;
+    static Allocator<InfoData> allocator;
     /// Copy this object.
     virtual InfoData * copy() const;
 
@@ -1423,25 +1218,10 @@ public:
     virtual void iterate(int& current_class, std::string& attr) const
         {if(current_class == INFO_NO) current_class = -1; RootOperationData::iterate(current_class, attr);}
 
-    //freelist related things
-public:
-    static InfoData *alloc();
+private:
     virtual void free();
 
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of the same class as this object.
-    ///
-    /// @return a pointer to the default object.
-    virtual InfoData *getDefaultObject();
-
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of this class.
-    ///
-    /// @return a pointer to the default object.
-    static InfoData *getDefaultObjectInstance();
-private:
-    static InfoData *defaults_InfoData;
-    static InfoData *begin_InfoData;
+    static void fillDefaultObjectInstance(InfoData& data, std::map<std::string, int>& attr_data);
 };
 
 
@@ -1485,23 +1265,13 @@ public:
 
     //freelist related things
 public:
-    static PerceptionData *alloc();
+    template <typename>
+    friend class ::Atlas::Objects::Allocator;
+    static Allocator<PerceptionData> allocator;
+private:
     virtual void free();
 
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of the same class as this object.
-    ///
-    /// @return a pointer to the default object.
-    virtual PerceptionData *getDefaultObject();
-
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of this class.
-    ///
-    /// @return a pointer to the default object.
-    static PerceptionData *getDefaultObjectInstance();
-private:
-    static PerceptionData *defaults_PerceptionData;
-    static PerceptionData *begin_PerceptionData;
+    static void fillDefaultObjectInstance(PerceptionData& data, std::map<std::string, int>& attr_data);
 };
 
 
@@ -1545,23 +1315,13 @@ public:
 
     //freelist related things
 public:
-    static SightData *alloc();
+    template <typename>
+    friend class ::Atlas::Objects::Allocator;
+    static Allocator<SightData> allocator;
+private:
     virtual void free();
 
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of the same class as this object.
-    ///
-    /// @return a pointer to the default object.
-    virtual SightData *getDefaultObject();
-
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of this class.
-    ///
-    /// @return a pointer to the default object.
-    static SightData *getDefaultObjectInstance();
-private:
-    static SightData *defaults_SightData;
-    static SightData *begin_SightData;
+    static void fillDefaultObjectInstance(SightData& data, std::map<std::string, int>& attr_data);
 };
 
 
@@ -1605,23 +1365,13 @@ public:
 
     //freelist related things
 public:
-    static AppearanceData *alloc();
+    template <typename>
+    friend class ::Atlas::Objects::Allocator;
+    static Allocator<AppearanceData> allocator;
+private:
     virtual void free();
 
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of the same class as this object.
-    ///
-    /// @return a pointer to the default object.
-    virtual AppearanceData *getDefaultObject();
-
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of this class.
-    ///
-    /// @return a pointer to the default object.
-    static AppearanceData *getDefaultObjectInstance();
-private:
-    static AppearanceData *defaults_AppearanceData;
-    static AppearanceData *begin_AppearanceData;
+    static void fillDefaultObjectInstance(AppearanceData& data, std::map<std::string, int>& attr_data);
 };
 
 
@@ -1665,23 +1415,13 @@ public:
 
     //freelist related things
 public:
-    static DisappearanceData *alloc();
+    template <typename>
+    friend class ::Atlas::Objects::Allocator;
+    static Allocator<DisappearanceData> allocator;
+private:
     virtual void free();
 
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of the same class as this object.
-    ///
-    /// @return a pointer to the default object.
-    virtual DisappearanceData *getDefaultObject();
-
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of this class.
-    ///
-    /// @return a pointer to the default object.
-    static DisappearanceData *getDefaultObjectInstance();
-private:
-    static DisappearanceData *defaults_DisappearanceData;
-    static DisappearanceData *begin_DisappearanceData;
+    static void fillDefaultObjectInstance(DisappearanceData& data, std::map<std::string, int>& attr_data);
 };
 
 
@@ -1725,23 +1465,13 @@ public:
 
     //freelist related things
 public:
-    static SoundData *alloc();
+    template <typename>
+    friend class ::Atlas::Objects::Allocator;
+    static Allocator<SoundData> allocator;
+private:
     virtual void free();
 
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of the same class as this object.
-    ///
-    /// @return a pointer to the default object.
-    virtual SoundData *getDefaultObject();
-
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of this class.
-    ///
-    /// @return a pointer to the default object.
-    static SoundData *getDefaultObjectInstance();
-private:
-    static SoundData *defaults_SoundData;
-    static SoundData *begin_SoundData;
+    static void fillDefaultObjectInstance(SoundData& data, std::map<std::string, int>& attr_data);
 };
 
 
@@ -1785,23 +1515,13 @@ public:
 
     //freelist related things
 public:
-    static SmellData *alloc();
+    template <typename>
+    friend class ::Atlas::Objects::Allocator;
+    static Allocator<SmellData> allocator;
+private:
     virtual void free();
 
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of the same class as this object.
-    ///
-    /// @return a pointer to the default object.
-    virtual SmellData *getDefaultObject();
-
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of this class.
-    ///
-    /// @return a pointer to the default object.
-    static SmellData *getDefaultObjectInstance();
-private:
-    static SmellData *defaults_SmellData;
-    static SmellData *begin_SmellData;
+    static void fillDefaultObjectInstance(SmellData& data, std::map<std::string, int>& attr_data);
 };
 
 
@@ -1845,23 +1565,13 @@ public:
 
     //freelist related things
 public:
-    static FeelData *alloc();
+    template <typename>
+    friend class ::Atlas::Objects::Allocator;
+    static Allocator<FeelData> allocator;
+private:
     virtual void free();
 
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of the same class as this object.
-    ///
-    /// @return a pointer to the default object.
-    virtual FeelData *getDefaultObject();
-
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of this class.
-    ///
-    /// @return a pointer to the default object.
-    static FeelData *getDefaultObjectInstance();
-private:
-    static FeelData *defaults_FeelData;
-    static FeelData *begin_FeelData;
+    static void fillDefaultObjectInstance(FeelData& data, std::map<std::string, int>& attr_data);
 };
 
 
@@ -1913,23 +1623,13 @@ public:
 
     //freelist related things
 public:
-    static ErrorData *alloc();
+    template <typename>
+    friend class ::Atlas::Objects::Allocator;
+    static Allocator<ErrorData> allocator;
+private:
     virtual void free();
 
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of the same class as this object.
-    ///
-    /// @return a pointer to the default object.
-    virtual ErrorData *getDefaultObject();
-
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of this class.
-    ///
-    /// @return a pointer to the default object.
-    static ErrorData *getDefaultObjectInstance();
-private:
-    static ErrorData *defaults_ErrorData;
-    static ErrorData *begin_ErrorData;
+    static void fillDefaultObjectInstance(ErrorData& data, std::map<std::string, int>& attr_data);
 };
 
 } } } // namespace Atlas::Objects::Operation

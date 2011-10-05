@@ -30,6 +30,7 @@ static const int ANONYMOUS_NO = 40;
 class AnonymousData : public RootEntityData
 {
 protected:
+
     /// Construct a AnonymousData class definition.
     AnonymousData(AnonymousData *defaults = NULL) : 
         RootEntityData((RootEntityData*)defaults)
@@ -55,25 +56,21 @@ public:
 
     //freelist related things
 public:
-    static AnonymousData *alloc();
+    template <typename>
+    friend class ::Atlas::Objects::Allocator;
+    static Allocator<AnonymousData> allocator;
+
+private:
     virtual void free();
 
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of the same class as this object.
-    ///
-    /// @return a pointer to the default object.
-    virtual AnonymousData *getDefaultObject();
+    static void fillDefaultObjectInstance(AnonymousData& data, std::map<std::string, int>& attr_data);
 
-    /// \brief Get the reference object that contains the default values for
-    /// attributes of instances of this class.
-    ///
-    /// @return a pointer to the default object.
-    static AnonymousData *getDefaultObjectInstance();
-private:
-    static AnonymousData *defaults_AnonymousData;
-    static AnonymousData *begin_AnonymousData;
 };
 
+inline void AnonymousData::free()
+{
+    allocator.free(this);
+}
 } } } // namespace Atlas::Objects::Entity
 
 #endif // ATLAS_OBJECTS_ENTITY_ANONYMOUS_H
