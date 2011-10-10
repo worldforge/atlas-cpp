@@ -45,26 +45,64 @@ class NoSuchAttrException : public Atlas::Exception
 
 class BaseObjectData;
 
-
+/**
+ * Trait which handles allocation of instances of BaseObject.
+ *
+ * This class handles allocation and deallocation of templates BaseObject
+ * instances. Instead of creating and deleting BaseObjects as they are used
+ * we keep a small pool around, reusing old instances when needed.
+ *
+ * This class is tightly coupled with both SmartPtr and BaseObject and rely
+ * on a couple of templated naming conventions.
+ * Any subclass of BaseObject should therefore keep a static instance of this
+ * in a field named "allocator".
+ */
 template <typename T>
 class Allocator {
 protected:
+    /**
+     * The default instance, acting as a prototype for all other instances.
+     */
     T* defaults_Data;
+
+    /**
+     * The first available instance, not currently in use.
+     *
+     * If this is null, a new instance needs to be created.
+     */
     T* begin_Data;
 
 public:
 
+    /**
+     * A map of attributes and their flags.
+     */
     std::map<std::string, int> attr_flags_Data;
 
+    /**
+     * Ctor.
+     */
     Allocator() : defaults_Data(0), begin_Data(0)
     {
     }
 
+    /**
+     * Dtor.
+     */
     ~Allocator() {
         delete defaults_Data;
         delete begin_Data;
     }
 
+    /**
+     * Gets the default object instance, which acts as a prototype for all
+     * other instances in the system.
+     *
+     * Any alterations made to the prototype instance will reflect on all
+     * other instances of the same class.
+     *
+     * @return The default object instance.
+     */
     T *getDefaultObjectInstance()
     {
         if (defaults_Data == 0) {
@@ -74,6 +112,13 @@ public:
         return defaults_Data;
     }
 
+    /**
+     * Allocates a new instance to be used.
+     *
+     * This will either reuse and existing instance or create a new, depending
+     * of whether there's a free unused instance available.
+     * @return An instance ready to be used.
+     */
     T *alloc()
     {
         if (begin_Data) {
@@ -87,6 +132,14 @@ public:
         return new T(getDefaultObjectInstance());
     }
 
+    /**
+     * Frees up an instance.
+     *
+     * Call this when you don't need to use an instance any more. It will then
+     * be returned to the cache, ready to be reused.
+     *
+     * @param instance An instance.
+     */
     void free(T *instance)
     {
         instance->m_next = begin_Data;
@@ -105,10 +158,10 @@ static const int BASE_OBJECT_NO = 0;
 This is class is the base from which all classes used to represent high
 level objects are derived. In this release of Atlas-C++, all classes
 that inherit from BaseObjectData are designed to be used with SmartPtr
-and should have the suffix Data on the end of their name. All the
-subclasses of BaseObjectData included with Atlas-C++ are automatically
-generated from the Atlas spec at release time. For each subclass
-a typedef is created of a specialisation of SmartPtr aliasing it
+and should have the suffix Data on the end of their name.
+
+For each subclass
+a typedef must be created as a specialisation of SmartPtr aliasing it
 to the name of the class without the Data suffix. Thus RootOperationData
 has an associate type RootOperation which is a typedef for
 SmartPtr<RootOperationData>. Each class also has an associated integer 
@@ -118,6 +171,16 @@ pool, and reuse instances as they are required. In order to re-use
 instances without re-constructing all their members, a system of flags
 is used to mark which members are in use. When an instance is re-used
 these flags are cleared, indicating that none of the members are in use.
+
+All subclasses of this must include a static instance of Allocator<> in
+the field "allocator". They must also implement the static method
+
+static void fillDefaultObjectInstance(GenericData& data,
+    std::map<std::string, int>& attr_data);
+
+which is used to both create the default prototype instance as well as
+creating any attribute-name-to-flags map.
+
  */
 class BaseObjectData
 {
@@ -342,9 +405,15 @@ protected:
 
     int m_class_no; //each class has different enum
     int m_refCount; //how many instances
+
+    /**
+     * The default instance, acting as a prototype for all other instances.
+     */
     BaseObjectData *m_defaults;
-    //this will be defined in each subclass separately, so no need here for it
-    //static BaseObjectData *begin;
+
+    /**
+     * The next instance, if this instance has been freed up.
+     */
     BaseObjectData *m_next;
     std::map<std::string, Atlas::Message::Element> m_attributes;
     // is attribute in this object or in default object?
