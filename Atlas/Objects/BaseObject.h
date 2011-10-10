@@ -245,10 +245,6 @@ public:
     /// Send the contents of this object to a Bridge.
     virtual void sendContents(Atlas::Bridge & b) const;
 
-    //move to protected once SmartPtr <-> BaseObject order established
-    inline void incRef();
-    inline void decRef();
-
     /// \brief Free an instance of this class, returning it to the memory
     /// pool.
     ///
@@ -292,7 +288,7 @@ public:
 
         iterator& operator++(); // preincrement
 
-        inline iterator operator++(int); // postincrement
+        iterator operator++(int); // postincrement
 
         bool operator==(const iterator& I) const;
 
@@ -351,7 +347,7 @@ public:
 
         const_iterator& operator++(); // preincrement
 
-        inline const_iterator operator++(int); // postincrement
+        const_iterator operator++(int); // postincrement
 
         bool operator==(const const_iterator& I) const;
 
@@ -393,6 +389,9 @@ public:
     const_iterator find(const std::string&) const;
 
 protected:
+
+    void incRef();
+    void decRef();
 
     /// Find the class which contains the attribute "name".
     virtual int getAttrClass(const std::string& name) const;
@@ -441,7 +440,7 @@ inline BaseObjectData::iterator BaseObjectData::iterator::operator++(int) // pos
     return tmp;
 }
 
-BaseObjectData::const_iterator BaseObjectData::const_iterator::operator++(int) // postincrement
+inline BaseObjectData::const_iterator BaseObjectData::const_iterator::operator++(int) // postincrement
 {
     const_iterator tmp = *this;
     operator++();
