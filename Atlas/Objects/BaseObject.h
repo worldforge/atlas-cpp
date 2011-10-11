@@ -80,6 +80,21 @@ public:
     std::map<std::string, int> attr_flags_Data;
 
     /**
+     * Deletes all pooled but unused instances.
+     */
+    void release()
+    {
+        //Delete all chained instances
+        T* next = begin_Data;
+        while (next) {
+            T* toDelete = next;
+            next = static_cast<T*>(next->m_next);
+            delete toDelete;
+        }
+        begin_Data = 0;
+    }
+
+    /**
      * Ctor.
      */
     Allocator() : defaults_Data(0), begin_Data(0)
@@ -90,8 +105,8 @@ public:
      * Dtor.
      */
     ~Allocator() {
+        release();
         delete defaults_Data;
-        delete begin_Data;
     }
 
     /**
