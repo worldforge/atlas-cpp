@@ -63,14 +63,14 @@ protected:
     /**
      * The default instance, acting as a prototype for all other instances.
      */
-    T* defaults_Data;
+    T* m_defaults_Data;
 
     /**
      * The first available instance, not currently in use.
      *
      * If this is null, a new instance needs to be created.
      */
-    T* begin_Data;
+    T* m_begin_Data;
 
 public:
 
@@ -80,34 +80,14 @@ public:
     std::map<std::string, int> attr_flags_Data;
 
     /**
-     * Deletes all pooled but unused instances.
-     */
-    void release()
-    {
-        //Delete all chained instances
-        T* next = begin_Data;
-        while (next) {
-            T* toDelete = next;
-            next = static_cast<T*>(next->m_next);
-            delete toDelete;
-        }
-        begin_Data = 0;
-    }
-
-    /**
      * Ctor.
      */
-    Allocator() : defaults_Data(0), begin_Data(0)
-    {
-    }
+    Allocator();
 
     /**
      * Dtor.
      */
-    ~Allocator() {
-        release();
-        delete defaults_Data;
-    }
+    ~Allocator();
 
     /**
      * Gets the default object instance, which acts as a prototype for all
@@ -118,14 +98,7 @@ public:
      *
      * @return The default object instance.
      */
-    T *getDefaultObjectInstance()
-    {
-        if (defaults_Data == 0) {
-            defaults_Data = new T;
-            T::fillDefaultObjectInstance(*defaults_Data, attr_flags_Data);
-        }
-        return defaults_Data;
-    }
+    T *getDefaultObjectInstance();
 
     /**
      * Allocates a new instance to be used.
@@ -134,36 +107,78 @@ public:
      * of whether there's a free unused instance available.
      * @return An instance ready to be used.
      */
-    T *alloc()
-    {
-        if (begin_Data) {
-            T *res = begin_Data;
-            assert( res->m_refCount == 0 );
-            res->m_attrFlags = 0;
-            res->m_attributes.clear();
-            begin_Data = static_cast<T*>(begin_Data->m_next);
-            return res;
-        }
-        return new T(getDefaultObjectInstance());
-    }
+    T *alloc();
 
     /**
      * Frees up an instance.
      *
-     * Call this when you don't need to use an instance any more. It will then
-     * be returned to the cache, ready to be reused.
-     *
-     * @param instance An instance.
+     * This means that the instance will be returned to the pool, ready to be
+     * used again.
+     * @param instance The instance to free.
      */
-    void free(T *instance)
-    {
-        instance->m_next = begin_Data;
-        begin_Data = instance;
-    }
+    void free(T *instance);
+
+    /**
+     * Deletes all pooled but unused instances.
+     */
+    void release();
 
 };
 
+template <typename T>
+Allocator<T>::Allocator() : m_defaults_Data(0), m_begin_Data(0)
+{
+}
 
+template <typename T>
+Allocator<T>::~Allocator() {
+    release();
+    delete m_defaults_Data;
+}
+
+template <typename T>
+T *Allocator<T>::getDefaultObjectInstance()
+{
+    if (m_defaults_Data == 0) {
+        m_defaults_Data = new T;
+        T::fillDefaultObjectInstance(*m_defaults_Data, attr_flags_Data);
+    }
+    return m_defaults_Data;
+}
+
+template <typename T>
+T *Allocator<T>::alloc()
+{
+    if (m_begin_Data) {
+        T *res = m_begin_Data;
+        assert( res->m_refCount == 0 );
+        res->m_attrFlags = 0;
+        res->m_attributes.clear();
+        m_begin_Data = static_cast<T*>(m_begin_Data->m_next);
+        return res;
+    }
+    return new T(getDefaultObjectInstance());
+}
+
+template <typename T>
+void Allocator<T>::free(T *instance)
+{
+    instance->m_next = m_begin_Data;
+    m_begin_Data = static_cast<T*>(instance);
+}
+
+template <typename T>
+void Allocator<T>::release()
+{
+    //Delete all chained instances
+    T* next = m_begin_Data;
+    while (next) {
+        T* toDelete = next;
+        next = static_cast<T*>(next->m_next);
+        delete toDelete;
+    }
+    m_begin_Data = 0;
+}
 
 
 static const int BASE_OBJECT_NO = 0;
