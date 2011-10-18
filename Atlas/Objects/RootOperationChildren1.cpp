@@ -15,6 +15,7 @@ Allocator<ActionData> ActionData::allocator;
 
 void ActionData::free()
 {
+    attr_args.clear();
     allocator.free(this);
 }
 
@@ -52,6 +53,7 @@ Allocator<CreateData> CreateData::allocator;
 
 void CreateData::free()
 {
+    attr_args.clear();
     allocator.free(this);
 }
 
@@ -89,6 +91,7 @@ Allocator<CombineData> CombineData::allocator;
 
 void CombineData::free()
 {
+    attr_args.clear();
     allocator.free(this);
 }
 
@@ -126,6 +129,7 @@ Allocator<DivideData> DivideData::allocator;
 
 void DivideData::free()
 {
+    attr_args.clear();
     allocator.free(this);
 }
 
@@ -163,6 +167,7 @@ Allocator<CommunicateData> CommunicateData::allocator;
 
 void CommunicateData::free()
 {
+    attr_args.clear();
     allocator.free(this);
 }
 
@@ -200,6 +205,7 @@ Allocator<TalkData> TalkData::allocator;
 
 void TalkData::free()
 {
+    attr_args.clear();
     allocator.free(this);
 }
 

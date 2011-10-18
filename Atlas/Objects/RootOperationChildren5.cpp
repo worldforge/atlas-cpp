@@ -15,6 +15,7 @@ Allocator<AppearanceData> AppearanceData::allocator;
 
 void AppearanceData::free()
 {
+    attr_args.clear();
     allocator.free(this);
 }
 
@@ -52,6 +53,7 @@ Allocator<DisappearanceData> DisappearanceData::allocator;
 
 void DisappearanceData::free()
 {
+    attr_args.clear();
     allocator.free(this);
 }
 
@@ -89,6 +91,7 @@ Allocator<SoundData> SoundData::allocator;
 
 void SoundData::free()
 {
+    attr_args.clear();
     allocator.free(this);
 }
 
@@ -126,6 +129,7 @@ Allocator<SmellData> SmellData::allocator;
 
 void SmellData::free()
 {
+    attr_args.clear();
     allocator.free(this);
 }
 
@@ -163,6 +167,7 @@ Allocator<FeelData> FeelData::allocator;
 
 void FeelData::free()
 {
+    attr_args.clear();
     allocator.free(this);
 }
 
@@ -200,6 +205,7 @@ Allocator<ErrorData> ErrorData::allocator;
 
 void ErrorData::free()
 {
+    attr_args.clear();
     allocator.free(this);
 }
 

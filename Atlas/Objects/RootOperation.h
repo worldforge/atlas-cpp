@@ -436,6 +436,7 @@ bool RootOperationData::isDefaultArgs() const
 
 inline void RootOperationData::free()
 {
+    attr_args.clear();
     allocator.free(this);
 }
 

@@ -15,6 +15,7 @@ Allocator<DeleteData> DeleteData::allocator;
 
 void DeleteData::free()
 {
+    attr_args.clear();
     allocator.free(this);
 }
 
@@ -52,6 +53,7 @@ Allocator<SetData> SetData::allocator;
 
 void SetData::free()
 {
+    attr_args.clear();
     allocator.free(this);
 }
 
@@ -89,6 +91,7 @@ Allocator<AffectData> AffectData::allocator;
 
 void AffectData::free()
 {
+    attr_args.clear();
     allocator.free(this);
 }
 
@@ -126,6 +129,7 @@ Allocator<MoveData> MoveData::allocator;
 
 void MoveData::free()
 {
+    attr_args.clear();
     allocator.free(this);
 }
 
@@ -163,6 +167,7 @@ Allocator<WieldData> WieldData::allocator;
 
 void WieldData::free()
 {
+    attr_args.clear();
     allocator.free(this);
 }
 
@@ -200,6 +205,7 @@ Allocator<GetData> GetData::allocator;
 
 void GetData::free()
 {
+    attr_args.clear();
     allocator.free(this);
 }
 

@@ -15,6 +15,7 @@ Allocator<PerceiveData> PerceiveData::allocator;
 
 void PerceiveData::free()
 {
+    attr_args.clear();
     allocator.free(this);
 }
 
@@ -52,6 +53,7 @@ Allocator<LookData> LookData::allocator;
 
 void LookData::free()
 {
+    attr_args.clear();
     allocator.free(this);
 }
 
@@ -89,6 +91,7 @@ Allocator<ListenData> ListenData::allocator;
 
 void ListenData::free()
 {
+    attr_args.clear();
     allocator.free(this);
 }
 
@@ -126,6 +129,7 @@ Allocator<SniffData> SniffData::allocator;
 
 void SniffData::free()
 {
+    attr_args.clear();
     allocator.free(this);
 }
 
@@ -163,6 +167,7 @@ Allocator<TouchData> TouchData::allocator;
 
 void TouchData::free()
 {
+    attr_args.clear();
     allocator.free(this);
 }
 
@@ -200,6 +205,7 @@ Allocator<LoginData> LoginData::allocator;
 
 void LoginData::free()
 {
+    attr_args.clear();
     allocator.free(this);
 }
 

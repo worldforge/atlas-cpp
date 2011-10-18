@@ -15,6 +15,7 @@ Allocator<LogoutData> LogoutData::allocator;
 
 void LogoutData::free()
 {
+    attr_args.clear();
     allocator.free(this);
 }
 
@@ -52,6 +53,7 @@ Allocator<ImaginaryData> ImaginaryData::allocator;
 
 void ImaginaryData::free()
 {
+    attr_args.clear();
     allocator.free(this);
 }
 
@@ -89,6 +91,7 @@ Allocator<UseData> UseData::allocator;
 
 void UseData::free()
 {
+    attr_args.clear();
     allocator.free(this);
 }
 
@@ -126,6 +129,7 @@ Allocator<InfoData> InfoData::allocator;
 
 void InfoData::free()
 {
+    attr_args.clear();
     allocator.free(this);
 }
 
@@ -163,6 +167,7 @@ Allocator<PerceptionData> PerceptionData::allocator;
 
 void PerceptionData::free()
 {
+    attr_args.clear();
     allocator.free(this);
 }
 
@@ -200,6 +205,7 @@ Allocator<SightData> SightData::allocator;
 
 void SightData::free()
 {
+    attr_args.clear();
     allocator.free(this);
 }
 
