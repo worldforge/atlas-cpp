@@ -17,12 +17,18 @@ echo autoheader...
 autoheader
 
 echo libtoolize...
-(libtoolize --version) < /dev/null > /dev/null 2>&1 || {
-    echo libtoolize not found
-    exit 1
-}
+if which libtoolize > /dev/null; then
+  echo "Found libtoolize"
+  LIBTOOLIZE='libtoolize'
+elif which glibtoolize > /dev/null; then
+  echo "Found glibtoolize"
+  LIBTOOLIZE='glibtoolize'
+else
+  echo "Failed to find libtoolize or glibtoolize, please ensure it is installed and accessible via your PATH env variable"
+  exit 1
+fi;
 
-libtoolize --automake --copy --force
+$LIBTOOLIZE  --automake --copy --force
 
 echo automake...
 (automake --version) < /dev/null > /dev/null 2>&1 || {
