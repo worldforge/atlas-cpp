@@ -4,6 +4,7 @@
 *.la
 .deps
 .libs
+INSTALL
 Makefile
 Makefile.in
 config.*
