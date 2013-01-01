@@ -1,5 +1,8 @@
 #Atlas-C++
 
+[DavidJFelix/atlas-cpp.git](https://github.com/DavidJFelix/atlas-cpp) Status:[![Build
+Status](https://api.travis-ci.org/DavidJFelix/atlas-cpp.png)](http://travis-ci.org/DavidJFelix/atlas-cpp)
+
 Welcome to Atlas-C++, the C++ reference implementation of the Atlas protocol.
 
 NOTE!:
