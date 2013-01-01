@@ -1,0 +1,30 @@
+# Travis-CI build for skstream
+# see travis-ci.org for details
+
+language: cpp
+
+compiler:
+  - gcc
+  - clang
+
+install:
+  - sudo apt-get -y install libsigc++-dev
+
+script:
+  - ./autogen.sh
+  - ./configure
+  - make
+
+branches:
+  only:
+  - master
+
+#notifications:
+#  irc:
+#    channels:
+#      - irc.worldforge.org#lounge
+#      - irc.worldforge.org#forge
+#    on_success:
+#      - change
+#    on_failure:
+#      - always
