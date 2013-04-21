@@ -1,6 +1,6 @@
 dnl Initialise autoconf
 
-AC_INIT([Atlas-C++],[0.6.3],[erik@ogenvik.org],[Atlas-C++])
+AC_INIT([Atlas-C++],[0.7.0],[erik@ogenvik.org],[Atlas-C++])
 AC_CONFIG_SRCDIR([Atlas/Bridge.cpp])
 AC_CONFIG_HEADERS([config.h])
 
@@ -16,8 +16,9 @@ AM_INIT_AUTOMAKE([nostdinc dist-bzip2 check-news])
 
 dnl Initialise automake
 
-ATLAS_CURRENT=1
-INTERFACE_VERSION="-version-info $ATLAS_CURRENT:0:0"
+ATLAS_CURRENT=2
+ATLAS_REVISION=0
+INTERFACE_VERSION="-version-info $ATLAS_CURRENT:$ATLAS_REVISION:0"
 
 AC_SUBST(ATLAS_CURRENT)
 AC_SUBST(INTERFACE_VERSION)
@@ -98,7 +99,7 @@ LIBS="$ac_save_LIBS"
 
 SYSTEM_LIBS="$SYSTEM_LIBS -lm"
 ATLAS_CFLAGS=""
-ATLAS_LIB_SUFFIX="-0.6"
+ATLAS_LIB_SUFFIX="-0.7"
 ATLAS_LIBS="-lAtlasObjects$ATLAS_LIB_SUFFIX -lAtlasNet$ATLAS_LIB_SUFFIX -lAtlas$ATLAS_LIB_SUFFIX -lAtlasCodecs$ATLAS_LIB_SUFFIX -lAtlasMessage$ATLAS_LIB_SUFFIX -lAtlas$ATLAS_LIB_SUFFIX"
 
 AC_SUBST(ATLAS_CFLAGS)
@@ -126,6 +127,6 @@ AC_CONFIG_FILES([
 	tutorial/Makefile
 	atlas-cpp.spec
 	mingw32-atlas-cpp.spec
-	atlascpp-0.6.pc
+	atlascpp-0.7.pc
 ])
 AC_OUTPUT
