@@ -33,7 +33,9 @@ typedef std::map<std::string, Element> MapType;
 typedef std::vector<Element> ListType;
 
 /**
- * Multi-type container
+ * Multi-type container.
+ *
+ * For complex type (string, list and map) we try to keep as much on the stack as possible.
  */
 class Element
 {
@@ -118,50 +120,46 @@ public:
     Element(const char* v)
       : t(TYPE_STRING)
     {
-      if(v) {
-		s = new DataType<StringType>(v);
-	  }
-      else
-        s = new DataType<StringType>();
+	  new(&s) StringType(v);
     }
 
     /// Set type to std::string, and value to v.
     Element(const StringType& v)
       : t(TYPE_STRING)
     {
-      s = new DataType<StringType>(v);
-    }
+	    new(&s) StringType(v);
+	}
     /// Set type to std::string, and move v.
     Element(StringType&& v)
       : t(TYPE_STRING)
     {
-        s = new DataType<StringType>(v);
+		new(&s) StringType(std::move(v));
     }
 
     /// Set type to MapType, and value to v.
     Element(const MapType& v)
       : t(TYPE_MAP)
     {
-      m = new DataType<MapType>(v);
+	    new(&m) MapType(v);
     }
     /// Set type to MapType, and move v.
     Element(MapType&& v)
       : t(TYPE_MAP)
     {
-      m = new DataType<MapType>(v);
+		new(&m) MapType(std::move(v));
     }
 
     /// Set type to ListType, and value to v.
     Element(const ListType& v)
       : t(TYPE_LIST)
     {
-      l = new DataType<ListType>(v);
+		new(&l) ListType(v);
     }
     /// Set type to ListType, and move v.
     Element(ListType&& v)
       : t(TYPE_LIST)
     {
-      l = new DataType<ListType>(v);
+		new(&l) ListType(std::move(v));
     }
 
     /// overload assignment operator !
@@ -246,98 +244,91 @@ public:
 
     Element& operator=(const char * v) 
     {
-      if (TYPE_STRING != t || !s->unique())
+      if (TYPE_STRING != t)
       {
         clear(TYPE_STRING);
-        s = new DataType<StringType>(std::string(v));
+        new(&s) StringType(v);
       } else {
-        *s = StringType(v);
+		  String() = v;
       }
       return *this;
     }
 
     Element& operator=(const StringType & v) 
     {
-      if (TYPE_STRING != t || !s->unique())
-      {
-        clear(TYPE_STRING);
-        s = new DataType<StringType>(v);
-      } else {
-        *s = v;
-      }
-      return *this;
+		if (TYPE_STRING != t)
+		{
+			clear(TYPE_STRING);
+			new(&s) StringType(v);
+		} else {
+			String() = v;
+		}
+		return *this;
     }
 
     Element& operator=(StringType && v)
     {
-      if (TYPE_STRING != t || !s->unique())
-      {
-        clear(TYPE_STRING);
-        s = new DataType<StringType>(v);
-      } else {
-        *s = v;
-      }
-      return *this;
+		if (TYPE_STRING != t)
+		{
+			clear(TYPE_STRING);
+			new(&s) StringType(std::move(v));
+		} else {
+			String() = std::move(v);
+		}
+		return *this;
     }
 
     Element& operator=(const MapType & v) 
     {
-      if (TYPE_MAP != t || !m->unique())
+      if (TYPE_MAP != t)
       {
         clear(TYPE_MAP);
-        m = new DataType<MapType>(v);
+        new(&m) MapType(v);
       } else {
-        *m = v;
+      	Map() = v;
       }
-      return *this;
+	  return *this;
     }
 
     Element& operator=(MapType && v)
     {
-      if (TYPE_MAP != t || !m->unique())
-      {
-        clear(TYPE_MAP);
-        m = new DataType<MapType>(v);
-      } else {
-        *m = v;
-      }
-      return *this;
+		if (TYPE_MAP != t)
+		{
+			clear(TYPE_MAP);
+			new(&m) MapType(std::move(v));
+		} else {
+			Map() = std::move(v);
+		}
+		return *this;
     }
 
     Element& operator=(const ListType & v) 
     {
-      if (TYPE_LIST != t || !l->unique())
-      {
-        clear(TYPE_LIST);
-        l = new DataType<ListType>(v);
-      } else {
-        *l = v;
-      }
-      return *this;
+		if (TYPE_LIST != t)
+		{
+			clear(TYPE_LIST);
+			new(&l) ListType(v);
+		} else {
+			List() = v;
+		}
+        return *this;
     }
 
     Element& operator=(ListType && v)
     {
-      if (TYPE_LIST != t || !l->unique())
-      {
-        clear(TYPE_LIST);
-        l = new DataType<ListType>(v);
-      } else {
-        *l = v;
-      }
-      return *this;
+		if (TYPE_LIST != t)
+		{
+			clear(TYPE_LIST);
+			new(&l) ListType(std::move(v));
+		} else {
+			List() = std::move(v);
+		}
+		return *this;
     }
 
     /// Check for equality with another Element.
     bool operator==(const Element& o) const;
 
-#if defined(__GNUC__) && __GNUC__ < 3
-    bool operator!=(const Element& o) const
-    {
-        return !(*this == o);
-    }
-#endif // defined(__GNUC__) && __GNUC__ < 3
-    
     /// Check for inequality with anything we can check equality with
     template<class C>
     bool operator!=(C c) const
@@ -379,7 +370,7 @@ public:
     bool operator==(const char * v) const
     {
       if(t == TYPE_STRING)
-        return (*s == v);
+        return (String() == v);
       return false;
     }
 
@@ -387,7 +378,7 @@ public:
     bool operator==(const StringType& v) const
     {
       if(t == TYPE_STRING)
-        return (*s == v);
+		  return (String() == v);
       return false;
     }
 
@@ -395,7 +386,7 @@ public:
     bool operator==(const MapType& v) const
     {
       if(t == TYPE_MAP)
-        return (*m == v);
+		  return (Map() == v);
       return false;
     }
 
@@ -403,7 +394,7 @@ public:
     bool operator==(const ListType& v) const
     {
       if (t == TYPE_LIST)
-        return (*l == v);
+		  return (List() == v);
       return false;
     }
 
@@ -466,22 +457,22 @@ public:
     /// Retrieve the current value as a const std::string reference.
     const std::string& asString() const
     {
-        if (t == TYPE_STRING) return *s;
+        if (t == TYPE_STRING) return String();
         throw WrongTypeException();
     }
     /// Retrieve the current value as a non-const std::string reference.
     std::string& asString()
     {
-        if (t == TYPE_STRING) return *(s = s->makeUnique());
+		if (t == TYPE_STRING) return String();
         throw WrongTypeException();
     }
     const StringType& String() const
     {
-        return *s;
+        return *((const StringType*)s);
     }
     StringType& String()
     {
-        return *(s = s->makeUnique());
+		return *((StringType*)s);
     }
 
     /**
@@ -492,29 +483,28 @@ public:
      */
     StringType&& moveString() {
         if (t != TYPE_STRING) throw WrongTypeException();
-        s = s->makeUnique();
-        return s->move();
+        return std::move(String());
     }
 
     /// Retrieve the current value as a const MapType reference.
     const MapType& asMap() const
     {
-        if (t == TYPE_MAP) return *m;
+        if (t == TYPE_MAP) return Map();
         throw WrongTypeException();
     }
     /// Retrieve the current value as a non-const MapType reference.
     MapType& asMap()
     {
-        if (t == TYPE_MAP) return *(m = m->makeUnique());
+        if (t == TYPE_MAP) return Map();
         throw WrongTypeException();
     }
     const MapType& Map() const
     {
-        return *m;
+        return *((const MapType*)m);
     }
     MapType& Map()
     {
-        return *(m = m->makeUnique());
+		return *((MapType*)m);
     }
 
     /**
@@ -525,29 +515,28 @@ public:
      */
     MapType&& moveMap() {
         if (t != TYPE_MAP) throw WrongTypeException();
-        m = m->makeUnique();
-        return m->move();
+        return std::move(Map());
     }
 
     /// Retrieve the current value as a const ListType reference.
     const ListType& asList() const
     {
-        if (t == TYPE_LIST) return *l;
+        if (t == TYPE_LIST) return List();
         throw WrongTypeException();
     }
     /// Retrieve the current value as a non-const ListType reference.
     ListType& asList()
     {
-        if (t == TYPE_LIST) return *(l = l->makeUnique());
+        if (t == TYPE_LIST) return List();
         throw WrongTypeException();
     }
     const ListType& List() const
     {
-        return *l;
+        return *((const ListType*)l);
     }
     ListType& List()
     {
-        return *(l = l->makeUnique());
+		return *((ListType*)l);
     }
 
     /**
@@ -558,68 +547,25 @@ public:
      */
     ListType&& moveList() {
         if (t != TYPE_LIST) throw WrongTypeException();
-        l = l->makeUnique();
-        return l->move();
+        return std::move(List());
     }
 
     static const char * typeName(Type);
 
 protected:
 
-    template<class C>
-    class DataType
-    {
-    public:
-        DataType() : _refcount(1), _data(nullptr) {}
-
-		explicit DataType(const C& c) : _refcount(1), _data(c) {}
-		explicit DataType(C&& c) : _refcount(1), _data(c) {}
-        DataType(const DataType&) = delete;
-
-        DataType& operator=(const C& c) {_data = c; return *this;}
-        DataType& operator=(const C&& c) {_data = std::move(c); return *this;}
-        DataType& operator=(const DataType&) = delete;
-
-        bool operator==(const C& c) const {return _data == c;}
-
-        void ref() {++_refcount;}
-        void unref() {if(--_refcount == 0) delete this;}
-
-        bool unique() const {return _refcount == 1;}
-        DataType* makeUnique()
-        {
-           if(unique())
-               return this;
-           unref(); // _refcount > 1, so this is fine
-           return new DataType(_data);
-        }
-
-        operator C&() {return _data;}
-        /**
-         * Moves the data out of the container.
-         *
-         * This will destroy the existing data.
-         * @return
-         */
-        C&& move() {
-            return std::move(_data);
-        }
-//        operator const C&() const {return _data;}
-
-    private:
-
-        unsigned long _refcount;
-        C _data;
-    };
-
     Type t;
     union {
       IntType i;
       FloatType f;
       void* p;
-      DataType<StringType>* s;
-      DataType<MapType>* m;
-      DataType<ListType>* l;
+      /**
+       * The string, list and map types are kept on the stack, but since C++ doesn't allow unions with non-POD structs we need
+       * to declare them as opaque char arrays and then call destructors and constructors manually.
+       */
+      char s[sizeof(StringType)];
+      char m[sizeof(MapType)];
+      char l[sizeof(ListType)];
     };
 };
 

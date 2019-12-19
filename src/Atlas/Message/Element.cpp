@@ -10,7 +10,7 @@ namespace Atlas { namespace Message {
 
 void Element::clear(Type new_type)
 {
-  switch(t) 
+  switch(t)
      {
    case TYPE_NONE:
    case TYPE_INT:
@@ -18,22 +18,22 @@ void Element::clear(Type new_type)
    case TYPE_PTR:
      break;
    case TYPE_STRING:
-     s->unref();
+	   ((StringType*)(&s))->~StringType();
      break;
    case TYPE_MAP:
-     m->unref();
+	   ((MapType*)(&m))->~MapType();
      break;
    case TYPE_LIST:
-     l->unref();
+	   ((ListType*)(&l))->~ListType();
      break;
    }
-  
+
   t = new_type;
 }
 
 Element::Element(const Element& obj) : t(obj.t)
 {
-  switch(t) 
+  switch(t)
     {
       case TYPE_NONE:
         break;
@@ -47,19 +47,16 @@ Element::Element(const Element& obj) : t(obj.t)
         p = obj.p;
         break;
       case TYPE_STRING:
-        s = obj.s;
-        s->ref();
+		  new(&s) StringType(obj.String());
         break;
       case TYPE_MAP:
-        m = obj.m;
-        m->ref();
+		  new(&m) MapType(obj.Map());
         break;
       case TYPE_LIST:
-        l = obj.l;
-        l->ref();
+		  new(&l) ListType(obj.List());
         break;
     }
-        
+
 }
 
 Element::Element(Element&& obj) noexcept : t(obj.t)
@@ -80,20 +77,20 @@ Element::Element(Element&& obj) noexcept : t(obj.t)
         p = obj.p;
         break;
       case TYPE_STRING:
-        s = obj.s;
-        break;
-      case TYPE_MAP:
-        m = obj.m;
-        break;
-      case TYPE_LIST:
-        l = obj.l;
-        break;
+		new(&s) StringType(std::move(obj.String()));
+		break;
+	  case TYPE_MAP:
+		new(&m) MapType(std::move(obj.Map()));
+		break;
+	  case TYPE_LIST:
+		new(&l) ListType(std::move(obj.List()));
+		break;
     }
     obj.t = TYPE_NONE;
 
 }
 
-Element& Element::operator=(const Element& obj) 
+Element& Element::operator=(const Element& obj)
 {
   //check for self assignment
   if(&obj == this)
@@ -103,7 +100,7 @@ Element& Element::operator=(const Element& obj)
   clear(obj.t);
 
   // then perform actual assignment of members
-  switch(t) 
+  switch(t)
     {
     case TYPE_NONE:
       break;
@@ -116,18 +113,15 @@ Element& Element::operator=(const Element& obj)
     case TYPE_PTR:
       p = obj.p;
       break;
-    case TYPE_STRING:
-      s = obj.s;
-      s->ref();
-      break;
-    case TYPE_MAP:
-      m = obj.m;
-      m->ref();
-      break;
-    case TYPE_LIST:
-      l = obj.l;
-      l->ref();
-      break;
+	case TYPE_STRING:
+		new(&s) StringType(obj.String());
+		break;
+	case TYPE_MAP:
+		new(&m) MapType(obj.Map());
+		break;
+	case TYPE_LIST:
+		new(&l) ListType(obj.List());
+		break;
     }
 
   return *this;
@@ -158,13 +152,13 @@ Element& Element::operator=(Element&& obj) noexcept
       p = obj.p;
       break;
     case TYPE_STRING:
-      s = obj.s;
+      new(&s) StringType(std::move(obj.String()));
       break;
     case TYPE_MAP:
-      m = obj.m;
+      new(&m) MapType(std::move(obj.Map()));
       break;
     case TYPE_LIST:
-      l = obj.l;
+      new(&l) ListType(std::move(obj.List()));
       break;
   }
   obj.t = TYPE_NONE;
@@ -181,9 +175,9 @@ bool Element::operator==(const Element& o) const
         case TYPE_INT: return i == o.i;
 		case TYPE_FLOAT: return Equal(f, o.f);
         case TYPE_PTR: return p == o.p;
-        case TYPE_STRING: return *s == *o.s;
-        case TYPE_MAP: return *m == *o.m;
-        case TYPE_LIST: return *l == *o.l;
+        case TYPE_STRING: return String() == o.String();
+        case TYPE_MAP: return Map() == o.Map();
+        case TYPE_LIST: return List() == o.List();
     }
     return false;
 }
