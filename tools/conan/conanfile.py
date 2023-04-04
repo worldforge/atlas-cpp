@@ -1,4 +1,10 @@
-from conans import ConanFile, CMake
+import os
+
+from conan import ConanFile
+from conan.tools.cmake import CMake, cmake_layout
+from conan.tools.files import copy, collect_libs, update_conandata
+from conan.tools.scm import Git
+from conans.errors import ConanException
 
 
 class AtlasConan(ConanFile):
@@ -15,32 +21,41 @@ class AtlasConan(ConanFile):
     default_options = {"shared": False, "fPIC": True}
     requires = ["bzip2/1.0.8",
                 "zlib/1.2.13"]
-    generators = "cmake_find_package", "cmake_paths"
+    generators = "CMakeToolchain", "CMakeDeps"
 
-    scm = {
-        "type": "git",
-        "url": "https://github.com/worldforge/atlas-cpp.git",
-        "revision": "auto"
-    }
+    def export(self):
+        git = Git(self, self.recipe_folder)
+        try:
+            scm_url, scm_commit = git.get_url_and_commit()
+            update_conandata(self, {"sources": {"commit": scm_commit, "url": scm_url}})
+        except ConanException:
+            pass
 
-    def imports(self):
-        self.copy("*.dll", "bin", "bin")
+    def export_sources(self):
+        folder = os.path.join(self.recipe_folder, "../..")
+        copy(self, "*", folder, self.export_sources_folder)
 
-    def _configure_cmake(self):
-        cmake = CMake(self)
-        cmake.definitions['ATLAS_GENERATE_OBJECTS'] = False
-        print(cmake.definitions)
-        cmake.configure(source_folder=".")
-        return cmake
+    def config_options(self):
+        if self.settings.os == "Windows":
+            del self.options.fPIC
+
+    def layout(self):
+        self.folders.root = "../.."
+        cmake_layout(self)
 
     def build(self):
-        cmake = self._configure_cmake()
+        cmake = CMake(self)
+        cmake.definitions['ATLAS_GENERATE_OBJECTS'] = False
+        cmake.configure()
         cmake.build()
+
+    def package(self):
+        cmake = CMake(self)
+        cmake.definitions['ATLAS_GENERATE_OBJECTS'] = False
+        cmake.install()
 
     def package_info(self):
         # Since the libraries are interdependent we must provide them in correct order.
         self.cpp_info.libs = ["AtlasNet", "AtlasObjects", "AtlasFilters", "AtlasCodecs", "AtlasMessage", "Atlas"]
 
-    def package(self):
-        cmake = self._configure_cmake()
-        cmake.install()
+
